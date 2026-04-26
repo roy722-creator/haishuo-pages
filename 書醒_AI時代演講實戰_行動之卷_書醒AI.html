@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 時代的演講實戰 · 行動之卷｜書醒</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0c1929;--bg-soft:#142436;--bg-card:#1a2f47;--text:#e8e4dc;--text-soft:#9fb0c4;--text-mute:#6c7e94;--accent:#e87f4c;--accent-warm:#e8a04c;--accent-cool:#7ab8d4;--gold:#d4b074;--line:#2a4060;--l3-bg:rgba(232,127,76,0.08);--l3-border:#e87f4c;--l2-bg:rgba(122,184,212,0.06)}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif TC','Cormorant Garamond',serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:17px;font-weight:400}
+body[data-lang="en"]{font-family:'Cormorant Garamond','Inter',serif}
+body[data-lang="zh"] [lang="en"]{display:none!important}
+body[data-lang="en"] [lang="zh"]{display:none!important}
+.lang-switch{position:fixed;top:18px;right:18px;z-index:1000;background:rgba(20,36,54,0.92);border:1px solid var(--line);border-radius:24px;padding:6px;display:flex;backdrop-filter:blur(12px);box-shadow:0 4px 18px rgba(0,0,0,0.4)}
+.lang-switch button{background:transparent;color:var(--text-soft);border:none;padding:6px 14px;border-radius:18px;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.05em;transition:all 0.25s}
+.lang-switch button.active{background:var(--accent);color:#0c1929;font-weight:600}
+.lang-switch button:hover:not(.active){color:var(--text)}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 8% 60px;position:relative;background:linear-gradient(135deg,#0c1929 0%,#1a2f47 50%,#2a3f5f 100%);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 25% 70%,rgba(232,127,76,0.22),transparent 55%);pointer-events:none}
+.hero-tag{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.4em;color:var(--accent);text-transform:uppercase;margin-bottom:24px;position:relative}
+.hero h1{font-family:'Cormorant Garamond','Noto Serif TC',serif;font-size:clamp(42px,7vw,82px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;margin-bottom:20px;color:#f4ede0;position:relative}
+.hero h1 em{color:var(--accent);font-style:italic;font-weight:500}
+.hero-sub{font-size:clamp(18px,2.4vw,24px);color:var(--text-soft);max-width:720px;margin-bottom:36px;font-weight:400;line-height:1.6;position:relative}
+.hero-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.12em;color:var(--text-mute);text-transform:uppercase;border-top:1px solid var(--line);padding-top:24px;max-width:680px;position:relative}
+.hero-meta strong{color:var(--gold);font-weight:500;margin-right:6px}
+section{padding:90px 8% 30px;max-width:1100px;margin:0 auto}
+.section-tag{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.35em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.section-tag::after{content:"";flex:1;height:1px;background:var(--line);max-width:120px}
+h2{font-family:'Cormorant Garamond','Noto Serif TC',serif;font-size:clamp(30px,4.5vw,48px);font-weight:500;margin-bottom:32px;color:#f4ede0;line-height:1.2;letter-spacing:-0.005em}
+h3{font-family:'Cormorant Garamond','Noto Serif TC',serif;font-size:clamp(22px,2.8vw,28px);font-weight:500;margin:36px 0 14px;color:var(--accent);letter-spacing:0.005em}
+h4{font-family:'Inter','Noto Serif TC',sans-serif;font-size:14px;font-weight:600;margin:24px 0 10px;color:var(--gold);letter-spacing:0.05em;text-transform:uppercase}
+p{margin-bottom:18px;color:var(--text)}
+p.lead{font-size:19px;color:var(--text-soft);font-style:italic;margin-bottom:28px;line-height:1.7}
+em{color:var(--accent);font-style:italic}
+strong{color:#f4ede0;font-weight:600}
+.quote-block{border-left:3px solid var(--accent);padding:18px 28px;margin:28px 0;background:rgba(232,127,76,0.06);font-style:italic;color:var(--text-soft);font-size:18px;line-height:1.7}
+.framework-grid{display:grid;gap:18px;margin:28px 0;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.framework-card{background:linear-gradient(135deg,var(--bg-card) 0%,var(--bg-soft) 100%);padding:24px 26px;border-radius:8px;border-top:2px solid var(--accent-cool)}
+.framework-card .letter{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--accent);line-height:1;margin-bottom:6px}
+.framework-card h4{margin:0 0 12px;color:#f4ede0;font-family:'Cormorant Garamond',serif;font-size:20px;text-transform:none;letter-spacing:0;font-weight:500}
+.framework-card p{font-size:14px;line-height:1.65;margin:0;color:var(--text-soft)}
+.insight-l3{background:var(--l3-bg);border-left:3px solid var(--l3-border);padding:18px 22px;margin:22px 0;border-radius:4px;position:relative}
+.insight-l3::before{content:"AI 原創洞見";position:absolute;top:-9px;left:18px;background:var(--bg);color:var(--accent);font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.15em;padding:0 10px;font-weight:600}
+body[data-lang="en"] .insight-l3::before{content:"AI Original Insight"}
+.insight-l2{background:var(--l2-bg);border-left:2px solid var(--accent-cool);padding:16px 22px;margin:18px 0;border-radius:4px;font-style:italic;color:var(--text-soft)}
+.insight-l2::before{content:"AI 延伸 ";color:var(--accent-cool);font-style:normal;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.15em;font-weight:600;margin-right:8px}
+body[data-lang="en"] .insight-l2::before{content:"AI Extension "}
+.action-block{background:var(--bg-soft);border-radius:10px;padding:30px 34px;margin:24px 0;border:1px solid var(--line)}
+.action-block h4{margin-top:0;color:var(--accent);font-size:13px}
+.action-block h4:not(:first-child){margin-top:26px}
+.action-block ol{padding-left:22px;margin-bottom:0}
+.action-block ol li{margin-bottom:12px;color:var(--text)}
+.action-block ol li::marker{color:var(--accent);font-weight:600}
+.action-block li strong{display:block;color:var(--gold);margin-bottom:4px}
+.echo-card{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 0;border-bottom:1px dashed var(--line);align-items:start}
+.echo-card:last-child{border-bottom:none}
+.echo-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--accent);line-height:1;width:48px}
+.echo-content p{margin-bottom:8px}
+.bookcard{background:linear-gradient(135deg,#1a2f47 0%,#0c1929 100%);border:1px solid var(--accent);border-radius:10px;padding:30px 34px;margin:40px 0}
+.bookcard h3{color:var(--accent);margin-top:0;font-size:20px}
+.bookcard table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+.bookcard td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.bookcard td:first-child{font-family:'Inter',sans-serif;color:var(--gold);font-weight:500;width:30%;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding-right:18px}
+.bookcard td:last-child{color:var(--text)}
+.insight-grid{display:grid;gap:16px;margin:24px 0}
+.insight-item{background:var(--bg-soft);padding:20px 24px;border-radius:6px;border-left:2px solid var(--gold)}
+.insight-item h4{margin:0 0 8px;color:var(--accent);font-size:13px}
+.insight-item p{margin-bottom:0;font-size:15px;line-height:1.7}
+footer{margin-top:90px;padding:50px 8% 40px;background:var(--bg-soft);border-top:1px solid var(--line);text-align:center;font-family:'Inter','Noto Serif TC',sans-serif;font-size:12px;color:var(--text-mute);letter-spacing:0.08em}
+footer .brand{color:var(--accent);font-weight:600;letter-spacing:0.2em;margin-bottom:8px;display:block}
+.top-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--accent);color:#0c1929;border:none;border-radius:50%;cursor:pointer;font-size:20px;font-weight:600;z-index:999;box-shadow:0 4px 14px rgba(0,0,0,0.4);transition:transform 0.2s}
+.top-btn:hover{transform:translateY(-3px)}
+@media(max-width:600px){
+body{font-size:16px}
+.hero{padding:70px 6% 50px;min-height:80vh}
+section{padding:60px 6% 20px}
+.framework-card{padding:20px 22px}
+.bookcard{padding:24px 22px}
+.action-block{padding:24px 22px}
+.lang-switch{top:12px;right:12px}
+.lang-switch button{padding:5px 11px;font-size:11px}
+.echo-card{grid-template-columns:1fr;gap:8px}
+.echo-num{font-size:28px}
+}
+</style>
+</head>
+<body data-lang="zh">
+
+<div class="lang-switch" role="group" aria-label="語言切換">
+<button onclick="setLang('zh')" id="btn-zh" class="active">中文</button>
+<button onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<header class="hero">
+<div class="hero-tag" lang="zh">書醒 · 行動之卷</div>
+<div class="hero-tag" lang="en">AWAKENED READER · SCROLL TWO</div>
+<h1 lang="zh">不是你<em>說了</em>什麼<br>是你<em>活了</em>什麼</h1>
+<h1 lang="en">Not What You <em>Said</em><br>But What You <em>Lived</em></h1>
+<p class="hero-sub" lang="zh">看見了七種轉變,接下來怎麼走?從 EPOCH 五項能力到 Triple A 創造力,從本週的小行動到三個月後的迴聲,這是一份可以親手執行的地圖。</p>
+<p class="hero-sub" lang="en">You've seen the seven shifts. Now what? From the five EPOCH capabilities to Triple A creativity, from this week's small acts to the echoes three months out: this is a map you can walk by hand.</p>
+<div class="hero-meta">
+<span><strong>SPEAKER </strong>李海碩 · Haishuo Lee</span>
+<span><strong>SCROLL </strong><span lang="zh">下篇 · 行動之卷</span><span lang="en">Two · Action</span></span>
+<span><strong>SISTER </strong><span lang="zh">上篇 · 看見之卷</span><span lang="en">One · Seeing</span></span>
+</div>
+</header>
+
+<!-- EPOCH -->
+<section>
+<div class="section-tag" lang="zh">第四部分 · 應用框架</div>
+<div class="section-tag" lang="en">Part IV · Application Framework</div>
+
+<h2 lang="zh">EPOCH:人類在 AI 時代仍能站穩的五項能力</h2>
+<h2 lang="en">EPOCH: Five Human Capabilities That Hold</h2>
+
+<p class="lead" lang="zh">麻省理工史隆商學院近年提出的人類能力地圖。AI 嵌在中央,人類則在五個維度上提供 AI 無法取代的價值,剛好對應上篇的七大轉變。</p>
+<p class="lead" lang="en">A capability map from MIT Sloan. AI sits at the center; humans provide irreplaceable value across five dimensions, mirroring the seven shifts in Scroll One.</p>
+
+<div class="framework-grid">
+<div class="framework-card">
+<div class="letter">E</div>
+<h4 lang="zh">Empathy 共情</h4>
+<h4 lang="en">Empathy</h4>
+<p lang="zh">能感受別人的情感、看見一件事的兩面。對應上篇:脆弱與我們。</p>
+<p lang="en">The capacity to feel another's emotion and see both sides at once. Mirrors: Vulnerability and We.</p>
+</div>
+<div class="framework-card">
+<div class="letter">P</div>
+<h4 lang="zh">Presence 在場</h4>
+<h4 lang="en">Presence</h4>
+<p lang="zh">真正地、不分心地與對方在一起。陪伴自己的孩子,不是坐在他旁邊滑手機。</p>
+<p lang="en">Being truly, undividedly with another. Sitting beside your child without your phone in hand is presence; sitting with the phone is not.</p>
+</div>
+<div class="framework-card">
+<div class="letter">O</div>
+<h4 lang="zh">Opinion 觀點</h4>
+<h4 lang="en">Opinion</h4>
+<p lang="zh">敢於選擇、敢於負責。AI 能給你 1000 個答案,但選哪個、為何選、後果誰承擔,都是你。</p>
+<p lang="en">Daring to choose and to be accountable. AI can hand you a thousand answers; which to take, why, and who bears the consequence is yours.</p>
+</div>
+<div class="framework-card">
+<div class="letter">C</div>
+<h4 lang="zh">Creativity 創意與想像</h4>
+<h4 lang="en">Creativity & Imagination</h4>
+<p lang="zh">不只是組合既有元素的創意,而是無中生有的想像力。哆啦 A 夢的道具現在多半實現了。人類最厲害的是想出尚不存在的東西。</p>
+<p lang="en">Not just creativity (combining existing elements) but imagination: something out of nothing. Many of Doraemon's gadgets exist today. The human gift is dreaming of what does not yet exist.</p>
+</div>
+<div class="framework-card">
+<div class="letter">H</div>
+<h4 lang="zh">Hope 希望與意義</h4>
+<h4 lang="en">Hope & Meaning</h4>
+<p lang="zh">在不確定的時代,為自己與他人帶來希望感與意義感。這是 EPOCH 的核心,也是真正的領導者要做的事。</p>
+<p lang="en">Bringing hope and meaning into an uncertain era, for yourself and for others. This is the heart of EPOCH and the work of any real leader.</p>
+</div>
+</div>
+
+<h3 lang="zh">Triple A 創造力:AI 時代的人類創造機制</h3>
+<h3 lang="en">Triple A Creativity: Human Creation Under AI</h3>
+
+<div class="action-block">
+<h4 lang="zh">A1 · AUGMENTATION 增強</h4>
+<h4 lang="en">A1 · AUGMENTATION</h4>
+<p lang="zh" style="margin-bottom:14px">AI 不是取代,而是增強。你需要先有自己的觀點,再交給 AI 做擴展。沒有人的觀點,AI 的輸出就只是平均值,無法產生差異化。</p>
+<p lang="en" style="margin-bottom:14px">AI does not replace; it augments. You must first hold a view of your own, then hand it to AI to extend. Without a human position, AI's output is the average; no differentiation.</p>
+
+<h4 lang="zh">A2 · ADAPTATION 適應</h4>
+<h4 lang="en">A2 · ADAPTATION</h4>
+<p lang="zh" style="margin-bottom:14px">世界會持續變化,而且變得越來越快。如果你只能在一個固定的賽道上發揮,你會被淘汰。四十歲後的職涯,不再是一條曲線,而是兩條、三條、不斷接力的曲線。</p>
+<p lang="en" style="margin-bottom:14px">The world will keep changing, faster and faster. If you can only perform on one fixed track, you will be left behind. After forty, careers are no longer one curve but two, three, a relay of curves.</p>
+
+<h4 lang="zh">A3 · ACCOUNTABILITY 當責</h4>
+<h4 lang="en">A3 · ACCOUNTABILITY</h4>
+<p lang="zh">AI 不會為任何決定負責。在現實世界裡承擔行動與後果的,永遠是人。這也是為什麼觀點(Opinion)這項能力如此重要。觀點不是漂亮話,觀點是「我為這個選擇負責」的承諾。</p>
+<p lang="en">AI takes responsibility for nothing. In the real world, the one who bears the action and the outcome is, and remains, the human. This is why Opinion matters. Opinion is not a flourish; it is the commitment "I am accountable for this choice."</p>
+</div>
+
+<div class="insight-l3">
+<p lang="zh"><strong>EPOCH 的真正秘密,在於它本身就是個沙漏。</strong>表面看是五項並列能力,但若仔細看,它們的關係是有時序的:Empathy 讓你看見別人,Presence 讓你停在現場,Opinion 讓你做出判斷,Creativity 讓你產生新東西,Hope 把這個新東西指向遠方。從感知,經過判斷,到行動,到指引,這不是五項技能,而是一個完整的人類心智迴圈。當你看清這個迴圈,你就會發現:AI 缺的不是其中某一項,而是整個迴圈的閉合性。它沒有「自己為什麼存在」的那個錨點。</p>
+<p lang="en"><strong>The real secret of EPOCH is that it is itself an hourglass.</strong> On the surface, five parallel capabilities; but look closer and they have a sequence: Empathy lets you see another, Presence lets you stop here, Opinion lets you judge, Creativity lets you make something new, Hope points that new thing toward a distance. From perception, through judgment, to action, to direction: these are not five skills but one closed loop of the human mind. Once you see the loop, you see what AI lacks: not any single capability, but the loop's closure itself, the anchor of "why I exist."</p>
+</div>
+</section>
+
+<!-- 整合洞見 -->
+<section>
+<div class="section-tag" lang="zh">第五部分 · 整合洞見</div>
+<div class="section-tag" lang="en">Part V · Integrative Insights</div>
+
+<h2 lang="zh">這場演講真正在回答的四個問題</h2>
+<h2 lang="en">The Four Questions This Talk Truly Answers</h2>
+
+<div class="insight-grid">
+<div class="insight-item">
+<h4 lang="zh">隱藏的邏輯線</h4>
+<h4 lang="en">The Hidden Throughline</h4>
+<p lang="zh">七種轉變、EPOCH、Triple A,表面看是三組概念,實質上是同一條邏輯線:從「為什麼舊敘事失效」到「新敘事長什麼樣」到「人類要培養什麼能力」到「能力如何落地為行動」。看穿這條線,你就會發現整場演講不是七個論點+一個框架+一段人生哲理,而是一條從診斷到處方到複健的完整路徑。</p>
+<p lang="en">Seven shifts, EPOCH, Triple A: three concepts on the surface, one throughline underneath: from "why the old narrative fails" to "what the new narrative looks like" to "what humans must cultivate" to "how that cultivation becomes action." See the line, and you'll find the talk is not seven points plus a framework plus a life lesson; it is a complete path from diagnosis to prescription to rehabilitation.</p>
+</div>
+
+<div class="insight-item">
+<h4 lang="zh">作者的潛台詞</h4>
+<h4 lang="en">The Speaker's Subtext</h4>
+<p lang="zh">海碩沒有明說,但每一個轉變的背後都假設了一件事:聽眾已經感覺到舊的方式不再有效,只是還沒有語言去描述那種失效。整場演講真正在做的事,是把這種模糊的不安,翻譯成清晰可命名的現象。當你能命名它,你就不再被它支配。</p>
+<p lang="en">Haishuo never says it outright, but each shift assumes the audience has already sensed that the old way no longer works; they just don't have the language for the failure yet. What the whole talk really does is translate that vague unease into clearly named phenomena. Once you can name it, it stops ruling you.</p>
+</div>
+
+<div class="insight-item">
+<h4 lang="zh">批判與邊界</h4>
+<h4 lang="en">Critique and Limits</h4>
+<p lang="zh">兩個必須誠實面對的批判:第一,「不完美」本身可能變成新的表演,當每個 KOL 都在「真實」地分享自己的脆弱,這個脆弱就變成另一種精心包裝的內容,反而更不真實。第二,「我們」的擴張也可能排除新的「他們」,當所有敘事都強調集體共鳴,那些不適合任何群體的個體會無處可去。</p>
+<p lang="en">Two critiques to face honestly. First, "imperfection" itself can become the new performance, when every influencer shares their vulnerability "authentically," that vulnerability turns into another carefully packaged content, less real than before. Second, expanding "we" can exclude new "they"; when every narrative pushes collective resonance, individuals who fit no group have nowhere to land.</p>
+</div>
+
+<div class="insight-item">
+<h4 lang="zh">知識的對話</h4>
+<h4 lang="en">A Dialogue of Knowledge</h4>
+<p lang="zh">這場演講同時在跟三個人對話:亞里斯多德(ethos/pathos/logos 的傳統)、哈拉瑞(《人類大歷史》中故事建構文明的論點)、布芮尼·布朗(脆弱即連結)。海碩把三個來自完全不同時代與領域的觀點,織成同一張網。這是這場演講最珍貴的智識成就。</p>
+<p lang="en">The talk is simultaneously in conversation with three thinkers: Aristotle (the ethos/pathos/logos tradition), Yuval Harari (the <em>Sapiens</em> argument that stories build civilization), and Brené Brown (vulnerability as connection). Weaving three voices from utterly different eras and fields into one fabric. That is the talk's most precious intellectual achievement.</p>
+</div>
+</div>
+</section>
+
+<!-- 行動轉化 -->
+<section>
+<div class="section-tag" lang="zh">第六部分 · 行動轉化</div>
+<div class="section-tag" lang="en">Part VI · Translating to Action</div>
+
+<h2 lang="zh">把它從演講帶回你的生活</h2>
+<h2 lang="en">Bringing It from the Stage Into Your Life</h2>
+
+<p class="lead" lang="zh">理解一場演講最快的方式不是再聽一次,而是親手做一遍。以下三個層次(本週啟動、本月實驗、長期追蹤),任何一項都能讓這場演講從一段聲音,變成你身體裡的一個習慣。</p>
+<p class="lead" lang="en">The fastest way to understand a talk isn't to listen again. It's to do it yourself. Three layers below: this week, this month, the long term. Any one of them turns the talk from a stream of sound into a habit in your body.</p>
+
+<div class="action-block">
+<h4 lang="zh">本週啟動 · 三件不到十分鐘的事</h4>
+<h4 lang="en">This Week · Three Things Under Ten Minutes</h4>
+<ol>
+<li><strong lang="zh">脆弱練習</strong><strong lang="en">Vulnerability Drill</strong><span lang="zh">在下一次自我介紹中,主動加一句「有件事我至今還沒做好」。觀察對方的反應,你會發現連結比你想的快。</span><span lang="en">In your next introduction, add one line: "Here's something I still haven't figured out." Watch the response. Connection comes faster than you think.</span></li>
+<li><strong lang="zh">兩面練習</strong><strong lang="en">Two-Sides Drill</strong><span lang="zh">挑一件你最近的判斷,要求 AI 用最強的反方論述來駁倒你。看你的判斷是否仍然站得住。</span><span lang="en">Pick a recent judgment of yours. Ask AI to deliver the strongest counter-argument it can. See whether your judgment still stands.</span></li>
+<li><strong lang="zh">立場練習</strong><strong lang="en">Stance Drill</strong><span lang="zh">寫下一個你不敢公開講的觀點,問自己:不敢的原因,是怕被討厭,還是怕自己其實是錯的?</span><span lang="en">Write down one view you don't dare to say publicly. Ask yourself: is the fear that you'll be disliked, or that you might actually be wrong?</span></li>
+</ol>
+
+<h4 lang="zh">本月實驗 · 兩個可以追蹤的習慣</h4>
+<h4 lang="en">This Month · Two Trackable Habits</h4>
+<ol>
+<li><strong lang="zh">收集第一手生命故事</strong><strong lang="en">Collect First-hand Life Stories</strong><span lang="zh">每週記錄一個別人不知道的、你自己親身經歷的小故事。三個月後你會有一個誰也搶不走的素材庫,這是 AI 永遠模仿不出來的。</span><span lang="en">Each week, record one small first-hand story no one else knows. After three months you'll have an archive no one can take from you, and AI will never produce it.</span></li>
+<li><strong lang="zh">每天三十秒的「為什麼」</strong><strong lang="en">Thirty Seconds of "Why" Every Day</strong><span lang="zh">每天結束前花三十秒問自己:今天我做的最重要那件事,為什麼重要?不要追求好的答案,只要追求誠實的答案。</span><span lang="en">Before the day ends, take thirty seconds: the most important thing I did today: why did it matter? Don't chase a good answer; chase an honest one.</span></li>
+</ol>
+
+<h4 lang="zh">長期追蹤 · 一個指標</h4>
+<h4 lang="en">Long Term · One Indicator</h4>
+<ol>
+<li><strong lang="zh">「我可能是錯的」次數</strong><strong lang="en">Count of "I May Be Wrong"</strong><span lang="zh">追蹤一年內,你公開、誠實地說出「這件事我可能是錯的」的次數。這個數字反映你能否在 AI 時代保持智識的彈性,也是你能不能持續成長的最直接指標。</span><span lang="en">Track, over a year, how many times you say openly and honestly: "I may be wrong about this." That number reflects your intellectual flexibility in the AI era, the most direct indicator of whether you can keep growing.</span></li>
+</ol>
+</div>
+</section>
+
+<!-- 迴聲預言 -->
+<section>
+<div class="section-tag" lang="zh">第七部分 · 迴聲預言</div>
+<div class="section-tag" lang="en">Part VII · Echo Prophecy</div>
+
+<h2 lang="zh">這場演講會在哪些時刻回來找你</h2>
+<h2 lang="en">When This Talk Will Come Back to Find You</h2>
+
+<p class="lead" lang="zh">真正改變你的,不是你聽完的那一刻,而是三個月後某一天,你在某個生活場景裡,突然想起其中某句話,然後發現自己已經不一樣了。以下不是行動清單,是預言。</p>
+<p class="lead" lang="en">What truly changes you isn't the moment of listening but a day three months from now. In some ordinary scene, a single line returns and you realize you've already become different. What follows is not a checklist. It is prophecy.</p>
+
+<div class="echo-card">
+<div class="echo-num">01</div>
+<div class="echo-content">
+<p lang="zh"><strong>場景:</strong>一場重要會議,你正準備為一個有把握的觀點據理力爭。在開口之前,你會突然想起「邏輯是鏈,情感是場」。你會停下來問自己:我接下來要走的是鏈還是場?那個停頓會改變整場會議的方向。</p>
+<p lang="en"><strong>Scene:</strong> An important meeting. You're about to argue forcefully for a point you're sure of. Just before you speak, "logic is a chain, emotion is a field" returns. You'll pause, and ask: am I about to walk a chain or a field? That pause will change the entire meeting.</p>
+</div>
+</div>
+
+<div class="echo-card">
+<div class="echo-num">02</div>
+<div class="echo-content">
+<p lang="zh"><strong>場景:</strong>一個失眠的夜晚,你為某件已經發生的事反覆懊悔。你會想起「我可能錯了」這四個字。但這次它不是用來自我打擊的。它是來告訴你:既然連現在的判斷都可能是錯的,何況過去那一刻?那個寬鬆的瞬間,你會睡著。</p>
+<p lang="en"><strong>Scene:</strong> A sleepless night. You're rehearsing regret over something already done. The four words return: "I may be wrong." But this time they aren't for self-attack. They tell you: if even today's judgment may be wrong, what about that earlier moment? In the loosening that follows, you'll fall asleep.</p>
+</div>
+</div>
+
+<div class="echo-card">
+<div class="echo-num">03</div>
+<div class="echo-content">
+<p lang="zh"><strong>場景:</strong>某次你發現自己又在追求被所有人喜歡。你會突然想起伍佰把麥克風遞給觀眾的畫面。然後你會發現:其實你早就不需要被所有人喜歡了。你需要的是,讓對的人在你身邊一起唱。光是那個轉念,就值回這場演講。</p>
+<p lang="en"><strong>Scene:</strong> Some moment you catch yourself, again, chasing everyone's approval. The image of Wu Bai handing the mic to the audience returns. You'll realize: you actually stopped needing everyone to like you long ago. What you need is the right people, beside you, singing along. That shift alone is worth the entire talk.</p>
+</div>
+</div>
+
+<div class="echo-card">
+<div class="echo-num">04</div>
+<div class="echo-content">
+<p lang="zh"><strong>場景:</strong>多年後的某天,你在面對你的下一代(可能是孩子,也可能是任何一個你想傳承給的人),你會發現自己沒有講你最厲害的那些事。你會講你五年連敗那段日子。你會講你走錯路的那次選擇。然後你會明白:你已經活了一個值得說的故事。</p>
+<p lang="en"><strong>Scene:</strong> Years from now, sitting before your next generation (perhaps a child, perhaps anyone you wish to pass something on to), you'll find you don't talk about your greatest moments. You'll talk about the five years of losing in a row. You'll talk about the choice that turned out wrong. And then you'll understand: you have lived a story worth telling.</p>
+</div>
+</div>
+
+<div class="quote-block" lang="zh">迴聲預言不是行動清單。行動清單告訴你「應該做什麼」,迴聲預言告訴你「這件事會在未來什麼時刻找到你」。一個是任務,一個是預言。書醒兩者都要。</div>
+<div class="quote-block" lang="en">Echo Prophecy is not a checklist. A checklist tells you "what you should do." Prophecy tells you "what will find you, and when." One is a task. The other is a prophecy. The Awakened Reader insists on both.</div>
+</section>
+
+<!-- 帶著書醒回去聽 -->
+<section>
+<div class="section-tag" lang="zh">📖 帶著書醒回去聽</div>
+<div class="section-tag" lang="en">📖 Listen Again, with the Reader</div>
+
+<h2 lang="zh">這場演講值得再聽一次</h2>
+<h2 lang="en">This Talk Is Worth a Second Listening</h2>
+
+<p lang="zh">如果你能拿到這場演講的原始錄音,把這份整理放在旁邊,從頭再聽一次。這次,你會聽見幾件第一次聽不到的東西。</p>
+<p lang="en">If you can get the original recording, listen with this scroll beside you. This time, you'll hear things you missed before.</p>
+
+<h3 lang="zh">帶著這些問題回去聽</h3>
+<h3 lang="en">Listen with These Questions</h3>
+
+<p lang="zh">第一,留意海碩在哪些段落「自己活在他講的東西裡」。當他談到自己 2008 到 2014 連敗五年,當他談到他親手砸碎第一座冠軍獎盃。那些不是修辭,那是他在示範「過程勝過結局」這件事。</p>
+<p lang="en">First, notice the moments where Haishuo is "living what he's saying". When he talks about losing five years in a row from 2008 to 2014, when he describes shattering his first championship trophy with his own hand. Those aren't rhetorical flourishes. He is demonstrating "process beats outcome" in real time.</p>
+
+<p lang="zh">第二,試著找出他每一個轉變背後的「人的時刻」,不是論點,而是某個讓你停下來的瞬間。比如「我有講過 2000 到 3000 個場次」之後緊接的那段,他講他更喜歡去鄉下的小學,跟學生一起去吃羊肉。</p>
+<p lang="en">First, try to find the "human moment" behind each shift, not the argument but the instant that makes you stop. Like the passage right after "I've given 2,000 to 3,000 talks," when he says he prefers small rural schools where the kids invite him out for lamb soup.</p>
+
+<h3 lang="zh">讀後回來</h3>
+<h3 lang="en">Come Back After</h3>
+
+<p lang="zh">當你照著這份整理走完一遍,再回頭看書醒給你的「迴聲預言」,你會發現有些預言已經發生了。書醒的觀點 + 你的親身體驗 = 真正的覺醒。</p>
+<p lang="en">After you've walked through this scroll once, return to the Echo Prophecy. You'll find some have already come true. The Reader's insight + your lived experience = true awakening.</p>
+</section>
+
+<!-- 書庫卡片 -->
+<section>
+<div class="bookcard">
+<h3 lang="zh">📚 書庫卡片 · 下篇</h3>
+<h3 lang="en">📚 Library Card · Scroll Two</h3>
+<table>
+<tr><td lang="zh">作品</td><td lang="en">Work</td><td lang="zh">AI 時代的演講實戰 · 行動之卷</td><td lang="en">AI Era Speech Practicum · Scroll of Action</td></tr>
+<tr><td lang="zh">講者</td><td lang="en">Speaker</td><td>李海碩 / Haishuo Lee</td></tr>
+<tr><td lang="zh">分析模式</td><td lang="en">Mode</td><td lang="zh">標準版(雙語對照)</td><td lang="en">Standard (Bilingual)</td></tr>
+<tr><td lang="zh">骨架</td><td lang="en">Skeleton</td><td lang="zh">哲學思辨型 + 混合敘事論證型</td><td lang="en">Philosophical + Hybrid Narrative-Argumentative</td></tr>
+<tr><td lang="zh">核心應用</td><td lang="en">Application</td><td lang="zh">EPOCH 五項能力 + Triple A 創造力 + 四週行動 + 迴聲預言</td><td lang="en">EPOCH (5 capabilities) + Triple A creativity + 4-week action + Echo prophecy</td></tr>
+<tr><td lang="zh">AI 原創洞見</td><td lang="en">AI Original Insight</td><td lang="zh">EPOCH 沙漏:五項並列能力其實是一個閉合的心智迴圈</td><td lang="en">EPOCH Hourglass: five parallel capabilities are actually one closed cognitive loop</td></tr>
+<tr><td lang="zh">姊妹篇</td><td lang="en">Sister Scroll</td><td lang="zh">上篇〈看見之卷〉:故事的力量、AI 時代的危機、七大轉變</td><td lang="en">Scroll One · Seeing: power of story, the crisis, seven shifts</td></tr>
+<tr><td lang="zh">迴聲核心</td><td lang="en">Echo Core</td><td lang="zh">不是你說了什麼,而是你活了什麼</td><td lang="en">Not what you said, but what you lived</td></tr>
+<tr><td lang="zh">產出日期</td><td lang="en">Date</td><td>2026-04-26</td></tr>
+</table>
+</div>
+</section>
+
+<section style="padding:24px 8% 0;max-width:1100px;margin:0 auto">
+<div style="background:var(--bg-card);border:1px solid var(--accent-warm);border-radius:10px;padding:26px 30px;text-align:center">
+<div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--accent-warm);margin-bottom:12px">808 AI 五金行</div>
+<p style="color:var(--text-soft);font-size:15px;line-height:1.7;margin:0 auto 18px;max-width:540px" lang="zh">想繼續對話？加入 808 AI 五金行 LINE 社群，和四位創辦人一起探索 AI 時代的學習與敘事。</p>
+<p style="color:var(--text-soft);font-size:15px;line-height:1.7;margin:0 auto 18px;max-width:540px" lang="en">Want to keep talking? Join our LINE community to explore AI-era learning and storytelling with the four founders.</p>
+<a href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="display:inline-block;background:#06c755;color:#fff;padding:11px 28px;border-radius:26px;text-decoration:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.03em">
+<span lang="zh">加入 LINE 社群 →</span><span lang="en">Join LINE OpenChat →</span>
+</a>
+</div>
+</section>
+
+<footer>
+<span class="brand" lang="zh">書醒 · AWAKENED READER</span>
+<span class="brand" lang="en">AWAKENED READER · 書醒</span>
+<div lang="zh">808 AI 五金行 出品 · 下篇:行動之卷</div>
+<div lang="en">An 808 AI Toolshop Production · Scroll Two: Action</div>
+<div style="margin-top:14px;font-size:11px;opacity:0.7" lang="zh">真正的故事不是你說了什麼,是你活了什麼</div>
+<div style="margin-top:14px;font-size:11px;opacity:0.7" lang="en">The real story is not what you said but what you lived</div>
+</footer>
+
+<button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
+
+<script>
+function setLang(lang){
+document.body.dataset.lang=lang;
+document.documentElement.lang=lang==='zh'?'zh-TW':'en';
+document.getElementById('btn-zh').classList.toggle('active',lang==='zh');
+document.getElementById('btn-en').classList.toggle('active',lang==='en');
+try{localStorage.setItem('awakened-lang',lang)}catch(e){}
+}
+try{
+var saved=localStorage.getItem('awakened-lang');
+if(saved==='en')setLang('en');
+}catch(e){}
+</script>
+</body>
+</html>
