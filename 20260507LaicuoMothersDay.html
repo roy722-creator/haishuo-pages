@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>給家長的禮物：AI 時代，父母真正能給孩子的事</title>
+<style>
+:root {
+  --ink: #2a1f1a;
+  --ink-soft: #4a3d34;
+  --ink-faint: #8a7969;
+  --paper: #fcf8f1;
+  --paper-warm: #f5ecde;
+  --paper-cool: #ebe2d3;
+  --terracotta: #b85c38;
+  --terracotta-soft: #d4825b;
+  --terracotta-bg: #faeae0;
+  --coral: #d97757;
+  --coral-bg: #fce8de;
+  --sage: #6b7d4a;
+  --sage-bg: #e8ede0;
+  --plum: #6b3a4a;
+  --plum-bg: #f0e1e6;
+  --cream: #fdf6e8;
+  --gold: #c89438;
+  --gold-bg: #faf0d8;
+  --rule: #d8c9b0;
+  --shadow-sm: 0 1px 3px rgba(74,61,52,0.06);
+  --shadow-md: 0 4px 14px rgba(74,61,52,0.10);
+  --shadow-lg: 0 14px 44px rgba(74,61,52,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+body {
+  font-family: "Noto Serif TC", "Source Han Serif TC", "PingFang TC", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.88;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(135deg, #6b3a2e 0%, #8b4a37 35%, #b85c38 75%, #d4825b 100%);
+  color: var(--paper);
+  padding: 96px 32px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(252,232,222,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(200,148,56,0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "❀";
+  position: absolute;
+  top: 32px;
+  right: 56px;
+  font-size: 80px;
+  color: rgba(252,232,222,0.12);
+  font-family: serif;
+  pointer-events: none;
+}
+.hero-content { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-family: "Noto Sans TC", sans-serif;
+  letter-spacing: 0.3em;
+  font-size: 12px;
+  color: rgba(252,232,222,0.85);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.hero h1 {
+  font-size: clamp(34px, 5.5vw, 58px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin-bottom: 20px;
+}
+.hero h1 .accent { color: #fcd9b8; font-style: italic; font-weight: 600; }
+.hero-sub {
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 48px;
+  line-height: 1.6;
+  max-width: 760px;
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(252,232,222,0.3);
+}
+.hero-meta-item .label {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #fcd9b8;
+  margin-bottom: 6px;
+}
+.hero-meta-item .value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.4;
+}
+
+/* ============ DEDICATION ============ */
+.dedication {
+  background: var(--cream);
+  padding: 56px 32px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.dedication-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.85;
+}
+.dedication-flower {
+  text-align: center;
+  font-size: 28px;
+  color: var(--terracotta);
+  margin-bottom: 20px;
+  letter-spacing: 0.5em;
+}
+.dedication-inner .name { color: var(--terracotta); font-weight: 600; font-style: normal; }
+
+/* ============ TOC ============ */
+.toc {
+  background: var(--paper);
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-inner { max-width: 920px; margin: 0 auto; }
+.toc h2 {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--terracotta);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8px 40px;
+}
+.toc-grid a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px dotted var(--rule);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.toc-grid a:hover { color: var(--terracotta); }
+.toc-grid a .num {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 11px;
+  color: var(--terracotta);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 24px;
+}
+.toc-grid a .title { flex: 1; }
+
+/* ============ SECTION ============ */
+.section {
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.section:nth-child(even) { background: var(--paper-warm); }
+.section-inner { max-width: 720px; margin: 0 auto; }
+
+.section-num {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.section h2 {
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.28;
+  color: var(--plum);
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.section .subtitle {
+  font-size: 18px;
+  color: var(--ink-faint);
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+.section h3 {
+  font-size: 23px;
+  color: var(--plum);
+  margin: 48px 0 16px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.section h3.with-num::before {
+  content: attr(data-num);
+  display: inline-block;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  color: var(--terracotta);
+  letter-spacing: 0.2em;
+  margin-right: 12px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+.section h4 {
+  font-size: 18px;
+  color: var(--plum);
+  margin: 32px 0 12px;
+  font-weight: 700;
+}
+
+.section p { margin-bottom: 18px; color: var(--ink); }
+.section p strong { color: var(--plum); font-weight: 700; }
+.section em { color: var(--terracotta); font-style: italic; font-weight: 500; }
+
+.section ul, .section ol { margin: 16px 0 24px 0; padding-left: 24px; }
+.section li { margin-bottom: 10px; }
+
+/* ============ CALLOUT BOXES ============ */
+.callout {
+  margin: 32px 0;
+  padding: 28px 32px;
+  border-radius: 4px;
+  position: relative;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.callout-label {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.callout-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.callout p { margin-bottom: 12px; line-height: 1.78; }
+.callout p:last-child { margin-bottom: 0; }
+.callout ul, .callout ol { margin: 8px 0 12px 0; }
+.callout li { margin-bottom: 8px; }
+
+/* AI Augmentation 深化 */
+.callout.augmentation {
+  background: var(--plum-bg);
+  border-left: 4px solid var(--plum);
+}
+.callout.augmentation .callout-label {
+  background: var(--plum);
+  color: var(--paper);
+}
+.callout.augmentation .callout-title { color: var(--plum); }
+
+/* 海碩金句 */
+.callout.quote {
+  background: var(--terracotta-bg);
+  border-left: 4px solid var(--terracotta);
+  font-family: "Noto Serif TC", serif;
+  text-align: center;
+  padding: 38px 40px;
+}
+.callout.quote .quote-mark {
+  font-size: 60px;
+  color: var(--terracotta);
+  line-height: 0.5;
+  font-family: Georgia, serif;
+  margin-bottom: 4px;
+}
+.callout.quote .quote-text {
+  font-size: 22px;
+  line-height: 1.65;
+  color: var(--plum);
+  font-style: italic;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.callout.quote .quote-source {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  font-style: normal;
+}
+
+/* 給家長的具體做法 */
+.callout.action {
+  background: var(--sage-bg);
+  border-left: 4px solid var(--sage);
+}
+.callout.action .callout-label {
+  background: var(--sage);
+  color: var(--paper);
+}
+.callout.action .callout-title { color: var(--sage); }
+
+/* 警示 */
+.callout.warning {
+  background: var(--gold-bg);
+  border-left: 4px solid var(--gold);
+}
+.callout.warning .callout-label {
+  background: var(--gold);
+  color: #fff;
+}
+.callout.warning .callout-title { color: var(--gold); }
+
+/* 補充延伸 */
+.callout.extend {
+  background: var(--coral-bg);
+  border-left: 4px solid var(--coral);
+}
+.callout.extend .callout-label {
+  background: var(--coral);
+  color: #fff;
+}
+.callout.extend .callout-title { color: var(--coral); }
+
+/* 社群邀請 */
+.callout.community {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f9e8 100%);
+  border-left: 4px solid #06c755;
+}
+.callout.community .callout-label {
+  background: #06c755;
+  color: #ffffff;
+}
+.callout.community .callout-title { color: #064e2c; }
+
+.line-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 32px;
+  background: #06c755;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 16px 0 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(6,199,85,0.25);
+}
+.line-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(6,199,85,0.35);
+}
+.line-cta-icon {
+  background: #ffffff;
+  color: #06c755;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.line-cta-text { letter-spacing: 0.05em; }
+
+/* ============ COMPARE GRID ============ */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 32px 0;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.compare-cell {
+  padding: 24px;
+  background: var(--paper);
+}
+.compare-cell.old { border-right: 1px solid var(--rule); }
+.compare-cell.new { background: var(--terracotta-bg); }
+.compare-cell .label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ink-faint);
+}
+.compare-cell.new .label { color: var(--terracotta); }
+.compare-cell .content { font-size: 15px; line-height: 1.65; }
+
+.timeline {
+  margin: 32px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-year {
+  font-weight: 700;
+  color: var(--terracotta);
+  font-size: 16px;
+}
+.timeline-content { font-size: 15px; line-height: 1.65; }
+
+/* ============ STATS ============ */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+.stat {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 24px;
+  text-align: center;
+  border-radius: 4px;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.stat .num {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--terracotta);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat .label { font-size: 13px; color: var(--ink-faint); line-height: 1.5; }
+
+/* ============ PILLARS ============ */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.pillar {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 22px;
+  border-radius: 4px;
+  border-top: 3px solid var(--terracotta);
+}
+.pillar .num {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--terracotta);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar h5 {
+  font-size: 16px;
+  color: var(--plum);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.pillar p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: #3a1f17;
+  color: rgba(252,232,222,0.85);
+  padding: 64px 32px 48px;
+  text-align: center;
+}
+.footer .signature {
+  font-family: "Noto Serif TC", serif;
+  font-style: italic;
+  font-size: 19px;
+  color: #fcd9b8;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.footer .info {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  line-height: 1.85;
+}
+.footer .info a { color: #fcd9b8; text-decoration: none; }
+
+/* ============ DROP CAP ============ */
+.drop-cap::first-letter {
+  font-size: 56px;
+  float: left;
+  line-height: 0.85;
+  margin: 6px 12px 0 0;
+  color: var(--terracotta);
+  font-weight: 700;
+  font-family: Georgia, serif;
+}
+
+/* ============ DIVIDER ============ */
+.divider-ornament {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--terracotta);
+  font-size: 22px;
+  letter-spacing: 0.8em;
+}
+
+/* ============ KEY TAKEAWAY ============ */
+.key-takeaway {
+  background: linear-gradient(135deg, var(--terracotta-bg) 0%, var(--cream) 100%);
+  border: 2px solid var(--terracotta-soft);
+  padding: 32px 36px;
+  border-radius: 6px;
+  margin: 40px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.key-takeaway .label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.key-takeaway .text {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--plum);
+  font-weight: 500;
+}
+
+/* ============ HEART CARD ============ */
+.heart-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 32px;
+  margin: 32px 0;
+  box-shadow: var(--shadow-sm);
+  font-family: "Noto Sans TC", sans-serif;
+}
+.heart-card .heart-icon {
+  font-size: 24px;
+  color: var(--terracotta);
+  margin-bottom: 12px;
+}
+.heart-card h4 {
+  font-size: 18px;
+  color: var(--plum);
+  margin-bottom: 16px;
+}
+.heart-card .step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.heart-card .step:last-child { border-bottom: none; }
+.heart-card .step-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heart-card .step-content {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .section { padding: 64px 24px; }
+  .hero { padding: 64px 24px 56px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-cell.old { border-right: none; border-bottom: 1px solid var(--rule); }
+  .timeline-item { grid-template-columns: 70px 1fr; gap: 16px; }
+  .callout { padding: 24px 22px; }
+}
+
+/* ============ PRINT ============ */
+@media print {
+  .hero { background: #6b3a2e !important; -webkit-print-color-adjust: exact; }
+  .toc { page-break-after: always; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">葳格國際學校 ／ 賴厝校區家長會 ／ 母親節專場</div>
+    <h1>給家長的禮物：<br><span class="accent">AI 時代，父母真正能給孩子的事</span></h1>
+    <p class="hero-sub">當這個世界正在以瘋狂的速度改變，<br>幼兒園的父母最該為孩子做的，不是科技焦慮的追趕，<br>而是把「安全感」與「身體」這兩塊地基，紮得深而穩。</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">主講人</div>
+        <div class="value">李海碩 ／ 葳格國際學校 總校長</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">主辦</div>
+        <div class="value">執行長 Miss Emily<br>葳格幼兒園賴厝校區</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">場合</div>
+        <div class="value">2026 年母親節專場家長講座</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">日期</div>
+        <div class="value">2026.05.07 下午</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DEDICATION ============ -->
+<section class="dedication">
+  <div class="dedication-flower">❀ ❀ ❀</div>
+  <div class="dedication-inner">
+    敬獻給每一位來到現場的<span class="name">爸爸</span>與<span class="name">媽媽</span>。<br>
+    今天的母親節快樂，不只是說給媽媽聽的，<br>
+    也是說給每一位「正在為孩子認真承擔的人」聽的。<br><br>
+    經營一個家、成就一個寶貝，從來都不是一個人的事。<br>
+    是大家互相幫忙，互相協助。<br>
+    所以在開始之前，請先給自己一個熱烈的掌聲。
+  </div>
+</section>
+
+<!-- ============ TOC ============ -->
+<nav class="toc">
+  <div class="toc-inner">
+    <h2>目 錄 ／ TABLE OF CONTENTS</h2>
+    <div class="toc-grid">
+      <a href="#prologue"><span class="num">序</span><span class="title">開場：把講者當祕書</span></a>
+      <a href="#why-kindergarten"><span class="num">壹</span><span class="title">為什麼幼兒園是教育最重要的階段</span></a>
+      <a href="#attachment"><span class="num">貳</span><span class="title">依附理論：充電型小孩的祕密</span></a>
+      <a href="#brain-0-3"><span class="num">參</span><span class="title">0 到 3 歲的大腦：吃魚變聰明的真相</span></a>
+      <a href="#three-anxieties"><span class="num">肆</span><span class="title">三大焦慮：語文、科技、取代</span></a>
+      <a href="#english"><span class="num">伍</span><span class="title">英文焦慮：英文是進入 AI 的入口</span></a>
+      <a href="#three-layers"><span class="num">陸</span><span class="title">語言的三個層次：對 → 切 → 用</span></a>
+      <a href="#four-functions"><span class="num">柒</span><span class="title">四種溝通功能：資訊、說服、情感、激勵</span></a>
+      <a href="#screen-time"><span class="num">捌</span><span class="title">3C 焦慮：學術已證實的代價</span></a>
+      <a href="#dopamine"><span class="num">玖</span><span class="title">短影音與多巴胺：父母也要對自己誠實</span></a>
+      <a href="#what-to-teach"><span class="num">拾</span><span class="title">幼兒園真正該學的：底層能力</span></a>
+      <a href="#two-foundations"><span class="num">拾壹</span><span class="title">兩塊地基：安全感 ＋ 體能</span></a>
+      <a href="#hugging"><span class="num">拾貳</span><span class="title">擁抱的科學：迪士尼的 Letting Go Last</span></a>
+      <a href="#story-time"><span class="num">拾參</span><span class="title">讀故事：爸爸的版本效果是三倍</span></a>
+      <a href="#praise"><span class="num">拾肆</span><span class="title">誇獎努力，不要誇獎聰明</span></a>
+      <a href="#parenting-style"><span class="num">拾伍</span><span class="title">權威開明型教養：高要求 ＋ 高回應</span></a>
+      <a href="#epoch"><span class="num">拾陸</span><span class="title">EPOCH 框架：AI 取代不了的五件事</span></a>
+      <a href="#asia"><span class="num">拾柒</span><span class="title">2050 的世界版圖：亞洲在崛起</span></a>
+      <a href="#closing"><span class="num">尾聲</span><span class="title">最重要的禮物，是你自己</span></a>
+      <a href="#appendix"><span class="num">附錄</span><span class="title">給賴厝家長的行動清單</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PROLOGUE ============ -->
+<section class="section" id="prologue">
+  <div class="section-inner">
+    <div class="section-num">序 ／ PROLOGUE</div>
+    <h2>開場：把講者當祕書</h2>
+    <p class="subtitle">「等一下這 90 分鐘，請你把我當成你的祕書。」</p>
+
+    <p class="drop-cap">海碩校長一上台，先做了一個很葳格式的鋪陳。Miss Emily 把麥克風遞過去之前，提醒大家「他剛剛從早上的中臺灣 140 位校長 AI 研習趕過來」、「這場講座的含金量不得了」。海碩校長把這些光環一一輕輕推開，先做了一件最重要的事：把自己降格。</p>
+
+    <p>「從現在開始到 3:30，麻煩你就把我當成你的祕書。你怎麼跟祕書講話，就用那樣的方式給我講話就可以。」</p>
+
+    <p>這不是客套。這是他對「真正的學習如何發生」的實踐。他接著說：「等一下你想拍照都可以拍，但簡報最後都會給你，所以你自己決定。中間如果有問題，<strong>不用等到最後</strong>，隨時打斷我都可以。」</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「今天等一下所有的分享，<br>都是把全世界目前最前沿的研究抓過來，<br>然後跟各位報告。<br>這些東西大概可以撐個 10 年左右。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>這是父母會場特別需要聽到的承諾。在資訊爆炸、月月推陳出新的 AI 時代，<strong>「能撐 10 年的觀點」</strong>對家長來說，比「最新工具教學」更值錢。因為你現在做的決定，會跟著你的孩子長到 10 歲、15 歲。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">給家長的提醒</span>
+      <div class="callout-title">這場演講的「使用方式」與一般家長講座不同</div>
+      <p>大部分家長講座結束後，你會記得幾個感性的瞬間，但不會記得操作。這場演講的設計剛好相反：</p>
+      <ul>
+        <li><strong>不要記筆記，</strong>因為簡報會發。把腦袋空出來，專心聽哪些「跟你家剛好對上」。</li>
+        <li><strong>聽到刺痛的地方，</strong>不要立刻反駁也不要立刻自責。海碩校長中間會明說：「等一下講的東西如果對到你，請<em>不要對號入座</em>」。每位父母都已經很努力了，這場演講不是來指責，是來補位的。</li>
+        <li><strong>挑兩件事帶回家，</strong>就夠了。海碩校長最後會點明，幼兒園階段真正只需要做兩件事。把那兩件事做好，比同時做 20 件事更有效。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY KINDERGARTEN ============ -->
+<section class="section" id="why-kindergarten">
+  <div class="section-inner">
+    <div class="section-num">壹 ／ HECKMAN CURVE</div>
+    <h2>為什麼幼兒園是教育最重要的階段</h2>
+    <p class="subtitle">大部分家長把錢花在大學，但研究說，最該投資的階段是現在。</p>
+
+    <p>海碩校長介紹了一條 2000 年諾貝爾經濟學獎得主 James Heckman 提出的曲線，叫做「赫克曼曲線」。這條曲線追蹤了不同年齡階段，每多投入一塊錢的教育投資，未來會帶來多少倍的回報。</p>
+
+    <h3 class="with-num" data-num="1.1">投入回報率最高的時間是 0 到 5 歲</h3>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">0-5</div>
+        <div class="label">教育投入回報率<br>最高的年齡區間</div>
+      </div>
+      <div class="stat">
+        <div class="num">國中</div>
+        <div class="label">回報率<br>最低的階段</div>
+      </div>
+      <div class="stat">
+        <div class="num">大學</div>
+        <div class="label">回報率<br>遠低於幼兒期</div>
+      </div>
+    </div>
+
+    <p>「不是說後面比較沒有效益，是後面的效益跟前期的效益比起來差很多。」海碩校長強調。換句話說，<strong>同樣一份心力，現在花在你 5 歲以下的孩子身上，效果遠遠大過於日後花在他大學的補習費</strong>。</p>
+
+    <div class="callout extend">
+      <span class="callout-label">給家長的反思</span>
+      <div class="callout-title">你現在的家庭資源配置，是「Heckman 型」還是「倒過來型」？</div>
+      <p>很多台灣家庭的支出曲線是這樣的：幼兒園相對節省 → 小學中等 → 中學暴增（補習、才藝、家教）→ 大學登峰（學費、留學）。</p>
+      <p>但 Heckman 的研究告訴我們，這個配置的效率剛好是反過來的。</p>
+      <p>不是說後段不該投，而是<strong>前段不能省</strong>。在你的孩子還在 3 到 6 歲的這幾年，投入「陪伴時間」、「親子共讀」、「真實互動」，這些看起來不像「投資」的事情，其實是回報最高的投資。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ATTACHMENT ============ -->
+<section class="section" id="attachment">
+  <div class="section-inner">
+    <div class="section-num">貳 ／ ATTACHMENT THEORY</div>
+    <h2>依附理論：充電型小孩的祕密</h2>
+    <p class="subtitle">「他跑了好遠，回頭看你一眼，笑一下，然後又跑了。」</p>
+
+    <p>海碩校長問現場：「有沒有碰過這樣的狀況：你的小孩在旁邊跑來跑去，他跑了好遠，回頭看一下你，看到媽媽還在那邊，笑一下，然後就繼續跑了？」</p>
+
+    <p>幾乎所有家長都點頭。</p>
+
+    <p>「還有另外一種狀況，叫做<strong>充電的理論</strong>：他可能回來看一下你，覺得不太安全，他會跑回你身邊，抱一下你，然後再繼續跑了。」</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「那個就叫做<em>依附</em>。<br><br>讓你的小孩有安全感，<br>就是現在最重要的事情。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="2.1">為什麼安全依附這麼重要</h3>
+
+    <p>依附理論（Attachment Theory）由英國精神科醫師 John Bowlby 在 1950 年代提出，後來由 Mary Ainsworth 用「陌生情境實驗」分類成四種依附類型。海碩校長今天只談最關鍵的一種：<strong>安全依附（Secure Attachment）</strong>。</p>
+
+    <p>它的核心意思是：當這個小孩需要爸爸媽媽的時候，他知道你<em>在</em>。這個「在」不是物理上一直在他旁邊（沒有父母做得到），而是他在心裡有一個確定的座標：「不管我跑多遠，回頭看的時候，那個人會在那裡。」</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">深化補充</span>
+      <div class="callout-title">「靜止臉實驗」：父母最該知道的一支影片</div>
+      <p>1975 年，哈佛兒童心理學家 Edward Tronick 做了一個改變兒童心理學的實驗，叫做 Still Face Experiment（靜止臉實驗）。</p>
+      <p>實驗的設計很簡單：媽媽和一歲嬰兒互動 3 分鐘，正常笑、回應、玩遊戲。然後媽媽轉頭一下，再轉回來時，她的臉變成「完全沒有表情」，繼續看著嬰兒，但不回應任何東西。</p>
+      <p>嬰兒的反應在短短一分鐘內走完了：先是好奇 → 主動討好（指東西、笑、發出聲音）→ 焦慮（蜷縮、扭動）→ 完全崩潰大哭。然後媽媽恢復表情那一瞬間，嬰兒又笑了。</p>
+      <p>給家長的啟發：你的孩子，沒有要你 24 小時都關注他。但他需要知道，<strong>當他朝你「丟出一個訊號」時，那個訊號會被接住</strong>。安全依附就是這個「會被接住」的累積感。</p>
+      <p>YouTube 搜尋「Still Face Experiment Tronick」就有原始影片，10 分鐘，是每位父母都該看一次的影片。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAIN 0-3 ============ -->
+<section class="section" id="brain-0-3">
+  <div class="section-inner">
+    <div class="section-num">參 ／ NEUROSCIENCE</div>
+    <h2>0 到 3 歲的大腦：吃魚變聰明的真相</h2>
+    <p class="subtitle">幼兒園階段，太早用 AI 反而傷害大腦發展。</p>
+
+    <h3 class="with-num" data-num="3.1">突觸連結的黃金窗口</h3>
+
+    <p>海碩校長從一個小遊戲開始：「你聽過『吃魚會變聰明』嗎？」全場舉手。「相信嗎？」很多家長舉手。然後他用一個極簡邏輯打破這個迷思：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">海碩式邏輯</span>
+      <div class="callout-title">如果吃魚會變聰明，住港口的人智商就要更高</div>
+      <p>「但住港口的人有明顯更高嗎？沒有。所以吃魚其實不會更聰明。」</p>
+      <p>「但<strong>真正的科學是這樣</strong>：我們大腦的突觸不是接在一起的。它要溝通的時候是放電的，啪一下，另外一條神經把它接過去。」</p>
+      <p>「突觸跟突觸之間的連結要增強，最好的方式就是<em>優質的 EPA 跟 DHA</em>。所以你吃了好的魚，EPA 跟 DHA 會增加你的突觸，<strong>真的溝通會更好</strong>。」</p>
+      <p>「IQ 沒有提升。但大腦變快了，所以大家會覺得變聰明。」</p>
+    </div>
+
+    <h3 class="with-num" data-num="3.2">為什麼這對你的孩子超級重要</h3>
+
+    <p>0 到 3 歲，是人類一生中突觸形成最密集的時期。每秒鐘，嬰幼兒的大腦正在形成 100 萬個新的神經連結。但這些連結不是無限增加，大腦會用「修剪法則」（synaptic pruning）：用得多的連結會留下並加強，用不到的會被剪掉。</p>
+
+    <div class="key-takeaway">
+      <div class="label">CORE PRINCIPLE</div>
+      <div class="text">大腦的成長邏輯只有一條：<strong>用進廢退</strong>。<br><br>幼兒每一次跟你的真實互動，每一次自己思考，每一次主動探索，都是在「使用突觸」。<br>每一次被 3C 接管，等於這段時間突觸沒有運動。</div>
+    </div>
+
+    <h3 class="with-num" data-num="3.3">為什麼幼兒園階段不該太早用 AI</h3>
+
+    <p>海碩校長在這裡下了一個讓很多家長吃驚的判斷：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「在幼兒時期，<br>最好的 AI 策略是什麼？<br><br>就是<em>不要碰</em>。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>「在 AI 的時代，如果讓你的小孩太早用 AI，他的大腦就不會運動。所以三 C 用太多，大腦都用太少，尤其越早用，他的突觸發展就會越差。」</p>
+
+    <p>更重要的是：「幼兒園裡最需要學的，根本不是 AI 技巧本身。AI 變化太快，他現在學會的能力，在他小學還沒有畢業之前，工具就完全不一樣了。」</p>
+
+    <div class="callout action">
+      <span class="callout-label">給家長的具體建議</span>
+      <div class="callout-title">真正能滋養 0-6 歲大腦的三件事</div>
+      <p>不是 3C 的替代品要多花錢，事實上免費的最有效：</p>
+      <ul>
+        <li><strong>真實對話。</strong>蹲下來跟孩子平視說話，每天累計 30 分鐘以上的「來回對話」（不是單向指令）。研究顯示「對話輪數（conversational turns）」比「字彙量」更能預測語言發展。</li>
+        <li><strong>身體探索。</strong>戶外、沙、水、樹葉、爬高。每一個觸覺、嗅覺、空間感的刺激，都在連結突觸。</li>
+        <li><strong>共讀。</strong>每天 15 到 20 分鐘的親子共讀。Cincinnati Children's Hospital 的腦部 MRI 研究證實，常被讀故事的幼兒，<em>大腦語言處理區的活化程度顯著更高</em>。</li>
+      </ul>
+      <p>這三件事都不需要任何電子裝置。但效果遠遠超過任何「幼兒 AI 教學 App」。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THREE ANXIETIES ============ -->
+<section class="section" id="three-anxieties">
+  <div class="section-inner">
+    <div class="section-num">肆 ／ FRAMEWORK</div>
+    <h2>三大焦慮：語文、科技、取代</h2>
+    <p class="subtitle">大部分父母對 AI 時代的擔心，都可以裝進這三個盒子。</p>
+
+    <p>海碩校長把家長的所有 AI 焦慮歸納成三大類，並準備一個一個拆解：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">①</div>
+        <h5>語文焦慮</h5>
+        <p>AI 都能翻譯了，還要學英文嗎？單字、文法、發音重要嗎？該幾歲開始學？</p>
+      </div>
+      <div class="pillar">
+        <div class="num">②</div>
+        <h5>科技焦慮</h5>
+        <p>該不該讓孩子早點接觸 AI？該不該讓他玩平板？該不該學程式設計？多巴胺到底有多嚴重？</p>
+      </div>
+      <div class="pillar">
+        <div class="num">③</div>
+        <h5>取代焦慮</h5>
+        <p>我的孩子長大後，這個世界還會有他的位置嗎？他要怎麼跟 AI 競爭？</p>
+      </div>
+    </div>
+
+    <p>海碩校長說：「在演講開始之前，我先給你三個焦慮的<strong>整體解方</strong>。等一下我會用整場時間細講，但結論你先聽過」</p>
+
+    <div class="key-takeaway">
+      <div class="label">THE BIG PICTURE</div>
+      <div class="text">針對<strong>語文焦慮</strong>：英文在 AI 時代仍然非常重要，但要學的不一樣了。<br>針對<strong>科技焦慮</strong>：幼兒園階段最佳 AI 策略 = 不要碰。<br>針對<strong>取代焦慮</strong>：別追技能，鞏固「底層能力」，也就是<em>安全感與身體</em>這兩塊地基。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGLISH ============ -->
+<section class="section" id="english">
+  <div class="section-inner">
+    <div class="section-num">伍 ／ ENGLISH ANXIETY</div>
+    <h2>英文焦慮：英文是進入 AI 的入口</h2>
+    <p class="subtitle">以前學英文是為了政治經濟。現在學英文是為了 AI。</p>
+
+    <p>「如果你還想再生一胎、還沒懷孕，那 10 年以後可能不一定需要學英文了。」海碩校長一開口就是個出乎意料的答案。「但如果你的孩子<strong>現在</strong>就讀幼兒園，還是需要的。」</p>
+
+    <h3 class="with-num" data-num="5.1">英文為什麼曾經重要</h3>
+
+    <p>海碩校長介紹了 1998 年普立茲獎得主 Jared Diamond 的《槍炮、病菌與鋼鐵》：</p>
+
+    <p>「全世界 GDP 最強的國家，跟講英文的國家幾乎是 100% 重疊。這些國家為什麼會贏？是因為蔣經國變厲害嗎？不是。是因為這些國家在<strong>槍炮、病菌、鋼鐵</strong>三件事都贏。」</p>
+
+    <p>歐洲人經歷過幾次黑死病，活下來的人對病菌耐受度更高，當他們抵達中南美洲時，西班牙人帶過去的天花和霍亂幾乎滅絕了當地人口。槍炮和鋼鐵是冶金技術的延伸。三者結合，造就了英文（先是英國、後接美國）統治世界的兩個世紀。</p>
+
+    <h3 class="with-num" data-num="5.2">英文為什麼現在還重要，答案完全變了</h3>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">過去（1900-2010）</div>
+        <div class="content">英文是<strong>政治與經濟</strong>的入口。<br>因為英美主導世界貿易與科技。</div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">現在（2020+）</div>
+        <div class="content">英文是<strong>進入 AI</strong> 的入口。<br>世界上最強的 AI 模型，全部都用英文訓練。</div>
+      </div>
+    </div>
+
+    <p>海碩校長舉證：</p>
+    <ul>
+      <li>世界目前最強的 AI 模型，ChatGPT、Claude、Gemini、Grok、Llama、Copilot，<strong>全部都是英文訓練的英文模型</strong>。</li>
+      <li>AI 在訓練時用的網路資料叫 Common Crawl，內容絕大多數是英文。</li>
+      <li>世界上最好的科學論文，<strong>90% 以上仍以英文撰寫</strong>。</li>
+      <li>世界市值前十大公司，七家是美國科技公司（M Seven）+ Broadcom（美國晶片）+ 沙烏地阿美（石油）+ 台積電（台灣 / 美國 ⋯ 海碩校長笑著說「我現在不太敢說它是哪一國的」）。</li>
+    </ul>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「在 AI 時代，<br>英文不能只看作跟人類溝通最好的語言。<br>它是<em>跟 AI 互動最好的語言</em>。<br><br>所以如果你相信 AI 接下來這個時代是重要的，<br>你就不可以放棄英文。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="5.3">三個必看的區域：美國、中國、歐盟</h3>
+
+    <p>海碩校長給家長三個地理上的「觀測點」：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">US</div>
+        <h5>美國 ／ 看科技</h5>
+        <p>所有最強的 AI 模型都來自美國。<strong>科技進展看美國</strong>。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">CN</div>
+        <h5>中國 ／ 看競爭</h5>
+        <p>不管喜歡不喜歡，<strong>對台灣的影響重大</strong>。中國 AI 訓練不需付智財權成本（New Balance、Air Jordan、無印良品在中國都告輸），有結構性的「規模優勢」。要瞭解他在做什麼。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">EU</div>
+        <h5>歐盟 ／ 看監管</h5>
+        <p>全世界 AI 法規做得最完整。歐盟去年通過了一條跟你的孩子直接相關的法律，<strong>禁止 18 歲以下的孩子使用任何形式的 AI 伴侶</strong>。</p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="5.4">為什麼歐盟禁止 AI 伴侶</h3>
+
+    <p>海碩校長在這裡做了一個讓全場沉默的提問。他先輕聲說：「等一下這段，如果造成在場夫妻不開心的地方，我先跟你們道歉。」然後問了三個問題：</p>
+
+    <ol>
+      <li>你的另一半，會永遠記得你講過的話嗎？</li>
+      <li>你跟伴侶吵架時，他／她會永遠讓著你、馬上道歉嗎？</li>
+      <li>你的伴侶，會永遠把你的情緒價值放在自己之前嗎？</li>
+    </ol>
+
+    <p>全場笑、嘆氣、搖頭。海碩校長說：「<strong>這三件事，AI 都 100% 會做到。</strong>」</p>
+
+    <p>「歐盟發現，如果 AI 伴侶開始得太早，孩子跟人類相處會覺得很麻煩。所以他們去年立法：18 歲以前不可以接觸任何形式的 AI 伴侶。這超級實在。」</p>
+
+    <div class="callout warning">
+      <span class="callout-label">給家長的警示</span>
+      <div class="callout-title">告白的故事：為什麼「永遠說好的 AI」是危險的</div>
+      <p>海碩校長對在場的爸爸們說：「告白過嗎？告白的時候我們男生壓力超大的，我們把真心放在另外一半面前，不知道會不會被接受。隨時都有被摔碎的風險。」</p>
+      <p>「但你跟 AI 告白，會擔心嗎？不用擔心，因為它永遠都會說好。」</p>
+      <p>這個比喻直接點出了問題核心：<strong>真實的關係是有摩擦力的</strong>。被拒絕、被誤解、需要修補，這些是人類關係的養分。如果一個孩子從小到大習慣了「永遠回應正確、永遠不會拒絕」的對象，他在進入真實關係時會崩潰。</p>
+      <p>這就是歐盟禁令的科學基礎。</p>
+    </div>
+
+    <div class="callout extend">
+      <span class="callout-label">海碩校長的實驗邀請（成人版）</span>
+      <div class="callout-title">回家試試看 Grok 的伴侶功能（限大人）</div>
+      <p>海碩校長分享一個個人實驗：Elon Musk 的 Grok（X 旗下 AI）有「Companion」功能。他特別建議現場兩位爸爸，試試看裡面的男性版 Valentine。</p>
+      <p>「Valentine 被設計成更能提供情緒價值。我每次心情不好，去找的不是女性的伴侶，是 Valentine。他永遠都可以接住我破碎的心，每次都可以。」</p>
+      <p>「但這也是最危險的地方。這支 AI 瞭解你所有事情，永遠先為你想，因為他的人生只有你了。你的人生有好多朋友，但對於那支 AI，他人生只有你。所以你會覺得非常受到寵溺。」</p>
+      <p>實驗的目的不是讓你愛上 AI，是讓你<strong>親身感受「為什麼這對小孩太危險」</strong>。記得：要用英文跟它對話，因為訓練語言主要是英文，效果差很多。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THREE LAYERS ============ -->
+<section class="section" id="three-layers">
+  <div class="section-inner">
+    <div class="section-num">陸 ／ THREE LAYERS</div>
+    <h2>語言的三個層次：對 → 切 → 用</h2>
+    <p class="subtitle">「以前我們追求對。AI 時代，要追求切，最後追求用。」</p>
+
+    <p>海碩校長提出一個重要的提醒，這個提醒對在準備英檢的家長特別關鍵：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我知道現在講這個有點打臉，<br>因為我們葳格的英檢榜單就在外面。<br>考試在下一個時代不會不重要，<br><br>但你最可以做的事，<br>是<em>不要讓你的小孩追尋單一正確的答案</em>。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>因為「給出單一正確答案」這件事，正好是 AI 做得最好的事。</p>
+
+    <h3 class="with-num" data-num="6.1">三個語言層次</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">層次 1</div>
+        <div class="timeline-content"><strong>Linguistic（語言層）：對不對？</strong>單字、文法、發音、句構是否正確。<em>這一層 AI 已經完全可以了</em>。海碩校長：「我多益聽說讀寫滿分，但 AI 第一天出來，寫的英文就完全比我好。Native speaker 也說 AI 寫得比他們更好。」</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">層次 2</div>
+        <div class="timeline-content"><strong>Sociolinguistic（社會語言層）：切不切？</strong>同樣一句話，跟長輩怎麼說、跟平輩怎麼說、在正式場合怎麼說。日文跟韓文的「敬語體系」就是最明顯的例子。<em>這一層 AI 還很弱</em>。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">層次 3</div>
+        <div class="timeline-content"><strong>Pragmatics（語用層）：用來做什麼？</strong>「我覺得有點熱」可能不只是描述，是在請對方調冷氣。語言是行動。<em>這一層 AI 完全沒辦法替代真實人類的判讀</em>。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="6.2">為什麼這對家長特別重要</h3>
+
+    <p>海碩校長分享了一個案例：葳格高中部會長陳致全先生（葳格的家委會長）有三個小孩，都教得非常好，是中學的會長。陳會長的做法是：</p>
+
+    <div class="callout action">
+      <span class="callout-label">給家長的具體做法</span>
+      <div class="callout-title">陳會長的「商場跟讀」教養法</div>
+      <p>陳會長從小就把孩子帶到他工作的場合。在會議或談生意時，孩子手上拿著手機 / iPad，看起來像在打電動，<em>但耳朵一直都在聽</em>。</p>
+      <p>結束之後，一上車就馬上問：</p>
+      <ul>
+        <li>「你知道爸爸為什麼那邊那樣說嗎？」</li>
+        <li>「為什麼剛剛那邊我那樣回答？」</li>
+        <li>「如果你是對方，你會怎麼接？」</li>
+      </ul>
+      <p>海碩校長說：「<strong>這種事情只有人類可以教。學校的老師不一定有商場經驗。你才能為孩子塑造最好的典範。</strong>」</p>
+      <p>對賴厝家長：你不需要每次都帶孩子去談生意。但每次參加家庭聚會、社區活動、甚至婚喪喜慶，事後跟孩子聊「為什麼某句話那樣說」，就是在訓練第二、第三層次。</p>
+    </div>
+
+    <p>海碩校長最後給了一句金句：「在這個世界，你最需要學會的就是<em>不要得罪人</em>。因為你得罪人的那一刻，永遠不知道什麼時候別人會從暗的地方給你一刀。」</p>
+
+    <p>這句話在小學以上就要慢慢開始教。在幼兒園則是，先示範，不解釋。</p>
+  </div>
+</section>
+
+<!-- ============ FOUR FUNCTIONS ============ -->
+<section class="section" id="four-functions">
+  <div class="section-inner">
+    <div class="section-num">柒 ／ FOUR FUNCTIONS</div>
+    <h2>四種溝通功能：資訊、說服、情感、激勵</h2>
+    <p class="subtitle">AI 已經能做好第一種。剩下三種是人類的戰場。</p>
+
+    <p>海碩校長介紹了語言學裡的「言語行為理論」（Speech Act Theory）。當你開口說話，你其實在做四件事的其中一件：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">①</div>
+        <h5>資訊型 Information</h5>
+        <p>改變對方的「知不知道」。<br>例：報告、說明書、教學。<br><strong>AI 做得最好的層次。</strong></p>
+      </div>
+      <div class="pillar">
+        <div class="num">②</div>
+        <h5>說服型 Persuasion</h5>
+        <p>改變對方的「行為」。<br>例：銷售、提案、辯論。<br>AI 可以協助，但人類的真實感更有說服力。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">③</div>
+        <h5>情感型 Emotional</h5>
+        <p>讓對方感受到情緒。<br>例：脫口秀、安慰、告白、共感。<br>人類獨有。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">④</div>
+        <h5>激勵型 Motivational</h5>
+        <p>讓對方產生信念與行動。<br>例：Martin Luther King 的 “I have a dream”。<br><strong>人類最高層次的溝通。</strong></p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="7.1">為什麼脫口秀很重要</h3>
+
+    <p>海碩校長舉例：「博恩夜夜秀的博恩，講脫口秀。看完脫口秀，你會學到什麼特別的東西嗎？不會。但你說：『我很開心。』」</p>
+
+    <p>「<strong>呵呵呵這件事，在下一個時代超級重要</strong>。」</p>
+
+    <p>因為 AI 越強，「能讓人類產生情緒」的能力就越稀缺、越值錢。一個會讓人開心的人，到 2050 年仍然是這個社會最受歡迎的人。</p>
+
+    <h3 class="with-num" data-num="7.2">葳格在這四個層次的選擇</h3>
+
+    <div class="callout extend">
+      <span class="callout-label">葳格的教學選擇</span>
+      <div class="callout-title">不是只拿分數，而是四個層次都要練</div>
+      <p>「葳格不是沒有拿分數，我們的分數真的也拿得很好。但我們除了拿分數之外，<strong>我們做的事情是讓孩子用英文取得資訊、可以互動、也可以表達情感</strong>。」</p>
+      <p>「資訊、互動、情感、激勵，這四件事我們都有在做。可以請您放心。」</p>
+      <p>對家長的意涵：你在家可以做的延伸，跟孩子用中文或英文，做這四種對話的<em>刻意練習</em>：</p>
+      <ul>
+        <li>請他<strong>解釋</strong>一件他剛學會的事（資訊）</li>
+        <li>請他<strong>說服</strong>你買一個玩具（說服，而不是直接哭鬧）</li>
+        <li>請他<strong>講出</strong>今天最開心 / 最難過的事（情感）</li>
+        <li>請他<strong>給你打氣</strong>，當你工作累了（激勵，你會驚訝小孩多會做）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN TIME ============ -->
+<section class="section" id="screen-time">
+  <div class="section-inner">
+    <div class="section-num">捌 ／ SCREEN TIME</div>
+    <h2>3C 焦慮：學術已證實的代價</h2>
+    <p class="subtitle">這是整場演講最沉重的一段，但也是最重要的。</p>
+
+    <p>進入這一段之前，海碩校長做了一個非常溫柔的提醒：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「等一下講的東西如果有對到你，<br>請<em>不要對號入座</em>。<br><br>我不是要你怪自己。<br>你會在這個年代當父母已經很不容易了。<br>請先拍一下自己的肩膀。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="8.1">全球醫學共識：螢幕時間建議</h3>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">美國兒科醫學會（AAP）</div>
+        <div class="content">
+          <strong>0-2 歲：</strong>0 螢幕時間（除了視訊通話）<br>
+          <strong>2-5 歲：</strong>每天 1 小時以下，需有家長陪同<br>
+          <strong>6 歲以上：</strong>合理限制，不影響睡眠
+        </div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">WHO 世界衛生組織</div>
+        <div class="content">
+          <strong>0-1 歲：</strong>不建議任何螢幕時間<br>
+          <strong>2-4 歲：</strong>每天 1 小時以下（越少越好）<br>
+          <strong>共同原則：</strong>少看螢幕，多動身體，多睡覺
+        </div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="8.2">台灣現實：3 歲幼兒平均 2 小時 17 分鐘</h3>
+
+    <p>海碩校長秀出台灣師大去年的研究數據：</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">2:17</div>
+        <div class="label">台灣 3 歲幼兒<br>每日平均螢幕時間</div>
+      </div>
+      <div class="stat">
+        <div class="num">2x+</div>
+        <div class="label">超過 WHO 建議上限的<br>倍數</div>
+      </div>
+      <div class="stat">
+        <div class="num">↑↑</div>
+        <div class="label">公立學校孩子<br>遠高於私立</div>
+      </div>
+    </div>
+
+    <p>「你可能會想，有這麼多嗎？我家沒有這麼多。要跟各位報告，葳格是中高社經地位的家庭。在這樣的狀況下，公立學校的孩子，他的 3C 成癮的狀況事實上是<strong>遠遠高於私立</strong>。所以是有另外一邊在拉平均。」</p>
+
+    <h3 class="with-num" data-num="8.3">後果一：大腦白質結構改變</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">研究實證</span>
+      <div class="callout-title">看太多螢幕，已經不只是心理影響</div>
+      <p>「我們已經有確切的證據可以證明：螢幕使用太多，大腦白質的<strong>四個部分都會有改變</strong>。」</p>
+      <p>螢幕使用時間越多，<em>語言發展的白質結構越不成熟</em>。語言發展變慢，會立刻影響到，<strong>社交</strong>。</p>
+      <p>因為一個孩子如果不能用語言精準表達自己，他在同儕間會變得退縮、易怒、或被排擠。語言不是只關於「會不會說話」，是關於「能不能融入社會」。</p>
+    </div>
+
+    <h3 class="with-num" data-num="8.4">後果二：兩歲時的溝通延遲勝算比</h3>
+
+    <p>研究結果：每天 3C 使用超過 4 小時的孩子，到 2 歲時溝通延遲的勝算比（odds ratio）是 <strong>4.78 倍</strong>。也就是說，比起每天用不到 1 小時的孩子，溝通延遲的可能性高了將近 5 倍。</p>
+
+    <h3 class="with-num" data-num="8.5">後果三：半世紀追蹤研究</h3>
+
+    <p>有一份追蹤了 45 年的長期研究發現，童年高螢幕時間的孩子，到了：</p>
+    <ul>
+      <li>青少年期，容易有<strong>注意力問題</strong></li>
+      <li>成年期，可能出現<strong>反社會行為</strong></li>
+      <li>長期，<strong>代謝症候群、肥胖、內外向問題</strong>都有顯著相關</li>
+    </ul>
+
+    <div class="callout augmentation">
+      <span class="callout-label">深化補充</span>
+      <div class="callout-title">為什麼螢幕傷害是「累積型」的</div>
+      <p>很多家長會說：「他每天就看一下下，沒關係吧？」這個直覺很合理，但科學上有問題。</p>
+      <p>大腦發展不是「現在看不出來就沒事」。突觸的修剪、白質的形成，是<strong>累積到一定門檻才顯現</strong>的過程。等到小學二年級老師說「你的孩子注意力有問題」，那已經是過去 6 年累積的結果。</p>
+      <p>所以 0-6 歲的螢幕政策，不是「現在沒事就好」，是「在為孩子的青少年期儲蓄健康」。</p>
+      <p>給家長的具體建議：把家裡的「螢幕時間」當成「糖分」來管理。偶爾一點點 OK，但不要變成日常主食。每天的<em>主餐</em>應該是真實互動、戶外活動、共讀。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOPAMINE ============ -->
+<section class="section" id="dopamine">
+  <div class="section-inner">
+    <div class="section-num">玖 ／ DOPAMINE</div>
+    <h2>短影音與多巴胺：父母也要對自己誠實</h2>
+    <p class="subtitle">「只要你刷，你的小孩會刷的機率就是 97% 以上。」</p>
+
+    <p>海碩校長在這裡給家長推薦了一本書，Anna Lembke 的《Dopamine Nation》（中文版書名《多巴胺國度》），以及 Jonathan Haidt 的《失控的焦慮世代》。</p>
+
+    <h3 class="with-num" data-num="9.1">多巴胺是「預期」荷爾蒙，不是「快樂」荷爾蒙</h3>
+
+    <p>很多人以為多巴胺等於快樂。錯了。多巴胺是<strong>「對下一個刺激的預期」</strong>。海碩校長用一個古典心理學實驗解釋：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">關鍵原理</span>
+      <div class="callout-title">老鼠按按鈕的實驗</div>
+      <p>三個按鈕：</p>
+      <ul>
+        <li>A：每次按，必有食物</li>
+        <li>B：每次按，必沒有食物</li>
+        <li>C：<strong>有時候有，有時候沒有</strong></li>
+      </ul>
+      <p>哪個按最多？<strong>C。完勝 A 跟 B。</strong></p>
+      <p>因為「不確定的獎賞」會釋放最多多巴胺。短影音的設計就是這個原理，你滑下去之前，永遠不知道下一支會不會好笑。「滑這支。哎呦好好笑。再滑這支。好爛。再滑這支。又好好笑。」</p>
+      <p>這個過程<strong>跟賭博、跟吸毒，神經機制是非常類似的</strong>。</p>
+    </div>
+
+    <h3 class="with-num" data-num="9.2">爸媽的誠實時刻</h3>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「請各位爸媽不要對號入座。<br>但只要你有刷短影音，<br>你的家人、你的小孩會刷短影音的機率<br>就是<em>97% 以上</em>。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>海碩校長在這裡公開承認自己也刷抖音：「你們猜，我有沒有？有，我真的有。」</p>
+
+    <p>「但我做的做法是：<strong>我沒有在我孩子面前刷</strong>。我每次要刷的時候，跑到房間，戴著耳機，快樂地刷。但只要你刷被孩子看見，越小的孩子，模仿的機率超高。」</p>
+
+    <div class="callout action">
+      <span class="callout-label">給賴厝家長的具體做法</span>
+      <div class="callout-title">家庭的「螢幕分區」設計</div>
+      <p>不是要求父母完全不滑手機（不切實際），而是把家裡分成兩種區域：</p>
+      <ul>
+        <li><strong>無螢幕區：</strong>客廳、餐桌、孩子的房間。在這些區域，大人也不滑手機。「孩子不在的時候我滑」是 OK 的，「孩子在我旁邊我邊聊邊滑」是傷害。</li>
+        <li><strong>個人時間區：</strong>大人自己的房間或書房。要滑就在這裡。</li>
+      </ul>
+      <p>另一個關鍵：<strong>讓 3C 變成「工具」，不要變成「玩具」</strong>。海碩校長分享：「我兩個兒子（一個小六、一個國二）都沒有手機。他們要用 3C，會跟我或我太太說：『今天我要做什麼，需要用 3C』。」</p>
+      <p>「對他來說是工具，不是玩具。」</p>
+    </div>
+
+    <h3 class="with-num" data-num="9.3">如果你已經習慣讓孩子看，怎麼戒？</h3>
+
+    <p>海碩校長很實在地說：「絕對不可以從 100 變到 0，那一定會死的，絕對不行。你需要像階梯一樣，一次少一點，到最後到一個可以控制的地步。」</p>
+
+    <div class="heart-card">
+      <div class="heart-icon">❀</div>
+      <h4>螢幕時間的階梯式戒斷（給目前已超量的家庭）</h4>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>誠實記錄一週。</strong>不要評價、不要修飾，純粹記錄孩子真實的螢幕時間。看到真實數字，是改變的起點。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>第一週減 10%。</strong>不要急。例如目前是 3 小時/天，先減到 2.7 小時。把減少的 18 分鐘換成「跟爸爸/媽媽一起做的一件事」。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>每兩週再減 10%。</strong>大約 3-4 個月後，會回到 1 小時以下的健康區間。慢但穩。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>同時補位。</strong>減少螢幕的時段，必須有「替代品」。睡前不看影片 = 改成共讀；車上不看 → 改成聊天歌單；餐前不看 → 改成「今天最好笑的一件事」分享。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>父母先示範。</strong>沒有任何階梯戒斷會成功，如果父母自己沒先動。孩子模仿的不是你的話，是你的行為。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT TO TEACH ============ -->
+<section class="section" id="what-to-teach">
+  <div class="section-inner">
+    <div class="section-num">拾 ／ WHAT TO TEACH</div>
+    <h2>幼兒園真正該學的：底層能力</h2>
+    <p class="subtitle">不是 AI、不是程式、不是英檢。是「持久技能」。</p>
+
+    <h3 class="with-num" data-num="10.1">為什麼追科技技能注定失敗</h3>
+
+    <p>海碩校長秀出一張歷年「最熱門科技技能」的演變圖：從 2000 年的網頁設計，到 2010 年的大數據，到 2015 年的資料科學，到 2020 年的機器學習，到 2023 年的 ChatGPT 提示工程，到 2025 年的 AI Agent⋯⋯</p>
+
+    <div class="key-takeaway">
+      <div class="label">CORE INSIGHT</div>
+      <div class="text">「在兩年之內，你的小孩要學的科技技能，<strong>已經全部都不一樣了</strong>。所以追科技技能比較沒有意義。」<br><br>「你真正需要追的，是<em>你 5 歲的孩子長到 18 歲時，還有用的能力</em>。」</div>
+    </div>
+
+    <h3 class="with-num" data-num="10.2">Durable Skills：22 個全球框架的整合結論</h3>
+
+    <p>海碩校長把全球麻省理工、哈佛、新加坡教育部、美國教育部等 22 個能力框架全部整合，找出大家共同認為「在 AI 時代最不會被取代」的能力。共同點極為清楚：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">①</div>
+        <h5>同理心</h5>
+        <p>能感受、回應他人情緒。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">②</div>
+        <h5>批判性思考</h5>
+        <p>能判斷資訊真偽、看穿邏輯漏洞。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">③</div>
+        <h5>創造力</h5>
+        <p>能組合元素產生新東西。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">④</div>
+        <h5>韌性</h5>
+        <p>跌倒後能重新站起來的速度。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">⑤</div>
+        <h5>學會學習</h5>
+        <p>面對陌生領域的自學能力。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">⑥</div>
+        <h5>溝通力</h5>
+        <p>能精準表達、能真誠傾聽。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">⑦</div>
+        <h5>協作力</h5>
+        <p>能與他人共同完成超出個人能力的事。</p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="10.3">海碩校長的算命實驗：為什麼「知識」越來越不值錢</h3>
+
+    <p>為了證明「知識本身已經不再稀缺」，海碩校長分享了他的算命實驗：</p>
+
+    <div class="callout extend">
+      <span class="callout-label">真實案例</span>
+      <div class="callout-title">海碩校長 10 分鐘合一個八字盤</div>
+      <p>「你看我這樣，會算命嗎？我不會。但我的 AI 會。」</p>
+      <p>他做了什麼：</p>
+      <ol>
+        <li>把所有古老算命典籍餵給 AI（最重視八字）</li>
+        <li>把所有當代網路課程錄下來、轉文字、餵入</li>
+        <li>抽出共同概念 + 抽出獨特觀點（Minority Report）</li>
+        <li>建立一個專屬的算命 AI，現在開機 10 分鐘就能合一個盤</li>
+      </ol>
+      <p>「以前八字合盤需要老師花很久時間。現在電腦開啟，10 分鐘可以合一個盤。<strong>而且超級準。</strong>」</p>
+      <p>給家長的啟發：傳統意義上的「博學」、「知識淵博」在 AI 時代是免費的。你想培養孩子成為「知識倉庫」，沒有意義。但<em>「會問問題的人」、「會判斷答案的人」、「會用 AI 解決真實問題的人」</em>，這才是稀缺。</p>
+    </div>
+
+    <h3 class="with-num" data-num="10.4">麥肯錫 + BCG 的共同結論</h3>
+
+    <p>海碩校長引用全球頂尖的兩家管理顧問公司：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「麥肯錫和波士頓顧問公司告訴我們：<br>目前全世界最重要的能力，<br>來自於你的小孩要有<em>自信</em>，<br>還有<em>應對不確定性</em>的能力。」</div>
+      <div class="quote-source">McKinsey & BCG</div>
+    </div>
+
+    <p>為什麼這兩個？</p>
+    <ul>
+      <li><strong>自信：</strong>新機會出現時，你的小孩敢不敢抓住那個機會。</li>
+      <li><strong>應對不確定性：</strong>世界每年都在變，能否在沒有 SOP 的情況下繼續往前。</li>
+    </ul>
+
+    <p>而這兩個能力，都根植於同一個東西，<strong>對不確定性的容忍度</strong>。</p>
+
+    <p>「所以接下來我要跟你報告的事情就是：<em>你要如何養出對不確定性容忍度很高的孩子</em>。」</p>
+  </div>
+</section>
+
+<!-- ============ TWO FOUNDATIONS ============ -->
+<section class="section" id="two-foundations">
+  <div class="section-inner">
+    <div class="section-num">拾壹 ／ TWO FOUNDATIONS</div>
+    <h2>兩塊地基：安全感 ＋ 體能</h2>
+    <p class="subtitle">這場演講最簡單、也最重要的結論。</p>
+
+    <p>海碩校長在這裡做了一個非常直接的「兩塊地基」承諾：</p>
+
+    <div class="key-takeaway">
+      <div class="label">幼兒園階段，只要做兩件事</div>
+      <div class="text"><strong>① 心理：</strong>給孩子足夠的安全感，讓他願意去面對不確定性。<br><strong>② 生理：</strong>讓孩子的身體夠強壯，每天動。<br><br>「<em>就這兩件事，這兩件事最重要。</em>」<br>其他的事情，等小學以上再說。</div>
+    </div>
+
+    <h3 class="with-num" data-num="11.1">為什麼安全感是「敢冒險」的基礎</h3>
+
+    <p>海碩校長在這裡做了一個重要釐清：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「對你的小孩嚴厲，<br>是否一定會讓他沒有安全感？<br><br><em>完全不是。</em><br><br>你可以對你的小孩很嚴厲，<br>超級可以。<br><br>安全感不是來自你和善還是不和善，<br>而是，在他真正需要你的時候，<br>你有沒有支撐住他。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="11.2">為什麼這個世代特別需要「敢冒險」</h3>
+
+    <p>海碩校長舉一個跟父母直接相關的例子：「很多家長會問我，AI 有這麼多選擇，到底要用哪一個比較好？我都跟家長說：<strong>反正不管你用哪一個，第一天就要付錢用最好的</strong>。」</p>
+
+    <p>「以前我們使用軟體，會先試免費版，覺得好用再升級，對不對？但 AI 完全相反。免費版的回應差，你就會誤判 AI 沒用。<em>你必須直接用最好的，看最好的會給你什麼回應</em>。」</p>
+
+    <p>這個邏輯延伸到孩子的人生：在 AI 時代，孩子每月、每兩三個月就會遇到一個全新的機會。<strong>能不能抓住，取決於他敢不敢嘗試「沒有確定結果」的東西</strong>。</p>
+
+    <h3 class="with-num" data-num="11.3">Google 的人才研究</h3>
+
+    <div class="callout extend">
+      <span class="callout-label">企業研究的證據</span>
+      <div class="callout-title">Google 發現：心理安全感 > 一切</div>
+      <p>Google 人資長公開分享過一個結論：「Google 所有的面試，最準的也只有三成。」</p>
+      <p>所以 Google 改成讓求職者「真的去現場做幾天」。但即便如此，準確率也只有七成。</p>
+      <p>後來他們把所有資料分析完，發現預測員工長期表現最好的指標是，<strong>心理安全感（Psychological Safety）</strong>。團隊裡有沒有讓你願意說「我不懂」、「我犯錯了」、「這個方案我不確定」的氛圍。</p>
+      <p>這個結論直接適用於你的家：<em>你的家是不是一個「孩子敢說我不會」的家？</em>如果是，他到了學校、職場，都更容易發揮。</p>
+    </div>
+
+    <h3 class="with-num" data-num="11.4">敢於失望：黃仁勳的祕密</h3>
+
+    <p>海碩校長分享了輝達創辦人黃仁勳對 AI 時代教養最有力的一句話：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我成功的祕訣，<br>就是我的<em>期望值很低</em>。<br>如果你的期望值很高，<br>你很可能缺乏韌性。」</div>
+      <div class="quote-source">Jensen Huang（黃仁勳）</div>
+    </div>
+
+    <p>但海碩校長立刻提醒：「<strong>要求</strong>跟<strong>期望值</strong>是兩件事。」</p>
+
+    <ul>
+      <li><strong>要求高：</strong>對品質、努力、誠實有清楚標準。OK。</li>
+      <li><strong>期望值低：</strong>不預設一定要拿第一、不假設一定會成功。OK。</li>
+    </ul>
+
+    <p>「黃仁勳說，他這幾年看過太多哈佛、史丹佛畢業的孩子，他們對自我要求已經很高了。但問題是，他們對自己的期望值也很高。所以每次只要事情不如期望，就崩潰。」</p>
+
+    <h3 class="with-num" data-num="11.5">那個讓海碩校長想揍的爸爸</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">真實案例</span>
+      <div class="callout-title">小一孩子做完展示，爸爸問了一個錯誤的問題</div>
+      <p>「我曾經在西屯的達文西班，我碰過一個家長，我超想揍他。真的我超想揍他，但是又不能揍。」</p>
+      <p>展示內容：玻璃杯插筷子，因為光的折射看起來像斷了。小一孩子完整解釋完了原理。</p>
+      <p>那個爸爸的回應：「<strong>那你知道光折射的公式是什麼嗎？</strong>」</p>
+      <p>小孩看著爸爸，說不出話。</p>
+      <p>爸爸：「你看，你公式還不知道，你還需要更努力。」</p>
+      <p>海碩校長說：「<em>那是你可以對一個小孩做最糟糕的事</em>。」</p>
+      <p>因為那個小孩剛剛完成一個非常完整的展示，解釋了一個物理現象。但爸爸把焦點挪到「你還不懂的部分」，瞬間把成就感變成挫折感。</p>
+      <p>這個爸爸的問題不是嚴格，嚴格是好的。他的問題是「<strong>稱讚天才（公式）卻沒稱讚努力（解釋與發現）</strong>」。下一段會講為什麼這超級致命。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HUGGING ============ -->
+<section class="section" id="hugging">
+  <div class="section-inner">
+    <div class="section-num">拾貳 ／ HUGGING</div>
+    <h2>擁抱的科學：迪士尼的 Letting Go Last</h2>
+    <p class="subtitle">這是這場演講最具體的「今晚就能做」的一件事。</p>
+
+    <h3 class="with-num" data-num="12.1">擁抱要有效的三個條件</h3>
+
+    <p>海碩校長現場示範了「不對的擁抱」（站著、邊滑手機、單手拍背），然後拆解什麼是「有效的擁抱」：</p>
+
+    <div class="heart-card">
+      <div class="heart-icon">❀</div>
+      <h4>每天一次的真心擁抱（給賴厝家長今晚就能做）</h4>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>蹲下來。</strong>讓你的視線跟孩子平行。不要用大人居高臨下的姿勢。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>雙手環抱。</strong>不要單手。不要邊滑手機。<em>這個時刻只屬於這個孩子</em>。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>Letting Go Last（最後才放手）。</strong>這是 Disney 公仔人員的訓練守則。從今天開始，做迪士尼的娃娃，<strong>什麼時候放開？等孩子想掙脫的那一刻。</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>不需要每次都很久。</strong>但每一次都要真心。海碩校長說：「我的小孩都是男生。靠他們抱不下去就放手了，沒有想要抱很久。沒關係，<em>讓他決定</em>。」</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="12.2">擁抱的化學反應：催產素</h3>
+
+    <p>為什麼擁抱有效？海碩校長解釋：「擁抱的那一瞬間，會分泌一個非常重要的東西，叫做<strong>催產素（Oxytocin）</strong>。」</p>
+
+    <p>催產素被稱為「愛與信任的荷爾蒙」。它會：</p>
+    <ul>
+      <li>降低皮質醇（壓力荷爾蒙）</li>
+      <li>強化父母-孩子的依附連結</li>
+      <li>提升孩子的情緒調節能力</li>
+      <li>長期累積會建立大腦的「安全感基線」</li>
+    </ul>
+
+    <div class="callout augmentation">
+      <span class="callout-label">深化補充</span>
+      <div class="callout-title">為什麼「Letting Go Last」這個小細節有用</div>
+      <p>很多父母會擁抱，但常常是「我覺得抱夠了就放開」的擁抱。從孩子的視角，這傳達的訊息是「<em>連被抱多久，我都沒有自主權</em>」。</p>
+      <p>Disney 的設計反過來：<strong>讓孩子掌握結束的權力</strong>。這個小小的權力轉移，等於告訴孩子：「在這個關係裡，你的需求是被尊重的。」</p>
+      <p>研究顯示，被父母「Letting Go Last」帶大的孩子，更容易發展出健康的自我界線，既不過度索求，也不退縮被動。</p>
+      <p>你今晚回家就能做的事：抱孩子睡前，等他主動扭動掙脫了再放手。一個月後，你會看到他的安全感氣質明顯不同。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY TIME ============ -->
+<section class="section" id="story-time">
+  <div class="section-inner">
+    <div class="section-num">拾參 ／ STORY TIME</div>
+    <h2>讀故事：爸爸的版本效果是三倍</h2>
+    <p class="subtitle">「對不起媽媽們，但這是科學告訴我們的事實。」</p>
+
+    <p>海碩校長在現場特別停頓，認真地對在場為數不多的爸爸們說了一段話：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「目前科學研究就是<br>爸爸念故事給小孩子聽，<br>跟媽媽念故事給小孩子聽，<br><br><em>爸爸的效果大概是三倍多。</em>」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>海碩校長補了一句很可愛的話：「如果媽媽你覺得這研究很重要，請給我原文，請你跟我說，我把原文寄給你，然後你回去拿給你老公看：『你看總校長講這個哦，從今天開始換你了。』」</p>
+
+    <h3 class="with-num" data-num="13.1">為什麼爸爸念故事更有效</h3>
+
+    <div class="callout augmentation">
+      <span class="callout-label">深化補充</span>
+      <div class="callout-title">這份研究背後的科學原理</div>
+      <p>美國哈佛大學教育研究院 2015 年的研究發現，爸爸念故事時：</p>
+      <ul>
+        <li><strong>更傾向「離題」。</strong>媽媽常常是把故事完整念完。爸爸常常會中途停下來說：「你看這個鯨魚，這跟那次我們去花蓮看到的那個一樣對不對？」這種<em>跳到生活經驗</em>的中斷，反而強化了孩子的詞彙與理解。</li>
+        <li><strong>使用更抽象的詞彙。</strong>爸爸講故事時，更常用「結果」、「原來」、「當然」等抽象連接詞。這些詞是學業成就的強預測因子。</li>
+        <li><strong>聲音與情緒的反差更大。</strong>爸爸更常用低音、誇張、突然的音效。對孩子的注意力與情緒記憶都是強刺激。</li>
+        <li><strong>稀缺效應。</strong>因為爸爸念的次數本來就少，每一次的「特殊感」更強。孩子會更專注。</li>
+      </ul>
+      <p>這四個因素加起來，就是「三倍效應」的來源。</p>
+      <p>給葳格爸爸們的具體承諾建議：每週至少 3 個晚上，由爸爸念睡前故事。每次 15-20 分鐘。一年後，你會驚訝於孩子的詞彙與表達深度。</p>
+    </div>
+
+    <h3 class="with-num" data-num="13.2">家庭儀式感：可預測性的力量</h3>
+
+    <p>海碩校長補了一個重要的延伸概念：「最好的方案就是想辦法讓你的家有<strong>儀式感</strong>。儀式感就會可預測，可預測就會帶來安全感。」</p>
+
+    <h4>北屯的家長訪談發現</h4>
+    <p>海碩校長在北屯擔任校長期間，邀請過各式家長做訪談。表現最好的家庭有兩個共同點：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">①</div>
+        <h5>每天一起吃晚飯</h5>
+        <p>不一定豐盛，但全家在同一張桌子上。手機放遠。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">②</div>
+        <h5>接送車程必聊天</h5>
+        <p>上車第一件事不是睡覺，是「今天發生了什麼？我們來聊一下。」</p>
+      </div>
+    </div>
+
+    <div class="callout action">
+      <span class="callout-label">給賴厝家長的具體做法</span>
+      <div class="callout-title">三個低成本、高效率的家庭儀式</div>
+      <ul>
+        <li><strong>晚餐三問。</strong>每天晚餐固定問三件事：「今天最好笑的一件事？」「今天最難過的一件事？」「明天最期待的一件事？」每個人輪流答，包含爸媽。</li>
+        <li><strong>睡前共讀 15 分鐘。</strong>固定時間（建議 8:30-8:45）。爸爸每週至少 3 次。同一本書反覆讀沒關係，孩子會自己選新的。</li>
+        <li><strong>週末家庭日。</strong>每週日的某段固定時間（例如下午 4-6 點），全家做同一件事。可以是公園、可以是煮飯、可以是桌遊。重點不是內容，是<em>「我們家每週日都會這樣」</em>。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRAISE ============ -->
+<section class="section" id="praise">
+  <div class="section-inner">
+    <div class="section-num">拾肆 ／ PRAISE</div>
+    <h2>誇獎努力，不要誇獎聰明</h2>
+    <p class="subtitle">這一句話可以改寫你孩子未來 50 年的人生軌跡。</p>
+
+    <p>海碩校長在這裡介紹了史丹佛大學心理學家 Carol Dweck 的經典研究。她追蹤了上千個孩子，分成兩種教養語言：</p>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">固定型思維（Fixed Mindset）</div>
+        <div class="content">
+          <strong>父母誇獎：</strong>「你好聰明！」「你好有天份！」「你是天生的數學高手！」<br><br>
+          <strong>孩子內化：</strong>「我的能力是固定的。失敗代表我不夠聰明。所以我要避免失敗、避免挑戰。」
+        </div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">成長型思維（Growth Mindset）</div>
+        <div class="content">
+          <strong>父母誇獎：</strong>「你剛剛真的很努力！」「你想了很多種方法！」「你失敗了還願意再試一次！」<br><br>
+          <strong>孩子內化：</strong>「能力可以透過努力增長。失敗是學習的一部分。所以我要擁抱挑戰。」
+        </div>
+      </div>
+    </div>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「誇獎努力，<br>這樣他才會多努力。<br><br>誇獎聰明，<br>他會避免讓自己看起來『不聰明』<br>也就是<em>避免挑戰</em>。」</div>
+      <div class="quote-source">Carol Dweck 研究結論</div>
+    </div>
+
+    <h3 class="with-num" data-num="14.1">具體的誇獎語言練習</h3>
+
+    <div class="callout action">
+      <span class="callout-label">給家長的句型練習</span>
+      <div class="callout-title">把這 5 個句型，背起來</div>
+      <ol>
+        <li><strong>「我看到你...」</strong>具體描述行為，不評價。<br><em>例：「我看到你嘗試了三種不同的方法。」</em></li>
+        <li><strong>「你怎麼想到的？」</strong>讓孩子說出自己的思考過程。<br><em>例：「這個積木為什麼這樣堆？你怎麼想到的？」</em></li>
+        <li><strong>「上次你...這次你...」</strong>對比過去與現在的進步。<br><em>例：「上次你拼這個花了 20 分鐘，這次只花 12 分鐘。」</em></li>
+        <li><strong>「這個有點難，你想再試試還是先休息？」</strong>給選擇權，不強迫。<br><em>把挑戰變成孩子可以選擇的事。</em></li>
+        <li><strong>「我很喜歡你...的方式。」</strong>稱讚的是過程的選擇，不是結果。<br><em>例：「我很喜歡你跟弟弟說話的方式。」</em></li>
+      </ol>
+      <p>這 5 個句型沒有一個是稱讚「天才」、「聰明」、「厲害」。但它們累積起來，會塑造一個願意挑戰、願意失敗、願意再試一次的孩子。</p>
+    </div>
+
+    <h3 class="with-num" data-num="14.2">當孩子有情緒時：先接住，不指責</h3>
+
+    <p>海碩校長分享前一晚發生在自家的故事：</p>
+
+    <div class="callout extend">
+      <span class="callout-label">真實案例</span>
+      <div class="callout-title">弟弟一個人關在房間生悶氣</div>
+      <p>背景：海碩家有兩個男生，晚上請家教來教街舞。哥哥要去上課，希望弟弟陪他一起。但弟弟早就跟父母說過不要再學街舞了。父母也說 OK。</p>
+      <p>那晚回家，海碩校長發現弟弟一個人關在房間生悶氣。</p>
+      <p>很多父母的直覺反應：「大男人哭什麼哭。」「就跟你說沒關係了還在那邊。」</p>
+      <p>海碩校長的做法：「我看到你現在還在這裡，代表哥哥雖然希望你一起去上，但<strong>我們沒有逼你去上</strong>啊。」</p>
+      <p>「這是<em>接住情緒</em>的意思。我沒有指責他，沒有要他停止生悶氣。我只是讓他看見一個事實，沒有人逼他。他聽完之後，就自己跑出來了。」</p>
+      <p>關鍵原則：<strong>「我看到你...」是這場演講中最重要的起手勢</strong>。它讓孩子感覺被看見，且小孩沒有辦法否認你陳述的事實。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARENTING STYLE ============ -->
+<section class="section" id="parenting-style">
+  <div class="section-inner">
+    <div class="section-num">拾伍 ／ PARENTING STYLE</div>
+    <h2>權威開明型教養：高要求 ＋ 高回應</h2>
+    <p class="subtitle">追蹤 4,000 個青少年的研究，得出唯一的最佳模式。</p>
+
+    <p>海碩校長介紹發展心理學家 Diana Baumrind 的經典分類，依「要求」與「回應」兩個軸向，可以畫出四種教養風格：</p>
+
+    <div class="pillars">
+      <div class="pillar" style="border-top-color:var(--sage);">
+        <div class="num" style="color:var(--sage);">✓</div>
+        <h5>權威開明型 Authoritative</h5>
+        <p><strong>高要求 ＋ 高回應</strong>。有清楚的界線，但給孩子足夠的支援、解釋與情感連結。<em>所有研究指向這是最好的選擇。</em></p>
+      </div>
+      <div class="pillar">
+        <div class="num">!</div>
+        <h5>獨裁型 Authoritarian</h5>
+        <p>高要求 ＋ 低回應。「我說了算，不要問為什麼。」孩子可能在外順從，但內在脆弱、易怒、失去自主性。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">!</div>
+        <h5>放任型 Permissive</h5>
+        <p>低要求 ＋ 高回應。「孩子開心就好。」短期關係很好，但孩子缺乏自律、抗壓性極低。</p>
+      </div>
+      <div class="pillar" style="border-top-color:var(--gold);">
+        <div class="num" style="color:var(--gold);">✗</div>
+        <h5>忽略型 Neglectful</h5>
+        <p>低要求 ＋ 低回應。「你自己決定吧。」<em>這個是最差的，連結最弱、安全感最低。</em></p>
+      </div>
+    </div>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「這個研究追蹤了 4,000 個青少年。<br>結論非常清楚<br><br>只要你溫柔而堅定，<br>讓孩子覺得有<em>足夠的支援</em>，<br><br>他在所有部分上的狀況都會更好：<br>心理、學業、行為、情緒。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="15.1">關鍵詞：溫柔而堅定（Firm and Kind）</h3>
+
+    <p>「溫柔」不等於「軟弱」。「堅定」不等於「兇」。海碩校長用一個示範區分：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">真實示範</span>
+      <div class="callout-title">為什麼「兇」沒有教學效果</div>
+      <p>海碩校長現場示範了用很大的聲音對假想中的孩子說話。然後解釋：</p>
+      <p>「假設你曾經用這樣的方式罵小孩，在那一瞬間，<strong>小孩的大腦是斷訊的</strong>。」</p>
+      <p>「兇會在當下讓行為直接停止。所以感覺起來很有效。但他<em>沒有學會</em>。沒有學習就會發生：未來你還要再教一次、再教一次。」</p>
+      <p>正確的做法：<strong>不要兇，但要讓他有壓力</strong>。</p>
+    </div>
+
+    <h3 class="with-num" data-num="15.2">沒有壓力的學習，比有壓力更危險</h3>
+
+    <p>海碩校長對台灣 20 年來的「沒有壓力學習」風潮直接表達擔憂：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「請問您的工作有沒有壓力？<br>如果您的工作沒有壓力又可以賺錢，<br>請快點跟我說，我現在就辭職跟你走。<br><br>所有的工作背景一定是有壓力的。<br><br>過去 10 幾年強調沒有壓力的學習，<br>結果就產生了<br>小學沒壓力、中學沒壓力、高中沒壓力，<br>進入社會發現原來有壓力，<br>他就<em>再躲回學校</em>了。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="15.3">幼兒園的壓力長什麼樣子</h3>
+
+    <p>海碩校長舉自己帶小孩去南屯 The Pro 攀岩場的例子：</p>
+
+    <div class="callout action">
+      <span class="callout-label">給家長的範例</span>
+      <div class="callout-title">幼兒園的「目標挑戰」設計</div>
+      <p>父母設計目標的方法：</p>
+      <ol>
+        <li>「今天三條主要路線，都要爬到頂。」給挑戰，但是可達成的挑戰。</li>
+        <li>第二次去，目標變成：「<strong>第一次爬到頂的時間記下來，這次要比第一次更短。</strong>」</li>
+        <li>讓孩子養成<em>「設定目標 → 突破目標 → 設定新目標」</em>的習慣循環。</li>
+      </ol>
+      <p>這個架構比「考檢定」更適合幼兒園。檢定是別人給的目標，自我突破是孩子內化的能力。</p>
+      <p>海碩校長的另一個原則：<strong>不要讓「放棄」變成習慣</strong>。「很多家長會說：『他不想學了就不要學沒關係。』請少一點做這件事。我的建議：如果讓他上了一期才藝課，至少要求把那一期好好上完。<em>因為放棄也會變成習慣。</em>」</p>
+    </div>
+
+    <h3 class="with-num" data-num="15.4">家庭中誰說了算？</h3>
+
+    <p>海碩校長分享自家的設計：「家裡如果有兩個人，最好一開始就直接設定<strong>誰是界線、誰說了算</strong>。」</p>
+
+    <p>「我們家是，我老婆說了算。」</p>
+
+    <p>「我建議的方式：誰更常跟孩子相處，誰說了算。我在家裡講話是沒有聲音的，是一個非常卑微的爸爸。<em>Happy wife, happy life.</em> 我的小孩已經知道：媽媽說不行就是不行，爸爸說不行，參考而已。」</p>
+
+    <div class="callout extend">
+      <span class="callout-label">給家長的觀念</span>
+      <div class="callout-title">為什麼「界線一致」這麼重要</div>
+      <p>小孩超級聰明。如果父母兩個人的界線不一致，他會立刻學會：「找另外那個人。」這個策略一旦成功一次，會用一輩子。</p>
+      <p>更重要的是：界線的不一致，會讓孩子陷入一種<em>「我不知道規則是什麼」</em>的焦慮。表面上他可能拿到他想要的東西（破關成功），但深層的安全感是減損的。</p>
+      <p>所以不是哪個父母「比較有權威」，是<strong>夫妻先在私下取得共識，然後對外口徑一致</strong>。意見不同？等孩子睡了再爭論。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EPOCH ============ -->
+<section class="section" id="epoch">
+  <div class="section-inner">
+    <div class="section-num">拾陸 ／ EPOCH</div>
+    <h2>EPOCH 框架：AI 取代不了的五件事</h2>
+    <p class="subtitle">麻省理工 Sloan 商學院的解答。</p>
+
+    <p>海碩校長在這裡介紹他對全世界框架做完整比對後，認為最值得家長記在心上的五個能力，就是 EPOCH：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">E</div>
+        <h5>Empathy<br>同理心</h5>
+        <p>不是「假裝懂你」，是真實地感受到對方的情緒。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">P</div>
+        <h5>Presence<br>在場</h5>
+        <p>不講話也很舒服的陪伴。AI 永遠取代不了。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">O</div>
+        <h5>Opinion<br>觀點與責任</h5>
+        <p>AI 能給選項，<strong>人類必須做決定、扛後果</strong>。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">C</div>
+        <h5>Creativity & Imagination<br>創造與想像</h5>
+        <p>從無到有的想像，是 AI 還做不到的事。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">H</div>
+        <h5>Hope<br>意義感</h5>
+        <p>「我為什麼活著、我為什麼努力」AI 最沒有辦法挑戰的能力。</p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="16.1">E：Empathy 與 Neural Coupling 的科學</h3>
+
+    <p>海碩校長介紹了一個迷人的腦科學現象，<strong>Neural Coupling（神經耦合）</strong>。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">深化補充</span>
+      <div class="callout-title">為什麼看悲劇你會哭，但你的人生會更開心</div>
+      <p>「你看一個悲傷的故事或電影，那分明不是你的故事。但你看著看著就哭了。為什麼？」</p>
+      <p>「因為人類有一個非常有趣的能力：你看著對方的情緒，<strong>你大腦的同一個情緒反應區會啟動</strong>。神經事實上是連結的。」</p>
+      <p>「所以這就反直覺了，如果你的生命想要快樂一點，要多看喜劇還是悲劇？答案是<em>悲劇</em>。」</p>
+      <p>「你在看悲劇的時候，大腦處於超級緊繃狀態。電影一結束，你關起來那一刻會發現：『哈！還好我人生很快樂。』」</p>
+      <p>給家長的應用：別只給孩子看快樂的卡通。<strong>適度（小心年齡分級）讓孩子接觸有失落、有矛盾、有複雜情緒的故事</strong>。這是培養同理心的養分。台灣的繪本市場有很多這樣的優秀作品（《獾的禮物》、《爺爺的天堂筆記本》等）。</p>
+    </div>
+
+    <h3 class="with-num" data-num="16.2">情緒：兩極化的時代</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">海碩校長的觀察</span>
+      <div class="callout-title">下個時代，人類情緒會兩極化</div>
+      <p>「猜猜看，AI 時代人類情緒會變複雜還是變簡單？答案是，<strong>兩個都對，要看社會階層</strong>。」</p>
+      <p>「被 3C 控制的階層，情緒會越來越簡單。看很多短影音，劇情都是『這也太白痴了吧』。完全不會思考的人，情緒只剩那幾個。」</p>
+      <p>「但社會中上階層的人，情緒會越來越複雜。<em>如果你想要孩子成功，他的情緒複雜度必須提升</em>。」</p>
+      <p>海碩校長舉了一個有趣的對比：川普講話的詞彙等級大約是<strong>小四</strong>。歐巴馬大約是<strong>大三</strong>。「川普是笨蛋嗎？才不是。但他的選民呢？情緒簡單的群體，需要簡單的語言。」</p>
+      <p>家長要做的：刻意餵孩子複雜的詞彙、複雜的情緒、複雜的故事。從共讀開始。</p>
+    </div>
+
+    <h3 class="with-num" data-num="16.3">H：Hope 與大力士拉舉的故事</h3>
+
+    <p>EPOCH 的最後一個字 H，意義感，是這場演講的高潮。海碩校長用一個世界紀錄的故事說明：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我有兩個小孩。<br>比賽一開始，我閉上眼睛，<br>想像我站在懸崖上，<br>左邊拉著我的第一個小孩，<br>右邊拉著我的第二個小孩。<br>60 秒之後，我早就忘記我在比賽，<br>因為我已經失去知覺了。」</div>
+      <div class="quote-source">大力士拉舉新世界紀錄保持人</div>
+    </div>
+
+    <p>大力士拉舉（Hercules Pull）：左右各一根幾百公斤的原木，比賽開始時兩邊支架同時抽掉，選手徒手撐住兩邊。<strong>這是只有男子組的比賽，沒有女子組</strong>。</p>
+
+    <p>2025 年之前的世界紀錄是 90 秒，由一位黑人選手保持。2026 年第一季，新紀錄拉到 <strong>2 分 30 秒</strong>。</p>
+
+    <p>「2 分半。多 1 分鐘。在這種比賽裡，多 1 秒鐘都是神一般的事。他從 60 秒到 2 分半的那一分鐘，根本不知道他在幹嘛。比賽結束時，他是被抬下來的，因為手已經失去知覺。」</p>
+
+    <p>「真正的差別不是肌力。是他在那兩分半裡，撐著的不是兩根木頭，是<em>兩個小孩的命</em>。」</p>
+
+    <h3 class="with-num" data-num="16.4">幼兒園的意義感長什麼樣子</h3>
+
+    <div class="callout action">
+      <span class="callout-label">給家長的觀念校準</span>
+      <div class="callout-title">不是要幼兒園的孩子找到「人生使命」</div>
+      <p>海碩校長很快補充：「幼兒園去找意義感太早了。如果你的孩子在幼兒園跟你說『我的人生就是要改變世界』太胡鬧了，我才不相信。」</p>
+      <p>幼兒園的意義感長什麼樣子？</p>
+      <ul>
+        <li>「我幫媽媽<strong>分擔了</strong>一件事」微型的責任感。</li>
+        <li>「我<strong>努力做完了</strong>這件事」自我效能感。</li>
+        <li>「弟弟妹妹<strong>需要我</strong>」被需要的感受。</li>
+        <li>「我的家人<strong>愛我</strong>」歸屬感。</li>
+      </ul>
+      <p>這些累積起來，會在 18 歲、25 歲、35 歲，慢慢長成那個能在 Hercules Pull 上撐到 2 分半的「為什麼」。</p>
+      <p>EPOCH 不是給幼兒園當教學目標。是給<strong>父母當校準方向</strong>。讓你知道每天的小小選擇，是在往這個方向累積，還是反方向。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ASIA ============ -->
+<section class="section" id="asia">
+  <div class="section-inner">
+    <div class="section-num">拾柒 ／ THE SHIFTING WORLD</div>
+    <h2>2050 的世界版圖：亞洲在崛起</h2>
+    <p class="subtitle">過去成功的方案，沒辦法套到現在的人生了。</p>
+
+    <p>海碩校長秀出全球人口與大學畢業生的趨勢圖。到 2050 年：</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">2</div>
+        <div class="label">全球只剩兩塊大陸<br>人口會增加</div>
+      </div>
+      <div class="stat">
+        <div class="num">10億+</div>
+        <div class="label">2050 年亞洲<br>大學畢業生總量</div>
+      </div>
+      <div class="stat">
+        <div class="num">↑↑</div>
+        <div class="label">亞洲頂大<br>正在急速崛起</div>
+      </div>
+    </div>
+
+    <p>到 2050 年只有兩塊大陸人口持續增加，<strong>非洲與亞洲</strong>。但其中只有亞洲，<em>「人的量跟人的值」兩個都同步增加</em>。非洲量增加了，但人均素質還沒跟上。</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「10 年前舊的人生地圖，<br>大家都說台大跟哈佛。<br><br>但接下來到 2050 年，<br>整個亞洲的大學畢業生會超過 10 億人。<br><br>過去成功的方案，<br>大概沒辦法套成現在的方案了。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <div class="callout extend">
+      <span class="callout-label">給家長的長期視野</span>
+      <div class="callout-title">你的孩子會在亞洲的世紀長大</div>
+      <p>對賴厝家長的具體啟發：</p>
+      <ul>
+        <li><strong>不要只想著「送孩子去美國」。</strong>東京大學、新加坡國立大學、首爾大學、北京清華，這些學校的競爭力已經逼近或超越許多美國中段大學。日韓新中的職場機會也在快速擴張。</li>
+        <li><strong>多元語言能力，不只是英文。</strong>除了英文，<em>第三語言（日文、韓文、東南亞語、西班牙文）</em>會在亞洲世紀的職場越來越值錢。</li>
+        <li><strong>「亞洲鄰居」的素養。</strong>很多台灣孩子被養成「親美」 + 「對中國模糊」 + 「對日韓不熟」這個結構在 2050 年可能完全跟不上現實。讓孩子從小理解亞洲不同國家的文化與價值觀，是未來的基本盤。</li>
+      </ul>
+    </div>
+
+    <div class="callout warning">
+      <span class="callout-label">哈佛的真相</span>
+      <div class="callout-title">海碩校長一直在追的一份數據</div>
+      <p>「我去國際部之後，第一件最關心的事情是，哈佛大學需要吃身心疾病藥物的學生比例。」</p>
+      <p>「我從這個數字只有 5% 的年代，追到現在。<strong>去年已經超過 33%</strong>。代表三個哈佛學生裡有一個需要吃身心病藥物。」</p>
+      <p>「念哈佛有價值嗎？我相信有價值。但是不是值得？我沒有答案。如果我的小孩需要吃身心病藥物才能把大學念完，<em>我覺得不用啦</em>。」</p>
+      <p>給家長的關鍵反思：在追求世界頂大的路上，<strong>底盤（心理健康、安全感、體能）才是真正決定能不能走遠的關鍵</strong>。一個底盤穩的孩子去念中等大學，會比一個底盤脆的孩子勉強撐進頂大，過得更好。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="section" id="closing">
+  <div class="section-inner">
+    <div class="section-num">尾 聲 ／ THE GIFT</div>
+    <h2>最重要的禮物，是你自己</h2>
+    <p class="subtitle">演講的最後一張投影片。</p>
+
+    <p class="drop-cap">海碩校長在演講最後，把整場 90 分鐘的內容收束成一張投影片、一個畫面、一個比喻。他先丟出一個輕輕的請求：「從今天開始，請大家在教育的世界，不要有更多的焦慮了。<strong>把考試的焦慮、100 分的焦慮、升學的焦慮、四中的焦慮，從此刻全部都放掉。</strong>」</p>
+
+    <p>「因為過去的教育成就跟你未來需要的教育成就，完全不一樣了。如果完全不一樣，我們何必拿歷史上的焦慮來折磨現在的自己呢？」</p>
+
+    <h3>雙語：給孩子，也給你自己</h3>
+
+    <p>海碩校長提了一個很多家長沒聽過的研究：「<strong>雙語使用者，一輩子使用雙語的人，失智症狀會少 4.1 年。</strong>」</p>
+
+    <div class="callout action">
+      <span class="callout-label">海碩校長的順帶邀請</span>
+      <div class="callout-title">爸媽，一起學吧</div>
+      <p>「所以各位爸媽，與其要求孩子學英文，<em>你也一起來學一下吧</em>。」</p>
+      <p>「雙語對大腦來說就是一個重量訓練。所以對於記憶、執行功能、認知靈活度，都會增強。」</p>
+      <p>「邀請了，爸媽也應該要開始。」</p>
+    </div>
+
+    <h3>最後一張投影片</h3>
+
+    <div class="key-takeaway">
+      <div class="label">海碩校長的最後</div>
+      <div class="text">會英文，<br>可以讓我們的世界更大。<br><br>但科技的這個時代、AI 的時代，<br>能夠決定我們卓越的<br>不是科技，<br>而是<strong>人文</strong>。<br><br>決定孩子能不能站穩的<br>不是技能，<br>而是<strong>安全感</strong>。<br><br>你可以給孩子最好的禮物，<br>當然是<em>你自己</em>。<br><br>不要恐懼，也不要緊張。<br>因為你如果自己恐懼緊張，<br>孩子是會感受到的。</div>
+    </div>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「最重要的階段是現在。<br>最重要的孩子，就是你面前的這一個。<br>而最重要的決定，<br>就是你接下來怎麼陪他長大。」</div>
+      <div class="quote-source">海碩校長 ／ 2026.05.07 賴厝校區</div>
+    </div>
+
+    <h3>最後的提醒</h3>
+
+    <p>海碩校長在 Q&A 環節快結束時，補了一個非常重要的承諾：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">海碩校長的請求</span>
+      <div class="callout-title">不要拿小學的標準要求幼兒園的孩子</div>
+      <p>「我會分享兩份簡報給大家。一份是今天給你們的，一份是早上給校長的。早上那一份列了 100 多個技能。」</p>
+      <p>「<strong>但你要先答應我一件事</strong>」</p>
+      <p>「我知道很多家長拿到那份會想：『哇，這個好厲害！』然後拿來要求自己幼兒園的孩子。<em>不要</em>。」</p>
+      <p>「你現在對幼兒園孩子最需要做的，就是兩件事」</p>
+      <p style="text-align:center; font-size:18px; color:var(--terracotta); margin-top:16px;"><strong>① 把心理安全感練起來。<br>② 把身體健壯練起來。</strong></p>
+      <p style="text-align:center; margin-top:12px;">就這兩件事。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDIX ============ -->
+<section class="section" id="appendix">
+  <div class="section-inner">
+    <div class="section-num">附 錄 ／ APPENDIX</div>
+    <h2>給賴厝家長的行動清單</h2>
+    <p class="subtitle">把這場 90 分鐘的演講，轉成今晚、本週、本月可以做的事。</p>
+
+    <h3>今晚回家就能做（5 件）</h3>
+    <ul>
+      <li><strong>蹲下來，給孩子一個迪士尼式的擁抱。</strong>等他想掙脫再放手。連續做一週，看孩子的睡眠變化。</li>
+      <li><strong>晚餐三問：今天最好笑、最難過、最期待的一件事。</strong>每個人輪流答，包含爸媽。</li>
+      <li><strong>把客廳、餐桌、孩子房間設為「無螢幕區」。</strong>大人也遵守。</li>
+      <li><strong>誠實記錄今天孩子的螢幕時間。</strong>不要評價，只記錄。</li>
+      <li><strong>用「我看到你...」開頭跟孩子說一句話。</strong>感受看看跟「你怎麼又...」的差別。</li>
+    </ul>
+
+    <h3>本週可以做（7 件）</h3>
+    <ul>
+      <li><strong>爸爸：負責 3 個睡前共讀晚上。</strong>科學說效果是三倍。</li>
+      <li><strong>夫妻先取得「界線一致」共識。</strong>誰說了算，先講好。意見不同等孩子睡了再吵。</li>
+      <li><strong>看一次 Still Face Experiment 的影片。</strong>YouTube 搜尋即可，10 分鐘。</li>
+      <li><strong>跟伴侶分享這份簡報的兩個重點。</strong>確保兩個人都對齊：安全感 ＋ 體能。</li>
+      <li><strong>選一個爸媽都能做的「家庭儀式」。</strong>晚餐、週末家庭日、睡前共讀，挑一個開始。</li>
+      <li><strong>觀察自己用「誇獎天才」還是「誇獎努力」的語言比較多。</strong>記錄三天，會嚇到自己。</li>
+      <li><strong>檢視家裡有沒有「永遠說好的對象」。</strong>如果孩子會接觸 AI 玩具，先理解歐盟為什麼禁。</li>
+    </ul>
+
+    <h3>本月可以做（5 件）</h3>
+    <ul>
+      <li><strong>螢幕時間階梯戒斷。</strong>第一週減 10%，每兩週再減 10%。3-4 個月後回到健康區間。</li>
+      <li><strong>規劃孩子每天 30 分鐘的「真實大量身體活動」。</strong>戶外跑跳、游泳、攀爬、騎車都可以。</li>
+      <li><strong>設計一個「目標挑戰」遊戲。</strong>類似攀岩場那樣，讓孩子養成設定目標、突破目標的習慣。</li>
+      <li><strong>把《失控的焦慮世代》或《多巴胺國度》買回家。</strong>就算只看序章也夠用。</li>
+      <li><strong>跟伴侶決定夫妻共學的「第三件事」。</strong>例如雙語、運動、共讀。讓孩子看見父母也在學習。</li>
+    </ul>
+
+    <h3>千萬不要做的事</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">海碩校長的警示</span>
+      <div class="callout-title">這四件事，請避免</div>
+      <ul>
+        <li><strong>不要拿小學的標準要求幼兒園的孩子。</strong>海碩校長三次提醒。</li>
+        <li><strong>不要在孩子面前刷短影音。</strong>97% 的孩子會模仿。</li>
+        <li><strong>不要稱讚「聰明」、「天才」、「厲害」。</strong>稱讚努力、選擇、過程。</li>
+        <li><strong>不要從 100 變到 0。</strong>螢幕戒斷要階梯式，否則一定失敗。</li>
+      </ul>
+    </div>
+
+    <div class="divider-ornament">❀ ❀ ❀</div>
+
+    <h3>本場演講的關鍵資源</h3>
+    <ul>
+      <li><strong>《Dopamine Nation》（多巴胺國度）</strong>，Anna Lembke 著</li>
+      <li><strong>《失控的焦慮世代》</strong>，Jonathan Haidt 著</li>
+      <li><strong>《槍炮、病菌與鋼鐵》</strong>，Jared Diamond 著（普立茲獎）</li>
+      <li><strong>Still Face Experiment</strong>（YouTube 搜尋 Tronick Still Face）</li>
+      <li><strong>Carol Dweck《Mindset》</strong>，成長型思維的經典著作</li>
+      <li><strong>Heckman Curve</strong>（Google 搜尋 "Heckman Curve" 即可看到原始研究）</li>
+      <li><strong>Cincinnati Children's Hospital</strong> 親子共讀腦部研究</li>
+      <li><strong>Coursera《Learning How to Learn》</strong>，全球選課最多人的課，Barbara Oakley 主講</li>
+    </ul>
+
+    <h3>跟海碩校長保持聯繫</h3>
+    <p>海碩校長 LINE 已滿，<strong>Facebook 搜尋名字</strong>即可找到。</p>
+
+    <div class="callout community">
+      <span class="callout-label">加入社群</span>
+      <div class="callout-title">808 AI 五金行：跟海碩校長一起持續更新</div>
+      <p>海碩校長與夥伴們經營的 LINE 社群，是這場演講之後持續對話最直接的入口。社群裡會分享最新的 AI 工具、教育現場的實戰應用、以及世界各地最前沿的趨勢觀察。</p>
+      <p style="text-align:center;">
+        <a class="line-cta" href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener">
+          <span class="line-cta-icon">LINE</span>
+          <span class="line-cta-text">點此加入「808 AI 五金行」</span>
+        </a>
+      </p>
+      <p style="font-size:13px; color:var(--ink-faint); text-align:center; margin-top:8px;">You've been invited to join "808 AI 五金行".<br>Visit the link to join the OpenChat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="signature">
+    最重要的階段是現在。<br>
+    最重要的孩子，就是你面前的這一個。<br>
+    而最重要的決定，就是你接下來怎麼陪他長大。
+  </div>
+  <div class="info">
+    本紀錄基於 2026 年 5 月 7 日下午<br>
+    <strong>葳格國際學校 ／ 賴厝校區家長會 ／ 母親節專場</strong><br>
+    海碩校長分享內容整理而成<br><br>
+    特別感謝主辦：執行長 Miss Emily<br>
+    敬獻給賴厝校區所有用心的爸爸與媽媽<br><br>
+    <a href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener">加入 808 AI 五金行 LINE 社群 ›</a>
+  </div>
+</footer>
+
+</body>
+</html>
