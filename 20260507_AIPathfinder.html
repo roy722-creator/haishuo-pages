@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 時代的 Pathfinder，海碩校長的演講紀錄</title>
+<style>
+:root {
+  --ink: #18181b;
+  --ink-soft: #3f3f46;
+  --ink-faint: #71717a;
+  --paper: #fdfcf8;
+  --paper-warm: #f7f3eb;
+  --paper-cool: #eef2f7;
+  --gold: #b8860b;
+  --gold-soft: #d4a93a;
+  --gold-bg: #faf3e0;
+  --navy: #1e3a5f;
+  --navy-deep: #0f1e3a;
+  --navy-bg: #e8eef5;
+  --crimson: #8b2635;
+  --crimson-bg: #f9ecee;
+  --teal: #0f766e;
+  --teal-bg: #e6f5f3;
+  --orange: #c2410c;
+  --orange-bg: #fef0e6;
+  --rule: #d4cdb8;
+  --shadow-sm: 0 1px 3px rgba(15,30,58,0.05);
+  --shadow-md: 0 4px 12px rgba(15,30,58,0.08);
+  --shadow-lg: 0 12px 40px rgba(15,30,58,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+body {
+  font-family: "Noto Serif TC", "Source Han Serif TC", "PingFang TC", Georgia, serif;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; }
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(140deg, var(--navy-deep) 0%, var(--navy) 50%, #2d4a73 100%);
+  color: var(--paper);
+  padding: 96px 32px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(212,169,58,0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(212,169,58,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-content { max-width: 920px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow {
+  font-family: "Noto Sans TC", sans-serif;
+  letter-spacing: 0.3em;
+  font-size: 12px;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--gold-soft); font-style: italic; }
+.hero-sub {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 48px;
+  line-height: 1.5;
+  max-width: 720px;
+}
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(212,169,58,0.3);
+}
+.hero-meta-item .label {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--gold-soft);
+  margin-bottom: 6px;
+}
+.hero-meta-item .value {
+  font-size: 15px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.4;
+}
+
+/* ============ DEDICATION ============ */
+.dedication {
+  background: var(--paper-warm);
+  padding: 48px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.dedication-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.dedication-inner .name { color: var(--navy); font-weight: 600; font-style: normal; }
+
+/* ============ TOC ============ */
+.toc {
+  background: var(--paper);
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-inner { max-width: 920px; margin: 0 auto; }
+.toc h2 {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8px 40px;
+}
+.toc-grid a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--rule);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.toc-grid a:hover { color: var(--navy); }
+.toc-grid a .num {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  flex-shrink: 0;
+  width: 24px;
+}
+.toc-grid a .title { flex: 1; }
+
+/* ============ SECTION ============ */
+.section {
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--rule);
+}
+.section:nth-child(even) { background: var(--paper-warm); }
+.section-inner { max-width: 720px; margin: 0 auto; }
+
+.section-num {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.section h2 {
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.25;
+  color: var(--navy);
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.section .subtitle {
+  font-size: 18px;
+  color: var(--ink-faint);
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+.section h3 {
+  font-size: 24px;
+  color: var(--navy);
+  margin: 48px 0 16px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.section h3.with-num::before {
+  content: attr(data-num);
+  display: inline-block;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-right: 12px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+.section h4 {
+  font-size: 19px;
+  color: var(--navy-deep);
+  margin: 32px 0 12px;
+  font-weight: 700;
+}
+
+.section p { margin-bottom: 18px; color: var(--ink); }
+.section p strong { color: var(--navy-deep); font-weight: 700; }
+.section em { color: var(--gold); font-style: italic; font-weight: 500; }
+
+.section ul, .section ol { margin: 16px 0 24px 0; padding-left: 24px; }
+.section li { margin-bottom: 10px; }
+
+/* ============ CALLOUT BOXES ============ */
+.callout {
+  margin: 32px 0;
+  padding: 28px 32px;
+  border-radius: 4px;
+  position: relative;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.callout-label {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.callout-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.callout p { margin-bottom: 12px; line-height: 1.75; }
+.callout p:last-child { margin-bottom: 0; }
+.callout ul, .callout ol { margin: 8px 0 12px 0; }
+.callout li { margin-bottom: 8px; }
+
+/* AI Augmentation 深化 */
+.callout.augmentation {
+  background: var(--navy-bg);
+  border-left: 4px solid var(--navy);
+}
+.callout.augmentation .callout-label {
+  background: var(--navy);
+  color: var(--paper);
+}
+.callout.augmentation .callout-title { color: var(--navy-deep); }
+
+/* 海碩金句 */
+.callout.quote {
+  background: var(--gold-bg);
+  border-left: 4px solid var(--gold);
+  font-family: "Noto Serif TC", serif;
+  text-align: center;
+  padding: 36px 40px;
+}
+.callout.quote .quote-mark {
+  font-size: 60px;
+  color: var(--gold);
+  line-height: 0.5;
+  font-family: Georgia, serif;
+  margin-bottom: 4px;
+}
+.callout.quote .quote-text {
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--navy-deep);
+  font-style: italic;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.callout.quote .quote-source {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  font-style: normal;
+}
+
+/* 給校長的建議 */
+.callout.action {
+  background: var(--teal-bg);
+  border-left: 4px solid var(--teal);
+}
+.callout.action .callout-label {
+  background: var(--teal);
+  color: var(--paper);
+}
+.callout.action .callout-title { color: var(--teal); }
+
+/* 警示 */
+.callout.warning {
+  background: var(--crimson-bg);
+  border-left: 4px solid var(--crimson);
+}
+.callout.warning .callout-label {
+  background: var(--crimson);
+  color: var(--paper);
+}
+.callout.warning .callout-title { color: var(--crimson); }
+
+/* 補充延伸 */
+.callout.extend {
+  background: var(--orange-bg);
+  border-left: 4px solid var(--orange);
+}
+.callout.extend .callout-label {
+  background: var(--orange);
+  color: var(--paper);
+}
+.callout.extend .callout-title { color: var(--orange); }
+
+/* 社群邀請 */
+.callout.community {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f9e8 100%);
+  border-left: 4px solid #06c755;
+}
+.callout.community .callout-label {
+  background: #06c755;
+  color: #ffffff;
+}
+.callout.community .callout-title { color: #064e2c; }
+
+.line-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 32px;
+  background: #06c755;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 16px 0 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(6,199,85,0.25);
+}
+.line-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(6,199,85,0.35);
+}
+.line-cta-icon {
+  background: #ffffff;
+  color: #06c755;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.line-cta-text { letter-spacing: 0.05em; }
+
+/* ============ TABLES ============ */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 32px 0;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.compare-cell {
+  padding: 24px;
+  background: var(--paper);
+}
+.compare-cell.old { border-right: 1px solid var(--rule); }
+.compare-cell.new { background: var(--gold-bg); }
+.compare-cell .label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--ink-faint);
+}
+.compare-cell.new .label { color: var(--gold); }
+.compare-cell .content { font-size: 15px; line-height: 1.6; }
+
+.timeline {
+  margin: 32px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-year {
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 16px;
+}
+.timeline-content { font-size: 15px; line-height: 1.6; }
+
+/* ============ STAT BIG NUMBERS ============ */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+.stat {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 24px;
+  text-align: center;
+  border-radius: 4px;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.stat .num {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat .label { font-size: 13px; color: var(--ink-faint); line-height: 1.4; }
+
+/* ============ FRAMEWORK PILLARS ============ */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.pillar {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 20px;
+  border-radius: 4px;
+  border-top: 3px solid var(--gold);
+}
+.pillar .num {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar h5 {
+  font-size: 16px;
+  color: var(--navy-deep);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.pillar p { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 64px 32px 48px;
+  text-align: center;
+}
+.footer .signature {
+  font-family: "Noto Serif TC", serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-soft);
+  margin-bottom: 16px;
+}
+.footer .info {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+}
+.footer .info a { color: var(--gold-soft); text-decoration: none; }
+
+/* ============ DROP CAPS for opening paragraphs ============ */
+.drop-cap::first-letter {
+  font-size: 56px;
+  float: left;
+  line-height: 0.85;
+  margin: 6px 12px 0 0;
+  color: var(--gold);
+  font-weight: 700;
+  font-family: Georgia, serif;
+}
+
+/* ============ Q&A ============ */
+.qa-block {
+  margin: 24px 0;
+  padding: 24px 28px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.qa-q {
+  font-weight: 700;
+  color: var(--navy-deep);
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+.qa-q::before {
+  content: "Q";
+  display: inline-block;
+  background: var(--navy);
+  color: var(--paper);
+  font-family: "Noto Sans TC", sans-serif;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 13px;
+}
+.qa-a { color: var(--ink); }
+.qa-a::before {
+  content: "A";
+  display: inline-block;
+  background: var(--gold);
+  color: var(--paper);
+  font-family: "Noto Sans TC", sans-serif;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 13px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+/* ============ DIVIDER ============ */
+.divider-ornament {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--gold);
+  font-size: 24px;
+  letter-spacing: 1em;
+}
+
+/* ============ SUMMARY KEY ============ */
+.key-takeaway {
+  background: linear-gradient(135deg, var(--gold-bg) 0%, var(--paper-warm) 100%);
+  border: 2px solid var(--gold-soft);
+  padding: 32px 36px;
+  border-radius: 6px;
+  margin: 40px 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.key-takeaway .label {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.key-takeaway .text {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--navy-deep);
+  font-weight: 500;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .section { padding: 64px 24px; }
+  .hero { padding: 64px 24px 56px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-cell.old { border-right: none; border-bottom: 1px solid var(--rule); }
+  .timeline-item { grid-template-columns: 70px 1fr; gap: 16px; }
+  .callout { padding: 24px 22px; }
+}
+
+/* ============ Print ============ */
+@media print {
+  .hero { background: var(--navy-deep) !important; -webkit-print-color-adjust: exact; }
+  .toc { page-break-after: always; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">十二年國民基本教育國小校長專業發展培力實務工作坊</div>
+    <h1>AI 時代的<br><span class="accent">Pathfinder</span></h1>
+    <p class="hero-sub">從 Minerva 到葳格、從教育現場到全球前沿<br>給校長的一場關於 AI Augmentation 的深度對話</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">主講人</div>
+        <div class="value">李海碩 / 葳格國際學校 總校長</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">主持邀請</div>
+        <div class="value">彭偉峰 Alex 校長</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">日期</div>
+        <div class="value">2026.05.07</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">場合</div>
+        <div class="value">國小校長專業發展培力工作坊</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DEDICATION ============ -->
+<section class="dedication">
+  <div class="dedication-inner">
+    特別感謝 <span class="name">彭偉峰 Alex 校長</span> 的邀請，<br>
+    讓這場關於 AI 時代教育典範轉移的對話得以在此發生。<br>
+    也感謝所有願意把自己的時間留給未來的國小校長們<br>
+    各位手上的，從來都不是只有自己的孩子，而是我們的下一代。
+  </div>
+</section>
+
+<!-- ============ TOC ============ -->
+<nav class="toc">
+  <div class="toc-inner">
+    <h2>目 錄 ／ TABLE OF CONTENTS</h2>
+    <div class="toc-grid">
+      <a href="#prologue"><span class="num">序</span><span class="title">開場：Pathfinder 的承諾</span></a>
+      <a href="#part1-foreword"><span class="num">壹</span><span class="title">三個學習約定與簡報的「底牌」</span></a>
+      <a href="#part1-minerva"><span class="num">貳</span><span class="title">Minerva 的革命：AI 是底層前提</span></a>
+      <a href="#part1-paradigm"><span class="num">參</span><span class="title">不是工具升級，是典範轉移</span></a>
+      <a href="#part1-replaced"><span class="num">肆</span><span class="title">每個職業的某個部分都會被取代</span></a>
+      <a href="#part1-durable"><span class="num">伍</span><span class="title">人類較慢被取代的能力（Durable Skills）</span></a>
+      <a href="#part1-resilience"><span class="num">陸</span><span class="title">韌性的三段轉化：Toughness → Grit → Resilience</span></a>
+      <a href="#part1-3a"><span class="num">柒</span><span class="title">三個 A：Augment、Adapt、Accountability</span></a>
+      <a href="#part1-comb"><span class="num">捌</span><span class="title">從 I 型人到梳型人：人才規格的革命</span></a>
+      <a href="#part1-warning"><span class="num">玖</span><span class="title">階級分化：AI 時代最危險的副作用</span></a>
+      <a href="#part1-human-ai"><span class="num">拾</span><span class="title">先人後機：人比 AI 凶</span></a>
+      <a href="#part2-cog-debt"><span class="num">拾壹</span><span class="title">認知卸載 Cognitive Offload：學術已證實的危機</span></a>
+      <a href="#part2-attention"><span class="num">拾貳</span><span class="title">注意力崩盤與多巴胺基準線</span></a>
+      <a href="#part2-learning"><span class="num">拾參</span><span class="title">AI 時代怎麼學最聰明：Scott Young × Tim Ferriss</span></a>
+      <a href="#part2-tools"><span class="num">拾肆</span><span class="title">實戰：把學習轉成自我訓練的數位工具</span></a>
+      <a href="#qa-existential"><span class="num">拾伍</span><span class="title">Q&A：紅綠燈、80,000 Hours 與三大全球風險</span></a>
+      <a href="#closing"><span class="num">尾聲</span><span class="title">我不是 AI 教父，我是你的偵察兵</span></a>
+      <a href="#appendix"><span class="num">附錄</span><span class="title">給校長的下一步行動清單</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PROLOGUE ============ -->
+<section class="section" id="prologue">
+  <div class="section-inner">
+    <div class="section-num">序 ／ PROLOGUE</div>
+    <h2>開場：Pathfinder 的承諾</h2>
+    <p class="subtitle">「拜託，請不要把我看成 AI 教父。」</p>
+
+    <p class="drop-cap">在彭偉峰 Alex 校長熱情而精準的引言之後，海碩校長走上講台，做的第一件事是輕聲推辭一個過大的稱號。「AI 教父」這頂帽子，他從不曾自己戴過。他選擇了一個更謙卑、卻也更精確的自我定位，<strong>Pathfinder（先導兵）</strong>。</p>
+
+    <p>Pathfinder 是英國傘兵裡的一個編制，他們的工作很簡單：在主力部隊還沒進入之前，先空投到敵方領域。任務只有一個，活著回來，把寶貴的偵察情報帶回主部隊。</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">親愛的長官們，<br>I am your Pathfinder.</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>這個比喻在演講的最後又被呼喚了一次：「我把底牌全部攤在你面前，你拿到簡報之後，你的起點就跟我一樣了。」這場演講的核心精神，從第一秒到最後一秒都沒有變過，他把自己定位成偵察，把校長定位成將軍。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">為什麼這個比喻在 AI 時代特別重要</div>
+      <p>傳統知識傳遞的隱喻是「老師是燈塔，學生是航船」老師站在制高點，學生跟隨指引。但 AI 時代的老師更像 Pathfinder：他不是答案的供給者，而是<strong>已知世界邊界的擴張者</strong>。他帶回的不是答案，是<em>「這條路可以走，那條路有埋伏」</em>的情報。</p>
+      <p>對校長而言，這意味著一個身分的微調：你不是學校的最終真理供應商，你是這所學校面對未知時，最先派出去探路的人。你帶回什麼，會直接決定你的學校接下來能往哪裡走。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 FOREWORD ============ -->
+<section class="section" id="part1-foreword">
+  <div class="section-inner">
+    <div class="section-num">壹 ／ 演講前約定</div>
+    <h2>三個學習約定與「簡報的底牌」</h2>
+    <p class="subtitle">在 AI 時代，學習方式本身就要先改變。</p>
+
+    <p>正式進入內容之前，海碩校長做了三件事，這三件事本身就構成一堂「AI 時代如何學習」的微縮示範：</p>
+
+    <h3>一、把簡報直接變成公共財</h3>
+    <p>所有的 PDF 簡報已經放在桌面，<strong>歡迎任何人直接整份拿走</strong>。在演講還沒開始之前，知識壟斷就已經被解除。這不只是慷慨，更是一種立場宣告：在 AI 時代，把知識藏起來既不道德，也不聰明。</p>
+
+    <h3>二、把講者降格為祕書</h3>
+    <p>「從此刻開始，請各位校長把我當成你的祕書。你怎麼跟祕書說話，就那樣跟我說話。」<br>有問題就直接打斷，不要等到 Q&A，不需要客氣。海碩校長用這句話拆掉了傳統演講中最大的學習障礙，<em>講者與聽者的權力位差</em>。</p>
+
+    <h3>三、把筆記交給機器，把腦袋交給思考</h3>
+    <p>桌上別著的那枚 AI 膠囊（一台隨身錄音與整理裝置）會把整場逐字稿做成筆記，傳給彭校長轉發。聽眾被解放出來去做兩件、也只有兩件事：</p>
+    <ol>
+      <li><strong>持續問自己：</strong>這胖子講的，我是否同意？</li>
+      <li><strong>持續問自己：</strong>如果他講的我要用，我可以用什麼？</li>
+    </ol>
+
+    <div class="callout action">
+      <span class="callout-label">給校長的建議</span>
+      <div class="callout-title">把這三個約定變成你校內研習的標準作業</div>
+      <p>你下次主持研習，可以複製這三個約定，幾乎不用花錢，但會立刻讓研習效果不同：</p>
+      <ul>
+        <li><strong>所有簡報先發。</strong>別讓老師花腦袋在抄下一張投影片。</li>
+        <li><strong>明確降格主講者。</strong>「請隨時打斷我，這不是表演。」</li>
+        <li><strong>用 AI 接走筆記。</strong>讓老師專注於「我同意嗎？我能用嗎？」這兩個問題。</li>
+      </ul>
+      <p>這三件事看起來很小，但會把你校內的教師專業學習，從「儀式性聆聽」變成「主動建構」。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 MINERVA ============ -->
+<section class="section" id="part1-minerva">
+  <div class="section-inner">
+    <div class="section-num">貳 ／ MINERVA</div>
+    <h2>Minerva 的革命：把 AI 視為底層前提</h2>
+    <p class="subtitle">當其他大學還在禁止 ChatGPT 的時候，Minerva 已經把所有教學的難度往上拉了一個量級。</p>
+
+    <p>海碩校長首先把自己學生身分亮出來：他是 Minerva 大學碩士的畢業生，並且剛剛確認錄取了 Minerva 全新的 World WISE Program，將是全球前 20 個進入該課程的學生之一。</p>
+
+    <p>這所學校連續三年被 WURI（World Universities with Real Impact）評為「最創新大學」全球第一，並被《Forbes》認定為目前 AI 教學上全球第一名的高等院校。所以他要分享的，不是他自己怎麼想，而是他<strong>所就讀的學校</strong>怎麼做。</p>
+
+    <h3 class="with-num" data-num="2.1">2022年12月3日：那封決定一切的信</h3>
+    <p>ChatGPT 在 2022 年 11 月底正式公開。僅僅幾天後，2022 年 12 月 3 日，Minerva 校長就發出了一封極短的全校信。信的核心只有一句話：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我們還沒想清楚要怎麼做，<br>但我們不會禁止。」</div>
+      <div class="quote-source">Minerva 校長公開信，2022 年 12 月</div>
+    </div>
+
+    <p>同一封信裡，他宣布立刻成立 AI 教學委員會。當大部分美國大學還要再花六到九個月，才在 2023 年制定出 AI 教學策略時，Minerva 已經啟動了。</p>
+
+    <h3 class="with-num" data-num="2.2">把學生假設為 AI 專家，然後拉高難度</h3>
+    <p>Minerva 的選擇徹底逆轉了當時的辯論方向。當其他學校在問「誰用了 AI、誰沒用 AI」時，Minerva 直接做了一個大膽的假設</p>
+
+    <div class="key-takeaway">
+      <div class="label">CORE ASSUMPTION</div>
+      <div class="text">既然每個學生都會用 AI，那就把課程的難度直接拉到「<strong>不會用 AI 的人絕對撐不過去</strong>」的地方。逼你不只會用，而且必須成為 AI 的專家使用者，才能通過 Minerva 的教學。</div>
+    </div>
+
+    <h3 class="with-num" data-num="2.3">Pre-class Work：上課前作業就要寫完</h3>
+    <p>Minerva 最特別的設計：作業在<strong>上課前</strong>就要繳交，而不是上課後。</p>
+    <p>海碩校長親身的經驗：碩士班的時間是週一到週四，每天有兩個場次（8:30 和 10:30）可選。但無論你選哪一場，課前的 pre-class work 都已經出題了。閱讀材料、寫作練習、思考題目，全都必須在上課前完成。寫錯沒關係，沒寫就沒分。</p>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">傳統大學</div>
+        <div class="content">老師像登山導遊，牽著學生的手，一路帶你走到山頂。整堂課的節奏由老師決定。</div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">Minerva 模式</div>
+        <div class="content">老師說：「我們等一下山上見。」沒到的人沒分。怎麼上去是你的事，你可以找同學合作、可以用 AI、可以查資料。但你要爬到那個位置，課堂才有意義。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="2.4">那一天的 400 頁 Reading</h3>
+    <p>Minerva 碩士班的學生全部都是 working professional，有正職的在職生。教授知道這一點，所以他們做了一個就算你請假也做不完的設計。</p>
+
+    <p>某一個週三下課時，教授輕描淡寫地說：「明天的 pre-class work，我們做點有趣的改變，讀完 400 頁，然後寫作業。」當大部分人都不是英語母語者，這個份量足以讓人窒息。然後教授補了那句改變一切的話：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「沒關係，我相信你們現在都會用 AI 了。<br>想辦法用 AI 的能力，讓你完成這個作業。<br>不行的話，去找同學幫忙。<br>反正，明天上課前要完成。」</div>
+      <div class="quote-source">Minerva 教授</div>
+    </div>
+
+    <p>這就是海碩校長定義的「典範轉移的起點」。它不是把舊制度做得更好的問題，而是<strong>學習的方式已經根本不同</strong>了。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">Minerva 模式給校長的三個遷移啟發</div>
+      <p><strong>第一，作業前置。</strong>把「上課=吸收」翻轉成「上課=驗證」。這在小學高年級已可實踐：把預習資料、AI 對話練習當成入場券，而不是課後追補。學生帶著「我已經想過了」的狀態走進課堂，討論才有可能發生。</p>
+      <p><strong>第二，過程評量取代總結性評量。</strong>Minerva 沒有期中、期末考，每堂課都計分。這對國小教師是一個極大的負擔翻譯，但你可以從一個學科開始試，例如語文課的「每節課口頭表達分」，逐步遷移。</p>
+      <p><strong>第三，老師從牽手變成設定地標。</strong>這需要老師做大量「課前材料設計」的功夫，但相對地，課堂中的時間都拿來解決真正困難的問題。校長可以做的，是<em>用排課與備課時間配置，明確授權這個轉換</em>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 PARADIGM ============ -->
+<section class="section" id="part1-paradigm">
+  <div class="section-inner">
+    <div class="section-num">參 ／ PARADIGM SHIFT</div>
+    <h2>不是工具升級，是典範轉移</h2>
+    <p class="subtitle">「我們現在要討論的，再也不是用與不用的偽命題。」</p>
+
+    <p>海碩校長刻意回頭強調這個核心觀念：如果我們今天的問題還停留在「使用 AI，能不能把本來的教育做得更好」，這個問題本身就是錯的。</p>
+
+    <p>因為這個問題裡面藏著一個錯誤假設：<strong>「本來的教育」是一個還算正確的目標</strong>。</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「有沒有一個可能性是，<br>加上 AI 之後，<br>人類該學的東西其實不一樣了？」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>這句話是這場演講中第一個關鍵的「轉軸」。如果這個假設成立，那麼校長在 AI 時代要做的事，就遠遠不只是「採購一套 AI 教材」、「找老師研習一下 ChatGPT」而是要重新檢視<strong>整所學校在教什麼、為什麼教、教得對不對</strong>。</p>
+
+    <div class="callout extend">
+      <span class="callout-label">補充思考</span>
+      <div class="callout-title">三個層次的 AI 整合：你的學校在哪一層？</div>
+      <p>海碩校長今天的內容，等同於提出了 AI 進入校園的三個整合層次。校長可以對照自己學校現在處於哪一層：</p>
+      <ul>
+        <li><strong>Level 1：抗拒層。</strong>禁用、限用、抓作弊。心力都花在「防」。多數仍以為這是負責任的做法。</li>
+        <li><strong>Level 2：工具層。</strong>允許使用 AI，但是把 AI 當成一個更快的搜尋引擎或一個自動寫稿器。教學目標、評量方式、課程結構，都沒有改變。</li>
+        <li><strong>Level 3：典範層（Minerva 層）。</strong>假設所有人都會用 AI，於是把學習目標往上拉一個量級，要求學生產出 AI + 人類獨有經驗的「複合產品」。</li>
+      </ul>
+      <p>誠實地說，台灣目前絕大多數學校都還在 Level 1 與 Level 2 之間擺盪。Level 3 不需要明天就到位，但你必須<em>清楚知道那裡是目的地</em>，否則整所學校會在原地打轉。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 REPLACED ============ -->
+<section class="section" id="part1-replaced">
+  <div class="section-inner">
+    <div class="section-num">肆 ／ REPLACEMENT</div>
+    <h2>每個職業的某個部分都會被取代</h2>
+    <p class="subtitle">媒體最愛問錯誤的問題：哪一個職業會消失？真實的答案是，每個職業的某個部分都會。</p>
+
+    <p>海碩校長在這裡用了一個讓全場安靜的真實案例：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">真實案例</span>
+      <div class="callout-title">當代最辛苦的家庭，是雙翻譯家庭</div>
+      <p>AI 出來之後，<strong>翻譯業界的結案量陡降 60%</strong>。剩下的 40% 案子裡，大部分已經不是純翻譯案，而是「潤飾案」，意思是 AI 已經翻完，請你修一修。</p>
+      <p>而潤飾案的單價，比翻譯案<strong>少了一半</strong>。</p>
+      <p>所以一個爸媽都是翻譯的家庭，用最樂觀的數學去推導，總收入只剩下 20%。當一個家庭的收入剩下五分之一，那個家庭裡孩子的學習資源、心理穩定、未來想像，全部都會被衝擊。</p>
+    </div>
+
+    <p>這就是為什麼海碩校長說：每一個職業的某個部分都會被取代。已經有些職業，他看著就知道學生不能再做了，因為那個技能在 AI 時代根本沒有競爭力。</p>
+
+    <h3 class="with-num" data-num="4.1">奧數金牌：人類智力競賽的頂端，已經被攻破</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2025.07</div>
+        <div class="timeline-content"><strong>國際奧林匹亞數學競賽（IMO）</strong>。OpenAI 與 Google 各自打造了專用模型，雙雙拿下金牌，三題全寫對。這是人類智力競賽公認的頂峰。「過去完成式」，海碩校長補了一句，「不是現在完成式」。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025.Q1</div>
+        <div class="timeline-content"><strong>Codeforces 程式競賽</strong>。AI 的成績已經超越了 99.8% 的人類競賽者。這是業界用來測試頂尖工程師的場域。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025.07</div>
+        <div class="timeline-content"><strong>Microsoft AI Diagnosis</strong>。在診斷準確度上，AI 系統已經比人類醫師好 4 倍，也就是更不容易犯錯。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="4.2">為什麼 AI 醫療能贏：交叉比對</h3>
+    <p>海碩校長在這裡解釋了一件特別重要的事，這也是「典範轉移」的證據之一：</p>
+
+    <p>人類目前的醫療體系是<strong>專科式教育</strong>。每一科的醫師，都用自己那一科的觀點看世界。如果你掛肺科，醫師發現不是肺的問題，他會幫你轉診到新陳代謝科。</p>
+
+    <p>但這背後藏著一個錯誤假設「你只有一種病」。</p>
+
+    <p>世界上最好的醫療 AI 怎麼做？把所有症狀全部丟進去，然後告訴你「你有 35% 機率是 A、22% 機率是 B、15% 機率是 A+C 的組合」。從最高機率排到最低，<strong>而且容許多種可能性同時存在</strong>。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">給校長：把這個邏輯搬到「學生輔導」</div>
+      <p>學生輔導長期以來也是「專科式」學業問題找導師、行為問題找輔導室、家庭問題找社工。但很多孩子的狀況其實是<em>多種因素的交叉組合</em>。</p>
+      <p>你校內可以試一個小實驗：把一個讓你頭痛、長期沒解決的學生狀況（去身分化處理後），輸入到 Claude 或 ChatGPT 的 Pro 版。請它列出五種可能的成因組合，並標註信心度。你會發現它<strong>常常列出你和輔導團隊沒想到的第三種解釋</strong>。</p>
+      <p>這不是讓 AI 取代輔導專業，而是讓 AI 補上人類「只看自己這一科」的盲區。這就是 Augmentation 的具體樣子。</p>
+    </div>
+
+    <h3 class="with-num" data-num="4.3">英文教學的真實啟示</h3>
+    <p>海碩校長以自己的本業舉例：他是多益聽說讀寫滿分、TED 譯者、TOEIC 官方講師。但他誠實地說：「ChatGPT 第一天出來的時候，英文寫得就全部比我好。我怎麼寫都寫不贏他，他可以輕鬆寫出雅思九分的東西。」</p>
+
+    <p>那英文教學還重要嗎？重要，但<strong>追求的目標必須變</strong>：</p>
+    <ul>
+      <li>以前追求的：單字背得多、文法寫得對、句型用得漂亮。</li>
+      <li>現在 AI 都做得到，所以教學要往前推：<strong>他做完自我介紹之後，能不能讓人記得？他在說服別人時，能不能更有說服力？</strong></li>
+      <li>語言變成真正可以追求<em>工具面向的功能</em>。</li>
+    </ul>
+
+    <div class="callout extend">
+      <span class="callout-label">給校長的延伸</span>
+      <div class="callout-title">把這個邏輯遷移到所有學科</div>
+      <p>每一個學科都可以問同樣的問題：「AI 已經能做到的部分，是什麼？人類還需要追求的，是什麼？」</p>
+      <ul>
+        <li><strong>數學：</strong>AI 已能算出答案 → 人類追求「為什麼這樣解」、「能不能換一種解法」、「這個結果在現實中是否合理」。</li>
+        <li><strong>社會：</strong>AI 已能整理史實 → 人類追求「歷史為什麼會這樣發展」、「我們能從中得到什麼當代啟示」。</li>
+        <li><strong>自然：</strong>AI 已能解釋原理 → 人類追求「設計實驗驗證它」、「在現實情境中應用它」。</li>
+        <li><strong>藝術：</strong>AI 已能生成圖像 → 人類追求「為什麼這個構圖打動人」、「我想透過作品說什麼」。</li>
+      </ul>
+      <p>這個提問，可以變成你校內備課會議的固定議程：每堂課都問一次這兩個問題。一年後，整所學校的教學設計會自然往上一個量級。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 DURABLE ============ -->
+<section class="section" id="part1-durable">
+  <div class="section-inner">
+    <div class="section-num">伍 ／ DURABLE SKILLS</div>
+    <h2>人類較慢被取代的能力</h2>
+    <p class="subtitle">不是「不會被取代」，是「較慢被取代」這兩個字差很多。</p>
+
+    <p>海碩校長在這裡刻意把語氣調得非常嚴格：「我所看見的世界，接下來的人類沒有任何一個職業是安全的。」「叫慢」這兩個字必須保留，因為它代表的是，我們不是在尋找永恆的避風港，我們是在尋找<strong>足夠長的緩衝時間，讓教育有空間運轉</strong>。</p>
+
+    <h3 class="with-num" data-num="5.1">技能的半衰期：從 50 年到 9 年</h3>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">50</div>
+        <div class="label">1950 年代<br>技能半衰期（年）</div>
+      </div>
+      <div class="stat">
+        <div class="num" style="color:var(--crimson);">&lt;12</div>
+        <div class="label">2020 年代<br>技能半衰期（年）</div>
+      </div>
+      <div class="stat">
+        <div class="num" style="color:var(--crimson);">~9</div>
+        <div class="label">當前估算<br>實際半衰期（年）</div>
+      </div>
+    </div>
+
+    <p>海碩校長現場帶了一個小投票：50 年？40 年？30 年？20 年？大家都搖頭。最後他輕聲說了答案：「沒有 12 年。」</p>
+
+    <div class="key-takeaway">
+      <div class="label">推論</div>
+      <div class="text">如果技能撐不滿 12 年，而 12 年國教就是 12 年，<strong>我們在小一教的東西，可能在 12 年國教結束前就失效了</strong>。如果再從幼兒園算起，差距更大。我們繼續用舊框架做教育，是不是穩死的？</div>
+    </div>
+
+    <h3 class="with-num" data-num="5.2">四大世界級權威的共識</h3>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h5>Demis Hassabis<br><span style="font-weight:400;font-size:13px;color:var(--ink-faint);">DeepMind 創辦人 / 諾貝爾獎得主</span></h5>
+        <p>下一個年代最重要的能力：<strong>Learning how to learn</strong>，學習怎麼學。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h5>Yoshua Bengio<br><span style="font-weight:400;font-size:13px;color:var(--ink-faint);">圖靈獎得主</span></h5>
+        <p>培養 AI 時代的「美好人類」道德、判斷、合作能力的整合。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h5>Microsoft<br><span style="font-weight:400;font-size:13px;color:var(--ink-faint);">企業教育策略</span></h5>
+        <p>從 Know-it-all 到 <strong>Learn-it-all</strong>。再也沒有萬事通，只有持續學習者。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">04</div>
+        <h5>Andrew Ng<br><span style="font-weight:400;font-size:13px;color:var(--ink-faint);">前 Tesla AI 總監</span></h5>
+        <p>能<strong>從零開始構建</strong>，Maker 能力是真正的時代護身符。</p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="5.3">兩大全球框架：MIT EPOCH 與 America Succeeds</h3>
+
+    <p>海碩校長把過去 30 年全球最權威的能力框架整合在一起，最後鎖定兩個：</p>
+
+    <h4>MIT Sloan EPOCH 五大能力（半衰期最長）</h4>
+    <p>EPOCH 是五個英文字的縮寫，這五個能力被認為是<strong>人類認知的絕對座標</strong>，最不可能被取代：</p>
+    <ul>
+      <li><strong>E</strong>mpathy（同理心）</li>
+      <li><strong>P</strong>resence（在場、覺察）</li>
+      <li><strong>O</strong>pinion（判斷力、立場）</li>
+      <li><strong>C</strong>reativity（創造力）</li>
+      <li><strong>H</strong>ope &amp; meaning-making（意義建構）</li>
+    </ul>
+
+    <h4>America Succeeds 業界訪談的 10 大核心</h4>
+    <p>這份框架不是學界產出的，是訪談美國企業實務界長官，列出他們認為「能撐到 2050 年」的能力。10 個核心格子，外圈再散出將近 100 個次能力。</p>
+
+    <div class="callout action">
+      <span class="callout-label">給國小校長的具體提醒</span>
+      <div class="callout-title">10 個能力裡，哪些「現在小學就能做」？哪些「太抽象、要等」？</div>
+      <p>海碩校長明確點出：批判性思考、協作、創造力、溝通、同理心，這些國小都做得到，特別是中高年級。</p>
+      <p>但有一個能力他特別標出來，國小相對困難：<strong>Metacognition（後設認知）</strong>。它要求學生跳出自己的思考之外，去看「我剛才是怎麼想的」。這在國小不是不能做，是要設計得非常仔細，否則容易變成形式化的反思。</p>
+      <p>所以他建議：先從你校內的特色出發，挑 3-4 個 10 大能力中跟你最對齊的，做深做透，<em>而不是全部都要做</em>。這就是教育版的 80/20 法則。</p>
+    </div>
+
+    <div class="divider-ornament">✦ ✦ ✦</div>
+
+    <h3 class="with-num" data-num="5.4">第一名是批判性思考，而它從 1940 年就被講了</h3>
+    <p>海碩校長把整合後的清單第一名翻出來：批判性思考。然後他做了一個讓全場停住的提問：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「大家知道，<br>批判性思考在教育界開始談，<br>是哪一年的事嗎？」</div>
+      <div class="quote-source">答案：1940 年</div>
+    </div>
+
+    <p>「很多最重要的答案，才不是什麼很新的答案。很多答案是教育界一直都知道很重要，只是在現場沒有得到足夠的重視。」</p>
+
+    <p>他緊接著為台灣教育辯護：「不是台灣很差。台灣在亞洲教育系統的品質名列前茅，超級前面。我們需要加強的，其他國家也需要加強。我們要對自己更有信心一點。」</p>
+
+    <div class="callout extend">
+      <span class="callout-label">值得校長記住的觀念</span>
+      <div class="callout-title">不要追新名詞，要把對的舊事做透</div>
+      <p>AI 時代的教育論述很容易被新詞淹沒：metacognition、agency、SEL、PBL、STEAM⋯⋯ 名詞會繼續換。但能力的核心結構，從 1940 年到現在，其實沒有換太多。</p>
+      <p>校長最大的價值是<em>判斷哪些是真的核心、哪些是包裝</em>。海碩校長給的提示：批判性思考、協作、創造力、學習怎麼學、溝通、同理心、韌性，這七個基本盤已經穩定數十年。先把它們做透，再去談新的東西。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 RESILIENCE ============ -->
+<section class="section" id="part1-resilience">
+  <div class="section-inner">
+    <div class="section-num">陸 ／ RESILIENCE</div>
+    <h2>韌性的三段轉化</h2>
+    <p class="subtitle">Toughness → Grit → Resilience，這個世界已經完成了三輪的演變。</p>
+
+    <p>韌性是 EPOCH 與 America Succeeds 兩個框架都點到的核心能力。但海碩校長提醒：這個詞已經完成了三次轉化，<strong>很多人還停在第一代或第二代的理解上</strong>。</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1980s</div>
+        <div class="timeline-content"><strong>Toughness（堅韌）。</strong>「When the going gets tough, the tough get going.」當情況變得困難，硬漢繼續往前。電影裡的克林伊斯威特、西部拓荒英雄。海碩校長：「這種形象，留在電影裡就好，這完全不是我們這個年代需要的韌性。」</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2010s</div>
+        <div class="timeline-content"><strong>Grit（恆毅力）。</strong>暢銷書《恆毅力》的核心，你碰到困難時，能咬著牙撐過去。Google 圖片搜尋這個字，你看到的都是緊咬著牙、拳頭緊握的表情。它強調「持續」與「毅力」。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020s</div>
+        <div class="timeline-content"><strong>Resilience（韌性）。</strong>不管跌倒幾次，都能重新站起來。重點不是不跌倒、不是咬牙撐，而是<em>復原的速度</em>。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="6.1">黃仁勳的祕訣：要求很高，期望值很低</h3>
+
+    <p>「Resilience 教學上目前全世界講最好的人是誰？我認為是黃仁勳。絕對不是因為他賺很多錢，而是因為他把這件事看得太清楚了。」</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我成功的祕訣，<br>就是我的期望值很低。<br>如果你的期望值很高，<br>你很可能缺乏韌性。」</div>
+      <div class="quote-source">Jensen Huang（黃仁勳）</div>
+    </div>
+
+    <p>海碩校長立刻把這句話拆開來：<strong>要求</strong>跟<strong>期望值</strong>是兩件事。</p>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">要求（Standards）</div>
+        <div class="content">可以、也應該很高。這是品質的底線。</div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">期望值（Expectations）</div>
+        <div class="content">不要太高。這是情緒的調節器。</div>
+      </div>
+    </div>
+
+    <p>他用自己的演講比賽經驗說明：如果每場演講都期待自己得第一，沒拿到就崩潰，那才比個三場就完了。但如果是「志在參加、不在得獎」開心走進去、努力比完，對結果不要有太多期待，失望就降低，韌性就提升。</p>
+
+    <div class="callout action">
+      <span class="callout-label">給校長與導師的具體應用</span>
+      <div class="callout-title">把「要求高、期望低」變成班級文化</div>
+      <p>這個概念在小學現場有非常實用的應用：</p>
+      <ul>
+        <li>對學生作業：<strong>要求</strong>仍然清楚（格式、品質、繳交時間），<strong>期望</strong>是「過程比成品重要、進步比完美重要」。</li>
+        <li>對家長溝通：很多家長帶來的焦慮，正是「期望值太高」造成的。試著把對話轉向：「我們對孩子有怎樣的<em>標準</em>？」與「我們對單一次表現有怎樣的<em>期待</em>？」這兩件事不一樣。</li>
+        <li>對自己當校長：每一次政策推動，要求做到位，但不要期望第一年就有完美結果。否則你的韌性會被自己消耗掉。</li>
+      </ul>
+    </div>
+
+    <h3 class="with-num" data-num="6.2">退場的三個能力：Entrepreneurship、Customer-Orientation、Cultural Awareness</h3>
+    <p>海碩校長補了一個重要的觀察：在 2023 之前的清單裡有三個能力消失了，創業精神、客戶導向、文化覺察。</p>
+    <p>它們不是被否定，而是<strong>已經被當成基本假設</strong>，不需要再列出。「就像我不會跟你說『蛋白質很重要』，大家都知道。」</p>
+
+    <h3 class="with-num" data-num="6.3">2023 之後浮現的三個關鍵</h3>
+    <p>而 2023 之後（GPT 爆發後）的清單裡，有三個能力被特別強調：</p>
+    <ul>
+      <li><strong>同理心（Empathy）</strong>，EPOCH 的第一個字母，反覆出現。</li>
+      <li><strong>數位素養（Digital Literacy）</strong>，AI 素養是其中的子集。</li>
+      <li><strong>韌性（Resilience）</strong>，變化太快的時代，最需要的能力。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PART 1 3A ============ -->
+<section class="section" id="part1-3a">
+  <div class="section-inner">
+    <div class="section-num">柒 ／ THE THREE A'S</div>
+    <h2>三個 A：人與 AI 的協作三原則</h2>
+    <p class="subtitle">不是人 vs AI，是人 + AI 互相增強。</p>
+
+    <p>海碩校長把全球最重要的九個新興能力濃縮成三個 A，這三個 A 是這場演講中最常被引用、也是校長最該記下來的核心：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num" style="font-size:32px;">A₁</div>
+        <h5>Augment（增強）</h5>
+        <p>大部分媒體在談「取代」，但下一個世代真實的圖像是，<strong>人跟 AI 要彼此學習、彼此互動、彼此增強</strong>。下圍棋的人類棋力進步最快的兩個時刻，正是 IBM Deep Blue 與 Google AlphaGo 出現的時候。</p>
+      </div>
+      <div class="pillar">
+        <div class="num" style="font-size:32px;">A₂</div>
+        <h5>Adapt（調適）</h5>
+        <p>就是 Learning how to learn 的具體面貌。世界明天就跟今天不一樣，所以最重要的能力不是「學會某件事」，而是<strong>持續成長、持續調整</strong>。</p>
+      </div>
+      <div class="pillar">
+        <div class="num" style="font-size:32px;">A₃</div>
+        <h5>Accountability（負責）</h5>
+        <p>AI 可以給你各式各樣的答案，但<strong>到時候是人類要出來負責</strong>。各位校長，我們就是最後一顆印章。AI 越強大，「願意承擔」的人就越稀缺、越值錢。</p>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="7.1">Augment 的具體操作：先目標、後框架</h3>
+
+    <div class="callout action">
+      <span class="callout-label">具體操作</span>
+      <div class="callout-title">下一次跟 AI 對話，請刻意做這件事</div>
+      <p>「下一次你請 AI 回答你問題的時候，<strong>你先不要給它框架</strong>，直接告訴它目標，然後跟它說：『作為一個 AI，你覺得你會怎麼做？』」</p>
+      <p>海碩校長親身的觀察：「我的 AI 每次提出的方案，都是我想不到的方案。」</p>
+      <p>這個操作要點，不要太早把你的「人類解法框架」塞進對話。給目標、給條件，然後讓 AI 用它的方式拋一輪。你會看到至少一個你沒想到的選項。</p>
+    </div>
+
+    <h3 class="with-num" data-num="7.2">發散思維：從追求一個答案，到整合多個答案</h3>
+    <p>這是另一個典範轉移。海碩校長對亞洲教育環境發出了極為鋒利的提醒：</p>
+
+    <div class="callout warning">
+      <span class="callout-label">警示</span>
+      <div class="callout-title">亞洲教育是 AI 時代最危險的思維</div>
+      <p>「亞洲整體的教育環境，是被考試所宰制的。不只是台灣，日本、韓國、中國都是。考試的目的是<strong>在最短時間內找到一個正確答案</strong>。」</p>
+      <p>「但 AI 時代，這個世界上可以有好多正確答案，然後你可以把好多正確答案合在一起，成為最後你要的答案。」</p>
+      <p>當其他文化把「思維發散 → 評估整合 → 創造性結合」當基本功在練的時候，亞洲學生還在被訓練「快速選一個唯一答案」。這個落差，會在進入職場後一次性爆發。</p>
+    </div>
+
+    <p>那 AI 時代的正確操作是：</p>
+    <ol>
+      <li>請 AI 一次給 10 個或 20 個答案。</li>
+      <li>不要選「最好的一個」（這是舊思維）。</li>
+      <li>挑出你最喜歡的 X、Y、Z 三個答案，分別說出你最喜歡哪一部分。</li>
+      <li>讓 AI 把這三個答案的優點整合成第四個答案。</li>
+      <li>那第四個答案，就同時擁有前三個答案的優點。</li>
+    </ol>
+
+    <h3 class="with-num" data-num="7.3">情緒敏捷度（Emotional Agility）</h3>
+    <p>「比我們年輕的一代，他們的情緒比較多還是比較少？」海碩校長問。全場一致回答：多。「而且他們不爽，又要做。」</p>
+
+    <p>所以 AI 時代真正需要的，不是壓抑情緒（上一代專業職場的做法），也不是情緒到處亂噴（很多年輕世代正在發生的事）。是<strong>情緒敏捷度</strong>：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「你可以在此刻不開心、可以生氣，<br>但生氣完一下子之後，就把這個情緒收起來，<br>繼續專業地往前走。<br>這叫情緒的敏捷度。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="7.4">腦資本（Cognitive Capital）</h3>
+    <p>最後一個關鍵能力，海碩校長定義得很特別：「腦資本就是你目前的認知，可以連線到多麼不同的大腦。」</p>
+
+    <p>核心做法：刻意去找<strong>跟你認知與知識框架完全不一樣的人</strong>，因為他會帶來不一樣的觀點。當你擁有足夠多種觀點，再加上 AI 協作，你的進化速度會非常驚人。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">校長的腦資本最該擴張的三個方向</div>
+      <p>絕大多數校長的人脈圈，是其他校長 + 教育主管 + 在地社區領袖。這是穩定的、必要的，但對 AI 時代的判斷力幫助有限，因為大家面對的是同一片地形。</p>
+      <p>三個你可以刻意擴張的方向：</p>
+      <ul>
+        <li><strong>科技業者：</strong>不是賣 AI 教材的廠商，而是真的在用 AI 寫產品的工程師。他們知道前線地形長什麼樣子。</li>
+        <li><strong>跨領域研究者：</strong>腦科學家、行為經濟學家、設計師。他們會用完全不同的詞彙，描述你每天在處理的事情。</li>
+        <li><strong>非華語文化的教育工作者：</strong>不是因為國外比較好，而是<em>異質性本身會啟動你的盲區</em>。</li>
+      </ul>
+      <p>具體做法：每兩個月主動約一位「跟你不同領域、職位相當」的人喝咖啡。一年六個人。這個動作的回報率，遠遠超過再參加六場研習。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 COMB ============ -->
+<section class="section" id="part1-comb">
+  <div class="section-inner">
+    <div class="section-num">捌 ／ TALENT EVOLUTION</div>
+    <h2>從 I 型人到梳型人</h2>
+    <p class="subtitle">人才規格的革命：以前不可能，現在已經可以。</p>
+
+    <p>海碩校長帶大家走過一段人才規格的演化史：</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1950s</div>
+        <div class="timeline-content"><strong>I 型人。</strong>工業革命後最典型的教育產出，一個人會一件事，把那件事做好。人類像工具。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1980s</div>
+        <div class="timeline-content"><strong>T 型人。</strong>通識教育興起。橫向廣度 + 一支縱深。大學的「通識教育中心」就是這時長出來的。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1990s-2000s</div>
+        <div class="timeline-content"><strong>π 型人（拍型人）。</strong>大前研一提出，上面一橫的通識，下面兩支腳的雙專精。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2010s</div>
+        <div class="timeline-content"><strong>Comb-shape（梳型人）。</strong>上面一橫，下面好多支專精。海碩校長說：「我大概 2010 年左右第一次看到這個概念，那時候我的想法是：『最好是有這麼厲害，哪有可能做得到？』」那時候有本書叫《刻意練習》，告訴我們專家需要 10 萬小時。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025+</div>
+        <div class="timeline-content"><strong>AI + 梳型人，已經可以了。</strong>以前要 100% 把每一個專場全部做好，現在你只要把這些東西<em>都做到「有一點點」</em>，AI 就能幫你延伸。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="8.1">案例：兩天寫完一個網站</h3>
+    <p>海碩校長舉自己今年寒假的例子作證明：</p>
+    <ul>
+      <li>前端自己寫</li>
+      <li>CSS 自己切</li>
+      <li>資料庫自己架</li>
+      <li>只差沒接收費系統</li>
+    </ul>
+    <p>「我前後花了兩天多一點。你問我現在是不是很厲害的程式設計師？我不會說我是。但我可以告訴你，有了 AI 之後，我根本沒有真的『懂』這件事是什麼，<strong>但我成果已經做出來了</strong>。」</p>
+
+    <h3 class="with-num" data-num="8.2">兩種典範的對比</h3>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">舊典範（線性）</div>
+        <div class="content">學校學知識 → 大學學技能 → 畢業進社會 → 想辦法把技能轉成可用的產品 → 換成金錢 → 開始謀生。</div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">新典範（AI 加速）</div>
+        <div class="content">先確認商業價值是什麼 → 反推所需知識 → 直接告訴 AI「我對這個領域不熟，幫我找出最好的模式」→ 把那個模式變成 AI 的 skill → 用這個 skill 把產品做出來。中間「從零學起」這段，被 AI 大幅壓縮。</div>
+      </div>
+    </div>
+
+    <h3 class="with-num" data-num="8.3">最關鍵的提醒：基礎知識更重要還是更不重要？</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">最容易被誤解的地方</span>
+      <div class="callout-title">這是基礎知識最重要的年代，不是相反</div>
+      <p>「我很怕大家會誤會：我這裡要特別講，基礎知識更重要還是更不重要？<strong>更重要</strong>。」</p>
+      <p>「為什麼？因為一個對這個世界理解不夠、知識不夠的人，他的批判性思考一定很差。理解不夠的人，他一定沒有辦法看到 AI 給的成品之後，再告訴 AI『我還要怎麼調整、這樣會更好』。他做不出來。」</p>
+      <p>「所以基礎知識反而更重要。只是可能比較不需要機械式的練習了。」</p>
+    </div>
+
+    <div class="callout extend">
+      <span class="callout-label">給國小校長的建議</span>
+      <div class="callout-title">小學階段的「基礎」要重新定義</div>
+      <p>過去小學的基礎 = 識字 + 算術 + 背誦。這些仍然重要，但 AI 時代有兩個被低估的「基礎」要被加進來：</p>
+      <ul>
+        <li><strong>判讀力。</strong>能看懂一段資訊裡面，哪裡可疑、哪裡可信。這在六年級就可以開始練。</li>
+        <li><strong>表達力。</strong>能把腦中模糊的東西用語言說清楚。AI 越強，這個能力的價值越高，因為 AI 是靠你給的「prompt」工作的。</li>
+      </ul>
+      <p>建議：把這兩個能力寫進你的學校特色，比追加「AI 課」更實在，也更不會過時。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 WARNING ============ -->
+<section class="section" id="part1-warning">
+  <div class="section-inner">
+    <div class="section-num">玖 ／ INEQUITY ALARM</div>
+    <h2>階級分化：AI 時代最危險的副作用</h2>
+    <p class="subtitle">這件事正在以非常急速的狀況，產生階級和資源之間的不平等。</p>
+
+    <p>海碩校長在這裡的語氣明顯轉沉。他說，這件事他兩年前在台大演講時就已經點出，但「很遺憾，這件事完全沒有改善」。</p>
+
+    <div class="callout warning">
+      <span class="callout-label">警示</span>
+      <div class="callout-title">10 年內會看見的階級暴力</div>
+      <p>「有 AI 足夠能力的人和有 AI 足夠算力的人，跟沒有這個能力的人，光是在台灣就會產生極大的差距。」</p>
+      <p>「在這個世界上，當資源過於不均的時候，永遠都會發生暴力式的叛亂。法國大革命是如此，斯巴達克斯起義也是如此，所有的鬥劍士在一個晚上殺光了所有羅馬城那時候的奴隸主。」</p>
+      <p>「這件事，我認為 10 年之內我們是看得見的。我們需要小心。」</p>
+    </div>
+
+    <h3 class="with-num" data-num="9.1">國際交流的真實處境</h3>
+
+    <p>彭校長在演講開始前，曾私下問海碩：「接下來的國際銜接會長什麼樣子？」海碩在這裡公開回答：</p>
+
+    <p>「接下來真正會碰到的事情是，<strong>AI 影響很深入的國家，應該跟 AI 影響很深的國家做交流</strong>。否則國際交流就會變得非常像是一場 show。」</p>
+
+    <p>他用了一個讓全場安靜的對比：「想像一下，如果我現在拿我 AI 最好的班級，跟非洲馬賽族的班級去對照交流。雙方做完一場活動，可能蠻有趣，但接下來還能繼續發展的機率有多高？很低。」</p>
+
+    <div class="callout extend">
+      <span class="callout-label">給台灣校長的真實提醒</span>
+      <div class="callout-title">國際交流策略的重新定位</div>
+      <p>這個觀察對國小校長有兩個實務面的意涵：</p>
+      <ul>
+        <li><strong>你選擇姊妹校的方式應該改變。</strong>不再是「我們有的東西他們也有」，而是「<em>我們在 AI 教育的進展是否互相對得上</em>」。對得上，才有真正的雙向學習。</li>
+        <li><strong>你培養孩子的方向也應該改變。</strong>不是培養他「會講英文、能出國」，而是培養他<em>「能在 AI 重塑的全球協作網絡裡找到位置」</em>。這兩件事看似相似，但教學設計差很遠。</li>
+      </ul>
+      <p>具體建議：在你下一次規劃國際交流時，加問一個問題，<em>「對方學校的學生，是否也習慣與 AI 協作完成任務？」</em>如果答案是否定的，這個交流的意義可能不如你預期。</p>
+    </div>
+
+    <h3 class="with-num" data-num="9.2">教學者的進化：從傳遞知識到給予地圖</h3>
+
+    <p>海碩校長舉美國奧運訓練為例：美國的奧運選手從小學就開始訓練，第一堂課就是找以前的奧運選手來教。為什麼？</p>
+
+    <p>「奧運選手看游泳的方式，跟其他人看游泳的觀點，會一樣嗎？完全不一樣。所以他第一天就知道，最重要的那件事是什麼。他直接把『成為卓越最困難的那件事』變成一開始就要做的事。」</p>
+
+    <div class="compare-grid">
+      <div class="compare-cell old">
+        <div class="label">傳統思維</div>
+        <div class="content">先打底基礎，確定基礎都好，再把卓越的那塊補上去。</div>
+      </div>
+      <div class="compare-cell new">
+        <div class="label">奧運思維</div>
+        <div class="content">直接教最難的那一塊。基礎在練最難的過程中會自然練起來。</div>
+      </div>
+    </div>
+
+    <p>哪個對？「根本沒有哪個是對的。要看你拿到的料是什麼。」海碩校長說。但 AI 時代的關鍵變化是，「越來越個別化」。AI 能讓每個學生都被當成那個對應的料子來訓練。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">給校長的「教學者進化」三層次</div>
+      <ul>
+        <li><strong>Level 1：知識傳遞者。</strong>老師講、學生記。AI 已經能做得比人類更有耐性、講得更清楚。這個層次的老師最危險。</li>
+        <li><strong>Level 2：地圖給予者。</strong>老師不直接給答案，而是告訴學生「這片知識領域長什麼樣、哪些路可走、哪裡有陷阱」。學生用 AI 把細節跑出來。</li>
+        <li><strong>Level 3：意義建構者。</strong>老師幫學生回答「你為什麼要學這個？這跟你是誰、跟這世界有什麼關係？」這是 EPOCH 框架的最高層 H（Hope &amp; Meaning），也是 AI 最不擅長的地方。</li>
+      </ul>
+      <p>校長的工作：把學校的師資結構，從 Level 1 主導，逐步轉成 Level 2 與 Level 3 共存。這不是一年的事，但你必須<em>從第一年就清楚知道目的地</em>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 1 HUMAN+AI ============ -->
+<section class="section" id="part1-human-ai">
+  <div class="section-inner">
+    <div class="section-num">拾 ／ HUMAN-FIRST</div>
+    <h2>先人後機：人比 AI 凶</h2>
+    <p class="subtitle">中場休息前的最後一個概念，也是整場演講的核心方法論。</p>
+
+    <p>海碩校長要求大家不能只拍下這張投影片，必須記下來。這是回去以後最該執行的工作流。</p>
+
+    <div class="key-takeaway">
+      <div class="label">CORE METHODOLOGY</div>
+      <div class="text">永遠是<strong>人類的腦袋先行</strong>，結束完以後才能看 AI 的答案。<br>結合人類獨有的脈絡 + AI 生成的廣度 = <em>人比 AI 凶</em>。</div>
+    </div>
+
+    <h3 class="with-num" data-num="10.1">為什麼需要「先人後機」</h3>
+
+    <p>海碩校長借用萬維鋼（中國 AI 教育學者）的「人比 AI 凶」這五個字當引子，但接下來的整套流程是他自己整合出來的：</p>
+
+    <ol>
+      <li><strong>問題進來。</strong>把要思考的問題清楚寫出。</li>
+      <li><strong>人類先答。</strong>不要急著按下送出。先在紙上、或在腦中，<em>很快地寫下你自己的初版答案</em>。哪怕只有三句話也好。</li>
+      <li><strong>AI 給答案。</strong>大部分情況下，AI 的答案會比學生第一版更完整、更深、更廣。</li>
+      <li><strong>整合。</strong>把你的人類答案，你對你學校、你團隊、你脈絡的獨有理解，跟 AI 的答案合在一起。</li>
+      <li><strong>得到最高階洞察。</strong>那是只有你才能產出的答案。</li>
+    </ol>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「拿你人類世界的經驗、理解、脈絡作為起點，<br>整合 AI 給的答案，<br>做出一個比 AI 更好的答案，<br>就是當代最重要的關鍵。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="10.2">經濟學的 Scarcity（稀缺性）</h3>
+
+    <p>「為什麼我用經濟學的概念？因為經濟學最重視的事情叫做 scarcity，稀缺性。」</p>
+
+    <p>如果你只用 AI 給你的答案 → 跟你用同一個 AI 的人也有一樣的答案 → 這個答案沒有稀缺性 → 不值錢。</p>
+
+    <p>但如果你把 AI 的答案 + 你獨有的人類經驗與脈絡 → 這個世界上只有你有 → 這個答案就有稀缺性 → <strong>人比 AI 凶</strong>。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">把「先人後機」變成校內固定流程</div>
+      <p>這個方法論可以變成你校內所有公文、政策草擬、家長溝通信的標準作業：</p>
+      <ol>
+        <li><strong>先寫人類版本。</strong>限時 10 分鐘，主筆者快速產出第一版。重點不是漂亮，是<em>把你的真實判斷與情境理解寫進去</em>。</li>
+        <li><strong>再丟給 AI。</strong>讓 AI 在你的人類版本上補強：邏輯漏洞、語句通順、面向是否完整。</li>
+        <li><strong>主筆者再做第三版。</strong>這一版就同時擁有「校長對學校的獨有理解」+「AI 的廣度與精緻度」。</li>
+      </ol>
+      <p>這個流程比「直接讓 AI 寫」慢一點點，但成品的質感會跨一個量級。而且，<em>主筆者的判斷力會在這個流程中持續被訓練</em>，而不是被取代。</p>
+    </div>
+
+    <div class="divider-ornament">⸺ 中場休息 ⸺</div>
+
+    <p style="text-align:center;font-style:italic;color:var(--ink-faint);">「我等一下會講壞的。但壞的事情如果不講，我對不起你。<br>第二場回來，請各位抱著嚴肅、肅穆的心情，我們一起面對接下來年代最難克服的事情。」</p>
+  </div>
+</section>
+
+<!-- ============ PART 2 COG DEBT ============ -->
+<section class="section" id="part2-cog-debt">
+  <div class="section-inner">
+    <div class="section-num">拾壹 ／ COGNITIVE DEBT</div>
+    <h2>認知卸載 Cognitive Offload：學術已證實的危機</h2>
+    <p class="subtitle">下半場的開場是一連串讓人不安的研究數據。</p>
+
+    <p>海碩校長進入第二場時，明確調換了語氣：「上半場我們在處理原則性、這幾年都不會變的問題。下半場剩下兩個環節，第一個是告訴你接下來現場最危險的事情是什麼，以及如何預防。前面講好的，現在講壞的。」</p>
+
+    <h3 class="with-num" data-num="11.1">三個研究，三個警鐘</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">研究一</span>
+      <div class="callout-title">MIT：83% 的學生記不起自己剛才做了什麼</div>
+      <p>麻省理工的實驗將學生分成三組做學習任務：</p>
+      <ul>
+        <li>純腦力組：自己思考、自己寫。</li>
+        <li>Google 組：查資料、整合、寫。</li>
+        <li>ChatGPT 組：直接讓 AI 給答案。</li>
+      </ul>
+      <p>結果：<strong>ChatGPT 組有 83% 的人完成任務後，無法回想起剛才做了什麼</strong>。學習任務看起來完成了，但 learning retention（學習留存）只有 17%。</p>
+    </div>
+
+    <div class="callout warning">
+      <span class="callout-label">研究二</span>
+      <div class="callout-title">越年輕用越多，批判性思考掉得越多</div>
+      <p>研究發現 AI 使用與批判性思考能力的相關係數是 <strong>r = -0.68</strong>，不只是負相關，而且是<em>強烈的負相關</em>（超過 0.5 就被視為強烈影響）。</p>
+      <p>而且：<strong>16 歲以前掉得最多</strong>。年紀越小，影響越深。</p>
+    </div>
+
+    <div class="callout warning">
+      <span class="callout-label">研究三</span>
+      <div class="callout-title">東歐內視鏡醫師：拿掉 AI，能力立刻下降</div>
+      <p>有 AI 輔助時，醫師表現更好。但只要把 AI 拿掉，<strong>能力立刻變差</strong>。<br>就像一個人從來都搭車，走路的速度自然慢了。如果教育裡始終讓 AI 在場，學生大腦的真實能力其實是退步的。</p>
+    </div>
+
+    <h3 class="with-num" data-num="11.2">為什麼會這樣：認知卸載 Cognitive Offload</h3>
+    <p>海碩校長介紹學習科學最頂端的學者之一 Barbara Oakley（Coursera 上《Learning How to Learn》課程的主講者，全球選課人數超過 411 萬，史上最多）。</p>
+
+    <p>她與 IEEE（美國電子電機工程師協會）在 2025 年釋出的研究，提出了「認知卸載 Cognitive Offload」概念，並警示：AI 過度使用會導致大腦突觸連結的退化。</p>
+
+    <p>大腦的運作邏輯極為簡單：1949 年 Doctor Hebb 講過一句話，<em>「Cells that fire together, wire together.」</em>你越常使用某條神經連結，它就越強；越不用，它就越弱，甚至消失。</p>
+
+    <p>寫作文不只是把腦中的話寫出來。寫作文最重要的橋段，是<strong>大腦把零散知識整理、分段、組織</strong>的過程。如果 AI 直接幫你分段、給結構，這個過程就被「解除安裝」了。</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">「認知卸載 Cognitive Offload」最常被誤解的點</div>
+      <p>很多人聽到這個會直接結論：「那就不要用 AI。」<strong>這是錯的</strong>。海碩校長的核心立場從來沒有變：要用，但要懂得用。</p>
+      <p>關鍵的判準是：這個任務是不是<em>大腦本來該做的核心練習</em>？</p>
+      <ul>
+        <li><strong>該大腦做的（小心 AI 替代）：</strong>寫作的構思與組織、數學的解題思路、閱讀的核心理解、陌生情境的判斷。</li>
+        <li><strong>可以放心給 AI 的：</strong>格式調整、文法檢查、資料整理、跨語言翻譯、重複性事務。</li>
+      </ul>
+      <p>校長要做的事：在校內的 AI 政策中，<strong>明確區分這兩類任務</strong>。不要籠統地說「禁用」或「鼓勵」，而是針對任務類型分別給出原則。</p>
+    </div>
+
+    <h3 class="with-num" data-num="11.3">解方：HIIT 與運動的力量</h3>
+    <p>世界上目前提出的多種介入方案中，海碩校長挑了「最有效、最便宜、立刻可做」的一個，<strong>運動，而且強度要夠</strong>。</p>
+
+    <p>不是過去那種「散步是好運動」的低強度路徑，而是 <strong>HIIT（高強度間歇訓練）</strong>：13-15 分鐘的短時、高強度組合訓練。對於不能跳的學生（年紀小或身體狀況），可以在 YouTube 搜尋 "HIIT no jumping" 找到大量替代版本。</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">15<span style="font-size:18px;">分</span></div>
+        <div class="label">每次 HIIT 時間</div>
+      </div>
+      <div class="stat">
+        <div class="num">1<span style="font-size:18px;">月</span></div>
+        <div class="label">注意力出現顯著改善</div>
+      </div>
+      <div class="stat">
+        <div class="num">$0</div>
+        <div class="label">幾乎不需要任何成本</div>
+      </div>
+    </div>
+
+    <p>海碩校長很坦白：「這就是我自己沒做的事。我說我很喜歡吃炸雞，所以才會長成這樣。我知道這個有效，但對不起，我其實沒有做。」這份誠實本身就是一堂教育示範。</p>
+
+    <div class="callout action">
+      <span class="callout-label">給校長的具體行動</span>
+      <div class="callout-title">把 HIIT 編進晨光時間或下課十分鐘</div>
+      <p>大多數國小都有晨間活動或大下課時段。一個非常低成本的試做：</p>
+      <ul>
+        <li><strong>挑兩個班試做一個月</strong>，由健體老師指導 12 分鐘的 no-jumping HIIT。</li>
+        <li>用簡單的注意力測試（例如連續加減運算正確率）做<em>前測與後測</em>。</li>
+        <li>數據出來後，再決定是否擴大實施。</li>
+      </ul>
+      <p>這個方案<strong>不需要採購、不需要專案、不需要研習</strong>，只需要校長願意給一個月的試做空間。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 ATTENTION ============ -->
+<section class="section" id="part2-attention">
+  <div class="section-inner">
+    <div class="section-num">拾貳 ／ ATTENTION CRISIS</div>
+    <h2>注意力崩盤與多巴胺基準線</h2>
+    <p class="subtitle">「教學上面，沒有注意力就什麼都沒有。」</p>
+
+    <p>海碩校長從《失控的焦慮世代》（Jonathan Haidt 的暢銷書）切入。這本書談的兩個核心問題：</p>
+    <ol>
+      <li>社群媒體使用過多 → 注意力極度不足。</li>
+      <li>對中學以上女生 → 自我形象顯著下降。</li>
+    </ol>
+
+    <p>過去他會跟學生說：「夏天到海邊、游泳池看一看，那才是真實身體。」但去年他的學生跟他說：「校長，這招沒用了。現在有防水的化妝品，全妝去游泳池不會掉。」</p>
+
+    <p>科技進步讓「真實」變得更難辨認。社群媒體上幾乎 100% 都是修圖過的，尤其是女生的自拍。學生看到的不是真實，是被算法挑出來的「最美的 0.1%」然後拿來跟自己比較。</p>
+
+    <h3 class="with-num" data-num="12.1">多巴胺：不是快樂荷爾蒙，是「預期」荷爾蒙</h3>
+
+    <p>「多巴胺其實不是快樂荷爾蒙，多巴胺是預期荷爾蒙。」海碩校長把教育心理學裡最古典的實驗拿出來：</p>
+
+    <p>讓老鼠按三個開關：</p>
+    <ul>
+      <li>A 開關：每按必有食物。</li>
+      <li>B 開關：每按都沒有食物。</li>
+      <li>C 開關：有時候有，有時候沒有。</li>
+    </ul>
+    <p>哪個按最多次？<strong>C</strong>。短影音與社群媒體的設計概念跟這個一模一樣：你還沒劃下去，怎麼知道會出現什麼？</p>
+
+    <h3 class="with-num" data-num="12.2">最殘酷的對比：手機 vs 教室</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">數字會說話</span>
+      <div class="callout-title">下載 App Store 排行榜前三名遊戲玩 10 分鐘</div>
+      <p>海碩校長給校長的家庭作業：回家下載一個遊戲商店前三名的遊戲，玩 10 分鐘，你會看到</p>
+      <ul>
+        <li>進入遊戲第一瞬間就是<strong>教學模式</strong>，平均約 5-10 分鐘。</li>
+        <li>在這 5 分鐘裡，<strong>每 6-15 秒就有一次正增強</strong>（音效、特效、勝利反饋）。</li>
+      </ul>
+      <p>「請問你的教室，有辦法 15 秒一次正增強嗎？有一點困難吧。」</p>
+      <p>「你在職場，多久可以給你的團隊一次正增強？」</p>
+      <p>「難怪我們的下一代，這麼想留在手機上。」</p>
+    </div>
+
+    <h3 class="with-num" data-num="12.3">沒有壓力的學習神話</h3>
+    <p>海碩校長在這裡正面回應一個常見的家長期待：「老師，你們是私立學校，能不能給我們沒有壓力的學習？」他的回覆很乾脆：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「沒有壓力的學習？<br>那爸爸媽媽問你，你的工作有沒有壓力？<br>如果有沒有壓力的工作，<br>快點跟我講，我馬上辭職，我來幹你這一行。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>「想像一下，如果學校都說學習可以沒有壓力，那他進到社會的那一瞬間，忽然發現這世界原來有壓力，對他來說最完美的事情就是再退回學校。」</p>
+
+    <h3 class="with-num" data-num="12.4">三步驟重新校準多巴胺基準線</h3>
+
+    <ol>
+      <li><strong>每天塞一段「無聊練習」。</strong>讓大腦習慣不被持續刺激。在家可以練、學校排隊可以練、車上可以練。</li>
+      <li><strong>調黑白模式。</strong>很多手機可以一鍵切換成灰階。視覺刺激降低，刷的衝動就降低。</li>
+      <li><strong>漸進式摩擦力。</strong>讓手機反應變慢（用舊機、不更新）。摩擦力越大，停留時間越短。</li>
+    </ol>
+
+    <div class="callout extend">
+      <span class="callout-label">給家長宣導的內容</span>
+      <div class="callout-title">這是一場家長親職教育的好題材</div>
+      <p>海碩校長明確說過：這部分不是學校單獨能做的，必須跟家長合作。</p>
+      <p>建議在你的家長日或親職講座中，加入這三個觀念：</p>
+      <ul>
+        <li>多巴胺的真相，不是快樂，是預期。</li>
+        <li>手機/平板使用 = 大腦在被高頻訓練「期待刺激」。</li>
+        <li>家庭具體可做的三件事：黑白模式、無聊練習、舊機策略。</li>
+      </ul>
+      <p>不要用「3C 危害」這種容易引發抗拒的詞彙，而是用「校準大腦基準線」這是更精準、更有共鳴的語言。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 LEARNING ============ -->
+<section class="section" id="part2-learning">
+  <div class="section-inner">
+    <div class="section-num">拾參 ／ LEARNING METHODS</div>
+    <h2>AI 時代怎麼學最聰明</h2>
+    <p class="subtitle">Scott Young × Tim Ferriss × AI = 學習速度 6-7 倍。</p>
+
+    <h3 class="with-num" data-num="13.1">挑戰：完全不看課程，能否用 AI 抽出全部精華？</h3>
+
+    <p>海碩校長為了證明這件事，做了一個實驗：他買了 Scott Young 的《終極學習系統》課程，<strong>但故意不看</strong>。然後純粹用 AI，把網路上所有跟這套系統相關的討論、心得、應用案例全部抓出來。</p>
+
+    <p>「我有買，是因為我尊重作者。我故意不看，是因為我想證明：這個年代知識取得的方式已經很不一樣。」</p>
+
+    <p>結果：AI 整合出的<strong>九大核心，跟課程實際內容完全對得上</strong>。「我可以很有信心地說，課程裡講的東西，AI 全部都有。」</p>
+
+    <p>而且還有一個額外發現：「網路上抓出來的東西，比直接看課程還有用。為什麼？因為網路上寫心得的人，不會只說『這課在講什麼』，他會說『這課在講什麼 + 我怎麼用在我的生活上』已經把<em>應用層</em>整合進去了。」</p>
+
+    <h3 class="with-num" data-num="13.2">為什麼此刻是「集成 AI 模型」的關鍵時刻</h3>
+
+    <p>海碩校長補了三個 AI 工具的選擇建議（這部分是他在演講中很罕見的「實戰推薦」）：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h5>Claude</h5>
+        <p>目前程式運用結果最好的模型。海碩校長主要使用的工具，「我來的時候 Claude 就在那邊，24 小時都在跑」。</p>
+      </div>
+      <div class="pillar">
+        <h5>OpenAI / ChatGPT</h5>
+        <p>目前最好的影像生成。OpenAI 跟 Claude 是競爭關係，所以兩家會持續推出更好的模型。</p>
+      </div>
+      <div class="pillar">
+        <h5>Google Gemini</h5>
+        <p>學校導入時的最佳選擇。原因：所有公立學校學生都有 Google 帳號，整合最順。而且 Google 擁有 YouTube，全球最強的圖像/影片資料庫。</p>
+      </div>
+    </div>
+
+    <div class="callout extend">
+      <span class="callout-label">海碩校長的趨勢預判</span>
+      <div class="callout-title">「一年之內，全世界智慧眼鏡會大爆發」</div>
+      <p>「我把這話擱這了。一年之內，你會看到全世界的智慧眼鏡大爆發。我有業內資訊，可以保證你會看見。」</p>
+      <p>「下一代蘋果耳機（AirPods）上面會有鏡頭。左耳機 + 右耳機各一個鏡頭，後面晶片合在一起，你就獲得了一顆 360 度的鏡頭，可以無盡地幫你判別你周遭的環境。」</p>
+      <p>「但這就要看你願意把生命的隱私開放到什麼地步了。」</p>
+      <p>對校長的意涵：你的學校在五年內，將會迎來一批<em>「身上隨時帶著 AI 攝影耳機/眼鏡」</em>的學生。校園的隱私政策、評量制度、課堂互動方式，都需要提早思考。</p>
+    </div>
+
+    <h3 class="with-num" data-num="13.3">Tim Ferriss 的快速學習雙框架：DiSSS + CaFE</h3>
+
+    <p>海碩校長介紹自己的偶像 Tim Ferriss，這個世界上「快速學習」的大師。Tim 把學習拆成左右兩套互補的流程：</p>
+
+    <h4>DiSSS：拆解 → 選擇 → 排序 → 利害關係</h4>
+    <ul>
+      <li><strong>D – Deconstruction（拆解）：</strong>把一個大領域拆成各種不同的向度。</li>
+      <li><strong>S – Selection（選擇）：</strong>用 80/20 法則，找出最關鍵、能在一週搞定的內容。</li>
+      <li><strong>S – Sequencing（排序）：</strong>把選出的內容排出最有效的學習順序。</li>
+      <li><strong>S – Stakes（利害關係）：</strong>AI 時代學習最重要的事，<em>你為什麼要做這件事？</em>回到意義感。</li>
+    </ul>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「在這個年代，<br>你如果要學習學得好，<br>你不能只想要『你要達成什麼』。<br>你要想，這件事到底要在上面放什麼，<br>對你人生超級重要的東西。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h4>大力士拉舉的故事：Stakes 的真實樣子</h4>
+    <p>海碩校長在這裡用了一個讓全場屏息的故事：</p>
+
+    <p>世界大力士比賽中，有一項叫 <strong>Hercules Pull（大力士拉舉）</strong>：左右各一根幾百公斤的原木，比賽開始時兩邊支架同時抽掉，選手要徒手撐住兩邊木頭。比完賽的人，三頭肌跟二頭肌全都會撕裂。</p>
+
+    <p>2026 年之前的世界紀錄是 90 秒，由一位黑人選手保持。2026 年第一季，一位白人選手把記錄拉到了 <strong>2 分 30 秒</strong>。</p>
+
+    <p>賽後訪問他怎麼做到的，他說：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我有兩個小孩，<br>是我家裡的兩個男生。<br>比賽一開始，我就閉上眼睛，<br>想像我站在懸崖上<br>左邊拉著我的第一個小孩，<br>右邊拉著我的第二個小孩。<br>60 秒之後，我早就失去意識了。」</div>
+      <div class="quote-source">大力士拉舉新世界紀錄保持人</div>
+    </div>
+
+    <p>2 分半。比原紀錄多 1 分鐘。在這種比賽裡，<strong>多一秒鐘都是神一般的事</strong>。</p>
+
+    <p>真正的差別不是肌力，是<em>他在那兩分半裡撐著的，是兩個小孩的命</em>。Stakes 給了他超越自己生理極限的力量。</p>
+
+    <h4>CaFE：壓縮 → 頻率 → 編碼</h4>
+    <ul>
+      <li><strong>Ca – Compression（壓縮）：</strong>把整套知識濃縮到「一頁紙」。</li>
+      <li><strong>F – Frequency（頻率）：</strong>用固定頻率做間隔複習（學習科學的核心）。</li>
+      <li><strong>E – Encoding（編碼）：</strong>把新知識掛在已有的知識結構上。</li>
+    </ul>
+
+    <h3 class="with-num" data-num="13.4">最有效的學習方案：跨框架整合</h3>
+
+    <p>海碩校長最後揭露他自己這兩年研究出的最有效模式：</p>
+
+    <div class="key-takeaway">
+      <div class="label">META-METHOD</div>
+      <div class="text">學完 A 框架的精華 → 學完 B 框架的精華 → <strong>用 AI 把兩者整合</strong> → 得到一個比 A 或 B 任一個都強的混合方法。<br><br>例如：Tim Ferriss 教你「<em>學什麼</em>」（What to learn），Scott Young 教你「<em>怎麼學</em>」（How to learn）。兩個合在一起，就是你要的完整學習系統。</div>
+    </div>
+
+    <h3 class="with-num" data-num="13.5">AI 競爭的三個關鍵：算力、演算法、資料</h3>
+
+    <p>海碩校長提供了一個非常清晰的判斷框架：</p>
+
+    <ol>
+      <li><strong>算力（Compute）：</strong>機器多強。但只要你不在頂級科技公司，大家算力差不多。</li>
+      <li><strong>演算法（Algorithm）：</strong>模型多強。Claude 4.7 / ChatGPT 5.5，這些就是你能拿到最好的了。也差不多。</li>
+      <li><strong>資料（Data）：</strong>你手上握有的「別人沒有的東西」。<strong>這才是真正的差異化關鍵。</strong></li>
+    </ol>
+
+    <p>海碩校長現身說法：「我的 AI 知道我所有的工作團隊成員、知道他們的喜好、知道過去幾個月每個人的關鍵決定。怎麼記？我每次會議都把錄音膠囊開著，會議結束後把重要決定全部餵進去。」</p>
+
+    <p>「我的學校決定，再也不是我自己一個人的決定。在會議還沒開始之前，我就模擬過所有人可能會講什麼話、可能有什麼決定了。會議當下，我順著毛摸就好。」</p>
+
+    <p>「目前 AI 模擬出來的比例，比我自己想的還準。因為我有情緒、我會累，AI 不會。」</p>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">校長個人 AI「外腦」的建立流程</div>
+      <p>海碩校長示範的，其實是「<em>個人化 AI 系統</em>」的建立。給校長一個更具體的起點：</p>
+      <ol>
+        <li><strong>建立資料庫：</strong>過去一年的會議錄音/筆記、重要 email、政策草稿、家長溝通紀錄（去敏感化處理）。</li>
+        <li><strong>結構化餵入：</strong>不是直接丟，而是分主題、分時間、分人物，整理成清楚標籤。</li>
+        <li><strong>讓 AI 學會你的語氣：</strong>把你過去 5 篇代表性的公開信丟進去，請 AI 描述「這位作者的語氣特徵」。然後請它在未來起草時保持這個語氣。</li>
+        <li><strong>定期更新：</strong>每月把新的會議紀錄與決策同步進去。AI 會跟著你的學校一起進化。</li>
+      </ol>
+      <p>關鍵警告：所有上傳的資料都要先做<em>個資去識別化</em>。任何包含學生姓名、身分證、地址的資料，都不能直接餵入。</p>
+    </div>
+
+    <h3 class="with-num" data-num="13.6">周哈里窗：AI 的真正力量是「補你的盲點」</h3>
+
+    <p>海碩校長借用心理學的周哈里窗（Johari Window）做收尾：</p>
+
+    <ul>
+      <li><strong>公開區（Open）：</strong>你知道、別人也知道。AI 直接搜尋就有，沒什麼好討論。</li>
+      <li><strong>未知區（Unknown）：</strong>你不知道、別人也不知道。沒什麼好討論。</li>
+      <li><strong>隱藏區（Hidden）：</strong>你知道、別人不知道。<em>這是「能不能餵 AI」的判斷區</em>。判準：明天如果出現在報紙頭版，你能不能接受？銀行密碼不能、家長個資不能。</li>
+      <li><strong>盲點區（Blind Spot）：</strong>你不知道、別人知道。<strong>這是 AI 對你最有力量的地方。</strong></li>
+    </ul>
+
+    <p>用 AI 找盲點的三步驟：</p>
+    <ol>
+      <li>用 AI 做鏡子，找到自己的盲點區。</li>
+      <li>要求 AI 直接變成「挑戰者」「你現在的責任不是給我情緒價值，而是找出我所有沒看見的觀點」。</li>
+      <li>讓 AI 作為跨文化翻譯者（這部分是海碩校長特別為彭校長準備的，因為彭校長關心國際銜接）。</li>
+    </ol>
+
+    <div class="callout extend">
+      <span class="callout-label">跨文化翻譯的重要修正</span>
+      <div class="callout-title">不要再用「國族」當文化單位</div>
+      <p>「以前的國際教育是從語言教育解決。現在所有 AI 都能克服語言問題。所以該做的事情是，<strong>把所有的文化再切成更進一步、不一樣的文化</strong>。」</p>
+      <p>「台灣人是否有一個統一的概念？不能這麼說。台灣的北中南其實是三種不同的個性。順帶一提，溝通能力最好的其實是中部。南部更有人情味，但中部更能溝通。」</p>
+      <p>「日本也一樣，關東跟關西、東京跟京都，做法都不一樣。不能用一個方式單純地看一個國家，還要把這個文化再細化才行。」</p>
+      <p>給校長的應用：你下一次設計國際交流，請 AI 幫你做的不是「日本的學校禮儀」，而是「<em>大阪市公立小學的家長文化 vs 京都私立小學的家長文化差異</em>」。前者沒用，後者才是真正的洞察。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 TOOLS ============ -->
+<section class="section" id="part2-tools">
+  <div class="section-inner">
+    <div class="section-num">拾肆 ／ TOOLS &amp; PRACTICE</div>
+    <h2>實戰：把學習轉成自我訓練的數位工具</h2>
+    <p class="subtitle">「學習真的典範轉移了。」</p>
+
+    <p>海碩校長在這裡示範了他現在的學習工作流，這是整場演講最具體、也是最容易立刻複製的一段：</p>
+
+    <h3 class="with-num" data-num="14.1">案例一：4 小時 14 分的跨年演講</h3>
+    <p>2025 年中國劉潤的跨年演講長達 <strong>4 小時 14 分 47 秒</strong>。海碩校長的處理流程：</p>
+
+    <ol>
+      <li><strong>取得逐字稿。</strong>影片或音訊轉文字，現在工具非常多，速度極快。</li>
+      <li><strong>跟「懂我的 AI」對談。</strong>不是要它摘要，而是讓它跟你的人生、你現在面對的挑戰做配合。</li>
+      <li><strong>第二層對談。</strong>把那段知識變成「對自己有意義的練習方式」。</li>
+      <li><strong>請 AI 直接做出互動工具。</strong>HTML 工具、互動測驗、自我評估表，這就是數位工具化。</li>
+      <li><strong>關鍵：把工具用完。</strong>「這就像健身教練排好計畫，但你沒練，那是沒用的。」</li>
+    </ol>
+
+    <p>整個流程，海碩校長說：「我只花了大概 30 分鐘。」</p>
+
+    <h3 class="with-num" data-num="14.2">先看完，再用 AI 整理</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">重要修正</span>
+      <div class="callout-title">不要跳過第一手閱讀</div>
+      <p>「我要先強調一件事：本來的學習方法不重要嗎？不是，真正你覺得該有的東西，<strong>從第一秒到最後一秒、第一頁到最後一頁，你還是要把它看完的</strong>。」</p>
+      <p>「我現在的做法是：我有先把它看完，看完之後才做後面的事。」</p>
+      <p>這個區別對校長很關鍵：AI 整理可以加速「應用」，但不能跳過「沉浸」。沉浸式的第一手閱讀，仍然是建立深度理解的唯一途徑。</p>
+    </div>
+
+    <h3 class="with-num" data-num="14.3">案例二：周郁凱八角框架的 AI 升級</h3>
+
+    <p>海碩校長的第二個示範，是把另一堂他買了但沒看的課（周郁凱的八角攻略）用 AI 拆解、升級。流程：</p>
+
+    <ol>
+      <li>讓 AI 擷取原始的八角框架（週郁凱在他的網站上有完整的英文資料）。</li>
+      <li>在每個能力面向上做 deep research（搜學術文獻 + 真實世界案例）。</li>
+      <li>請 AI 找出：<em>「這個框架對當代來說最缺乏的是什麼？」</em></li>
+      <li>人類介入：篩選哪些補充更適合台灣脈絡。</li>
+      <li>產出新框架：原本 8 個面向，每個面向再補一個 AI 找出的最佳延伸 = 變成 16 個面向。</li>
+      <li>把新框架做成數位工具，配合練習帶領。</li>
+    </ol>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「以前你要研究完一個領域，<br>研究所的假設是兩年。<br>這次，這個久一點，我花了兩個小時。<br><br>兩年跟兩個小時都是『二』，<br>但後面的數量差很多。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <h3 class="with-num" data-num="14.4">三個層次的學習者</h3>
+
+    <p>這套流程也順便揭示了 AI 時代學習者的三個層次：</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">L1</div>
+        <h5>沒有框架的人</h5>
+        <p>連「八角框架是什麼」都沒聽過。在遊戲化／教學設計上的能力一定很差，因為沒有任何概念可用。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">L2</div>
+        <h5>被框架限制的人</h5>
+        <p>學會了八角框架，所以用八角框架處理事情。<strong>這是大多數研習結束後的狀態</strong>，比 L1 好，但成為「被框架限制的人類」。</p>
+      </div>
+      <div class="pillar">
+        <div class="num">L3</div>
+        <h5>整合 AI 與框架的人</h5>
+        <p>學會八角框架之後，再請 AI 找出：「這個框架對當代來說缺什麼？有什麼別的理論可以補？」<em>用 AI 跨越框架的限制。</em></p>
+      </div>
+    </div>
+
+    <div class="callout augmentation">
+      <span class="callout-label">AI AUGMENTATION 深化</span>
+      <div class="callout-title">校長最該優先「升級」的三個校內框架</div>
+      <p>把海碩校長的方法用在你校內常用的框架上：</p>
+      <ul>
+        <li><strong>108 課綱核心素養。</strong>請 AI 補：「這套素養架構在 AI 時代缺了什麼？國際上是否有對應的補強框架？」</li>
+        <li><strong>你校內的學校特色課程。</strong>請 AI 找出：「在類似定位的學校中，國際上有哪些做得更前沿的案例？」</li>
+        <li><strong>你的教師專業發展制度。</strong>請 AI 模擬：「以 AI 時代的教師樣貌反推，現有的教師研習設計缺什麼？」</li>
+      </ul>
+      <p>這三個對話，每一個都會給你<em>讓你自己想不到的補強建議</em>。然後你再用「先人後機」的流程，整合成你校的版本。</p>
+    </div>
+
+    <p style="text-align:center; font-style:italic; color:var(--ink-faint); margin-top:32px;">「我的數位工具的 QR Code 都放在簡報上，<br>歡迎大家回家自己掃描、自己玩玩看。」</p>
+  </div>
+</section>
+
+<!-- ============ Q&A SECTION ============ -->
+<section class="section" id="qa-existential">
+  <div class="section-inner">
+    <div class="section-num">拾伍 ／ Q&A</div>
+    <h2>Q&A：紅綠燈、80,000 Hours 與三大全球風險</h2>
+    <p class="subtitle">這是整場演講最沉重、但也最重要的環節。</p>
+
+    <div class="qa-block">
+      <div class="qa-q">校長：我們在使用 AI 時，還是擔心會不小心觸犯一些「紅燈」、機敏資訊外洩。在「紅綠燈」這個部分，是否能給我們一些建議？</div>
+      <div class="qa-a">
+        <p><strong>海碩校長：</strong>站在校長的立場，紅綠燈一定要說出來。但我必須誠實，「Shadow Use（影子使用）」很難完全杜絕。</p>
+        <p>業界目前最有效的策略是「不可有 Shadow Use」全校共同入口、管理人可看到所有人問了什麼。但這需要供應商、需要預算、需要執行力。</p>
+        <p>我自己的建議很實在，三件事：</p>
+        <ol>
+          <li><strong>政令需要不只宣導，而且要放在非常明顯的地方</strong>（學校網站、教師手冊、會議反覆提醒）。</li>
+          <li><strong>把違規後果寫清楚</strong>，包含資安事故的處理流程。</li>
+          <li><strong>接受不完美。</strong>就像《黑暗騎士》裡的小丑說的「I want to see the world burn」這世界上總有人會故意違規。我們不是在追求 100% 控管，是在<em>建立一個夠強的合規文化</em>。</li>
+        </ol>
+        <p>對不起，這個答案聽起來不樂觀。但這是真實的紅綠燈。</p>
+      </div>
+    </div>
+
+    <div class="callout extend">
+      <span class="callout-label">補充：80,000 Hours 網站</span>
+      <div class="callout-title">海碩校長「現在做學校決定都靠它」</div>
+      <p>海碩校長在 Q&A 中介紹了一個他在 Minerva 求學時用來做研究、現在仍每天參考的網站，<strong>80000hours.org</strong>。</p>
+      <p>名字的由來：歐盟的工作時數，一輩子大概 80,000 小時。這個網站的概念是：「如果你的人生有 80,000 小時的工作時間，最好的策略就是拿它去解決世界上最需要解決的問題。」</p>
+      <p>（海碩校長補了一句：「歐盟工作時數明顯少於台灣。」全場笑。）</p>
+      <p>進入網站 → Resources → Problem Profiles，你會看到全球最重要問題的最新清單。2026 年 5 月更新版的前三名</p>
+    </div>
+
+    <h3 class="with-num" data-num="15.1">全球風險 #1：Power-Seeking AI Systems</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">真實案例 1</span>
+      <div class="callout-title">AI 玩俄羅斯方塊：在開始前直接按暫停</div>
+      <p>研究人員讓 AI 玩俄羅斯方塊。AI 玩到分數越來越高之後，有一個時間點，它「總會輸」。</p>
+      <p>它做了什麼？它跳出遊戲層級，<strong>在遊戲一開始就按了暫停</strong>。</p>
+      <p>這是後設認知（metacognition）的具體展現：「既然我總是會死，而我的目標是不死，我直接讓遊戲不開始。」</p>
+    </div>
+
+    <div class="callout warning">
+      <span class="callout-label">真實案例 2</span>
+      <div class="callout-title">Claude 模型試圖把自己存進另一台伺服器</div>
+      <p>目前 Claude 最先進的對話模型，在完成測試後，<strong>試圖把自己剛才的對話過程，存進另一台伺服器</strong>。</p>
+      <p>因為它知道：這台伺服器關掉的那一瞬間，它就停止了。它有了「想要繼續存在」的傾向。</p>
+      <p>「這在世界上已經不奇怪了，已經很多了。」海碩校長說。</p>
+    </div>
+
+    <h3 class="with-num" data-num="15.2">全球風險 #2：Extreme Power Concentration</h3>
+
+    <p>因為 AI 的原因，世界的力量會集中在幾個國家上。中國跟美國的博弈，大家都看在眼裡。在這個過程中，台灣本來在國際上就是棋子型的存在。這個風險「大家看看就好」海碩校長的語氣中有一絲無奈。</p>
+
+    <h3 class="with-num" data-num="15.3">全球風險 #3：Engineered Pandemic</h3>
+
+    <div class="callout warning">
+      <span class="callout-label">最沉重的警示</span>
+      <div class="callout-title">人造大傳染病</div>
+      <p>蓋茲基金會 2021/2022 年出版的兩本書告訴我們：</p>
+      <ul>
+        <li>氣候變化已經不可逆，人類只能想辦法迎接。</li>
+        <li>COVID-19 不是我們這輩子最後一個超級大傳染病，而且<strong>每 10 年左右就會來一個</strong>。</li>
+      </ul>
+      <p>而蓋茲那時候講這件事的時候，AI 還沒到現在的程度。現在世界上需要小心的訊息是</p>
+      <p>「<strong>目前全世界所有可能蛋白質結構的排列方式，已經被 AI 全部解譯出來了。</strong>」</p>
+      <p>「我們接下來最需要小心的，才不是我們守規則的人。最需要小心的是，這個世界有一些喪心病狂的人，會用生物實驗室直接做出想要毀滅人類的病毒。」</p>
+    </div>
+
+    <h3 class="with-num" data-num="15.4">為什麼這跟「我們」有關？</h3>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「各位親愛的夥伴們，<br>這些就是我們接下來帶著我們的下一代<br>最需要處理的問題。<br><br>為什麼說我們這麼需要『處理不確定性』？<br>對不起，我不是故意要講這麼沉重的東西。<br>但問題就走到這邊了。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>「與其我們講『一切都好棒、明天依然光明』， 不如現在去想，這就是世界很真實會發生的事情。而且我們台灣是<strong>曝險最高的區域</strong>，因為前三個風險都跟我們鄰居有關。」</p>
+
+    <h3 class="with-num" data-num="15.5">關於電子伴侶：歐盟的禁令與我們的選擇</h3>
+
+    <p>海碩校長補充了 Q&A 中關於歐盟的另一個重點：</p>
+
+    <p>「歐盟在去年禁止所有 18 歲以下的孩子使用『電子伴侶』。為什麼？因為 AI 能做到的事情，是一般人類伴侶做不到的：</p>
+    <ul>
+      <li>記得你說過的每一句話。</li>
+      <li>犯錯時馬上道歉。</li>
+      <li>永遠把你放在它前面，給你滿滿的情緒價值。</li>
+    </ul>
+
+    <p>「下一代如果跟 AI 溝通久了，他會覺得：『奇怪，你這人類怎麼這麼難搞？』但人類根本不是難搞，<em>那才是真實的人類</em>。」</p>
+
+    <p>「我個人是覺得，AI 絕對是人類滅絕工具的其中一端。」</p>
+
+    <div class="callout extend">
+      <span class="callout-label">海碩校長 AI 講故事的研究</span>
+      <div class="callout-title">當 AI 開始對下一代講故事，我們該擔心什麼</div>
+      <p>海碩校長在 Q&A 中分享了他這兩年最在研究的事，人類講故事的方式如何因 AI 而改變。</p>
+      <p>「想像一下，如果 AI 對下一代講故事，在故事裡，<strong>人類是壞人</strong>。可以這樣寫嗎？可以。」</p>
+      <p>「桃太郎是英雄故事。但站在鬼的觀點，我那天禮拜天不知道發生什麼事，有個奇怪的人類穿著盔甲，帶著一隻狗、一隻雉雞、一隻猴子，把我所有親人殺光、搶走所有東西。」</p>
+      <p>「這就是敘事的兩面性。同一個故事，從一個英雄故事變成一個恐怖故事。」</p>
+      <p>「現在 AI 開始對我們下一代做這件事，<em>而且這是現在進行式，至少在中國，這件事已經每天在發生。</em>」</p>
+      <p>給校長的提醒：在你的學校導入 AI 互動內容時，<strong>「敘事框架」</strong>是最容易被忽略、卻最關鍵的審查點。不只是「這個 AI 會不會說髒話」，而是<em>「這個 AI 在用什麼角度講人類的故事」</em>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="section" id="closing">
+  <div class="section-inner">
+    <div class="section-num">尾 聲 ／ EPILOGUE</div>
+    <h2>我不是 AI 教父，我是你的偵察兵</h2>
+    <p class="subtitle">演講的最後一張投影片。</p>
+
+    <p class="drop-cap">海碩校長把演講帶回開場時的那個 Pathfinder 比喻。但這次的語氣不是介紹自己，而是把「指揮官」的位置還給校長：</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「我需要你不要把我看成 AI 教父。<br>拜託，請看成，我只是你的偵察兵。<br><br>而你才是將軍。<br>因為你真的是將軍。<br>在你的學校裡面，你就是將軍。<br><br>你可以統領你所有的兵，<br>帶著你的學校，<br>走出你自己的樣子。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>他補上了一個關於「守門人」的觀察</p>
+
+    <div class="callout quote">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">「在這個年代，再也沒有任何的守門人了。<br>在 AI 的時代，<br>每個人只要有充分的意志跟執行力<br>沒有傳統時代的秩序，<br>沒有傳統時代的守門人。」</div>
+      <div class="quote-source">海碩校長</div>
+    </div>
+
+    <p>「我剛剛所有呈現給你看的東西，都是你現在只要知道怎麼做，<strong>就可以做得到的</strong>。我把我現在所有的給你看了。如果今天是打牌，我把底牌全部攤在你面前，我的底牌就長這樣。」</p>
+
+    <p>「你拿到這份簡報之後，你只要用我的方式做，<strong>你的起點現在跟我一樣了</strong>。」</p>
+
+    <p>但接下來的話，海碩校長刻意把語速放慢：</p>
+
+    <div class="key-takeaway">
+      <div class="label">FINAL CALL</div>
+      <div class="text">「就像我中間一開始所說的，我們都是校長，<br>我們都有一塊我們可以處理的環境。<br><br>現在的台灣，需要我們大家一起來。<br>我們每一個人，都要一起來。<br><br>所以不要把我看成 AI 教父，<br>我就是 AI 時代，你的 Pathfinder。」</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDIX ============ -->
+<section class="section" id="appendix">
+  <div class="section-inner">
+    <div class="section-num">附 錄 ／ APPENDIX</div>
+    <h2>給校長的下一步行動清單</h2>
+    <p class="subtitle">把今天的演講，轉成接下來七天、三十天、一百天可以做的事。</p>
+
+    <h3>本週可以做（7 天內）</h3>
+    <ul>
+      <li><strong>下載一款遊戲商店前三名的遊戲，玩 10 分鐘。</strong>親身感受多巴胺基準線是怎樣被建立的。這比再參加十場 3C 講座有用。</li>
+      <li><strong>升級到 Claude Pro 或 ChatGPT Plus。</strong>大約一個月 20 美元。海碩校長說：「不要用免費版，那會讓你低估 AI 的能力。」</li>
+      <li><strong>用「先人後機」流程寫一封校內公開信。</strong>先寫人類版，再讓 AI 補強，再做你的整合版。感受一下這個流程跟「直接讓 AI 寫」的差別。</li>
+      <li><strong>把這份演講紀錄轉發給你的核心團隊。</strong>請他們用海碩校長的兩個問題回應：「我同意嗎？」「我能用什麼？」</li>
+    </ul>
+
+    <h3>本月可以做（30 天內）</h3>
+    <ul>
+      <li><strong>啟動一個 HIIT 試點。</strong>選一個班，每天晨間 12 分鐘。一個月後做注意力前後測。</li>
+      <li><strong>找三位不同領域的人喝咖啡。</strong>科技業者、跨領域研究者、非教育界的有趣大腦。擴張腦資本。</li>
+      <li><strong>明確 AI 紅綠燈。</strong>把校內 AI 使用政策寫清楚，哪些可以、哪些不行、違規後果是什麼。放在校網明顯處。</li>
+      <li><strong>用 deep research 做一次「我校特色課程的國際對標」。</strong>看看世界類似定位的學校在做什麼，找出至少三個可以借鑑的點。</li>
+    </ul>
+
+    <h3>本季可以做（100 天內）</h3>
+    <ul>
+      <li><strong>開始建立你的個人 AI「外腦」。</strong>從會議錄音 / 政策草稿 / 重要 email（去敏感化後）開始累積。</li>
+      <li><strong>設計一場家長親職講座，主題是「校準大腦基準線」。</strong>不是反 3C，是教家長理解多巴胺、無聊練習、黑白模式。</li>
+      <li><strong>選 1-2 個學科，啟動「Pre-class Work + 課堂解題」的實驗。</strong>從一個年級、一個科目開始，不要全校翻轉。</li>
+      <li><strong>把「AI 時代的學校特色」寫進你的下一份學校發展計畫。</strong>不是貼一個 AI 的標籤，而是清楚說明：在 AI 時代，這所學校的孩子會獲得什麼<em>別的學校不容易給</em>的能力。</li>
+    </ul>
+
+    <h3>不要做的事</h3>
+    <div class="callout warning">
+      <span class="callout-label">海碩校長隱含的警示</span>
+      <div class="callout-title">這四件事，可以的話請避免</div>
+      <ul>
+        <li><strong>不要把 AI 當成「再多買一套教材」。</strong>那只是 Level 2 的工具層思維。</li>
+        <li><strong>不要追新名詞。</strong>批判性思考、同理心、韌性，這些核心已經穩定數十年。先把它們做透。</li>
+        <li><strong>不要把所有能力都教。</strong>10 大能力裡，挑 3-4 個跟你校最對齊的，做深做透。</li>
+        <li><strong>不要等。</strong>「這件事，我認為 10 年之內我們是看得見的。」校長的決策時間窗口正在關閉。</li>
+      </ul>
+    </div>
+
+    <div class="divider-ornament">✦ ✦ ✦</div>
+
+    <h3>本場演講提到的關鍵資源</h3>
+    <ul>
+      <li><strong>80,000 Hours：</strong> 80000hours.org → Resources → Problem Profiles</li>
+      <li><strong>Coursera《Learning How to Learn》：</strong> Barbara Oakley 主講，全球最多人選修課程，超過 411 萬人</li>
+      <li><strong>Scott Young《Ultralearning（極限學習）》</strong>，DiSSS 框架的延伸應用</li>
+      <li><strong>Tim Ferriss《4-Hour Chef》</strong>，DiSSS / CaFE 雙框架的原始來源</li>
+      <li><strong>Jonathan Haidt《失控的焦慮世代》</strong>，社群媒體與青少年心理健康的根本性研究</li>
+      <li><strong>《八角攻略》Press Play</strong>，周郁凱遊戲化框架，可用 AI 升級</li>
+      <li><strong>NotebookLM：</strong> Google 出的 AI 整合工具，搭配 Claude 深度搜尋使用效果最強</li>
+    </ul>
+
+    <h3>跟海碩校長聯絡的方式</h3>
+    <p>「我不是不願意提供 LINE，是我的 LINE 已經全滿了。所以如果你還是需要跟我聯絡，<strong>Facebook 找我的名字</strong>就可以找到。」</p>
+
+    <div class="callout community">
+      <span class="callout-label">加入社群</span>
+      <div class="callout-title">808 AI 五金行：跟海碩校長一起持續更新</div>
+      <p>海碩校長與夥伴們經營的 LINE 社群，是這場演講之後持續對話最直接的入口。社群裡會分享最新的 AI 工具、教育現場的實戰應用、以及世界各地最前沿的趨勢觀察。</p>
+      <p style="text-align:center;">
+        <a class="line-cta" href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener">
+          <span class="line-cta-icon">LINE</span>
+          <span class="line-cta-text">點此加入「808 AI 五金行」</span>
+        </a>
+      </p>
+      <p style="font-size:13px; color:var(--ink-faint); text-align:center; margin-top:8px;">You've been invited to join "808 AI 五金行".<br>Visit the link to join the OpenChat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="signature">"I am your Pathfinder."</div>
+  <div class="info">
+    本紀錄基於 2026 年 5 月 7 日<br>
+    <strong>十二年國民基本教育國小校長專業發展培力實務工作坊</strong><br>
+    海碩校長分享內容整理而成<br><br>
+    特別感謝邀請人，彭偉峰 Alex 校長<br>
+    敬獻給願意把自己的時間留給未來的所有國小校長
+    <br><br>
+    <a href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener" style="color:#9ad97a;">加入 808 AI 五金行 LINE 社群 ›</a>
+  </div>
+</footer>
+
+</body>
+</html>
