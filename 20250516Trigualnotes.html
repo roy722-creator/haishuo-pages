@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durable Skills · 持久技能 · Habilidades Duráveis — 演講筆記</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16213e;
+    --ink-soft: #2d3448;
+    --muted: #5a6275;
+    --line: #e6e8ef;
+    --bg: #fafbfd;
+    --bg-card: #ffffff;
+    --brand: #2d5ef5;
+    --brand-dark: #1a3dd6;
+    --accent: #f97316;
+    --br-green: #009C3B;
+    --br-yellow: #FEDF00;
+    --tw-red: #C8102E;
+    --highlight: #fef3c7;
+    --shadow-sm: 0 1px 3px rgba(15,23,42,.06);
+    --shadow-md: 0 4px 16px rgba(15,23,42,.08);
+    --shadow-lg: 0 12px 40px rgba(15,23,42,.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    font-family: "Noto Sans TC", "Inter", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.lang-en, body.lang-pt {
+    font-family: "Inter", "Noto Sans TC", system-ui, sans-serif;
+  }
+
+  /* ============ LANGUAGE SWITCHING ============ */
+  [data-lang] { display: none !important; }
+  body.lang-zh [data-lang="zh"],
+  body.lang-en [data-lang="en"],
+  body.lang-pt [data-lang="pt"] {
+    display: revert !important;
+  }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+  }
+  .topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .topbar-brand {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .topbar-brand small {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 10px;
+    font-size: 13px;
+  }
+  .lang-switch {
+    display: flex;
+    gap: 4px;
+    background: #eef1f8;
+    padding: 4px;
+    border-radius: 12px;
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .2s;
+    font-family: inherit;
+  }
+  .lang-btn:hover {
+    color: var(--ink);
+  }
+  .lang-btn.active {
+    background: var(--bg-card);
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background:
+      radial-gradient(900px 480px at 15% 0%, rgba(45,94,245,.10), transparent 60%),
+      radial-gradient(700px 400px at 90% 20%, rgba(0,156,59,.08), transparent 60%),
+      linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+    padding: 80px 28px 60px;
+    text-align: center;
+  }
+  .hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: .2em;
+    color: var(--brand);
+    font-weight: 700;
+    padding: 8px 16px;
+    border: 1px solid rgba(45,94,245,.3);
+    border-radius: 99px;
+    margin-bottom: 24px;
+    background: rgba(45,94,245,.05);
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(120deg, #2d5ef5 0%, #009C3B 50%, #f97316 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-sub {
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .hero-meta-item strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ============ TOC ============ */
+  .toc {
+    max-width: 1100px;
+    margin: 60px auto 0;
+    padding: 0 28px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .toc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all .2s;
+    display: block;
+  }
+  .toc-card:hover {
+    border-color: var(--brand);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .toc-num {
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .toc-time {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .toc-title {
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  /* ============ SECTION ============ */
+  .speech-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 28px 40px;
+  }
+  .section-head {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .section-num-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--brand);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+  .section-time {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    background: #eef1f8;
+    padding: 3px 10px;
+    border-radius: 99px;
+  }
+  .speech-section h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  /* ============ BIG IDEA ============ */
+  .big-idea {
+    background: linear-gradient(135deg, #fff8eb 0%, #fef3c7 100%);
+    border-left: 5px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .big-idea-label {
+    font-size: 11px;
+    letter-spacing: .25em;
+    color: var(--accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ============ KEY POINTS ============ */
+  .key-points {
+    margin: 28px 0;
+  }
+  .key-points h3 {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .key-points ul {
+    list-style: none;
+    padding: 0;
+  }
+  .key-points li {
+    padding: 14px 0 14px 32px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  .key-points li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .key-points li:last-child { border-bottom: none; }
+  .key-points strong {
+    color: var(--ink);
+    font-weight: 700;
+    background: var(--highlight);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  /* ============ DATA CALLOUT ============ */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .data-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .data-num {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 900;
+    color: var(--brand);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .data-num.red { color: var(--tw-red); }
+  .data-num.green { color: var(--br-green); }
+  .data-label {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  /* ============ GOLDEN QUOTE ============ */
+  .quote {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 18px;
+    padding: 40px 36px;
+    margin: 36px 0;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .quote:before {
+    content: "\201C";
+    font-family: "Playfair Display", serif;
+    font-size: 100px;
+    line-height: 1;
+    color: rgba(255,255,255,.18);
+    position: absolute;
+    top: 12px;
+    left: 24px;
+  }
+  .quote-text {
+    font-family: "Playfair Display", "Noto Sans TC", serif;
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-weight: 500;
+    line-height: 1.45;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-attribution {
+    margin-top: 18px;
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+    font-style: normal;
+    font-family: inherit;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* ============ SPEAKER NOTE ============ */
+  .speaker-note {
+    background: #f0f4ff;
+    border-left: 4px solid var(--brand);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .speaker-note-label {
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--brand);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .speaker-note em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* ============ BEFORE/AFTER BARS ============ */
+  .surge-block {
+    margin: 28px 0;
+  }
+  .surge-item {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .surge-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .surge-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .surge-delta {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    color: var(--tw-red);
+    font-size: 14px;
+    background: #fef2f2;
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .surge-bar-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 56px;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .surge-bar-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .surge-bar-track {
+    background: #eef1f8;
+    height: 10px;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .surge-bar-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width .8s ease;
+  }
+  .surge-bar-fill.pre { background: linear-gradient(90deg, #93c5fd, #60a5fa); }
+  .surge-bar-fill.post { background: linear-gradient(90deg, #fb923c, #dc2626); }
+  .surge-bar-pct {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  /* ============ KILLER COMPARISON ============ */
+  .killer-section {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    padding: 80px 28px;
+    margin: 60px 0;
+    border-top: 4px solid var(--ink);
+    border-bottom: 4px solid var(--ink);
+  }
+  .killer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .killer-eyebrow {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: .25em;
+    color: var(--accent);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .killer-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .killer-subtitle {
+    text-align: center;
+    font-size: 17px;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+  .comp-col {
+    background: var(--bg-card);
+    border: 2px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 22px;
+    box-shadow: var(--shadow-md);
+  }
+  .comp-col.brazil { border-top: 6px solid var(--br-green); }
+  .comp-col.taiwan { border-top: 6px solid var(--tw-red); }
+  .comp-col.global { border-top: 6px solid var(--brand); }
+  .comp-col-head {
+    text-align: center;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 2px dashed var(--line);
+  }
+  .comp-flag {
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .comp-name {
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .comp-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .comp-list {
+    list-style: none;
+    padding: 0;
+  }
+  .comp-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  .comp-list li:last-child { border-bottom: none; }
+  .comp-list li strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .convergence-banner {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+    margin-top: 32px;
+    box-shadow: var(--shadow-lg);
+  }
+  .convergence-text {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+  .convergence-text .highlight {
+    background: linear-gradient(120deg, var(--br-green), var(--br-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .convergence-sub {
+    margin-top: 14px;
+    color: rgba(255,255,255,.78);
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  /* ============ ACTION CARDS ============ */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin: 28px 0;
+  }
+  .action-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: all .2s;
+  }
+  .action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand);
+  }
+  .action-num {
+    font-family: "Inter", sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .action-title {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .action-desc {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ============ CLOSING ============ */
+  .closing {
+    background: linear-gradient(135deg, #16213e 0%, #1a3dd6 100%);
+    color: #fff;
+    border-radius: 24px;
+    padding: 60px 40px;
+    margin: 60px auto;
+    max-width: 1100px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .closing-freire {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .closing-freire-trans {
+    color: rgba(255,255,255,.7);
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .closing-attrib {
+    font-size: 12px;
+    letter-spacing: .15em;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .closing-final {
+    font-size: clamp(20px, 2.6vw, 28px);
+    font-weight: 700;
+    margin-top: 24px;
+    line-height: 1.5;
+  }
+  .closing-final .knowing { color: var(--br-yellow); }
+  .closing-final .doing { color: #fff; text-decoration: underline; text-decoration-color: var(--br-yellow); text-underline-offset: 8px; }
+  .closing-obrigado {
+    margin-top: 40px;
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-style: italic;
+    color: var(--br-yellow);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    max-width: 1100px;
+    margin: 60px auto 40px;
+    padding: 40px 28px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer strong { color: var(--ink); }
+  .sources {
+    text-align: left;
+    max-width: 800px;
+    margin: 24px auto 0;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .sources summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--brand);
+    text-align: center;
+    padding: 8px;
+  }
+  .sources ul {
+    margin-top: 14px;
+    padding-left: 20px;
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    .topbar { position: static; }
+    .lang-switch { display: none; }
+    .toc { display: none; }
+    .closing { box-shadow: none; }
+    .speech-section { padding: 30px 20px; page-break-inside: avoid; }
+    .quote { box-shadow: none; }
+    body { font-size: 12pt; }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 700px) {
+    .hero { padding: 60px 20px 40px; }
+    .speech-section { padding: 50px 20px 30px; }
+    .killer-section { padding: 50px 20px; }
+    .closing { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body class="lang-zh">
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <span data-lang="zh">持久技能 · 演講筆記</span>
+      <span data-lang="en">Durable Skills · Speech Notes</span>
+      <span data-lang="pt">Habilidades Duráveis · Notas da Palestra</span>
+      <small>
+        <span data-lang="zh">20 分鐘 · 巴西教育團來訪</span>
+        <span data-lang="en">20 min · Brazilian delegation visit</span>
+        <span data-lang="pt">20 min · Visita da delegação brasileira</span>
+      </small>
+    </div>
+    <div class="lang-switch" role="tablist">
+      <button class="lang-btn active" data-set-lang="zh">中文</button>
+      <button class="lang-btn" data-set-lang="en">English</button>
+      <button class="lang-btn" data-set-lang="pt">Português</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span data-lang="zh">演講筆記 · 不是逐字稿</span>
+      <span data-lang="en">Speech Notes · Not a Script</span>
+      <span data-lang="pt">Notas da Palestra · Não é um Roteiro</span>
+    </div>
+    <h1>
+      <span data-lang="zh">持久技能<br><span class="accent">是 AI 時代唯一還能撐得住的賭注</span></span>
+      <span data-lang="en">Durable Skills<br><span class="accent">The Only Bet That Still Works in the Age of AI</span></span>
+      <span data-lang="pt">Habilidades Duráveis<br><span class="accent">A Única Aposta Que Ainda Funciona na Era da IA</span></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-lang="zh">給遠道而來的巴西教育夥伴：當所有技能都在崩塌，我們該教孩子什麼？</span>
+      <span data-lang="en">For our Brazilian education partners: When all skills are collapsing, what should we teach our children?</span>
+      <span data-lang="pt">Para nossos parceiros brasileiros da educação: Quando todas as habilidades estão entrando em colapso, o que devemos ensinar às nossas crianças?</span>
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span data-lang="zh"><strong>對象</strong> · 巴西國際學校教育團</span>
+        <span data-lang="en"><strong>Audience</strong> · Brazilian International School delegation</span>
+        <span data-lang="pt"><strong>Público</strong> · Delegação de escola internacional brasileira</span>
+      </div>
+      <div class="hero-meta-item">
+        <span data-lang="zh"><strong>地點</strong> · 臺中</span>
+        <span data-lang="en"><strong>Location</strong> · Taichung, Taiwan</span>
+        <span data-lang="pt"><strong>Local</strong> · Taichung, Taiwan</span>
+      </div>
+      <div class="hero-meta-item">
+        <span data-lang="zh"><strong>時長</strong> · 20 分鐘</span>
+        <span data-lang="en"><strong>Duration</strong> · 20 minutes</span>
+        <span data-lang="pt"><strong>Duração</strong> · 20 minutos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOC ============ -->
+<nav class="toc">
+  <div class="toc-grid">
+    <a href="#sec1" class="toc-card">
+      <div class="toc-num">01</div>
+      <div class="toc-time">3 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">開場與急迫感</span>
+        <span data-lang="en">Opening & Urgency</span>
+        <span data-lang="pt">Abertura & Urgência</span>
+      </div>
+    </a>
+    <a href="#sec2" class="toc-card">
+      <div class="toc-num">02</div>
+      <div class="toc-time">2 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">12 年判準</span>
+        <span data-lang="en">The 12-Year Standard</span>
+        <span data-lang="pt">O Padrão de 12 Anos</span>
+      </div>
+    </a>
+    <a href="#sec3" class="toc-card">
+      <div class="toc-num">03</div>
+      <div class="toc-time">2 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">三方視角</span>
+        <span data-lang="en">Three Lenses</span>
+        <span data-lang="pt">Três Lentes</span>
+      </div>
+    </a>
+    <a href="#sec4" class="toc-card">
+      <div class="toc-num">04</div>
+      <div class="toc-time">5 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">揭曉真相</span>
+        <span data-lang="en">The Big Reveal</span>
+        <span data-lang="pt">A Grande Revelação</span>
+      </div>
+    </a>
+    <a href="#sec5" class="toc-card">
+      <div class="toc-num">05</div>
+      <div class="toc-time">3 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">我們已經知道</span>
+        <span data-lang="en">We Already Know</span>
+        <span data-lang="pt">Nós Já Sabemos</span>
+      </div>
+    </a>
+    <a href="#sec6" class="toc-card">
+      <div class="toc-num">06</div>
+      <div class="toc-time">5 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">行動</span>
+        <span data-lang="en">Action</span>
+        <span data-lang="pt">Ação</span>
+      </div>
+    </a>
+    <a href="#sec7" class="toc-card">
+      <div class="toc-num">07</div>
+      <div class="toc-time">2 min</div>
+      <div class="toc-title">
+        <span data-lang="zh">收尾</span>
+        <span data-lang="en">Closing</span>
+        <span data-lang="pt">Encerramento</span>
+      </div>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ SECTION 1 ============ -->
+<section id="sec1" class="speech-section">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 01</span>
+      <span class="section-time">3 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">開場與急迫感：為什麼是「現在」</span>
+      <span data-lang="en">Opening & Urgency: Why NOW</span>
+      <span data-lang="pt">Abertura & Urgência: Por Que AGORA</span>
+    </h2>
+  </div>
+
+  <div class="big-idea">
+    <div class="big-idea-label">
+      <span data-lang="zh">核心訊息</span>
+      <span data-lang="en">Big Idea</span>
+      <span data-lang="pt">Ideia Principal</span>
+    </div>
+    <span data-lang="zh">技能淘汰本來就一直在發生。但 AI 讓速度<strong>瘋狂加速</strong>。如果我們現在不開始研究「持久技能」，已經快來不及了。</span>
+    <span data-lang="en">Skill obsolescence has always existed. But AI is making it <strong>insanely fast</strong>. If we don't start studying durable skills now, it's almost too late.</span>
+    <span data-lang="pt">A obsolescência de habilidades sempre existiu. Mas a IA está acelerando isso <strong>de forma absurda</strong>. Se não começarmos a estudar habilidades duráveis agora, já é quase tarde demais.</span>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">想說的關鍵點</span>
+      <span data-lang="en">What I Want to Say</span>
+      <span data-lang="pt">O Que Quero Dizer</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">技能曾經能用一輩子。<strong>1950–60 年代</strong>之前，技能的生命週期相對長得多。</span>
+        <span data-lang="en">Skills used to last a lifetime. Before <strong>the 1950s–60s</strong>, a skill's life cycle was much longer.</span>
+        <span data-lang="pt">Antigamente, uma habilidade durava a vida toda. Antes dos <strong>anos 1950–60</strong>, o ciclo de vida de uma habilidade era muito mais longo.</span>
+      </li>
+      <li>
+        <span data-lang="zh">「打字員」曾經是一份完整的職業。今天每個人都會打字，這份工作消失了。</span>
+        <span data-lang="en">"Typist" used to be a full-time profession. Today everyone types — and the job is gone.</span>
+        <span data-lang="pt">"Datilógrafo" já foi uma profissão completa. Hoje, todo mundo digita — e a profissão desapareceu.</span>
+      </li>
+      <li>
+        <span data-lang="zh">「翻譯／口譯」十年前還是金飯碗。現在 AI 一句話搞定——<strong>對葡萄牙文使用者衝擊更近、更痛</strong>。</span>
+        <span data-lang="en">"Translation / interpretation" was a gold-standard career a decade ago. Today AI handles it in one sentence — <strong>and for Portuguese speakers, the shockwave hits earlier and harder</strong>.</span>
+        <span data-lang="pt">"Tradução e interpretação" era uma carreira de prestígio há uma década. Hoje, a IA faz isso em uma frase — <strong>e para falantes de português, o impacto chega mais cedo e mais forte</strong>.</span>
+      </li>
+      <li>
+        <span data-lang="zh">這不是新聞——技能淘汰一直都在發生。<strong>真正的新聞，是「速度」。</strong></span>
+        <span data-lang="en">This isn't news. Skill displacement has always existed. <strong>The news is the SPEED.</strong></span>
+        <span data-lang="pt">Isso não é novidade. O deslocamento de habilidades sempre existiu. <strong>A novidade é a VELOCIDADE.</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">關鍵資料</span>
+      <span data-lang="en">Key Data</span>
+      <span data-lang="pt">Dados-Chave</span>
+    </h3>
+  </div>
+  <div class="data-grid">
+    <div class="data-card">
+      <div class="data-num">26</div>
+      <div class="data-label">
+        <span data-lang="zh">1987 年：技能半衰期約 <strong>26 年</strong></span>
+        <span data-lang="en">1987: skill half-life ~ <strong>26 years</strong></span>
+        <span data-lang="pt">1987: meia-vida ~ <strong>26 anos</strong></span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-num">4</div>
+      <div class="data-label">
+        <span data-lang="zh">2020 年：<strong>4 年</strong></span>
+        <span data-lang="en">2020: <strong>4 years</strong></span>
+        <span data-lang="pt">2020: <strong>4 anos</strong></span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-num red">2.5</div>
+      <div class="data-label">
+        <span data-lang="zh">2025 年（IBM）：技術技能僅剩 <strong>2.5 年</strong></span>
+        <span data-lang="en">2025 (IBM): tech skills only <strong>2.5 years</strong></span>
+        <span data-lang="pt">2025 (IBM): habilidades técnicas só <strong>2,5 anos</strong></span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-num red">75%+</div>
+      <div class="data-label">
+        <span data-lang="zh">翻譯員預期 AI 將降低收入</span>
+        <span data-lang="en">of translators expect AI to cut their income</span>
+        <span data-lang="pt">dos tradutores esperam que a IA reduza sua renda</span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-num red">#1</div>
+      <div class="data-label">
+        <span data-lang="zh">微軟 2025：翻譯員是「最易被 AI 取代」第一名</span>
+        <span data-lang="en">Microsoft 2025: translators rank #1 most AI-vulnerable</span>
+        <span data-lang="pt">Microsoft 2025: tradutores são #1 mais vulneráveis à IA</span>
+      </div>
+    </div>
+    <div class="data-card">
+      <div class="data-num">12.7%</div>
+      <div class="data-label">
+        <span data-lang="zh">1980 年美國辦公／行政佔全體就業（→ 今天打字員消失）</span>
+        <span data-lang="en">1980 US office/admin share of all jobs (→ typist now gone)</span>
+        <span data-lang="pt">Trabalho administrativo nos EUA em 1980 (→ datilógrafo extinto)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">
+      <span data-lang="zh">我父親那一代的技能能用 26 年。<br>我這一代剩 4 年。<br>我兒子那一代剩 2.5 年——而且還在掉。</span>
+      <span data-lang="en">My father's skills lasted 26 years.<br>Mine last 4.<br>My son's will last 2.5 — and still falling.</span>
+      <span data-lang="pt">As habilidades do meu pai duraram 26 anos.<br>As minhas duram 4.<br>As do meu filho durarão 2,5 — e ainda em queda.</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section id="sec2" class="speech-section">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 02</span>
+      <span class="section-time">2 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">12 年判準：別寫錯的考卷</span>
+      <span data-lang="en">The 12-Year Standard: Don't Write the Wrong Exam</span>
+      <span data-lang="pt">O Padrão de 12 Anos: Não Escreva a Prova Errada</span>
+    </h2>
+  </div>
+
+  <div class="big-idea">
+    <div class="big-idea-label">
+      <span data-lang="zh">核心訊息</span>
+      <span data-lang="en">Big Idea</span>
+      <span data-lang="pt">Ideia Principal</span>
+    </div>
+    <span data-lang="zh">教育者一開始就要追求能撐 <strong>12 年以上</strong>的能力。如果孩子畢業那天，我們教的東西就過時了，整個系統就崩了。</span>
+    <span data-lang="en">Educators must aim for skills that last <strong>at least 12 years</strong>. If what we teach is obsolete on graduation day, the whole system collapses.</span>
+    <span data-lang="pt">Educadores precisam apostar em habilidades que durem <strong>pelo menos 12 anos</strong>. Se o que ensinamos já estiver obsoleto no dia da formatura, todo o sistema desaba.</span>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">想說的關鍵點</span>
+      <span data-lang="en">What I Want to Say</span>
+      <span data-lang="pt">O Que Quero Dizer</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">「12 年」 = 一個孩子從小學進入到高中畢業的完整時間。</span>
+        <span data-lang="en">"12 years" = the full span from a child's first day of primary school to high school graduation.</span>
+        <span data-lang="pt">"12 anos" = o tempo completo desde o primeiro dia da criança no fundamental até o final do ensino médio.</span>
+      </li>
+      <li>
+        <span data-lang="zh">我們花 12 年教的東西，孩子畢業那天還必須<strong>還有用</strong>。</span>
+        <span data-lang="en">What we spend 12 years teaching must <strong>still matter</strong> on graduation day.</span>
+        <span data-lang="pt">O que ensinamos durante 12 anos precisa <strong>ainda fazer sentido</strong> no dia da formatura.</span>
+      </li>
+      <li>
+        <span data-lang="zh">真正的危險不是「不努力」，而是「在錯誤的方向上努力」。</span>
+        <span data-lang="en">The real danger isn't laziness. It's effort in the <strong>wrong direction</strong>.</span>
+        <span data-lang="pt">O perigo real não é a preguiça. É o esforço na <strong>direção errada</strong>.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">
+      <span data-lang="zh">我們很有可能在一個錯誤的方向上努力，<br>到最後就像是寫了一張錯的考卷——<br>即便拿到 100 分，也對未來毫無幫助。</span>
+      <span data-lang="en">We may be working very hard in the wrong direction —<br>like writing the wrong exam.<br>Even a perfect score on the wrong test<br>gets you nowhere.</span>
+      <span data-lang="pt">Podemos estar nos esforçando muito na direção errada —<br>como quem responde a prova errada.<br>Mesmo uma nota perfeita na prova errada<br>não nos leva a lugar nenhum.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 ============ -->
+<section id="sec3" class="speech-section">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 03</span>
+      <span class="section-time">2 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">三方視角：產、官、學的交集</span>
+      <span data-lang="en">Three Lenses: Industry, Government, Academia</span>
+      <span data-lang="pt">Três Lentes: Indústria, Governo, Academia</span>
+    </h2>
+  </div>
+
+  <div class="big-idea">
+    <div class="big-idea-label">
+      <span data-lang="zh">核心訊息</span>
+      <span data-lang="en">Big Idea</span>
+      <span data-lang="pt">Ideia Principal</span>
+    </div>
+    <span data-lang="zh">產、官、學三方都要看。「產」最關鍵——產業需求最清楚、直接連到「孩子能不能在這世界活下去」。但三者缺一不可。<strong>交集，就是最有可能撐 12 年以上的東西。</strong></span>
+    <span data-lang="en">Look at all three lenses — industry, government, and academia. <strong>Industry matters most</strong>, because it tells us most clearly what survival looks like. But all three are essential. <strong>The overlap is where durable skills live.</strong></span>
+    <span data-lang="pt">É preciso olhar para os três: indústria, governo e academia. <strong>A indústria é a mais crítica</strong>, pois mostra com clareza o que significa sobreviver no mundo. Mas as três são essenciais. <strong>A interseção é onde moram as habilidades duráveis.</strong></span>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">想說的關鍵點</span>
+      <span data-lang="en">What I Want to Say</span>
+      <span data-lang="pt">O Que Quero Dizer</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">教育的目標：除了追求知識的快樂，另一個就是讓孩子能<strong>在這世界活下去</strong>並保持競爭力。</span>
+        <span data-lang="en">Education has two goals: the joy of learning, AND the ability to <strong>survive and thrive</strong> in the world.</span>
+        <span data-lang="pt">A educação tem dois objetivos: a alegria de aprender E a capacidade de <strong>sobreviver e prosperar</strong> no mundo.</span>
+      </li>
+      <li>
+        <span data-lang="zh">「產」=產業需求；「官」=政府態度與各國共識；「學」=學界理論基礎。</span>
+        <span data-lang="en">Industry = what employers actually need. Government = national & global consensus. Academia = research-grounded theory.</span>
+        <span data-lang="pt">Indústria = o que os empregadores realmente precisam. Governo = consenso nacional e global. Academia = teoria baseada em pesquisa.</span>
+      </li>
+      <li>
+        <span data-lang="zh">我們把全世界 <strong>22 個權威框架</strong>一起比對——WEF、OECD、MIT、Harvard、Deloitte、新加坡 SkillsFuture、CASEL……</span>
+        <span data-lang="en">We compared <strong>22 authoritative frameworks</strong> — WEF, OECD, MIT, Harvard, Deloitte, Singapore SkillsFuture, CASEL, and more.</span>
+        <span data-lang="pt">Comparamos <strong>22 frameworks autoritativos</strong> — WEF, OCDE, MIT, Harvard, Deloitte, Singapura SkillsFuture, CASEL, entre outros.</span>
+      </li>
+      <li>
+        <span data-lang="zh">如果三方都同意一件事，那這件事有非常高的機率<strong>真的重要</strong>。</span>
+        <span data-lang="en">When all three agree on something, the odds are very high that it <strong>actually matters</strong>.</span>
+        <span data-lang="pt">Quando os três concordam sobre algo, há uma altíssima chance de que isso <strong>realmente importe</strong>.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 ============ -->
+<section id="sec4" class="speech-section">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 04</span>
+      <span class="section-time">5 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">揭曉真相：你以為的，跟事實的差距</span>
+      <span data-lang="en">The Big Reveal: What You Expect vs. What's Actually True</span>
+      <span data-lang="pt">A Grande Revelação: O Que Você Espera vs. O Que É Verdade</span>
+    </h2>
+  </div>
+
+  <div class="big-idea">
+    <div class="big-idea-label">
+      <span data-lang="zh">核心訊息</span>
+      <span data-lang="en">Big Idea</span>
+      <span data-lang="pt">Ideia Principal</span>
+    </div>
+    <span data-lang="zh">如果你期待看到許多「全新概念」——你可能要失望了。<strong>最關鍵的能力，30 年來都沒變。</strong>AI 改變的是順序與比重，不是清單本身。</span>
+    <span data-lang="en">If you were expecting brand-new concepts — prepare to be disappointed. <strong>The most critical skills haven't changed in 30 years.</strong> AI changed the order and the weight. Not the list.</span>
+    <span data-lang="pt">Se você esperava conceitos totalmente novos — prepare-se para se decepcionar. <strong>As habilidades mais críticas não mudaram em 30 anos.</strong> A IA mudou a ordem e o peso. Não a lista.</span>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">30 年都沒掉出前 10 的四個能力</span>
+      <span data-lang="en">Four Skills That Haven't Dropped Out of the Top 10 in 30 Years</span>
+      <span data-lang="pt">Quatro Habilidades Que Não Saíram do Top 10 em 30 Anos</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh"><strong>批判性思考</strong>（Critical Thinking）</span>
+        <span data-lang="en"><strong>Critical Thinking</strong></span>
+        <span data-lang="pt"><strong>Pensamento Crítico</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh"><strong>協作／團隊合作</strong>（Collaboration）</span>
+        <span data-lang="en"><strong>Collaboration / Teamwork</strong></span>
+        <span data-lang="pt"><strong>Colaboração / Trabalho em Equipe</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh"><strong>創造力／創新</strong>（Creativity）</span>
+        <span data-lang="en"><strong>Creativity / Innovation</strong></span>
+        <span data-lang="pt"><strong>Criatividade / Inovação</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh"><strong>學會學習／成長心態</strong>（Learning to Learn）</span>
+        <span data-lang="en"><strong>Learning to Learn / Growth Mindset</strong></span>
+        <span data-lang="pt"><strong>Aprender a Aprender / Mentalidade de Crescimento</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">
+      <span data-lang="zh">AI 改變的是<strong>順序與比重</strong>，<br>而不是清單本身。<br><br>任何人跟你說「AI 時代要學全新的能力」——<br>多半是行銷話術。</span>
+      <span data-lang="en">AI changed <strong>the order and the weight</strong>.<br>Not the list.<br><br>Anyone who tells you "you need brand-new skills for the AI age" —<br>is probably selling you something.</span>
+      <span data-lang="pt">A IA mudou <strong>a ordem e o peso</strong>.<br>Não a lista.<br><br>Qualquer um que diga "você precisa de habilidades totalmente novas para a era da IA" —<br>provavelmente está te vendendo alguma coisa.</span>
+    </div>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">17 項超級共識（前 7 名 · 22 框架統計）</span>
+      <span data-lang="en">17 Super Consensus Skills (Top 7 · across 22 frameworks)</span>
+      <span data-lang="pt">17 Habilidades de Super Consenso (Top 7 · em 22 frameworks)</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">1. 批判性思考 / 判斷力 — <strong>73%</strong> 的框架</span>
+        <span data-lang="en">1. Critical Thinking / Judgment — <strong>73%</strong> of frameworks</span>
+        <span data-lang="pt">1. Pensamento Crítico / Julgamento — <strong>73%</strong> dos frameworks</span>
+      </li>
+      <li>
+        <span data-lang="zh">2. 協作 / 團隊合作 — <strong>68%</strong></span>
+        <span data-lang="en">2. Collaboration / Teamwork — <strong>68%</strong></span>
+        <span data-lang="pt">2. Colaboração / Trabalho em Equipe — <strong>68%</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">3. 創造力 / 創新 — <strong>59%</strong></span>
+        <span data-lang="en">3. Creativity / Innovation — <strong>59%</strong></span>
+        <span data-lang="pt">3. Criatividade / Inovação — <strong>59%</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">4. 學會學習 / 成長心態 — <strong>55%</strong></span>
+        <span data-lang="en">4. Learning to Learn / Growth Mindset — <strong>55%</strong></span>
+        <span data-lang="pt">4. Aprender a Aprender / Mentalidade de Crescimento — <strong>55%</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">5. 溝通能力 — <strong>50%</strong></span>
+        <span data-lang="en">5. Communication — <strong>50%</strong></span>
+        <span data-lang="pt">5. Comunicação — <strong>50%</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">6. 同理心 / 情緒智慧 — <strong>45%</strong></span>
+        <span data-lang="en">6. Empathy / Emotional Intelligence — <strong>45%</strong></span>
+        <span data-lang="pt">6. Empatia / Inteligência Emocional — <strong>45%</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">7. 韌性 / 適應力 — <strong>41%</strong></span>
+        <span data-lang="en">7. Resilience / Adaptability — <strong>41%</strong></span>
+        <span data-lang="pt">7. Resiliência / Adaptabilidade — <strong>41%</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">2023 後爆發性上升的三項</span>
+      <span data-lang="en">Three Skills That Surged After 2023</span>
+      <span data-lang="pt">Três Habilidades Que Dispararam Depois de 2023</span>
+    </h3>
+  </div>
+
+  <div class="surge-block">
+    <div class="surge-item">
+      <div class="surge-item-head">
+        <div class="surge-name">
+          <span data-lang="zh">同理心 / 情緒智慧</span>
+          <span data-lang="en">Empathy / Emotional Intelligence</span>
+          <span data-lang="pt">Empatia / Inteligência Emocional</span>
+        </div>
+        <div class="surge-delta">+66 pp</div>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 前</span>
+          <span data-lang="en">Pre-2023</span>
+          <span data-lang="pt">Pré-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill pre" style="width:20%"></div></div>
+        <span class="surge-bar-pct">20%</span>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 後</span>
+          <span data-lang="en">Post-2023</span>
+          <span data-lang="pt">Pós-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill post" style="width:86%"></div></div>
+        <span class="surge-bar-pct">86%</span>
+      </div>
+    </div>
+    <div class="surge-item">
+      <div class="surge-item-head">
+        <div class="surge-name">
+          <span data-lang="zh">數位 / AI 素養</span>
+          <span data-lang="en">Digital / AI Literacy</span>
+          <span data-lang="pt">Cultura Digital / Letramento em IA</span>
+        </div>
+        <div class="surge-delta">+24 pp</div>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 前</span>
+          <span data-lang="en">Pre-2023</span>
+          <span data-lang="pt">Pré-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill pre" style="width:33%"></div></div>
+        <span class="surge-bar-pct">33%</span>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 後</span>
+          <span data-lang="en">Post-2023</span>
+          <span data-lang="pt">Pós-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill post" style="width:57%"></div></div>
+        <span class="surge-bar-pct">57%</span>
+      </div>
+    </div>
+    <div class="surge-item">
+      <div class="surge-item-head">
+        <div class="surge-name">
+          <span data-lang="zh">韌性 / 適應力</span>
+          <span data-lang="en">Resilience / Adaptability</span>
+          <span data-lang="pt">Resiliência / Adaptabilidade</span>
+        </div>
+        <div class="surge-delta">+16 pp</div>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 前</span>
+          <span data-lang="en">Pre-2023</span>
+          <span data-lang="pt">Pré-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill pre" style="width:27%"></div></div>
+        <span class="surge-bar-pct">27%</span>
+      </div>
+      <div class="surge-bar-row">
+        <span class="surge-bar-label">
+          <span data-lang="zh">2023 後</span>
+          <span data-lang="en">Post-2023</span>
+          <span data-lang="pt">Pós-2023</span>
+        </span>
+        <div class="surge-bar-track"><div class="surge-bar-fill post" style="width:43%"></div></div>
+        <span class="surge-bar-pct">43%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">
+      <span data-lang="zh">AI 越強，<br><strong>情感勞動越稀缺</strong>。<br>需要「人對人」的時刻，<br>價格反而上揚。</span>
+      <span data-lang="en">The stronger AI gets,<br><strong>the scarcer emotional labor becomes</strong>.<br>The moments that require human-to-human —<br>actually rise in value.</span>
+      <span data-lang="pt">Quanto mais forte a IA,<br><strong>mais escasso o trabalho emocional</strong>.<br>Os momentos que exigem ser humano para ser humano —<br>sobem de valor.</span>
+    </div>
+  </div>
+
+  <div class="quote" style="background: linear-gradient(135deg, #1a1a2e 0%, #2d3448 100%);">
+    <div class="quote-text">
+      <span data-lang="zh">這有點像我的身材——<br>我一直知道減肥很重要，<br>但我一直沒認真去做。<br><br><strong>到現在，可能該是時候了。</strong></span>
+      <span data-lang="en">It's a bit like my own weight —<br>I've always known I should lose weight.<br>I just never did anything about it.<br><br><strong>Maybe today is the day.</strong></span>
+      <span data-lang="pt">É um pouco como o meu peso —<br>Sempre soube que precisava emagrecer.<br>Só nunca fiz nada a respeito.<br><br><strong>Talvez hoje seja o dia.</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 - KILLER SECTION ============ -->
+<section id="sec5" class="killer-section">
+  <div class="killer-inner">
+    <div class="section-head" style="text-align:center;border:none;">
+      <div class="section-num-row" style="justify-content:center;">
+        <span class="section-num">Part 05</span>
+        <span class="section-time">3 min · 全場最重的一拳 / The Knockout Punch / O Golpe Decisivo</span>
+      </div>
+    </div>
+    <div class="killer-eyebrow">
+      <span data-lang="zh">而最有趣的是 ——</span>
+      <span data-lang="en">And here's the thing —</span>
+      <span data-lang="pt">E o mais interessante é —</span>
+    </div>
+    <h2 class="killer-title">
+      <span data-lang="zh">巴西 BNCC × 臺灣 108 課綱 × 22 個全球框架</span>
+      <span data-lang="en">Brazil's BNCC × Taiwan's 108 課綱 × 22 Global Frameworks</span>
+      <span data-lang="pt">BNCC do Brasil × 108 課綱 de Taiwan × 22 Frameworks Globais</span>
+    </h2>
+    <p class="killer-subtitle">
+      <span data-lang="zh">你們國家的官方課綱、我們國家的官方課綱、全世界 22 個權威框架——三方並排來看，講的是同一件事。</span>
+      <span data-lang="en">Your country's national curriculum. Our country's national curriculum. The 22 leading global frameworks. Side by side, they all say the same thing.</span>
+      <span data-lang="pt">O currículo nacional do seu país. O currículo nacional do nosso país. Os 22 frameworks globais mais influentes. Lado a lado, todos dizem a mesma coisa.</span>
+    </p>
+
+    <div class="comparison-grid">
+      <!-- BRAZIL -->
+      <div class="comp-col brazil">
+        <div class="comp-col-head">
+          <div class="comp-flag">🇧🇷</div>
+          <div class="comp-name">BNCC</div>
+          <div class="comp-meta">
+            <span data-lang="zh">巴西基礎教育課綱 · 2018</span>
+            <span data-lang="en">Base Nacional Comum Curricular · 2018</span>
+            <span data-lang="pt">Base Nacional Comum Curricular · 2018</span>
+          </div>
+          <div class="comp-meta" style="margin-top:2px;">
+            <span data-lang="zh">10 項通識能力</span>
+            <span data-lang="en">10 General Competencies</span>
+            <span data-lang="pt">10 Competências Gerais</span>
+          </div>
+        </div>
+        <ul class="comp-list">
+          <li><strong>1.</strong> Conhecimento</li>
+          <li><strong>2.</strong> Pensamento científico, crítico e criativo</li>
+          <li><strong>3.</strong> Repertório cultural</li>
+          <li><strong>4.</strong> Comunicação</li>
+          <li><strong>5.</strong> Cultura digital</li>
+          <li><strong>6.</strong> Trabalho e Projeto de Vida</li>
+          <li><strong>7.</strong> Argumentação</li>
+          <li><strong>8.</strong> Autoconhecimento e autocuidado</li>
+          <li><strong>9.</strong> Empatia e cooperação</li>
+          <li><strong>10.</strong> Responsabilidade e cidadania</li>
+        </ul>
+      </div>
+
+      <!-- TAIWAN -->
+      <div class="comp-col taiwan">
+        <div class="comp-col-head">
+          <div class="comp-flag">🇹🇼</div>
+          <div class="comp-name">108 課綱</div>
+          <div class="comp-meta">
+            <span data-lang="zh">十二年國教課程綱要 · 2019</span>
+            <span data-lang="en">12-Year Basic Education Curriculum · 2019</span>
+            <span data-lang="pt">Currículo Básico de 12 Anos · 2019</span>
+          </div>
+          <div class="comp-meta" style="margin-top:2px;">
+            <span data-lang="zh">三面九項核心素養</span>
+            <span data-lang="en">3 Dimensions · 9 Core Literacies</span>
+            <span data-lang="pt">3 Dimensões · 9 Competências Centrais</span>
+          </div>
+        </div>
+        <ul class="comp-list">
+          <li><strong>1.</strong>
+            <span data-lang="zh">身心素質與自我精進</span>
+            <span data-lang="en">Wellbeing & Self-Improvement</span>
+            <span data-lang="pt">Bem-estar & Autoaperfeiçoamento</span>
+          </li>
+          <li><strong>2.</strong>
+            <span data-lang="zh">系統思考與解決問題</span>
+            <span data-lang="en">Systems Thinking & Problem Solving</span>
+            <span data-lang="pt">Pensamento Sistêmico & Resolução de Problemas</span>
+          </li>
+          <li><strong>3.</strong>
+            <span data-lang="zh">規劃執行與創新應變</span>
+            <span data-lang="en">Planning, Execution & Innovation</span>
+            <span data-lang="pt">Planejamento, Execução & Inovação</span>
+          </li>
+          <li><strong>4.</strong>
+            <span data-lang="zh">符號運用與溝通表達</span>
+            <span data-lang="en">Symbol Use & Communication</span>
+            <span data-lang="pt">Uso de Símbolos & Comunicação</span>
+          </li>
+          <li><strong>5.</strong>
+            <span data-lang="zh">科技資訊與媒體素養</span>
+            <span data-lang="en">Tech, Info & Media Literacy</span>
+            <span data-lang="pt">Letramento em Tecnologia & Mídia</span>
+          </li>
+          <li><strong>6.</strong>
+            <span data-lang="zh">藝術涵養與美感素養</span>
+            <span data-lang="en">Arts & Aesthetic Literacy</span>
+            <span data-lang="pt">Letramento Artístico & Estético</span>
+          </li>
+          <li><strong>7.</strong>
+            <span data-lang="zh">道德實踐與公民意識</span>
+            <span data-lang="en">Ethics & Civic Consciousness</span>
+            <span data-lang="pt">Ética & Consciência Cívica</span>
+          </li>
+          <li><strong>8.</strong>
+            <span data-lang="zh">人際關係與團隊合作</span>
+            <span data-lang="en">Interpersonal Relations & Teamwork</span>
+            <span data-lang="pt">Relações Interpessoais & Trabalho em Equipe</span>
+          </li>
+          <li><strong>9.</strong>
+            <span data-lang="zh">多元文化與國際理解</span>
+            <span data-lang="en">Multicultural & International Understanding</span>
+            <span data-lang="pt">Compreensão Multicultural & Internacional</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 22 GLOBAL -->
+      <div class="comp-col global">
+        <div class="comp-col-head">
+          <div class="comp-flag">🌍</div>
+          <div class="comp-name">22 Global Frameworks</div>
+          <div class="comp-meta">
+            <span data-lang="zh">1994 CASEL → 2026 WEF Brain Capital</span>
+            <span data-lang="en">1994 CASEL → 2026 WEF Brain Capital</span>
+            <span data-lang="pt">1994 CASEL → 2026 WEF Brain Capital</span>
+          </div>
+          <div class="comp-meta" style="margin-top:2px;">
+            <span data-lang="zh">17 項超級共識</span>
+            <span data-lang="en">17 Super Consensus Skills</span>
+            <span data-lang="pt">17 Habilidades de Super Consenso</span>
+          </div>
+        </div>
+        <ul class="comp-list">
+          <li><strong>1.</strong> Critical Thinking · 73%</li>
+          <li><strong>2.</strong> Collaboration · 68%</li>
+          <li><strong>3.</strong> Creativity · 59%</li>
+          <li><strong>4.</strong> Learning to Learn · 55%</li>
+          <li><strong>5.</strong> Communication · 50%</li>
+          <li><strong>6.</strong> Empathy / EQ · 45%</li>
+          <li><strong>7.</strong> Resilience · 41%</li>
+          <li><strong>8.</strong> Ethics & Character · 36%</li>
+          <li><strong>9.</strong> Leadership · 32%</li>
+          <li><strong>10.</strong> Self-Awareness · 32%</li>
+          <li><strong>11.</strong> Digital / AI Literacy · 27%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="convergence-banner">
+      <div class="convergence-text">
+        <span data-lang="zh">巴西、臺灣，跟全世界，<br>講的是 <span class="highlight">同一件事</span>。</span>
+        <span data-lang="en">Brazil, Taiwan, and the whole world<br>are saying <span class="highlight">the same thing</span>.</span>
+        <span data-lang="pt">Brasil, Taiwan e o mundo inteiro<br>estão dizendo <span class="highlight">a mesma coisa</span>.</span>
+      </div>
+      <div class="convergence-sub">
+        <span data-lang="zh">答案，我們其實都已經知道了。問題只是 —— 我們要不要真的去做？</span>
+        <span data-lang="en">The answer? We already know. The only question — will we actually do it?</span>
+        <span data-lang="pt">A resposta? Nós já sabemos. A única pergunta — vamos realmente fazer?</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 6 ============ -->
+<section id="sec6" class="speech-section">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 06</span>
+      <span class="section-time">5 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">行動：三個動作 × 國家優先 × 價值創造</span>
+      <span data-lang="en">Action: Three Moves × National Priority × Value Creation</span>
+      <span data-lang="pt">Ação: Três Movimentos × Prioridade Nacional × Criação de Valor</span>
+    </h2>
+  </div>
+
+  <div class="big-idea">
+    <div class="big-idea-label">
+      <span data-lang="zh">核心訊息</span>
+      <span data-lang="en">Big Idea</span>
+      <span data-lang="pt">Ideia Principal</span>
+    </div>
+    <span data-lang="zh">既然答案已經知道了，剩下的就是怎麼做。<strong>三個動作</strong>把持久技能落地、<strong>找出你的國家的優先順序</strong>、<strong>讓 STEM × 商業＝價值創造</strong>。</span>
+    <span data-lang="en">Since we know the answer, what remains is execution. <strong>Three moves</strong> to land durable skills, <strong>your nation's own priority order</strong>, and <strong>STEM × Business = Value Creation</strong>.</span>
+    <span data-lang="pt">Já que sabemos a resposta, falta a execução. <strong>Três movimentos</strong> para concretizar habilidades duráveis, <strong>a prioridade própria do seu país</strong>, e <strong>STEM × Negócios = Criação de Valor</strong>.</span>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">America Succeeds · Pathsmith 持久技能框架</span>
+      <span data-lang="en">America Succeeds · Pathsmith Durable Skills Framework</span>
+      <span data-lang="pt">America Succeeds · Framework Pathsmith de Habilidades Duráveis</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">2024 年 1 月推出 · CompTIA + America Succeeds 共同制定。</span>
+        <span data-lang="en">Launched January 2024 · Built by CompTIA + America Succeeds.</span>
+        <span data-lang="pt">Lançado em janeiro de 2024 · Desenvolvido pela CompTIA + America Succeeds.</span>
+      </li>
+      <li>
+        <span data-lang="zh">資料來源：<strong>8,000 萬</strong>筆職缺 + <strong>800+</strong> 位產業領袖驗證。</span>
+        <span data-lang="en">Built from <strong>80 million</strong> job postings + <strong>800+</strong> industry leaders.</span>
+        <span data-lang="pt">Construído a partir de <strong>80 milhões</strong> de vagas + <strong>800+</strong> líderes da indústria.</span>
+      </li>
+      <li>
+        <span data-lang="zh">10 項持久技能：Communication, Collaboration, Critical Thinking, Creativity, Leadership, Metacognition, Character, Growth Mindset, Mindfulness, Fortitude</span>
+        <span data-lang="en">10 Durable Skills: Communication, Collaboration, Critical Thinking, Creativity, Leadership, Metacognition, Character, Growth Mindset, Mindfulness, Fortitude.</span>
+        <span data-lang="pt">10 Habilidades Duráveis: Comunicação, Colaboração, Pensamento Crítico, Criatividade, Liderança, Metacognição, Caráter, Mentalidade de Crescimento, Atenção Plena, Fortaleza.</span>
+      </li>
+      <li>
+        <span data-lang="zh">這張圖告訴你一件事——<strong>能力這麼多，不可能全部一起做</strong>。所以接下來，最重要的就是「選擇」。</span>
+        <span data-lang="en">This framework tells us one thing — <strong>there are too many skills to do them all at once</strong>. The next move is therefore CHOICE.</span>
+        <span data-lang="pt">Este framework nos diz uma coisa — <strong>são tantas habilidades que é impossível fazer todas ao mesmo tempo</strong>. O próximo movimento, então, é ESCOLHA.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">K-12 教育者的三個動作</span>
+      <span data-lang="en">Three Moves for K-12 Educators</span>
+      <span data-lang="pt">Três Movimentos para Educadores K-12</span>
+    </h3>
+  </div>
+
+  <div class="action-grid">
+    <div class="action-card">
+      <div class="action-num">01</div>
+      <div class="action-title">
+        <span data-lang="zh">定義核心基礎技能</span>
+        <span data-lang="en">DEFINE the core skills</span>
+        <span data-lang="pt">DEFINIR as habilidades centrais</span>
+      </div>
+      <div class="action-desc">
+        <span data-lang="zh">從幼兒園（K）開始，定義出哪些技能是最核心、最基礎的「地基」。</span>
+        <span data-lang="en">Starting from Kindergarten, identify which skills form the foundation.</span>
+        <span data-lang="pt">A partir da Educação Infantil, identifique quais habilidades formam a base.</span>
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="action-num">02</div>
+      <div class="action-title">
+        <span data-lang="zh">辨識先制技能</span>
+        <span data-lang="en">IDENTIFY prerequisites</span>
+        <span data-lang="pt">IDENTIFICAR pré-requisitos</span>
+      </div>
+      <div class="action-desc">
+        <span data-lang="zh">釐清哪些技能其實是其他技能的「先制條件」——沒有 A，就長不出 B。</span>
+        <span data-lang="en">Map which skills are prerequisites for others — without A, B can't grow.</span>
+        <span data-lang="pt">Mapeie quais habilidades são pré-requisitos para outras — sem A, não cresce B.</span>
+      </div>
+    </div>
+    <div class="action-card">
+      <div class="action-num">03</div>
+      <div class="action-title">
+        <span data-lang="zh">尋找發展關聯</span>
+        <span data-lang="en">SEQUENCE the development</span>
+        <span data-lang="pt">SEQUENCIAR o desenvolvimento</span>
+      </div>
+      <div class="action-desc">
+        <span data-lang="zh">把先制技能排成發展序列，知道每個階段該長哪一塊。我們做了三年。</span>
+        <span data-lang="en">Map progressions across grade levels. We've been doing this for 3 years.</span>
+        <span data-lang="pt">Mapeie progressões pelos anos escolares. Estamos fazendo isso há 3 anos.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">每個國家有自己的優先順序</span>
+      <span data-lang="en">Every Nation Has Its Own Priority</span>
+      <span data-lang="pt">Cada Nação Tem Sua Própria Prioridade</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">每個國家的人民本來就擁有不同的優勢——巴西不是臺灣，臺灣也不是新加坡。</span>
+        <span data-lang="en">Every nation's people carry different strengths — Brazil isn't Taiwan, and Taiwan isn't Singapore.</span>
+        <span data-lang="pt">Os povos de cada nação têm forças diferentes — Brasil não é Taiwan, e Taiwan não é Singapura.</span>
+      </li>
+      <li>
+        <span data-lang="zh">不要抄美國的清單，也不要抄亞洲的清單。<strong>找出最適合你們的孩子的那條路徑。</strong></span>
+        <span data-lang="en">Don't copy America's list. Don't copy Asia's list. <strong>Find the path that fits YOUR children.</strong></span>
+        <span data-lang="pt">Não copie a lista da América. Não copie a lista da Ásia. <strong>Encontre o caminho que serve às SUAS crianças.</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key-points">
+    <h3>
+      <span data-lang="zh">STEM × 商業 = 價值創造</span>
+      <span data-lang="en">STEM × Business = Value Creation</span>
+      <span data-lang="pt">STEM × Negócios = Criação de Valor</span>
+    </h3>
+    <ul>
+      <li>
+        <span data-lang="zh">再也不是「STEM 或人文」「科技或商業」這種二選一。<strong>是兩個都要。</strong></span>
+        <span data-lang="en">Not "STEM OR humanities," not "Tech OR Business." <strong>You need both.</strong></span>
+        <span data-lang="pt">Não é "STEM OU humanidades," nem "Tecnologia OU Negócios." <strong>Você precisa de ambos.</strong></span>
+      </li>
+      <li>
+        <span data-lang="zh">「持久技能」清單裡那些東西——批判思考、協作、創造、溝通、領導——本來就是<strong>成功企業家的標配</strong>。</span>
+        <span data-lang="en">The durable skills list — critical thinking, collaboration, creativity, communication, leadership — is the entrepreneur's standard kit.</span>
+        <span data-lang="pt">A lista de habilidades duráveis — pensamento crítico, colaboração, criatividade, comunicação, liderança — é o kit padrão do empreendedor.</span>
+      </li>
+      <li>
+        <span data-lang="zh">當 AI 讓每個人都能用最低成本做出科技產品，最後的差別就是——<strong>誰能把技能跟知識，最快轉化成這世界實際可用的價值？</strong></span>
+        <span data-lang="en">When AI lets everyone build with minimal cost, the only race left is — <strong>who turns skill and knowledge into real-world value, the fastest?</strong></span>
+        <span data-lang="pt">Quando a IA permite que todos construam com custo mínimo, a única corrida que resta é — <strong>quem transforma habilidade e conhecimento em valor real do mundo, mais rápido?</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quote">
+    <div class="quote-text">
+      <span data-lang="zh">持久技能，<br>就是<strong>價值創造的能力</strong>。</span>
+      <span data-lang="en">Durable skills<br>are <strong>the ability to create value</strong>.</span>
+      <span data-lang="pt">Habilidades duráveis<br>são <strong>a capacidade de criar valor</strong>.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 - CLOSING ============ -->
+<section id="sec7" class="speech-section" style="padding-bottom:20px;">
+  <div class="section-head">
+    <div class="section-num-row">
+      <span class="section-num">Part 07</span>
+      <span class="section-time">2 min</span>
+    </div>
+    <h2>
+      <span data-lang="zh">收尾：把「知道」變成「做到」</span>
+      <span data-lang="en">Closing: Turn KNOWING into DOING</span>
+      <span data-lang="pt">Encerramento: Transformar o SABER em FAZER</span>
+    </h2>
+  </div>
+</section>
+
+<div class="closing">
+  <div class="closing-freire">"Educação não é depósito, é despertar."</div>
+  <div class="closing-freire-trans">
+    <span data-lang="zh">教育不是注入，是喚醒。</span>
+    <span data-lang="en">Education is not deposit. It is awakening.</span>
+    <span data-lang="pt">A educação não é depósito. É despertar.</span>
+  </div>
+  <div class="closing-attrib">— Paulo Freire · 1968</div>
+
+  <div style="font-size:17px;line-height:1.8;max-width:720px;margin:0 auto 30px;color:rgba(255,255,255,.92);">
+    <span data-lang="zh">60 年後的今天——<br>巴西的 BNCC 列出 10 項通識能力。<br>臺灣的 108 課綱列出 9 大核心素養。<br>全世界 22 個框架歸納出 17 項超級共識。<br><br><strong style="color:#fff;">它們講的，是同一件事。</strong></span>
+    <span data-lang="en">60 years later —<br>Brazil's BNCC lists 10 general competencies.<br>Taiwan's 108 課綱 lists 9 core literacies.<br>22 global frameworks converge on 17 super consensus skills.<br><br><strong style="color:#fff;">They're all saying the same thing.</strong></span>
+    <span data-lang="pt">60 anos depois —<br>A BNCC do Brasil lista 10 competências gerais.<br>O 108 課綱 de Taiwan lista 9 competências centrais.<br>22 frameworks globais convergem em 17 habilidades de super consenso.<br><br><strong style="color:#fff;">Todos estão dizendo a mesma coisa.</strong></span>
+  </div>
+
+  <div class="closing-final">
+    <span data-lang="zh">從今天開始——<br>我們有沒有可能，<br>把 <span class="knowing">「知道」</span> 變成 <span class="doing">「做到」</span>？</span>
+    <span data-lang="en">Starting today —<br>can we possibly turn<br><span class="knowing">KNOWING</span> into <span class="doing">DOING</span>?</span>
+    <span data-lang="pt">A partir de hoje —<br>será que conseguimos transformar<br>o <span class="knowing">SABER</span> em <span class="doing">FAZER</span>?</span>
+  </div>
+
+  <div class="closing-obrigado">Muito obrigado.</div>
+</div>
+
+<!-- ============ APPENDIX SOURCES ============ -->
+<footer>
+  <div>
+    <span data-lang="zh"><strong>關鍵金句速查表</strong></span>
+    <span data-lang="en"><strong>Key Quotes Quick Reference</strong></span>
+    <span data-lang="pt"><strong>Frases-Chave · Referência Rápida</strong></span>
+  </div>
+  <div style="text-align:left;max-width:820px;margin:24px auto 0;font-size:14px;line-height:1.9;color:var(--ink-soft);">
+    <p style="margin-bottom:14px;">
+      ❶ <span data-lang="zh">「技能淘汰一直都在發生。真正的新聞，是速度。」</span>
+      <span data-lang="en">"Skill displacement has always existed. The news is the speed."</span>
+      <span data-lang="pt">"O deslocamento de habilidades sempre existiu. A novidade é a velocidade."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❷ <span data-lang="zh">「寫錯的考卷，拿 100 分也沒用。」</span>
+      <span data-lang="en">"A perfect score on the wrong exam gets you nowhere."</span>
+      <span data-lang="pt">"Nota perfeita na prova errada não leva a lugar nenhum."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❸ <span data-lang="zh">「AI 改變的是順序，不是清單。」</span>
+      <span data-lang="en">"AI changed the order. Not the list."</span>
+      <span data-lang="pt">"A IA mudou a ordem. Não a lista."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❹ <span data-lang="zh">「AI 越強，情感勞動越稀缺。」</span>
+      <span data-lang="en">"The stronger AI gets, the scarcer emotional labor becomes."</span>
+      <span data-lang="pt">"Quanto mais forte a IA, mais escasso o trabalho emocional."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❺ <span data-lang="zh">「巴西、臺灣，跟全世界，講的是同一件事。」</span>
+      <span data-lang="en">"Brazil, Taiwan, and the world — saying the same thing."</span>
+      <span data-lang="pt">"Brasil, Taiwan e o mundo — dizendo a mesma coisa."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❻ <span data-lang="zh">「答案，我們其實都已經知道了。」</span>
+      <span data-lang="en">"The answer? We already know."</span>
+      <span data-lang="pt">"A resposta? Nós já sabemos."</span>
+    </p>
+    <p style="margin-bottom:14px;">
+      ❼ <span data-lang="zh">「我們有沒有可能，把『知道』變成『做到』？」</span>
+      <span data-lang="en">"Can we turn KNOWING into DOING?"</span>
+      <span data-lang="pt">"Podemos transformar o SABER em FAZER?"</span>
+    </p>
+  </div>
+
+  <details class="sources">
+    <summary>
+      <span data-lang="zh">📚 資料來源</span>
+      <span data-lang="en">📚 Sources & References</span>
+      <span data-lang="pt">📚 Fontes & Referências</span>
+    </summary>
+    <ul>
+      <li>IBM Research · World Economic Forum — skill half-life data (26 yrs → 2.5 yrs)</li>
+      <li>WEF Future of Jobs Report 2025 — 39% of core skills will change by 2030</li>
+      <li>Acolad 2024 Translator Survey · Microsoft 2025 · Oxford / CEPR — translation industry impact</li>
+      <li>US NBER / BLS — typist employment data (1980: 12.7%)</li>
+      <li>America Succeeds · Pathsmith™ Durable Skills Framework (Jan 2024)</li>
+      <li>BNCC — Base Nacional Comum Curricular, Brazil (MEC, 2018)</li>
+      <li>108 課綱 — 十二年國民基本教育課程綱要, Taiwan (MOE, 2019)</li>
+      <li>海碩校長《持久技能超級大彙總》— 22 frameworks, 17 super consensus, 9 post-2023 new concepts</li>
+      <li>Paulo Freire · <em>Pedagogia do Oprimido</em> · 1968</li>
+    </ul>
+  </details>
+
+  <p style="margin-top:30px;font-size:12px;color:var(--muted);">
+    <span data-lang="zh">📄 本文件可列印（建議 A4 直式）· 可離線使用 · 三語版本同步</span>
+    <span data-lang="en">📄 Printable (A4 portrait recommended) · Offline-capable · Trilingual synced</span>
+    <span data-lang="pt">📄 Imprimível (A4 retrato recomendado) · Funciona offline · Trilíngue sincronizado</span>
+  </p>
+</footer>
+
+<script>
+  (function() {
+    var buttons = document.querySelectorAll('.lang-btn');
+    var body = document.body;
+
+    function setLang(lang) {
+      body.className = 'lang-' + lang;
+      buttons.forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.setLang === lang);
+      });
+      // Update html lang attribute for accessibility
+      var htmlLang = lang === 'zh' ? 'zh-Hant' : (lang === 'pt' ? 'pt-BR' : 'en');
+      document.documentElement.setAttribute('lang', htmlLang);
+      // Persist preference
+      try { localStorage.setItem('speech-lang', lang); } catch (e) {}
+    }
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setLang(btn.dataset.setLang);
+      });
+    });
+
+    // Restore last selected language
+    try {
+      var saved = localStorage.getItem('speech-lang');
+      if (saved && ['zh','en','pt'].indexOf(saved) >= 0) setLang(saved);
+    } catch (e) {}
+  })();
+</script>
+
+</body>
+</html>
