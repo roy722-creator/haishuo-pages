@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CXO TC8 演講筆記 — 結構化輸入的時代</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e6;
+  --paper-2:#efe8d8;
+  --ink:#1d211c;
+  --ink-soft:#4a4f46;
+  --ink-faint:#8a8475;
+  --line:#d8cfba;
+  --green:#2f5d3f;
+  --green-bright:#3e7a52;
+  --green-wash:#e4ede0;
+  --green-ink:#1d3a28;
+  --slate:#36475a;
+  --slate-bright:#536479;
+  --slate-wash:#e4e8ee;
+  --slate-ink:#22303f;
+  --gold:#b07d34;
+  --gold-bright:#caa055;
+  --shadow:rgba(40,36,24,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans TC",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.85;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.45;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+/* ---------- HERO ---------- */
+.hero{padding:88px 0 56px;position:relative}
+.kicker{
+  font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:30px;
+  display:flex;align-items:center;gap:16px;
+}
+.kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.hero h1{
+  font-family:"Noto Serif TC",serif;font-weight:900;
+  font-size:clamp(2.6rem,6.4vw,4.7rem);line-height:1.08;
+  letter-spacing:-.01em;color:var(--ink);margin-bottom:8px;
+}
+.hero h1 em{font-family:"Fraunces",serif;font-style:italic;font-weight:500;color:var(--green)}
+.hero .sub{
+  font-family:"Noto Serif TC",serif;font-size:clamp(1.05rem,2.2vw,1.35rem);
+  color:var(--ink-soft);font-weight:400;margin-top:18px;max-width:640px;line-height:1.7;
+}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:14px 34px;margin-top:42px;
+  padding-top:26px;border-top:1px solid var(--line);
+}
+.meta-item{display:flex;flex-direction:column;gap:3px}
+.meta-item .lab{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+.meta-item .val{font-family:"Noto Serif TC",serif;font-size:1rem;color:var(--ink);font-weight:500}
+
+/* ---------- SPEAKER NAV ---------- */
+.nav{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0 70px;
+}
+.nav a{
+  text-decoration:none;color:inherit;border:1px solid var(--line);
+  border-radius:3px;padding:26px 26px;background:rgba(255,255,255,.4);
+  transition:.4s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden;display:block;
+}
+.nav a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;transition:.4s}
+.nav a.g::before{background:var(--green)}
+.nav a.s::before{background:var(--slate)}
+.nav a:hover{transform:translateY(-4px);box-shadow:0 18px 40px var(--shadow);background:#fff}
+.nav .nidx{font-family:"Fraunces",serif;font-size:2.2rem;line-height:1;color:var(--ink-faint);font-weight:400}
+.nav .ntag{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;margin:14px 0 6px}
+.nav a.g .ntag{color:var(--green)}
+.nav a.s .ntag{color:var(--slate)}
+.nav .nname{font-family:"Noto Serif TC",serif;font-size:1.5rem;font-weight:700;margin-bottom:4px}
+.nav .ndesc{font-size:.86rem;color:var(--ink-soft);line-height:1.6}
+
+/* ---------- SECTION ---------- */
+.section{padding:64px 0;border-top:1px solid var(--line);position:relative}
+.sec-head{display:flex;align-items:baseline;gap:20px;margin-bottom:8px}
+.sec-num{font-family:"Fraunces",serif;font-size:clamp(3rem,9vw,6rem);line-height:.8;font-weight:400;opacity:.85}
+.g .sec-num{color:var(--green)}
+.s .sec-num{color:var(--slate)}
+.sec-meta{flex:1}
+.sec-meta .role{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:8px}
+.g .sec-meta .role{color:var(--green)}
+.s .sec-meta .role{color:var(--slate)}
+.sec-meta h2{font-family:"Noto Serif TC",serif;font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;line-height:1.12;letter-spacing:-.01em}
+.sec-lead{
+  font-family:"Noto Serif TC",serif;font-size:1.18rem;color:var(--ink-soft);
+  font-weight:400;line-height:1.8;margin:24px 0 48px;max-width:760px;
+  padding-left:24px;border-left:3px solid var(--line);
+}
+.g .sec-lead{border-color:var(--green-wash)}
+.s .sec-lead{border-color:var(--slate-wash)}
+
+/* ---------- BLOCK / CARDS ---------- */
+.blk{margin-bottom:48px}
+.blk-title{
+  font-family:"Noto Serif TC",serif;font-size:1.45rem;font-weight:700;margin-bottom:6px;
+  display:flex;align-items:center;gap:13px;
+}
+.blk-title .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.g .blk-title .dot{background:var(--green)}
+.s .blk-title .dot{background:var(--slate)}
+.blk-title .en{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);font-weight:400;margin-left:auto}
+.blk p{margin:14px 0;color:var(--ink-soft);font-size:1rem}
+.blk p strong,.blk li strong{color:var(--ink);font-weight:500}
+
+ul.clean{list-style:none;margin:18px 0}
+ul.clean li{position:relative;padding-left:26px;margin:11px 0;color:var(--ink-soft);font-size:.98rem;line-height:1.7}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.72em;width:8px;height:1px;background:var(--gold)}
+.g ul.clean li::before{background:var(--green-bright)}
+.s ul.clean li::before{background:var(--slate-bright)}
+
+/* journey timeline */
+.journey{display:flex;flex-wrap:wrap;gap:0;margin:24px 0;border-top:1px solid var(--line)}
+.jstep{flex:1;min-width:130px;padding:18px 16px 18px 0;border-bottom:1px solid var(--line);position:relative}
+.jstep .yr{font-family:"Space Mono",monospace;font-size:.72rem;color:var(--gold);letter-spacing:.08em;margin-bottom:6px}
+.jstep .ttl{font-family:"Noto Serif TC",serif;font-weight:600;font-size:1rem;margin-bottom:3px}
+.jstep .nt{font-size:.82rem;color:var(--ink-faint);line-height:1.5}
+
+/* data callouts */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:26px 0;border-radius:3px;overflow:hidden}
+.stat{background:var(--paper);padding:24px 22px;transition:.35s}
+.stat:hover{background:#fff}
+.stat .big{font-family:"Fraunces",serif;font-weight:600;font-size:2.3rem;line-height:1;letter-spacing:-.02em}
+.g .stat .big{color:var(--green)}
+.s .stat .big{color:var(--slate)}
+.stat .big small{font-size:1.1rem;font-weight:500;color:var(--ink-soft)}
+.stat .cap{font-size:.82rem;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+
+/* pull quote */
+.pull{
+  margin:44px 0;padding:38px 40px;position:relative;border-radius:4px;
+  background:linear-gradient(135deg,var(--paper-2),var(--paper));
+  border:1px solid var(--line);
+}
+.pull::before{
+  content:"\201C";font-family:"Fraunces",serif;font-size:6rem;line-height:.5;
+  position:absolute;top:30px;left:24px;opacity:.16;
+}
+.g .pull::before{color:var(--green)}
+.s .pull::before{color:var(--slate)}
+.pull q{
+  display:block;quotes:none;font-family:"Noto Serif TC",serif;font-size:clamp(1.25rem,2.8vw,1.7rem);
+  font-weight:500;line-height:1.55;color:var(--ink);padding-left:30px;
+}
+.pull q::before,.pull q::after{content:""}
+.pull .by{margin-top:18px;padding-left:30px;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.14em;color:var(--ink-faint)}
+
+/* framework / process flow */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:26px 0}
+.fstep{
+  flex:1;min-width:130px;background:rgba(255,255,255,.5);border:1px solid var(--line);
+  border-radius:3px;padding:20px 18px;position:relative;transition:.35s;
+}
+.fstep:hover{transform:translateY(-3px);box-shadow:0 12px 26px var(--shadow);background:#fff}
+.fstep .n{font-family:"Fraunces",serif;font-size:1.3rem;color:var(--ink-faint)}
+.fstep .h{font-family:"Noto Serif TC",serif;font-weight:600;font-size:1.05rem;margin:8px 0 6px}
+.fstep .d{font-size:.84rem;color:var(--ink-soft);line-height:1.55}
+.flow .arrow{display:flex;align-items:center;color:var(--gold);font-size:1.1rem;font-weight:700}
+
+/* three tier ladder */
+.ladder{margin:26px 0}
+.rung{display:flex;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--line);border-radius:3px;margin-bottom:10px;background:rgba(255,255,255,.4);transition:.35s}
+.rung:hover{background:#fff;transform:translateX(6px)}
+.rung .lv{font-family:"Fraunces",serif;font-size:1.8rem;width:46px;flex:none;text-align:center}
+.s .rung .lv{color:var(--slate)}
+.rung .body h4{font-family:"Noto Serif TC",serif;font-size:1.15rem;font-weight:700;margin-bottom:3px}
+.rung .body p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+.rung.peak{background:var(--slate-wash);border-color:var(--slate-bright)}
+.rung.peak .lv{color:var(--slate-ink)}
+
+/* highlight box */
+.note{
+  margin:30px 0;padding:24px 28px;border-left:4px solid var(--gold);
+  background:rgba(176,125,52,.07);border-radius:0 4px 4px 0;
+}
+.note .nh{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.note p{margin:0;color:var(--ink-soft);font-size:.96rem}
+
+/* QA */
+.qa{margin:18px 0;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:rgba(255,255,255,.4)}
+.qa .q{padding:18px 24px;font-family:"Noto Serif TC",serif;font-weight:600;font-size:1.05rem;background:var(--paper-2);border-bottom:1px solid var(--line);display:flex;gap:12px}
+.qa .q .mark{color:var(--gold);font-family:"Fraunces",serif;font-style:italic}
+.qa .a{padding:20px 24px;color:var(--ink-soft);font-size:.96rem;display:flex;gap:12px}
+.qa .a .mark{color:var(--green);font-family:"Fraunces",serif;font-style:italic;flex:none}
+.s .qa .a .mark{color:var(--slate)}
+
+/* INVESTMENT SPOTLIGHT */
+.spotlight{
+  margin:54px 0;padding:0;border-radius:5px;overflow:hidden;
+  border:1px solid var(--green);background:var(--green-ink);color:#eee7d6;position:relative;
+}
+.spotlight .sl-head{padding:34px 40px 28px;border-bottom:1px solid rgba(255,255,255,.12)}
+.spotlight .sl-tag{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:14px}
+.spotlight h3{font-family:"Noto Serif TC",serif;font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900;line-height:1.2;color:#fff}
+.spotlight .sl-body{padding:8px 40px 36px}
+.sl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:28px;margin:30px 0}
+.sl-stat .big{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:600;color:var(--gold-bright);line-height:1}
+.sl-stat .big small{font-size:1rem;color:#cdc4ad}
+.sl-stat .cap{font-size:.82rem;color:#b8b09a;margin-top:8px;line-height:1.5}
+.spotlight p{color:#d6cdb8;font-size:.97rem;margin:14px 0}
+.spotlight p strong{color:#fff;font-weight:500}
+.spotlight .pricewrap{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px;align-items:baseline}
+.spotlight .pricewrap .pp{font-family:"Fraunces",serif;font-size:1.9rem;color:#fff}
+.spotlight .pricewrap .pn{font-size:.86rem;color:#b8b09a}
+
+/* new members */
+.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:24px 0}
+.mcard{border:1px solid var(--line);border-radius:3px;padding:22px 24px;background:rgba(255,255,255,.4);transition:.35s}
+.mcard:hover{background:#fff;transform:translateY(-3px);box-shadow:0 12px 24px var(--shadow)}
+.mcard .mn{font-family:"Noto Serif TC",serif;font-size:1.2rem;font-weight:700}
+.mcard .mr{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:6px 0 10px}
+.mcard p{margin:0;font-size:.88rem;color:var(--ink-soft);line-height:1.6}
+
+/* synthesis */
+.synth{background:var(--ink);color:#ece6d6;padding:60px 0;margin-top:30px;position:relative;z-index:2}
+.synth .wrap{max-width:860px}
+.synth .kicker{color:var(--gold-bright)}
+.synth .kicker::after{background:linear-gradient(90deg,rgba(255,255,255,.3),transparent)}
+.synth h2{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;line-height:1.18;color:#fff;margin-bottom:26px}
+.synth h2 em{font-family:"Fraunces",serif;font-style:italic;color:var(--gold-bright);font-weight:500}
+.synth p{color:#c9c2b1;font-size:1.05rem;line-height:1.85;margin:16px 0}
+.synth p strong{color:#fff;font-weight:500}
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:34px 0}
+.twin .tc{padding:24px 26px;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.twin .tc .th{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.twin .tc.t1 .th{color:#8fc7a3}
+.twin .tc.t2 .th{color:#9bb8d6}
+.twin .tc p{font-size:.92rem;margin:8px 0;color:#bcb5a4}
+.bottomline{margin-top:30px;padding:28px 32px;border-radius:4px;background:linear-gradient(135deg,rgba(176,125,52,.18),rgba(176,125,52,.05));border:1px solid rgba(202,160,85,.3)}
+.bottomline q{font-family:"Noto Serif TC",serif;font-size:1.35rem;font-weight:500;line-height:1.55;color:#fff;quotes:none}
+
+/* footer */
+footer{padding:50px 0 70px;text-align:center;position:relative;z-index:2}
+footer .fl{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase}
+footer .fmark{font-family:"Noto Serif TC",serif;font-size:1.1rem;color:var(--ink-soft);margin-top:12px}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:720px){
+  .nav{grid-template-columns:1fr}
+  .twin{grid-template-columns:1fr}
+  .journey{flex-direction:column}
+  .jstep{padding:14px 0}
+  .flow .arrow{transform:rotate(90deg)}
+  .sec-head{flex-direction:column;gap:6px}
+  .hero{padding:56px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker reveal">CXO TC8 · 讀書會分享筆記</div>
+    <h1 class="reveal">把<em>結構</em>餵給 AI，<br>讓時間還給<em>決策</em>。</h1>
+    <p class="sub reveal">兩位講者，一個從農地，一個從不動產，殊途同歸地指向同一件事——AI 不會無中生有，真正稀缺的是「你願意餵給它什麼樣的輸入」。</p>
+    <div class="meta-row reveal">
+      <div class="meta-item"><span class="lab">Session</span><span class="val">CXO TC8 月會讀書會</span></div>
+      <div class="meta-item"><span class="lab">Speaker 01</span><span class="val">羅伯特 · 邱彥霖</span></div>
+      <div class="meta-item"><span class="lab">Speaker 02</span><span class="val">張現傑</span></div>
+      <div class="meta-item"><span class="lab">主題</span><span class="val">AI 變現 × 科技農業 × 不動產</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="nav">
+    <a href="#s1" class="g reveal">
+      <div class="nidx">01</div>
+      <div class="ntag">羅伯特 · 邱彥霖</div>
+      <div class="nname">科技農業 × AI 儀表板</div>
+      <div class="ndesc">從雲菜共生的痛，到一張「一表版」儀表板。十年創業者如何用 AI 把投報、減脂、記帳全部量化。</div>
+    </a>
+    <a href="#s2" class="s reveal">
+      <div class="nidx">02</div>
+      <div class="ntag">張現傑</div>
+      <div class="nname">不動產 × AI 變現</div>
+      <div class="ndesc">十七年同一條賽道。把重複交付變成可互動、可付費的商業能力——關鍵全在「輸入」。</div>
+    </a>
+  </nav>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<section class="section g" id="s1">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <div class="sec-meta">
+        <div class="role">Speaker · 科技農業</div>
+        <h2>羅伯特（邱彥霖）<br>從一棵生菜，算到一座工業化農場</h2>
+      </div>
+    </div>
+    <p class="sec-lead reveal">十年創業，一路用「薪資制度＋Excel」整合所有流程。從高爾夫球具、木質燃料棒、東莞模具廠輔導，到柬埔寨房地產，最後落腳在他最有熱忱的農業——只為了讓更多人吃得起無毒健康的菜。</p>
+
+    <!-- journey -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>創業履歷 <span class="en">The Long Road</span></div>
+      <div class="journey">
+        <div class="jstep"><div class="yr">EARLY</div><div class="ttl">伯明翰大學</div><div class="nt">為訓練高爾夫赴英；回台進富聲應用科技做球具</div></div>
+        <div class="jstep"><div class="yr">2016</div><div class="ttl">能源 · 燃料棒</div><div class="nt">80＋份投報分析、FSC 森林認證；輔導東莞模具廠雲端化</div></div>
+        <div class="jstep"><div class="yr">~2019</div><div class="ttl">柬埔寨房地產</div><div class="nt">疫情出不去，回台與父親重新思考方向</div></div>
+        <div class="jstep"><div class="yr">2019→</div><div class="ttl">雲菜共生</div><div class="nt">有機無毒、打通米其林餐廳；後因病蟲害與氣候無法獲利而收手</div></div>
+        <div class="jstep"><div class="yr">NEXT</div><div class="ttl">全自動化農場</div><div class="nt">參訪歐洲頂級種子與溫室公司，下一場走工業化路線</div></div>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <q>其實有一顆想要保護大家的心，想讓更多人每天不用花高價，就能吃到無毒健康的生菜。</q>
+      <div class="by">— 羅伯特，談他為何仍要做大家都勸退的農業</div>
+    </div>
+
+    <!-- AI dashboard -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>痛點與解方：從 50 張表，到一張儀表板 <span class="en">Excel → Dashboard</span></div>
+      <p>過去他要把 <strong>營業額、人員、費用率制度</strong> 串成投報模型：跑了約 <strong>50 個表格、算 15 年</strong>、花了快兩年；每次 Power Query 重新整理還要等 3–5 分鐘。他想要的，是一張「一表版」的東西。</p>
+      <p>於是他把每一個公式、每一項對應關係一句句教給 AI——種植面積、單價、能源費、攤提、勞健保、勞退、就業安定費、水電、CO₂、種子——全部收進一張可即時運算的儀表板，左上角還能切換「情境管理」。</p>
+      <div class="note">
+        <div class="nh">關鍵心法</div>
+        <p>要讓 AI 算對，你得先知道自己的公式是什麼。把「哪個公式對應什麼」一直講給它聽，它才有辦法替你套進去。例如：1 m² / 年產 75 kg，再除以單顆重量，就推得年產顆數。</p>
+      </div>
+    </div>
+
+    <!-- European industrialization -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>歐洲工業化農業：從播種到收成，不碰人手 <span class="en">Ag-Industrialization</span></div>
+      <ul class="clean">
+        <li><strong>土壤介質 → 播種</strong>：全用歐洲種子，發芽率極高，不必機械手臂逐一挑揀。</li>
+        <li><strong>發芽室</strong>：低溫、高濕，存兩天即發芽。</li>
+        <li><strong>Bath room</strong>：機械手臂把高密度小苗分散，降低密度讓它長大。</li>
+        <li><strong>收成 → 刀片切 → 食品加工廠規格</strong>：直接混合、稱重、裝袋。</li>
+      </ul>
+      <p>為什麼農業非工業化不可？因為氣候變遷、病蟲害加劇、產量不穩，加上台灣 <strong>約 70% 糧食依賴美國與越南進口</strong>。食材是國家戰略物資——新加坡因馬來西亞斷貨而想重啟農業，就是最好的警示。</p>
+    </div>
+
+    <!-- weight loss -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>第二個應用：減脂計劃的 Excel 自動化 <span class="en">Flow + JSON</span></div>
+      <p>起點很私人：父親阿基里斯腱斷裂、開了 10 次清創全麻手術，醫生丟下一句「你要減肥」。剛好朋友（工泰）分享健康計劃，父親 <strong>60 天瘦了 7 公斤</strong>。羅伯特於是想——能不能用 Excel 經驗，幫顧問把繁瑣工作自動化？</p>
+      <div class="stats">
+        <div class="stat"><div class="big">100<small> 份</small></div><div class="cap">親手製作並逐一驗證的學員 Excel</div></div>
+        <div class="stat"><div class="big">53<small> 天</small></div><div class="cap">單一學員減重 13 公斤的見證</div></div>
+        <div class="stat"><div class="big">11.5<small> kg</small></div><div class="cap">現場見證者 50 天減去的脂肪</div></div>
+        <div class="stat"><div class="big">649<small> 隻</small></div><div class="cap">合作公司年度減脂量 ≈ 大象頭數</div></div>
+      </div>
+      <p>痛點是：要開照片確認學員、抓變化曲線、看 10 個人就得等 query 跑 3–5 分鐘，兩小時過去還沒跟學員開口。解方是把 LINE 照片下載 <strong>丟進 Flow</strong>，自動產出「一人一份」專屬 Excel，並用 <strong>JSON 記錄飲食</strong> 供日後深度分析。更聰明的是做了「新人加入指南」：新教練到 B 端 Cockpit 連雲端讀取所有 prompt，馬上就能複製整套工作。</p>
+    </div>
+
+    <!-- accounting -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>第三個應用：財務日記帳 <span class="en">Bookkeeping</span></div>
+      <p>工科背景卻修過會計的他，把農場會計科目與五年財報先丟給 Cloud，之後只要把 <strong>統一發票或專案照片丟上去</strong>，AI 就自動歸類進 Excel——含借貸關係、損益表、資產負債表。</p>
+      <div class="note">
+        <div class="nh">給一人公司的提醒</div>
+        <p>請 AI 做正規財報並不難，但若會計科目有疑義，務必要它「跟你同步、向你確認」，而不是自己猜。真正報稅，還是要找會計師。</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <q>不用再等工具——當工具做好了，它是協助你去思考的。我們該把時間從操作工具，挪到做決策。</q>
+      <div class="by">— 羅伯特，談 AI 帶來的 ROI</div>
+    </div>
+
+    <!-- Q&A -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>現場問答 <span class="en">Q&amp;A</span></div>
+      <div class="qa">
+        <div class="q"><span class="mark">Q</span><span>在你自己的專業世界裡，你是怎麼決定要「取哪些數據」的？</span></div>
+        <div class="a"><span class="mark">A</span><span>農業最難的就是估算。第一場綠能工程他是完全的小白，原本預估一週採 300 kg，實際 run 出來只有 150 kg，再遇病蟲害剩 70 多公斤。後來他去歐洲看工業化農場——那是一套已運行 18 年的 proven technology，能把每一項用量化數字給你。量化很困難，必須花時間研究先進國家或前輩怎麼算。</span></div>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="mark">Q</span><span>世界一直在變，你怎麼控制整個算式的「穩定性」？</span></div>
+        <div class="a"><span class="mark">A</span><span>經過兩年運算，他對精準度已有基礎概念。看儀表板時能判斷誤差是否在容忍範圍內——只要超過 90～95% 落在可預期範圍，就 pass，不必過度刁鑽，再加上歐洲顧問交叉驗證。</span></div>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="mark">Q</span><span>那你的商業模式到底是什麼？</span></div>
+        <div class="a"><span class="mark">A</span><span>農業要做量大、以量制價（植物工廠太貴，沒幾個人吃得起）。他的角色是 <strong>農業顧問</strong>：上有投資人出資蓋廠，訓練底下成為專職廠長／CEO，一座大廠只要約 5 人；再串聯冷鏈與客戶（麵食、餐飲業）——投資人、客戶、農場關，一起打通。</span></div>
+      </div>
+    </div>
+
+    <!-- INVESTMENT SPOTLIGHT -->
+    <div class="spotlight reveal">
+      <div class="sl-head">
+        <div class="sl-tag">投資焦點 · 散會後的真心話</div>
+        <h3>一公頃，一年 1,330 噸——台灣土耕的 66 倍</h3>
+      </div>
+      <div class="sl-body">
+        <p>同樣一公頃，<strong>台灣土耕一年約 20 噸美生菜</strong>，歐洲這套系統卻能產出 <strong>1,330 噸</strong>——而且穩定、菜質極好。「以後不會餓死」是他的結論。</p>
+        <div class="sl-grid">
+          <div class="sl-stat"><div class="big">7<small> 億</small></div><div class="cap">一座一公頃廠的建置成本（含所有原物料，不含周轉金）</div></div>
+          <div class="sl-stat"><div class="big">3<small> 年</small></div><div class="cap">穩定產出 ＋ 親民菜價下的回本期</div></div>
+          <div class="sl-stat"><div class="big">66<small> ×</small></div><div class="cap">相較台灣土耕的單位產量倍數</div></div>
+          <div class="sl-stat"><div class="big">20<small> %</small></div><div class="cap">只要蓋到 5 公頃，即可佔台灣進口量</div></div>
+        </div>
+        <p>對照組：墨西哥一場 4 公頃花了 2 億美金，溫室廠商與投資方都相近。美國生菜一公斤賣 2–3 美金，台灣卻賣到 1,000 台幣；台灣一個月得進口約 3,000 噸生菜。<strong>食材永遠是國家的戰略物資。</strong></p>
+        <div class="pricewrap">
+          <div><div class="pp">7,000 萬 / 股</div><div class="pn">七億拆成四等份；地已經有了，現在差的是資金</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECTION 2 ============ -->
+<section class="section s" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02</div>
+      <div class="sec-meta">
+        <div class="role">Speaker · 不動產</div>
+        <h2>張現傑<br>用樂高，組一台叫「商業模式」的機器人</h2>
+      </div>
+    </div>
+    <p class="sec-lead reveal">他騎腳踏車從北屯一路爬到武嶺，覺得人生履歷也像這樣——在同一條賽道上持續加深。不動產十七年，他用 AI 把日復一日的重複交付，變成可互動、可付費的能力。</p>
+
+    <!-- journey -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>同一條賽道，持續累積 <span class="en">One Track</span></div>
+      <div class="journey">
+        <div class="jstep"><div class="yr">~20 年前</div><div class="ttl">朝陽科大資管所</div><div class="nt">資訊管理底子的起點</div></div>
+        <div class="jstep"><div class="yr">~18 年前</div><div class="ttl">信義房屋</div><div class="nt">11–12 年的房仲歷練</div></div>
+        <div class="jstep"><div class="yr">~4 年</div><div class="ttl">信義全球資產</div><div class="nt">轉向商用不動產</div></div>
+        <div class="jstep"><div class="yr">—</div><div class="ttl">磐石 → 滬巨</div><div class="nt">工業不動產；自創一人公司</div></div>
+        <div class="jstep"><div class="yr">NOW</div><div class="ttl">瑞和開發</div><div class="nt">合作成立工業不動產部；九月再進逢甲建設學院在職專班</div></div>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <q>很多人卡在勞力替代——省時間查資料、整理改錯字、做會議記錄。但 AI 能做的，遠遠不只這些。</q>
+      <div class="by">— 張現傑，談多數人對 AI 的低估</div>
+    </div>
+
+    <!-- core insight -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>核心命題：你要「賦予」它什麼？ <span class="en">Input Is Everything</span></div>
+      <p>他用一個自我介紹網站開場：用 AI 做，一小時內就能上 GitHub，第二版只要兩分鐘；資料給齊，十分鐘就能交件。價值不在工具，在輸入。</p>
+      <p>所謂 AI 變現，就是把 <strong>重複交付、同一套 SOP</strong> 的事——同一種輸入，做出多樣式輸出。他也點名：海碩校長的 PPT 風格之所以都很像，正因為餵的是同一套模板。訓練時把模板放進去指導，產出就會穩定同一個 style。</p>
+      <div class="note">
+        <div class="nh">一句話</div>
+        <p>AI 沒辦法無中生有。隨手一張照片，它頂多幫你美化；但給它「有結構、有脈絡、有判斷」的輸入，丟出來的就是有價值的東西。</p>
+      </div>
+    </div>
+
+    <!-- three tiers -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>三層次：從省時間，到看見機會 <span class="en">Three Tiers</span></div>
+      <div class="ladder">
+        <div class="rung"><div class="lv">01</div><div class="body"><h4>省時間</h4><p>物件的地號、產權、用途，過去整理要 2–3 小時；電子化後整批丟 Cloud 即時分析。Cloud 連權狀光片這類制式資料都判讀得很清楚。</p></div></div>
+        <div class="rung"><div class="lv">02</div><div class="body"><h4>省費用</h4><p>提案報告從一週縮到一小時、品質還更高；HTML 電子報行銷不必外包。兩者合計每月省下相當可觀的時間與外包成本。</p></div></div>
+        <div class="rung peak"><div class="lv">03</div><div class="body"><h4>看到機會 ★ 最重要</h4><p>把前兩層能力「系統化」之後，它就變成可以互動的商業能力。重複的東西 → 可互動的東西 → 別人會付錢的東西。</p></div></div>
+      </div>
+    </div>
+
+    <!-- input principles -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>好輸入的特徵 <span class="en">Structured Input</span></div>
+      <div class="flow">
+        <div class="fstep"><div class="n">①</div><div class="h">快速 · 重複</div><div class="d">挑日常持續在做、有規則可循的事</div></div>
+        <span class="arrow">→</span>
+        <div class="fstep"><div class="n">②</div><div class="h">結構化</div><div class="d">最關鍵的一步：把資料整理成標準結構</div></div>
+        <span class="arrow">→</span>
+        <div class="fstep"><div class="n">③</div><div class="h">多版本產出</div><div class="d">同一份資料，可生出多種樣本／品牌感</div></div>
+        <span class="arrow">→</span>
+        <div class="fstep"><div class="n">④</div><div class="h">可追溯 · 可擴充</div><div class="d">能回溯來源，也能批次放大</div></div>
+      </div>
+      <p>他把這些寫成「引數」設定：結構化資料、市場定位與趨勢、客群、輸出去向、個人信譽，以及「為什麼這個案子／客戶會這樣決策」的邏輯。設好引數，產出就有一致的邏輯。</p>
+    </div>
+
+    <!-- mini projects -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>他的小專案實戰 <span class="en">In Practice</span></div>
+      <ul class="clean">
+        <li><strong>提案報告</strong>：丟一個版型＋基本敘述資料，AI 自動學習、產出風格幾乎雷同的成品。</li>
+        <li><strong>市場分析</strong>（大度案）：餵進正確資料庫、設好對標引數，分析品質很高。</li>
+        <li><strong>資訊收集</strong>：定期讓 Cloud 跑爬蟲，把特定資料收乾淨。</li>
+        <li><strong>品牌產出</strong>：同一份資料，一次同時生出三種不同品牌感。</li>
+        <li><strong>引數面板</strong>：保留輸入介面＋分析內容＋用途物件，倒進去就自動產出——全用 Python。</li>
+        <li><strong>族譜專案</strong>（最生活化）：把手寫＋電子版族譜整份丟給 AI 解讀輩分、淵源、地址，再做填寫介面（爸媽、兄弟姊妹、上下左右），把整棵家族樹重建起來。</li>
+      </ul>
+    </div>
+
+    <div class="pull reveal">
+      <q>放大，不是發電。本來是零，放大還是零；本來是一，放大才會變成十。關鍵永遠在輸入。</q>
+      <div class="by">— 張現傑，談盤點與逆向工程</div>
+    </div>
+
+    <!-- two paths -->
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>建立輸入的兩條路 <span class="en">Two Paths</span></div>
+      <div class="flow">
+        <div class="fstep" style="flex:1;min-width:240px"><div class="n">→</div><div class="h">正向盤點</div><div class="d">我們手上有什麼？把散落的資源累積起來、放大。</div></div>
+        <div class="fstep" style="flex:1;min-width:240px"><div class="n">←</div><div class="h">逆向工程</div><div class="d">想做什麼，就往回找——需要哪些資源與資訊，再組起來。</div></div>
+      </div>
+      <div class="note">
+        <div class="nh">行動清單</div>
+        <p>選定一件你平常持續在做的事 → 寫下可能的輸入 → 盤點手頭資源，或反推市場需要 → 持續餵養，建立你的 AI 記憶。</p>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <q>用 AI 就像用樂高組一台大型機器人。我先把一個一個器官做出來，最後組成我想完成的那個商業模式——而 AI，是幫我快速組裝的有效工具。</q>
+      <div class="by">— 張現傑的收尾比喻</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEW MEMBERS -->
+<section class="section s">
+  <div class="wrap">
+    <div class="blk reveal">
+      <div class="blk-title"><span class="dot"></span>新夥伴 · 新來賓 <span class="en">New Faces</span></div>
+      <div class="members">
+        <div class="mcard"><div class="mn">梁俊傑 · Jay</div><div class="mr">電商 · 居家飾品</div><p>主攻軟裝布置類居家飾品，品牌「藤木生活」——溫馨耐看，歡迎上網站交流。</p></div>
+        <div class="mcard"><div class="mn">Kevin</div><div class="mr">AI 開發 · 行銷</div><p>自我介紹好記的「渣男 Kevin」。從懷孕代操轉向 AI 開發：替客戶找痛點、精簡流程、降低行銷成本。</p></div>
+      </div>
+      <div class="note">
+        <div class="nh">分會事務</div>
+        <p>月會時間固定在每月初、地點不變（周一至周四多約周四）；訂餐請走分會連結。會費每年五月收取，新夥伴中途加入亦收一次。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYNTHESIS -->
+<section class="synth">
+  <div class="wrap">
+    <div class="kicker reveal">筆記者的綜合觀察</div>
+    <h2 class="reveal">兩場分享，<em>同一個底層</em>：<br>稀缺的從來不是 AI，是好的輸入。</h2>
+    <p class="reveal">羅伯特把生菜的產量、勞健保、種子單價，逐一量化成一張能即時試算的儀表板；張現傑把物件的地號、產權、市場引數，整理成可批次產出的結構化資料。一個在農地，一個在不動產，但他們其實在做同一件事——<strong>先把世界拆解成可運算的結構，再讓 AI 接手運算。</strong></p>
+    <div class="twin reveal">
+      <div class="tc t1">
+        <div class="th">羅伯特 · 量化思維</div>
+        <p>痛點：算不完、等不起的 Excel。</p>
+        <p>突破：把公式教給 AI，換來「一表版」決策面板。</p>
+        <p>啟示：量化先行，誤差只要落在容忍範圍就放行。</p>
+      </div>
+      <div class="tc t2">
+        <div class="th">張現傑 · 結構思維</div>
+        <p>痛點：重複交付吃掉所有時間。</p>
+        <p>突破：把 SOP 變成引數面板，一鍵多版本產出。</p>
+        <p>啟示：放大零還是零，所有價值都鎖在輸入裡。</p>
+      </div>
+    </div>
+    <p class="reveal">兩人也都不約而同地提醒：AI 不能無中生有。它放大你既有的「一」，卻無法替你生出那個「一」。所以真正的功課，不是學更多 prompt 技巧，而是回到自己的專業——把你最懂的那件事，整理成 AI 能讀懂的結構。</p>
+    <div class="bottomline reveal">
+      <q>當工具做好了，工具是協助你去思考的。把時間，從操作，還給決策。</q>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fl">CXO TC8 · Reading Circle · Field Notes</div>
+    <div class="fmark">羅伯特（邱彥霖） × 張現傑</div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{
+  es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);io.unobserve(e.target)}})
+},{threshold:.12,rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
