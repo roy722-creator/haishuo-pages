@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI時代下人才發展的致勝關鍵｜演講筆記</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22201C;
+    --ink-soft:#4A463F;
+    --paper:#F7F3EC;
+    --paper-2:#FBF8F2;
+    --line:#E2D9CB;
+    /* Gallup four domains */
+    --green:#3F7A52;   /* 戰略思維 Strategic Thinking */
+    --orange:#CE7A33;  /* 影響力 Influencing */
+    --purple:#6B5092;  /* 執行力 Executing */
+    --blue:#3C6A9E;    /* 關係建立 Relationship Building */
+    --green-tint:#EAF1EB;
+    --orange-tint:#F8EEE2;
+    --purple-tint:#EFEAF4;
+    --blue-tint:#E7EEF6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans TC",sans-serif;
+    font-weight:300;
+    line-height:1.95;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:radial-gradient(circle at 1px 1px, rgba(120,100,70,.05) 1px, transparent 0);
+    background-size:22px 22px;
+  }
+  .wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 28px;}
+
+  /* ============ HERO ============ */
+  .hero{padding:96px 28px 60px;max-width:980px;margin:0 auto;position:relative;}
+  .domainbar{display:flex;height:7px;width:84px;border-radius:6px;overflow:hidden;margin-bottom:38px;}
+  .domainbar span{flex:1;}
+  .db-g{background:var(--green);}.db-o{background:var(--orange);}
+  .db-p{background:var(--purple);}.db-b{background:var(--blue);}
+  .eyebrow{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.35rem;color:var(--orange);letter-spacing:.04em;margin-bottom:18px;}
+  .hero h1{
+    font-family:"Noto Serif TC",serif;font-weight:900;
+    font-size:clamp(2.5rem,6.4vw,4.6rem);line-height:1.18;letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  .hero h1 .hl{
+    background:linear-gradient(transparent 64%, rgba(63,122,82,.28) 64%);
+    padding:0 .05em;
+  }
+  .hero .lede{
+    font-family:"Noto Serif TC",serif;font-weight:400;font-size:clamp(1.1rem,2.3vw,1.4rem);
+    color:var(--ink-soft);margin-top:30px;max-width:680px;line-height:1.85;
+  }
+  .speaker-tag{
+    margin-top:46px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;
+    padding-top:28px;border-top:1px solid var(--line);
+  }
+  .speaker-tag .name{font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.5rem;color:var(--ink);}
+  .speaker-tag .roles{font-size:.92rem;color:var(--ink-soft);line-height:1.7;}
+  .speaker-tag .site{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--orange);font-style:italic;}
+
+  /* ============ SECTIONS ============ */
+  section{padding:54px 0;}
+  .sec-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:34px;}
+  .sec-num{
+    font-family:"Cormorant Garamond",serif;font-size:2.6rem;font-weight:600;
+    line-height:1;color:var(--line);flex-shrink:0;font-style:italic;
+  }
+  .sec-head h2{
+    font-family:"Noto Serif TC",serif;font-weight:700;
+    font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.3;color:var(--ink);
+  }
+  .sec-head .kicker{
+    font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);
+    font-weight:500;margin-bottom:8px;display:block;
+  }
+  p.body{font-size:1.04rem;color:var(--ink-soft);margin-bottom:20px;}
+  p.body strong{color:var(--ink);font-weight:500;}
+  .lead-in{font-family:"Noto Serif TC",serif;font-size:1.22rem;color:var(--ink);font-weight:400;line-height:1.85;margin-bottom:24px;}
+
+  /* pull quote */
+  .pq{
+    margin:40px 0;padding:32px 36px;position:relative;
+    background:var(--paper-2);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;
+    box-shadow:0 18px 40px -28px rgba(60,40,20,.4);
+  }
+  .pq .mark{font-family:"Cormorant Garamond",serif;font-size:3.4rem;color:var(--orange);line-height:.6;opacity:.5;}
+  .pq p{font-family:"Noto Serif TC",serif;font-size:clamp(1.25rem,2.8vw,1.7rem);font-weight:500;line-height:1.7;color:var(--ink);margin-top:6px;}
+  .pq .src{margin-top:14px;font-size:.85rem;letter-spacing:.05em;color:var(--ink-soft);}
+
+  /* domain grid */
+  .domain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:30px 0;}
+  .dcard{padding:24px 22px;border-radius:16px;position:relative;overflow:hidden;border:1px solid var(--line);}
+  .dcard .dot{width:34px;height:34px;border-radius:9px;margin-bottom:14px;}
+  .dcard h4{font-family:"Noto Serif TC",serif;font-size:1.2rem;font-weight:700;margin-bottom:4px;}
+  .dcard .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1rem;opacity:.7;margin-bottom:10px;}
+  .dcard p{font-size:.92rem;line-height:1.75;color:var(--ink-soft);}
+  .d-green{background:var(--green-tint);} .d-green .dot{background:var(--green);} .d-green h4{color:var(--green);}
+  .d-orange{background:var(--orange-tint);} .d-orange .dot{background:var(--orange);} .d-orange h4{color:var(--orange);}
+  .d-purple{background:var(--purple-tint);} .d-purple .dot{background:var(--purple);} .d-purple h4{color:var(--purple);}
+  .d-blue{background:var(--blue-tint);} .d-blue .dot{background:var(--blue);} .d-blue h4{color:var(--blue);}
+
+  /* EPOCH list */
+  .epoch{display:grid;gap:14px;margin:26px 0;}
+  .epoch .row{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;padding:18px 20px;background:var(--paper-2);border-radius:14px;border:1px solid var(--line);}
+  .epoch .letter{font-family:"Cormorant Garamond",serif;font-size:2.4rem;font-weight:600;color:var(--green);line-height:1;}
+  .epoch h5{font-family:"Noto Serif TC",serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;}
+  .epoch p{font-size:.92rem;color:var(--ink-soft);line-height:1.7;}
+
+  /* step blocks */
+  .step{margin:34px 0;padding-left:0;}
+  .step-tab{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .step-tab .n{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.5rem;font-weight:600;color:#fff;background:var(--green);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;line-height:1;}
+  .step-tab .t{font-family:"Noto Serif TC",serif;font-size:1.4rem;font-weight:700;}
+  .step-2 .n{background:var(--orange);} .step-3 .n{background:var(--purple);}
+
+  /* talent profile cards */
+  .profiles{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0;}
+  .profile{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:26px 24px;}
+  .profile .who{font-family:"Noto Serif TC",serif;font-size:1.25rem;font-weight:700;margin-bottom:4px;}
+  .profile .role{font-size:.85rem;color:var(--ink-soft);margin-bottom:18px;}
+  .talent-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .talent-row:last-child{border-bottom:none;}
+  .talent-row .rank{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.1rem;color:var(--ink-soft);width:24px;flex-shrink:0;}
+  .talent-row .chip{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
+  .talent-row .nm{font-weight:500;font-size:.98rem;color:var(--ink);}
+  .talent-row .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.92rem;color:var(--ink-soft);margin-left:auto;}
+  .c-g{background:var(--green);}.c-o{background:var(--orange);}.c-p{background:var(--purple);}.c-b{background:var(--blue);}
+
+  /* stat band */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:40px 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);}
+  .stat{padding:34px 20px;text-align:center;background:var(--paper-2);border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .big{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:3.2rem;line-height:1;color:var(--green);}
+  .stat:nth-child(2) .big{color:var(--orange);}
+  .stat:nth-child(3) .big{color:var(--purple);}
+  .stat .lbl{font-size:.9rem;color:var(--ink-soft);margin-top:10px;line-height:1.5;}
+
+  /* definition cards */
+  .defs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0;}
+  .def{padding:24px;border-radius:16px;border:1px solid var(--line);}
+  .def.talent{background:var(--green-tint);}
+  .def.strength{background:var(--orange-tint);}
+  .def .lab{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.2rem;margin-bottom:6px;}
+  .def.talent .lab{color:var(--green);} .def.strength .lab{color:var(--orange);}
+  .def h4{font-family:"Noto Serif TC",serif;font-size:1.25rem;font-weight:700;margin-bottom:10px;}
+  .def p{font-size:.95rem;color:var(--ink-soft);line-height:1.75;}
+
+  /* formula */
+  .formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;margin:34px 0;padding:36px 20px;background:var(--paper-2);border-radius:18px;border:1px solid var(--line);}
+  .fbox{text-align:center;}
+  .fbox .cn{font-family:"Noto Serif TC",serif;font-size:1.35rem;font-weight:700;}
+  .fbox .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.95rem;color:var(--ink-soft);}
+  .fbox.b1 .cn{color:var(--green);}.fbox.b2 .cn{color:var(--orange);}.fbox.b3 .cn{color:var(--blue);}
+  .fop{font-family:"Cormorant Garamond",serif;font-size:2rem;color:var(--ink-soft);}
+  .fres{font-family:"Noto Serif TC",serif;font-size:1.5rem;font-weight:900;color:var(--purple);}
+
+  /* QA accordion-style cards */
+  .qa{margin:18px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper-2);}
+  .qa .q{padding:20px 24px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.08rem;color:var(--ink);display:flex;gap:12px;align-items:baseline;}
+  .qa .q .mk{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--orange);font-size:1.3rem;flex-shrink:0;}
+  .qa .a{padding:0 24px 22px 56px;font-size:.97rem;color:var(--ink-soft);line-height:1.8;}
+  .qa .a strong{color:var(--ink);font-weight:500;}
+
+  /* applications three cards */
+  .apps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0;}
+  .app{padding:24px 22px;border-radius:16px;border:1px solid var(--line);background:var(--paper-2);}
+  .app .ic{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;}
+  .app h4{font-family:"Noto Serif TC",serif;font-size:1.15rem;font-weight:700;margin-bottom:10px;}
+  .app p{font-size:.92rem;color:var(--ink-soft);line-height:1.75;}
+
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:10px 0;}
+
+  /* speaker / CTA footer */
+  .closing{background:var(--ink);color:var(--paper);border-radius:26px;padding:54px 40px;margin:60px 0 40px;position:relative;overflow:hidden;}
+  .closing::before{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--orange),transparent 70%);opacity:.25;}
+  .closing .domainbar{margin-bottom:30px;}
+  .closing h3{font-family:"Noto Serif TC",serif;font-size:1.8rem;font-weight:700;margin-bottom:8px;}
+  .closing .sub{color:#C9C2B6;font-size:.95rem;margin-bottom:30px;}
+  .closing .roles2{list-style:none;display:grid;gap:8px;margin-bottom:34px;}
+  .closing .roles2 li{font-size:.98rem;color:#E8E2D7;padding-left:20px;position:relative;}
+  .closing .roles2 li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:2px;background:var(--orange);}
+  .links{display:grid;gap:14px;}
+  .lk{display:flex;align-items:center;gap:16px;padding:18px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;text-decoration:none;transition:.25s;}
+  .lk:hover{background:rgba(255,255,255,.12);transform:translateX(4px);}
+  .lk .tag{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.5rem;flex-shrink:0;width:34px;text-align:center;}
+  .lk.fb .tag{color:#6f9fe0;} .lk.pod .tag{color:var(--orange);} .lk.line .tag{color:#5bd17a;}
+  .lk .txt{flex:1;min-width:0;}
+  .lk .t1{color:var(--paper);font-weight:500;font-size:1rem;}
+  .lk .t2{color:#A8A196;font-size:.82rem;word-break:break-all;line-height:1.4;}
+  .lk .arr{color:#A8A196;font-size:1.2rem;}
+
+  .endnote{text-align:center;padding:30px 0 70px;color:var(--ink-soft);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.1rem;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  .hero .reveal:nth-child(1){animation-delay:.05s;}
+  .hero .reveal:nth-child(2){animation-delay:.18s;}
+  .hero .reveal:nth-child(3){animation-delay:.32s;}
+  .hero .reveal:nth-child(4){animation-delay:.46s;}
+  .hero .reveal:nth-child(5){animation-delay:.6s;}
+
+  @media(max-width:680px){
+    .domain-grid,.profiles,.defs,.apps{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--line);}
+    .stat:last-child{border-bottom:none;}
+    .sec-head{gap:12px;} .sec-num{font-size:1.9rem;}
+    .closing{padding:40px 24px;border-radius:20px;}
+    .epoch .row{grid-template-columns:46px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="domainbar reveal"><span class="db-g"></span><span class="db-o"></span><span class="db-p"></span><span class="db-b"></span></div>
+  <div class="eyebrow reveal">演講筆記 · Talk Notes</div>
+  <h1 class="reveal">AI 時代下<br><span class="hl">人才發展</span>的致勝關鍵</h1>
+  <p class="lede reveal">時代一直在變，科技一直往前，唯一不變的是「人」。這場演講要幫你穩住最重要的那一個人：你自己。從蓋洛普優勢出發，把天賦變成 AI 無法取代的價值。</p>
+  <div class="speaker-tag reveal">
+    <div>
+      <div class="name">Sara 蔡佩靜</div>
+      <div class="roles">Gallup 全球優勢教練　·　高階領導 X 頂尖企業優勢教練<br>《人生戰略方程式》作者　·　Podcast 主持人</div>
+    </div>
+    <div class="site">Saratsai.com</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== 01 核心理念 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div><span class="kicker">Core Thesis</span><h2>在變動的時代，先穩住你自己</h2></div>
+    </div>
+    <p class="lead-in">面對 AI，會焦慮是正常的。但焦慮可以很快放過自己，因為時代與科技一定會往前，唯一不變的是人。我們必須好好了解自己，才能用穩定而有力量的方式前進。</p>
+    <p class="body">現場學員的挑戰大多落在同一處：人際與溝通、跨部門合作、向上管理、管理新世代員工、客戶只看價格不看價值、客源流失、「思維強但表達弱」。在五個世代同處一個職場的今天，不論老闆或員工都更辛苦。Sara 也特別提醒一件被忽略的事：<strong>睡得好，人生才會好</strong>。健康與睡眠，是一切競爭力的底層。</p>
+    <div class="pq">
+      <div class="mark">“</div>
+      <p>真正的競爭力，不是去追多快的技術。技術永遠在推陳出新，而你不是發明技術的人。當你清楚自己的內在特質與強項，就能順應新科技，活出獨一無二的人生。</p>
+      <div class="src">— 整場演講最想帶走的一句</div>
+    </div>
+  </section>
+
+  <!-- ===== 02 不可取代 + EPOCH ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div><span class="kicker">What AI Cannot Replace</span><h2>不可取代的三核心，與 EPOCH 五特質</h2></div>
+    </div>
+    <p class="body">校長常分享，未來真正不可取代的有三個核心：<strong>人際的核心</strong>（怎麼跟人交流與互動，知識技能搜尋就有，人際關係才是要學的）、<strong>社會情感</strong>，以及<strong>存在的意義</strong>（只能自己尋找，沒有人會告訴你）。在此之上，是 EPOCH 五大特質。</p>
+    <div class="epoch">
+      <div class="row"><div class="letter">E</div><div><h5>Empathy　同理心</h5><p>不一定要靠「體諒」這個天賦才能同理。當你用優勢框架看見「每個人本來就不同」，反而更能同理：他會這樣決策，正與他的天賦有關。</p></div></div>
+      <div class="row"><div class="letter">P</div><div><h5>Presence　臨在感</h5><p>即使你的「前瞻」看未來、「回顧」看過去靠前，仍可用自己的方法覺察當下的情緒與狀態，活出臨在。</p></div></div>
+      <div class="row"><div class="letter">O</div><div><h5>Outlook　觀點</h5><p>策略思維、人際、執行力的天賦，都能完整表達你對一件事的獨特看法與清晰判斷。</p></div></div>
+      <div class="row"><div class="letter">C</div><div><h5>Creativity　創造力</h5><p>不只「理念」能跳脫框架，「關聯」也能把看似不相干的事物串接起來，交付創造力。</p></div></div>
+      <div class="row"><div class="letter">H</div><div><h5>Hope　希望感</h5><p>蓋洛普 12 年研究發現，部屬最希望領導者具備的特質就是「帶來希望」。正向態度、前瞻視角都是給人希望的方式。</p></div></div>
+    </div>
+    <p class="body">關鍵洞見：這五個特質都<strong>沒有標準答案</strong>。每個人都能用自己靠前的天賦，活出屬於自己的版本。理清內在特質，就是理解自己的天賦。</p>
+  </section>
+
+  <!-- ===== 03 天賦=決策系統 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div><span class="kicker">Talent = Decision System</span><h2>天賦不只是擅長，更是你的決策系統</h2></div>
+    </div>
+    <p class="body">我們每分每秒都在做決定，而這些決定都與優勢天賦息息相關。看懂天賦，混亂就會變清晰，迷霧就會散開。Sara 留了四個問題給大家回去思考：</p>
+    <div class="pq" style="border-left-color:var(--blue);">
+      <div class="mark" style="color:var(--blue);opacity:.5;">?</div>
+      <p style="font-size:1.15rem;">為什麼某些關係讓你特別耗能？為什麼你會拖延？為什麼有些事讓你特別進入心流？這些答案，全都藏在你的天賦軌跡裡。</p>
+      <div class="src">— 四個自我覺察的提問</div>
+    </div>
+  </section>
+
+  <!-- ===== 04 蓋洛普工具 + 四領域 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><span class="kicker">The Tool · CliftonStrengths</span><h2>世界一流的測評：你的天賦 DNA</h2></div>
+    </div>
+    <p class="body">蓋洛普優勢是 Sara 最推薦的工具。它由全球最大的民調公司、研究 200 萬名成功人士所發展而成。<strong>90% 的財星 500 大企業</strong>用它發展人才，台積電也在其中，全球已有超過 <strong>3,700 萬人</strong> 完成測驗。研究發現：優秀的人都專注發揮強項，而非補救弱項，徹底顛覆了「勤能補拙」的觀念。補弱只會越補越拙，要把精力放在強項上。</p>
+    <p class="body">天賦就像 DNA 密碼，找到與你完全相同組合的人，機率趨近於零。34 個天賦被歸納為四大優勢領域，各自有專屬顏色，每個領域底下又各有 8 至 9 個天賦：</p>
+    <div class="domain-grid">
+      <div class="dcard d-green"><div class="dot"></div><h4>戰略思維</h4><div class="en">Strategic Thinking</div><p>動腦、策略、分析。前瞻看未來、回顧看過去，都能形成策略，只是路徑不同。</p></div>
+      <div class="dcard d-orange"><div class="dot"></div><h4>影響力</h4><div class="en">Influencing</div><p>領導、放大、被看見。如行動、溝通等天賦，需要舞台與場域來滋養。</p></div>
+      <div class="dcard d-purple"><div class="dot"></div><h4>執行力</h4><div class="en">Executing</div><p>動手、把複雜的事完成。光靠想不夠，需要執行力把想法化為現實。</p></div>
+      <div class="dcard d-blue"><div class="dot"></div><h4>關係建立</h4><div class="en">Relationship Building</div><p>與人連結、情感面向。讓團隊有溫度、有深度信任的核心。</p></div>
+    </div>
+    <p class="body"><strong>不要用現象解釋現象，要用底層邏輯解釋現象。</strong> MBTI、DISC、星座講的是「型別」這個現象，卻說不出你為什麼是這個型別。蓋洛普的天賦組合，就是能告訴你所有答案的底層邏輯。Sara 舉例：她、Vito 大叔、女力學院 Elsa 三人都是獅子座 A 型，但天賦盤完全不同。她與 Vito 都是戰略思維突出，Elsa 卻是關係建立突出。同星座同血型，底層卻天差地遠。</p>
+  </section>
+
+  <!-- ===== 05 三步驟 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div><span class="kicker">The Three Steps</span><h2>天賦資產三步驟：盤點 · 活化 · 放大</h2></div>
+    </div>
+    <p class="body">天賦不只是你的擅長，更是你的<strong>隱形資產</strong>：它連結你的思考模式、做事方式、價值觀，以及你給別人的獨特信賴感，全都是 AI 無法取代的部分。要把這份資產活化、放大，有三個步驟。</p>
+
+    <!-- STEP 1 -->
+    <div class="step step-1">
+      <div class="step-tab"><div class="n">1</div><div class="t">盤點 · 看懂核心天賦資產</div></div>
+      <p class="body">方法極其簡單：花 30 分鐘做一次線上科學測驗，馬上看到報告，不必再花好幾年自我摸索。報告第 21 頁是 Sara 最愛的一頁，呈現每個人的天賦密碼，一對一教練時她只用這一頁就能開始。</p>
+      <p class="body">這裡看兩位戰略思維突出者的 Top 5，前一名相同，底下組合卻完全不同：</p>
+      <div class="profiles">
+        <div class="profile">
+          <div class="who">Sara 蔡佩靜</div>
+          <div class="role">戰略思維突出 · 綠色為主</div>
+          <div class="talent-row"><span class="rank">1</span><span class="chip c-g"></span><span class="nm">戰略</span><span class="en">Strategic</span></div>
+          <div class="talent-row"><span class="rank">2</span><span class="chip c-p"></span><span class="nm">成就（有始有終）</span><span class="en">Achiever</span></div>
+          <div class="talent-row"><span class="rank">3</span><span class="chip c-g"></span><span class="nm">理念（創新）</span><span class="en">Ideation</span></div>
+          <div class="talent-row"><span class="rank">4</span><span class="chip c-g"></span><span class="nm">前瞻</span><span class="en">Futuristic</span></div>
+          <div class="talent-row"><span class="rank">5</span><span class="chip c-g"></span><span class="nm">學習</span><span class="en">Learner</span></div>
+        </div>
+        <div class="profile">
+          <div class="who">海碩校長</div>
+          <div class="role">戰略 + 行動，動作極快</div>
+          <div class="talent-row"><span class="rank">1</span><span class="chip c-g"></span><span class="nm">戰略</span><span class="en">Strategic</span></div>
+          <div class="talent-row"><span class="rank">2</span><span class="chip c-g"></span><span class="nm">前瞻</span><span class="en">Futuristic</span></div>
+          <div class="talent-row"><span class="rank">3</span><span class="chip c-o"></span><span class="nm">行動</span><span class="en">Activator</span></div>
+          <div class="talent-row"><span class="rank">4</span><span class="chip c-p"></span><span class="nm">統籌</span><span class="en">Arranger</span></div>
+          <div class="talent-row"><span class="rank">5</span><span class="chip c-g"></span><span class="nm">關聯</span><span class="en">Connectedness</span></div>
+        </div>
+      </div>
+      <p class="body">校長有「兩匹馬在前面」（戰略＋前瞻），加上行動，所以動作很快、不拖延；統籌讓他能高效管理多校區；關聯讓他把看似不相干的人事物串聯，難怪他談的都是趨勢與策略。<strong>一切答案，就在天賦密碼裡。</strong></p>
+      <div class="pq">
+        <div class="mark">“</div>
+        <p>有位高材生花了五、六年自我探索，才發現「學習」是自己的天賦。而蓋洛普一個 30 分鐘的測驗，就直接告訴她 Top 1 是 Learner。何必繞那麼遠？</p>
+        <div class="src">— 來賓 Cynthia 的故事</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- STEP 2 -->
+    <div class="step step-2">
+      <div class="step-tab"><div class="n">2</div><div class="t">活化 · 把天賦鍛鍊成優勢</div></div>
+      <p class="body">每個人都有天賦，天賦一點都不稀有。重點是你有沒有把它<strong>鍛鍊成優勢</strong>：天賦像肌肉，需要訓練，不去 act on it，就只停在 80 分，到不了 90、95 甚至超越 100。</p>
+      <div class="defs">
+        <div class="def talent"><div class="lab">Talent</div><h4>天賦的定義</h4><p>一種自然而然、能被反覆且高效運用的思考、行為或感受模式。</p></div>
+        <div class="def strength"><div class="lab">Strength</div><h4>優勢的定義</h4><p>面對目標時能百發百中、正中紅心，穩定達到卓越的具體成果。</p></div>
+      </div>
+      <p class="body">活化的方式：可以自己細讀完整測驗的四份詳細報告；想更快，就找專業教練做一對一 coaching，把天賦從表面意思連結到自身經驗，再用出來。最實用的工具是<strong>個人發展計畫（IDP）</strong>：寫下目標，挑出三個你 Top 10 的天賦，所有行動方案都背靠你自己選的強項天賦。因為用的是你擅長的方式、行動是你自己想出來的，目標就極可能被實踐。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- STEP 3 -->
+    <div class="step step-3">
+      <div class="step-tab"><div class="n">3</div><div class="t">放大 · 讓市場看得懂你與團隊</div></div>
+      <p class="body">把團隊每個人疊在一起，就能看到團隊的 Top 10 與 Bottom 5。Sara 分享今年三月為一家公司做的 120 人春酒培訓：他們前五大天賦有四個是藍色（關係建立），是典型的 people oriented 團隊。把天賦兩兩相加，就能推導出企業文化：</p>
+      <div class="apps">
+        <div class="app"><div class="ic">交往 + 體諒</div><h4>可深度信任</h4><p>不是表面的君子之交，而是很深入的深度信任關係。</p></div>
+        <div class="app"><div class="ic">責任 + 積極</div><h4>可靠靠譜</h4><p>事情交辦給他們，絕對使命必達，不用擔心落掉。</p></div>
+        <div class="app"><div class="ic">適應</div><h4>靈活破局</h4><p>能彈性擁抱變化，這在每天都在變的 AI 時代尤其關鍵。</p></div>
+      </div>
+      <p class="body">於是這家公司的文化浮現：有溫度、值得信賴、互相支援、把事情完成。提醒一點：<strong>天賦不能用過頭</strong>。例如「責任」用過頭會責任心爆棚、累死自己，要做損害控制管理，拿捏得剛剛好。</p>
+    </div>
+  </section>
+
+  <!-- ===== 06 企業效益 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div><span class="kicker">Why Enterprises Invest</span><h2>導入優勢文化的企業效益</h2></div>
+    </div>
+    <p class="body">企業愛用這套工具，是因為它能讓員工更認識自己、工作更高效、敬業度提升，進而創造業績與獲利。蓋洛普研究發現，導入優勢文化的企業：</p>
+    <div class="stats">
+      <div class="stat"><div class="big">+19%</div><div class="lbl">業績提升<br>且不需任何廣告行銷預算</div></div>
+      <div class="stat"><div class="big">↓</div><div class="lbl">員工離職率下降<br>提高人才競爭力</div></div>
+      <div class="stat"><div class="big">+29%</div><div class="lbl">獲利提升<br>近三成的 organic growth</div></div>
+    </div>
+    <p class="body">做法其實很簡單：讓員工發展、發揮自己的優勢，大家強強聯手，不要要求員工補弱。克蘭斯總經理回饋，優勢領導就像《七個習慣》，是不隨時間改變的永恆原則，是主管必修課。微熱集團自 2022 年起導入，從 30 多人成長到 120 人，Sara 形容他們是真正的<strong>幸福企業</strong>。</p>
+  </section>
+
+  <!-- ===== 07 人生戰略方程式 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div><span class="kicker">The Life Strategy Equation</span><h2>《人生戰略方程式》：找到你的人生使命</h2></div>
+    </div>
+    <p class="body">Sara 在教練過程中發現，光知道天賦還不夠解決職涯迷惘。她也分享自己的低谷：在 JPMorgan 擔任行銷策略副總，看似光鮮，卻有半年經歷憂鬱、焦慮、恐慌、失眠，連幫女兒講故事的力氣都沒有。生日當天第一次走進神經科。後來她毅然離職，先把身心靈照顧好。</p>
+    <div class="pq">
+      <div class="mark">“</div>
+      <p>沒有健康，賺多少錢都沒用。沒有前面那個「1」，後面有幾個「0」都沒用。</p>
+      <div class="src">— Sara 的親身體悟</div>
+    </div>
+    <p class="body">走過那一遭後，她整理出一條真正可行的公式。她當女力學院二、三屆導師時，上千名學員都能用它寫出自己的人生使命。本書被歸入成功法、潛能開發與自我實現三類，並獲企業經營領導協會第 20 屆金峰獎微型企業十大商品。</p>
+    <div class="formula">
+      <div class="fbox b1"><div class="cn">天賦</div><div class="en">擅長的事</div></div>
+      <div class="fop">+</div>
+      <div class="fbox b2"><div class="cn">熱情</div><div class="en">熱愛的事 · 你的火源</div></div>
+      <div class="fop">+</div>
+      <div class="fbox b3"><div class="cn">價值</div><div class="en">能為他人解決的問題</div></div>
+      <div class="fop">=</div>
+      <div class="fres">人生使命</div>
+    </div>
+    <p class="body">這裡的「成功」指的是<strong>內在成就</strong>，不是抬頭或薪水。一旦找到人生使命，你每天都走在有意義的道路上，知道自己要往哪裡去，這本身就是成功。清晰的定位讓你更有底氣、辨識度更高，也才能與別人做出差異化。脫穎而出靠的不是知識技能，而是你的天賦特質，那正是你領導力與影響力的底氣。</p>
+  </section>
+
+  <!-- ===== 08 三大應用：家長/伴侶/團隊 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div><span class="kicker">Apply It · Family & Team</span><h2>用在家庭、伴侶與團隊</h2></div>
+    </div>
+    <div class="apps">
+      <div class="app"><div class="ic" style="color:var(--green);">For Parents</div><h4>給家長</h4><p>環境只會滋養天賦，不會創造天賦：同一對父母的兄弟姊妹個性截然不同。孩子的天賦在幼兒園就定型，長大只是被強化。發展他靠前的天賦，弱項做損害控制就好，別逼他補弱。最該改變的，其實是家長自己。Sara 的女兒「成就」靠後、「和諧」靠前，看懂報告後，她調整了相處方式，衝突與不理解大幅降低。</p></div>
+      <div class="app"><div class="ic" style="color:var(--blue);">For Couples</div><h4>給伴侶</h4><p>認識伴侶的天賦非常重要，否則很多糾結與內耗，一輩子都想不清楚。Sara「前瞻」在前、先生「回顧」在前，所以共同決策時，她會先給先生成功案例與歷史經驗，他就比較容易買單。知己知彼，人生會非常順遂。</p></div>
+      <div class="app"><div class="ic" style="color:var(--orange);">For Teams</div><h4>給團隊</h4><p>不同天賦組合摩擦力較大，但激出的火花更大。工作坊中常發現「自己需要的人才就在隔壁」，直接「並購」合併就好。先辨識自己與團隊的差異，找出團隊沒有、而你能放大的獨特能力。</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 09 QA 精華 ===== -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">09</div>
+      <div><span class="kicker">Q &amp; A Highlights</span><h2>現場問答精華</h2></div>
+    </div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>哪些天賦會被放大？</div><div class="a">沒有哪個天賦更好或更差，重點是<strong>你有什麼、就用什麼</strong>。把你有的用出來，就是放大。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>蓋洛普講的「天賦」是什麼？</div><div class="a">不是語文、數理、體能那種外顯天賦，而是<strong>你怎麼思考、怎麼與人交流互動、怎麼做決策、怎麼把事情完成</strong>。這些面向在成年後就大致定型。蓋洛普建議一輩子測一次就好，不鼓勵反覆測驗。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>天賦「用過頭」會怎樣？</div><div class="a">戰略快又準、講話速度快，太快時受眾跟不上就是用過頭：要留意對方能否 catch up，放慢並闡述思考過程。戰略容易沒耐心、甚至懶得解釋，那正是盲點。關鍵是<strong>自我覺察</strong>。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>小孩幾歲可以做？</div><div class="a">只要中文能讀懂題目（國語能力還行、大約升國中）就可以，最小的客區是國一。Sara 的女兒約 11 歲（五升六暑假）做的。每題只有 20 秒、不能太思考，現在已有繁體中文版。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>要重測嗎？信效度如何？</div><div class="a">半年甚至更久後重測，信效度仍有 70% 以上，順序頂多微調。知道 Top 10 後，有意識地用第三、第五，排名就不重要了。只有兩種情況可能要重測：第一次測驗時身體不適導致誤判，或經歷重大變故（如瀕死經驗）使價值觀大改。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>怎麼把測驗做準？</div><div class="a">心情正常、不想睡時做；留 30 分鐘不被打擾的時間；憑直覺、不需準備、不要邊聊天邊回答；選你最擅長的語言作答即可。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>角色報告（領導者 / 主管 / 銷售）要另外做嗎？</div><div class="a">不用重做測驗，角色報告是 34 報告的延伸，解鎖即可，且已升級為客製化描述。其實發展個人品牌，用原始報告就夠，甚至可放進 AI，問它如何把你的天賦運用在特定角色上。<strong>原始報告才是最重要的。</strong></div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>一個人公司怎麼辦？</div><div class="a">沒有團隊可以彼此補位，首要是<strong>克服自己的心魔</strong>，因為沒有人在旁邊踢你一腳。</div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>戰略前、審慎第二、行動靠後，常被擔心卡住？</div><div class="a">先把「審慎」降低使用、按暫停：你的綠色戰略天賦很多，判斷是準的，要相信自己。別在 3% 風險就卡住。先用戰略拉出方向與策略，再讓審慎進來幫你避掉真正的風險，就能前進。<strong>跟行動排第幾，一點關係都沒有。</strong></div></div>
+
+    <div class="qa"><div class="q"><span class="mk">Q</span>科學還是玄學？</div><div class="a">不必分科學與玄學，說不定殊途同歸。你現在以為的玄學，以後可能就是科學。</div></div>
+
+    <div class="pq" style="border-left-color:var(--purple);margin-top:38px;">
+      <div class="mark" style="color:var(--purple);">“</div>
+      <p>天賦就像每個人的好牌。沒做測驗前，你是蓋著牌在玩暗棋，不知道該出什麼。把牌掀開，看見自己有什麼好牌、什麼壞牌，人生就很好掌控與排程了。</p>
+      <div class="src">— Sara 的收尾比喻</div>
+    </div>
+    <p class="body">最後 Sara 也澄清：她不是「解讀」，解讀交給 AI 就好；她是<strong>教練</strong>。整套系統只需要做一次測驗，其他都只是解鎖。</p>
+  </section>
+
+  <!-- ===== CLOSING / SPEAKER / CTA ===== -->
+  <section style="padding-bottom:0;">
+    <div class="closing">
+      <div class="domainbar"><span class="db-g"></span><span class="db-o"></span><span class="db-p"></span><span class="db-b"></span></div>
+      <h3>關於主講人　Sara 蔡佩靜</h3>
+      <div class="sub">Saratsai.com　·　2019 年起成為 Gallup 教練，至今近七年；曾在職場深耕 20 年</div>
+      <ul class="roles2">
+        <li>Gallup 全球優勢教練，專注高階領導與頂尖企業優勢培訓</li>
+        <li>政大廣告系畢業，歷任 FCB、麥肯等 4A 廣告公司，服務眾多國際品牌</li>
+        <li>曾任匯豐銀行（8.5 年）、JPMorgan 行銷策略副總</li>
+        <li>企業培訓客戶涵蓋愛彼錶、克蘭斯、微熱集團與四大會計師事務所</li>
+        <li>《人生戰略方程式》作者（金峰獎微型企業十大商品）、同名 Podcast 主持人</li>
+        <li>著有音訊課程《優勢領導的管理課》</li>
+      </ul>
+      <div class="links">
+        <a class="lk fb" href="https://www.facebook.com/share/1LgdKVnvEK/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <span class="tag">f</span>
+          <span class="txt"><span class="t1">個人 Facebook（歡迎追蹤）</span><span class="t2">facebook.com/share/1LgdKVnvEK</span></span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="lk pod" href="https://open.firstory.me/user/saratsai/platforms" target="_blank" rel="noopener">
+          <span class="tag">♪</span>
+          <span class="txt"><span class="t1">Podcast｜職場優勢從天賦佈局</span><span class="t2">open.firstory.me/user/saratsai/platforms</span></span>
+          <span class="arr">↗</span>
+        </a>
+        <a class="lk line" href="https://page.line.me/hhi9502b?openQrModal=true" target="_blank" rel="noopener">
+          <span class="tag">✦</span>
+          <span class="txt"><span class="t1">LINE 官方帳號（輸入「測驗」「電子報」獲取更多資訊）</span><span class="t2">page.line.me/hhi9502b</span></span>
+          <span class="arr">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="endnote">看自己有的，不要看自己沒有的。把好牌掀開，活出獨一無二的你。</div>
+
+</main>
+</body>
+</html>
