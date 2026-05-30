@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for Cambodia — A Strategy Note for Dr. Phet Sereiwath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=Noto+Sans+Khmer:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+Khmer:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0c233f; --navy2:#15395f; --navy3:#1d4d77;
+    --gold:#c9a24a; --gold-soft:#e3c986; --gold-deep:#a37f2e;
+    --paper:#faf6ee; --card:#ffffff; --ink:#1b2531; --muted:#5d6b7b; --line:#e7ddc9;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+  .zh{font-family:'Noto Sans TC',var(--sans)}
+  .km{font-family:'Noto Sans Khmer',var(--sans);line-height:1.9}
+  html[data-lang="en"] .zh, html[data-lang="en"] .km{display:none}
+  html[data-lang="zh"] .en, html[data-lang="zh"] .km{display:none}
+  html[data-lang="km"] .en, html[data-lang="km"] .zh{display:none}
+  sup.fn{font-size:.62em;color:var(--gold-deep);font-weight:700;font-family:var(--sans);padding-left:1px;vertical-align:super}
+
+  /* switcher */
+  .switch{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:2px;background:rgba(12,35,63,.92);backdrop-filter:blur(6px);border:1px solid rgba(201,162,74,.5);border-radius:999px;padding:4px;box-shadow:0 6px 24px rgba(12,35,63,.28)}
+  .switch button{font-family:var(--sans);font-size:13px;font-weight:600;color:#dbe4ee;background:transparent;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;letter-spacing:.2px;transition:.18s}
+  .switch button.zhbtn{font-family:'Noto Sans TC',var(--sans)}
+  .switch button.kmbtn{font-family:'Noto Sans Khmer',var(--sans)}
+  .switch button:hover{color:#fff}
+  .switch button.active{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#1b1405}
+
+  /* emblem + divider */
+  .emblem{color:var(--gold);display:inline-block;vertical-align:middle}
+  .divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 auto;max-width:340px;color:var(--gold);opacity:.9}
+  .divider .ln{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold))}
+  .divider .ln.r{background:linear-gradient(90deg,var(--gold),transparent)}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(140deg,#0a1d35 0%,var(--navy) 45%,var(--navy3) 120%);color:#f4ede0;padding:30px 24px 64px;text-align:center}
+  .hero::before{content:"";position:absolute;top:-160px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,74,.22),transparent 70%)}
+  .hero::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,162,74,.32);border-radius:4px;pointer-events:none}
+  .hero-inner{position:relative;max-width:840px;margin:0 auto}
+  .confidential{font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#8ea2b8;margin-bottom:30px}
+  .confidential span{color:var(--gold-soft)}
+  .hero .emblem{margin-bottom:16px}
+  .kicker{font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:22px}
+  .titles{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+  .titles .t{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:.3px}
+  .titles .t.en{font-size:46px;color:#fff}
+  .titles .t.zh{font-family:'Noto Serif TC','Noto Sans TC',serif;font-size:33px;color:#f6efe1;font-weight:500}
+  .titles .t.km{font-family:'Noto Serif Khmer','Noto Sans Khmer',serif;font-size:26px;line-height:1.5;color:#f0e6d2;font-weight:500}
+  .titles .t.zh,.titles .t.km{opacity:.92}
+  .hero .gold-rule{width:64px;height:2px;background:linear-gradient(90deg,var(--gold-soft),var(--gold));margin:22px auto;border:0}
+  .forname .fl{display:block;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#9fb1c4;margin-bottom:6px}
+  .forname .fn{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--gold-soft);letter-spacing:.5px}
+  .subs{display:flex;flex-direction:column;gap:5px;max-width:660px;margin:18px auto 24px;color:#cdd8e4;font-size:15.5px}
+  .subs .km{font-size:14.5px}
+  .meta{font-size:13px;letter-spacing:.5px;color:#9fb1c4}
+  .meta b{color:var(--gold-soft);font-weight:600}
+  .hint{margin-top:22px;font-size:12.5px;color:#8ea2b8;letter-spacing:.3px}
+  .hint span{color:var(--gold-soft)}
+
+  /* snapshot band */
+  .snap-wrap{background:var(--navy);padding:0 24px}
+  .snap{max-width:940px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,162,74,.22);border:1px solid rgba(201,162,74,.22);border-radius:14px;overflow:hidden;transform:translateY(-32px);box-shadow:0 20px 50px rgba(8,20,36,.4)}
+  .stat{background:#0e2742;padding:22px 20px;text-align:center}
+  .stat .num{font-family:var(--serif);font-size:33px;font-weight:600;color:var(--gold-soft);line-height:1.05}
+  .stat .lab{font-size:12px;color:#b9c7d6;margin-top:7px;letter-spacing:.2px;line-height:1.4}
+
+  /* layout */
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  section{padding:50px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:10px}
+  .sec-num{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--gold);line-height:1}
+  h2{font-family:var(--serif);font-weight:600;font-size:33px;color:var(--navy);letter-spacing:.3px;line-height:1.18}
+  h2 .zh{font-family:'Noto Sans TC',var(--sans);font-weight:700;font-size:28px}
+  h2 .km{font-family:'Noto Serif Khmer','Noto Sans Khmer',serif;font-size:25px;font-weight:600}
+  .lead{font-size:18px;color:var(--muted);margin:14px 0 0;max-width:680px}
+  .lead .km{font-size:16px}
+  .body-p{font-size:17px;color:#3a4654;margin-top:18px;max-width:680px}
+  .body-p .km{font-size:15.5px}
+
+  /* executive summary */
+  .exec{background:linear-gradient(135deg,#fffdf7,#fbf4e4);border:1px solid var(--line);border-radius:14px;padding:30px 34px;box-shadow:0 8px 26px rgba(28,37,49,.05)}
+  .exec .tag{display:block;font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-deep);margin-bottom:14px}
+  .exec p{font-size:18.5px;line-height:1.62;color:#34404e}
+  .exec p .km{font-size:16px}
+
+  /* callout */
+  .callout{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:22px 28px;margin-top:26px}
+  .callout p{font-size:15.5px;color:#52606f;font-style:italic}
+  .callout p .km,.callout p .zh{font-style:normal}
+  .callout .tag{display:block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-deep);margin-bottom:9px;font-style:normal}
+
+  /* personal note */
+  .pnote{background:linear-gradient(135deg,#0c233f,#1d4d77);color:#eef3f8;border-radius:14px;padding:34px;margin-top:34px;position:relative;overflow:hidden}
+  .pnote::before{content:"";position:absolute;top:-70px;left:-50px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,74,.16),transparent 70%)}
+  .pnote .tag{display:block;font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
+  .pnote p{font-size:17.5px;line-height:1.7;position:relative}
+  .pnote p .km{font-size:15.5px}
+
+  /* quote */
+  .quote{position:relative;text-align:center;margin:36px auto;max-width:680px;padding:6px 20px}
+  .quote .mark{font-family:var(--serif);font-size:74px;color:var(--gold);opacity:.35;line-height:.7;height:30px}
+  .quote q{quotes:none;font-family:var(--serif);font-style:italic;font-size:26px;color:var(--navy);line-height:1.35}
+  .quote q.zh{font-family:'Noto Serif TC','Noto Sans TC',serif;font-style:normal;font-size:23px}
+  .quote q.km{font-family:'Noto Serif Khmer','Noto Sans Khmer',serif;font-style:normal;font-size:20px;line-height:1.6}
+  .quote .by{display:block;margin-top:14px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold-deep)}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .pillar{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:10px;padding:22px 20px;box-shadow:0 6px 20px rgba(28,37,49,.04)}
+  .pillar .pl{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px}
+  .pillar p{font-size:15.5px;color:#3a4654}
+  .pillar .km{font-size:14.5px}
+
+  /* chart */
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin-top:30px;box-shadow:0 6px 20px rgba(28,37,49,.04)}
+  .chart .ct{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.3px;color:var(--navy);margin-bottom:18px}
+  .barrow{display:flex;align-items:center;gap:14px;margin:12px 0}
+  .barlab{width:88px;font-size:14px;font-weight:600;color:var(--ink);text-align:right;flex-shrink:0}
+  .bartrack{flex:1;background:#eef0f2;border-radius:6px;height:26px;overflow:hidden}
+  .barfill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;color:#fff;font-size:12.5px;font-weight:700}
+  .barfill.gold{background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+  .barfill.navy{background:linear-gradient(90deg,#15395f,#2d6394)}
+  .barnote{font-size:13px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+  .barnote .km{font-size:12px}
+
+  /* figure row */
+  .figrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+  .fig{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px;box-shadow:0 6px 20px rgba(28,37,49,.04)}
+  .fig .fnum{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--navy);line-height:1}
+  .fig .ftxt{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+  /* sector / capability cards */
+  .sectors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+  .scard{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px;box-shadow:0 6px 20px rgba(28,37,49,.04)}
+  .scard .n{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--gold);line-height:1;min-width:30px}
+  .scard h3{font-family:var(--sans);font-size:16px;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .scard h3 .km{font-size:15px}
+  .scard p{font-size:14px;color:var(--muted);line-height:1.55}
+  .scard p .km{font-size:13px}
+  .scard p b{color:#34404e;font-weight:700}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+  .step{position:relative;background:var(--navy);color:#eaf0f6;border-radius:12px;padding:24px 20px;overflow:hidden}
+  .step::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-soft),var(--gold))}
+  .step .sn{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--gold-soft);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block}
+  .step p{font-size:15px;color:#dbe4ee}
+  .step p .km{font-size:14px}
+
+  /* highlight */
+  .highlight{background:linear-gradient(135deg,#0c233f,#1d4d77);color:#eef3f8;border-radius:14px;padding:32px 34px;margin-top:30px;position:relative;overflow:hidden}
+  .highlight::before{content:"";position:absolute;top:-80px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,74,.18),transparent 70%)}
+  .highlight .tag{display:block;font-size:11.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
+  .highlight p{font-size:18px;line-height:1.6;position:relative}
+  .highlight p .km{font-size:16px}
+  .note{font-size:14px;color:var(--muted);margin-top:18px}
+  .note .km{font-size:13px}
+
+  /* next steps */
+  .nlist{list-style:none;margin-top:26px;counter-reset:n}
+  .nlist li{position:relative;padding:15px 0 15px 56px;border-bottom:1px solid var(--line);counter-increment:n}
+  .nlist li:last-child{border-bottom:0}
+  .nlist li::before{content:counter(n);position:absolute;left:0;top:13px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;font-family:var(--serif);font-weight:600;font-size:17px;display:flex;align-items:center;justify-content:center}
+  .nlist li span{font-size:16.5px;color:#3a4654}
+  .nlist li span.km{font-size:15px}
+
+  /* closing */
+  .closing{text-align:center;padding:44px 24px 8px}
+  .closing .emblem{margin-bottom:16px}
+  .closing .cl{font-family:var(--serif);font-style:italic;font-size:29px;color:var(--navy)}
+  .closing .cl.zh{font-family:'Noto Serif TC','Noto Sans TC',serif;font-style:normal;font-size:26px}
+  .closing .cl.km{font-family:'Noto Serif Khmer','Noto Sans Khmer',serif;font-style:normal;font-size:22px;line-height:1.6}
+
+  /* references */
+  .refs{background:#f3ece0;border-top:1px solid var(--line)}
+  .refs-in{max-width:880px;margin:0 auto;padding:34px 24px}
+  .refs h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .refs ol{margin:0;padding-left:22px}
+  .refs li{font-size:12.5px;color:#5b6b7c;margin-bottom:7px;line-height:1.5;word-break:break-word}
+  .refs li a{color:var(--navy2);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  footer{background:var(--navy);color:#aebdce;text-align:center;padding:32px 24px;font-size:13px;letter-spacing:.4px}
+  footer .ft-strong{color:#eef3f8;font-size:14px;margin-bottom:6px}
+  footer .ft-gold{color:var(--gold-soft);font-weight:600}
+  footer .ft-small{margin-top:14px;font-size:11.5px;color:#7e90a4;letter-spacing:1px}
+
+  @media (max-width:760px){
+    body{font-size:16px}
+    .titles .t.en{font-size:32px}.titles .t.zh{font-size:25px}.titles .t.km{font-size:20px}
+    h2{font-size:26px}
+    .snap{grid-template-columns:repeat(2,1fr)}
+    .pillars,.sectors,.steps,.figrow{grid-template-columns:1fr}
+    .switch button{padding:6px 10px;font-size:12px}
+    .hero{padding:24px 18px 56px}
+    .barlab{width:64px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="switch" role="group" aria-label="Language">
+  <button class="zhbtn" data-l="zh">中文</button>
+  <button class="enbtn active" data-l="en">English</button>
+  <button class="kmbtn" data-l="km">ខ្មែរ</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="confidential"><span>● </span><span class="en">Private &amp; Confidential</span><span class="zh" lang="zh">機密文件</span><span class="km" lang="km">ឯកសារសម្ងាត់</span></div>
+    <svg class="emblem" width="50" height="50" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M32 4 L48 32 L32 60 L16 32 Z"/><path d="M32 15 L41 32 L32 49 L23 32 Z" fill="currentColor" stroke="none" opacity=".9"/></g></svg>
+    <div class="kicker">Strategy Note&nbsp;·&nbsp;Artificial Intelligence in Cambodia</div>
+    <div class="titles">
+      <span class="t en">Your Vision, Powered by AI</span>
+      <span class="t zh" lang="zh">您的願景，由 AI 驅動</span>
+      <span class="t km" lang="km">ចក្ខុវិស័យរបស់លោកបណ្ឌិត ដែលជំរុញដោយ AI</span>
+    </div>
+    <hr class="gold-rule">
+    <div class="forname">
+      <span class="fl">Prepared exclusively for</span>
+      <span class="fn">Dr. Phet Sereiwath</span>
+    </div>
+    <div class="subs">
+      <span class="en">A data-grounded strategy note — turning our conversation into action.</span>
+      <span class="zh" lang="zh">一份以數據為本的策略備忘——把我們的對話，化為行動。</span>
+      <span class="km" lang="km">កំណត់ចំណាំយុទ្ធសាស្ត្រ ផ្អែកលើទិន្នន័យ — បំប្លែងការសន្ទនារបស់យើង ឱ្យទៅជាសកម្មភាព។</span>
+    </div>
+    <div class="meta">30 May 2026&nbsp;·&nbsp;Roy (Lee Hai-Shuo) &amp; team&nbsp;·&nbsp;with Robert</div>
+    <div class="hint">三語 · English · ខ្មែរ — <span>switch any time, top-right ↗</span></div>
+  </div>
+</header>
+
+<!-- SNAPSHOT BAND -->
+<div class="snap-wrap">
+  <div class="snap">
+    <div class="stat"><div class="num">60.7%</div><div class="lab"><span class="en">internet penetration (10.8M users)</span><span class="zh" lang="zh">網路滲透率（1,080 萬人）</span><span class="km" lang="km">អ្នកប្រើអ៊ីនធឺណិត (10.8 លាននាក់)</span><sup class="fn">1</sup></div></div>
+    <div class="stat"><div class="num">50.3%</div><div class="lab"><span class="en">use iPhone — iOS now leads Android</span><span class="zh" lang="zh">使用 iPhone——iOS 已超越 Android</span><span class="km" lang="km">ប្រើ iPhone — iOS នាំមុខ Android</span><sup class="fn">2</sup></div></div>
+    <div class="stat"><div class="num">143%</div><div class="lab"><span class="en">mobile connections vs population (25.3M)</span><span class="zh" lang="zh">行動門號／人口（2,530 萬）</span><span class="km" lang="km">ការតភ្ជាប់ទូរស័ព្ទធៀបនឹងប្រជាជន (25.3 លាន)</span><sup class="fn">1</sup></div></div>
+    <div class="stat"><div class="num">US$104.8B</div><div class="lab"><span class="en">digital payments via Bakong — 330% of GDP</span><span class="zh" lang="zh">Bakong 數位支付——達 GDP 的 330%</span><span class="km" lang="km">ការទូទាត់ឌីជីថលតាម Bakong — 330% នៃ GDP</span><sup class="fn">3</sup></div></div>
+    <div class="stat"><div class="num">#118 ↑27</div><div class="lab"><span class="en">Government AI Readiness — up 27 places in a year</span><span class="zh" lang="zh">政府 AI 整備度——一年躍升 27 名</span><span class="km" lang="km">ការត្រៀមខ្លួន AI រដ្ឋាភិបាល — កើនឡើង 27 ចំណាត់ថ្នាក់</span><sup class="fn">4</sup></div></div>
+    <div class="stat"><div class="num">US$26.2B</div><div class="lab"><span class="en">exports in 2024, up 15.7%</span><span class="zh" lang="zh">2024 年出口額，成長 15.7%</span><span class="km" lang="km">ការនាំចេញឆ្នាំ 2024 កើន 15.7%</span><sup class="fn">7</sup></div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <section style="padding-top:8px;padding-bottom:8px">
+    <div class="exec">
+      <span class="tag"><span class="en">Executive Summary</span><span class="zh" lang="zh">執行摘要</span><span class="km" lang="km">សេចក្ដីសង្ខេបប្រតិបត្តិ</span></span>
+      <p>
+        <span class="en">Cambodia has crossed the line from talking about AI to being ready for it: 10.8 million people online, more mobile connections than citizens, digital payments worth over three times GDP, and — rare for the region — more iPhones than Android phones. The opportunity is not to teach AI, but to put it to work inside the sectors you already lead. This note sets out how — beginning with a single, most important client: you, Dr. Phet Sereiwath.</span>
+        <span class="zh" lang="zh">柬埔寨已從「談論 AI」跨越到「準備好用 AI」：1,080 萬人上網、行動門號多於人口、數位支付達 GDP 三倍以上，而且——在本區域相當罕見——iPhone 已多於 Android。機會不在於「教 AI」，而在於把 AI 用進您已經主導的產業裡。這份備忘說明做法——並從唯一、也最重要的客戶開始：您，Phet Sereiwath 博士。</span>
+        <span class="km" lang="km">កម្ពុជាបានឆ្លងផុតពីការនិយាយអំពី AI ទៅជាការត្រៀមខ្លួនរួចរាល់សម្រាប់វា៖ មនុស្ស 10.8 លាននាក់នៅលើអ៊ីនធឺណិត ការតភ្ជាប់ទូរស័ព្ទច្រើនជាងចំនួនប្រជាជន ការទូទាត់ឌីជីថលលើសពី 3 ដងនៃ GDP ហើយ — ដែលកម្រនៅក្នុងតំបន់ — iPhone ច្រើនជាង Android។ ឱកាសមិនមែននៅត្រង់ការបង្រៀន AI ទេ ប៉ុន្តែនៅត្រង់ការនាំ AI ទៅប្រើនៅក្នុងវិស័យដែលលោកបណ្ឌិតដឹកនាំរួចហើយ។ កំណត់ចំណាំនេះបង្ហាញពីរបៀប — ដោយចាប់ផ្តើមពីអតិថិជនតែមួយ ដែលសំខាន់ជាងគេ៖ លោកបណ្ឌិត Phet Sereiwath។</span>
+      </p>
+    </div>
+
+    <div class="callout">
+      <span class="tag"><span class="en">A note on this document</span><span class="zh" lang="zh">關於這份文件</span><span class="km" lang="km">សម្គាល់អំពីឯកសារនេះ</span></span>
+      <p>
+        <span class="en">This note — its research, three languages including Khmer, charts and sources — was produced by AI within hours of our 43-minute conversation. The document itself is the demonstration of the speed and rigour we want to place in your hands.</span>
+        <span class="zh" lang="zh">這份備忘——包含研究、三種語言（含高棉文）、圖表與來源——是 AI 在我們 43 分鐘對話後的數小時內完成的。這份文件本身，就是我們想交到您手中的「速度」與「嚴謹」的證明。</span>
+        <span class="km" lang="km">កំណត់ចំណាំនេះ — ការស្រាវជ្រាវ ភាសាទាំង 3 រួមទាំងខ្មែរ គំនូសតាង និងប្រភព — ត្រូវបានបង្កើតដោយ AI ក្នុងរយៈពេលប៉ុន្មានម៉ោងបន្ទាប់ពីការសន្ទនា 43 នាទីរបស់យើង។ ឯកសារនេះផ្ទាល់ គឺជាការបង្ហាញពីល្បឿន និងភាពម៉ត់ចត់ ដែលយើងចង់ដាក់ក្នុងដៃលោកបណ្ឌិត។</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 01 YOUR VISION -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span>
+      <h2><span class="en">Your Vision, Structured</span><span class="zh" lang="zh">您的願景，已被結構化</span><span class="km" lang="km">ចក្ខុវិស័យរបស់លោកបណ្ឌិត ដែលបានរៀបចំ</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">Everything we propose begins with you. In our meeting, Dr. Phet Sereiwath drew a clear picture of where Cambodia is going — here it is, your words, organised by AI and aligned with the national agenda.</span>
+      <span class="zh" lang="zh">我們的一切提案，都從您出發。會議中，Phet Sereiwath 博士清楚描繪了柬埔寨的走向——這裡呈現出來：您的話，由 AI 整理，並對齊國家議程。</span>
+      <span class="km" lang="km">អ្វីៗដែលយើងស្នើ ចាប់ផ្តើមចេញពីលោកបណ្ឌិត។ ក្នុងកិច្ចប្រជុំ បណ្ឌិត Phet Sereiwath បានគូររូបភាពយ៉ាងច្បាស់អំពីទិសដៅរបស់កម្ពុជា — នេះគឺជាវា៖ ពាក្យសម្ដីរបស់លោកបណ្ឌិត រៀបចំដោយ AI និងតម្រឹមនឹងរបៀបវារៈជាតិ។</span>
+    </p>
+
+    <div class="quote">
+      <div class="mark">“</div>
+      <q class="en">I link one industry to another — like a home that links people.</q>
+      <q class="zh" lang="zh">我把一個產業連到另一個產業——像一個連結眾人的家。</q>
+      <q class="km" lang="km">ខ្ញុំភ្ជាប់ឧស្សាហកម្មមួយ ទៅឧស្សាហកម្មមួយទៀត — ដូចជាផ្ទះមួយដែលភ្ជាប់មនុស្ស។</q>
+      <span class="by"><span class="en">— Dr. Phet Sereiwath</span><span class="zh" lang="zh">—— Phet Sereiwath 博士</span><span class="km" lang="km">— បណ្ឌិត Phet Sereiwath</span></span>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pl"><span class="en">The Direction</span><span class="zh" lang="zh">國家方向</span><span class="km" lang="km">ទិសដៅ</span></div>
+        <p class="en">Under the Pentagonal Strategy, Cambodia targets upper-middle-income status by 2030 and high-income by 2050.<sup class="fn">6</sup></p>
+        <p class="zh" lang="zh">在「五角戰略」下，柬埔寨目標 2030 年躋身中高收入、2050 年成為高收入國家。<sup class="fn">6</sup></p>
+        <p class="km" lang="km">ក្រោមយុទ្ធសាស្ត្របញ្ចកោណ កម្ពុជាមានគោលដៅឈានដល់ប្រាក់ចំណូលមធ្យមកម្រិតខ្ពស់ត្រឹមឆ្នាំ 2030 និងប្រាក់ចំណូលខ្ពស់ត្រឹមឆ្នាំ 2050។<sup class="fn">6</sup></p>
+      </div>
+      <div class="pillar">
+        <div class="pl"><span class="en">Your Position</span><span class="zh" lang="zh">您的位置</span><span class="km" lang="km">តួនាទីរបស់លោកបណ្ឌិត</span></div>
+        <p class="en">The connector — through the IDI association you link government and private sector across all 14 of the country's sectors.</p>
+        <p class="zh" lang="zh">連結者——透過 IDI 協會，您串連政府與私部門，橫跨全國 14 個產業。</p>
+        <p class="km" lang="km">អ្នកភ្ជាប់ — តាមរយៈសមាគម IDI លោកបណ្ឌិតភ្ជាប់រដ្ឋាភិបាល និងវិស័យឯកជន ឆ្លងកាត់វិស័យទាំង 14 របស់ប្រទេស។</p>
+      </div>
+      <div class="pillar">
+        <div class="pl"><span class="en">The Tailwind</span><span class="zh" lang="zh">順風</span><span class="km" lang="km">ខ្យល់ជំរុញ</span></div>
+        <p class="en">A draft National AI Strategy (6 priorities, 41 measures) aims to train 1,000 AI specialists — demand far exceeds supply.<sup class="fn">5</sup> Both sit within the Digital Economy &amp; Society Framework 2021–2035.<sup class="fn">11</sup></p>
+        <p class="zh" lang="zh">國家 AI 策略草案（6 大方向、41 項措施）目標培訓 1,000 名 AI 人才——需求遠大於供給。<sup class="fn">5</sup>兩者都納入《數位經濟與社會框架 2021–2035》。<sup class="fn">11</sup></p>
+        <p class="km" lang="km">សេចក្ដីព្រាងយុទ្ធសាស្ត្រ AI ជាតិ (6 អាទិភាព 41 វិធានការ) មានគោលដៅបណ្ដុះបណ្ដាលអ្នកជំនាញ AI 1,000 នាក់ — តម្រូវការលើសការផ្គត់ផ្គង់។<sup class="fn">5</sup> ទាំងពីរស្ថិតក្នុងក្របខណ្ឌសេដ្ឋកិច្ច និងសង្គមឌីជីថល 2021–2035។<sup class="fn">11</sup></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 02 WHY NOW: THE EVIDENCE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span>
+      <h2><span class="en">Why Now — The Evidence</span><span class="zh" lang="zh">為何是現在——證據</span><span class="km" lang="km">ហេតុអ្វីពេលនេះ — ភស្តុតាង</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">Infrastructure, behaviour and policy have all arrived at the same moment — even as the economy keeps growing at roughly 4.8% a year.<sup class="fn">8</sup> The single most telling fact is in your own market:</span>
+      <span class="zh" lang="zh">基礎建設、使用行為與政策，在同一個時間點到齊——而經濟仍以每年約 4.8% 穩定成長。<sup class="fn">8</sup>最具說服力的一項事實，就在您自己的市場裡：</span>
+      <span class="km" lang="km">ហេដ្ឋារចនាសម្ព័ន្ធ ឥរិយាបថ និងគោលនយោបាយ បានមកដល់ក្នុងពេលតែមួយ — ខណៈសេដ្ឋកិច្ចនៅតែរីកលូតលាស់ប្រហែល 4.8% ក្នុងមួយឆ្នាំ។<sup class="fn">8</sup> ការពិតដ៏សំខាន់បំផុត គឺនៅក្នុងទីផ្សាររបស់លោកបណ្ឌិតផ្ទាល់៖</span>
+    </p>
+
+    <div class="chart">
+      <div class="ct"><span class="en">Mobile operating system share — Cambodia, 2026</span><span class="zh" lang="zh">行動作業系統佔比——柬埔寨，2026</span><span class="km" lang="km">ចំណែកប្រព័ន្ធប្រតិបត្តិការទូរស័ព្ទ — កម្ពុជា ឆ្នាំ 2026</span><sup class="fn">2</sup></div>
+      <div class="barrow"><span class="barlab">iOS · iPhone</span><div class="bartrack"><div class="barfill gold" style="width:50.3%">50.3%</div></div></div>
+      <div class="barrow"><span class="barlab">Android</span><div class="bartrack"><div class="barfill navy" style="width:49.6%">49.6%</div></div></div>
+      <div class="barnote">
+        <span class="en">Indonesia is over 90% Android. Cambodia is the opposite — iPhone leads. Building <b>iPhone-first</b>, exactly as you advised, is the correct call.</span>
+        <span class="zh" lang="zh">印尼是 90% 以上 Android；柬埔寨正好相反——iPhone 領先。如您所建議的，<b>以 iPhone 優先</b>開發，是正確的決定。</span>
+        <span class="km" lang="km">ឥណ្ឌូនេស៊ីមាន Android លើស 90%។ កម្ពុជាផ្ទុយស្រឡះ — iPhone នាំមុខ។ ការអភិវឌ្ឍន៍ <b>iPhone ជាមុន</b> ដូចលោកបណ្ឌិតបានណែនាំ គឺជាការសម្រេចត្រឹមត្រូវ។</span>
+      </div>
+    </div>
+
+    <div class="figrow">
+      <div class="fig"><div class="fnum">12.9M</div><div class="ftxt"><span class="en">social media identities — 72.4% of the population<sup class="fn">1</sup></span><span class="zh" lang="zh">社群媒體帳號——佔人口 72.4%<sup class="fn">1</sup></span><span class="km" lang="km">គណនីប្រព័ន្ធផ្សព្វផ្សាយសង្គម — 72.4% នៃប្រជាជន<sup class="fn">1</sup></span></div></div>
+      <div class="fig"><div class="fnum">608M</div><div class="ftxt"><span class="en">Bakong transactions in 2024 — Cambodians already trust digital money<sup class="fn">3</sup></span><span class="zh" lang="zh">2024 年 Bakong 交易筆數——柬埔寨人已信任數位金流<sup class="fn">3</sup></span><span class="km" lang="km">ប្រតិបត្តិការ Bakong ឆ្នាំ 2024 — ប្រជាជនទុកចិត្តលុយឌីជីថលរួចហើយ<sup class="fn">3</sup></span></div></div>
+      <div class="fig"><div class="fnum">#118</div><div class="ftxt"><span class="en">on the Government AI Readiness Index — up 27 places in one year<sup class="fn">4</sup></span><span class="zh" lang="zh">政府 AI 整備度排名——一年躍升 27 名<sup class="fn">4</sup></span><span class="km" lang="km">លើសន្ទស្សន៍ត្រៀមខ្លួន AI រដ្ឋាភិបាល — កើន 27 ចំណាត់ថ្នាក់ក្នុងមួយឆ្នាំ<sup class="fn">4</sup></span></div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 03 AI x SECTORS -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span>
+      <h2><span class="en">AI × Your Sectors</span><span class="zh" lang="zh">AI × 您的產業</span><span class="km" lang="km">AI × វិស័យរបស់លោកបណ្ឌិត</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">For each priority you named, the data shows the gap — and AI offers a concrete first move.</span>
+      <span class="zh" lang="zh">您點名的每個重點，數據都顯示了缺口——而 AI 提供一個具體的第一步。</span>
+      <span class="km" lang="km">សម្រាប់អាទិភាពនីមួយៗដែលលោកបណ្ឌិតលើកឡើង ទិន្នន័យបង្ហាញពីចន្លោះខ្វះខាត — ហើយ AI ផ្ដល់ជំហានដំបូងជាក់ស្ដែង។</span>
+    </p>
+
+    <div class="sectors">
+      <div class="scard"><span class="n">1</span><div>
+        <h3><span class="en">Logistics &amp; Cross-border Trade</span><span class="zh" lang="zh">物流與跨境貿易</span><span class="km" lang="km">ភស្តុភារ និងពាណិជ្ជកម្មឆ្លងដែន</span></h3>
+        <p><span class="en"><b>Exports reached US$26.2B in 2024 (+15.7%)</b>,<sup class="fn">7</sup> yet many entrepreneurs still lack a route abroad. AI to match exporters with buyers, automate trade documents, clear bottlenecks.</span><span class="zh" lang="zh"><b>2024 年出口達 262 億美元（+15.7%）</b>，<sup class="fn">7</sup>但許多企業仍缺出海管道。AI 媒合出口商與買家、自動化貿易文件、打通瓶頸。</span><span class="km" lang="km"><b>ការនាំចេញឆ្នាំ 2024 ដល់ 26.2 ពាន់លានដុល្លារ (+15.7%)</b>,<sup class="fn">7</sup> ប៉ុន្តែសហគ្រិនជាច្រើននៅខ្វះផ្លូវចេញក្រៅ។ AI ភ្ជាប់អ្នកនាំចេញនឹងអ្នកទិញ ស្វ័យប្រវត្តិកម្មឯកសារ និងបើកផ្លូវ។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">2</span><div>
+        <h3><span class="en">Telecommunications &amp; Banking</span><span class="zh" lang="zh">電信與銀行</span><span class="km" lang="km">ទូរគមនាគមន៍ និងធនាគារ</span></h3>
+        <p><span class="en"><b>Bakong moved US$104.8B in 2024 — 330% of GDP.</b><sup class="fn">3</sup> AI service and credit agents let a digital-first sector serve millions more with fewer staff.</span><span class="zh" lang="zh"><b>Bakong 2024 年流轉 1,048 億美元——達 GDP 330%。</b><sup class="fn">3</sup>AI 客服與信用 agent，讓數位優先的產業用更少人服務更多人。</span><span class="km" lang="km"><b>Bakong ដំណើរការ 104.8 ពាន់លានដុល្លារ ឆ្នាំ 2024 — 330% នៃ GDP។</b><sup class="fn">3</sup> ភ្នាក់ងារ AI សេវា និងឥណទាន ជួយវិស័យឌីជីថលបម្រើមនុស្សរាប់លានបន្ថែម ដោយប្រើបុគ្គលិកតិច។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">3</span><div>
+        <h3><span class="en">Cybersecurity &amp; Digital Trust</span><span class="zh" lang="zh">網路安全與數位信任</span><span class="km" lang="km">សន្តិសុខសាយប័រ និងទំនុកចិត្តឌីជីថល</span></h3>
+        <p><span class="en">As the digital economy scales, talent is the bottleneck — the nation targets just <b>1,000 new AI specialists.</b><sup class="fn">5</sup> AI closes that gap in months, not years.</span><span class="zh" lang="zh">數位經濟擴張，人才是瓶頸——全國目標僅 <b>1,000 名 AI 人才</b>。<sup class="fn">5</sup>AI 用幾個月、而非數年補上缺口。</span><span class="km" lang="km">ពេលសេដ្ឋកិច្ចឌីជីថលរីកធំ ធនធានមនុស្សជាឧបសគ្គ — ប្រទេសមានគោលដៅត្រឹម <b>អ្នកជំនាញ AI 1,000 នាក់</b>។<sup class="fn">5</sup> AI បំពេញចន្លោះនេះក្នុងរយៈពេលប៉ុន្មានខែ មិនមែនរាប់ឆ្នាំ។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">4</span><div>
+        <h3><span class="en">Real Estate &amp; Agri-Industry</span><span class="zh" lang="zh">房地產與農工業</span><span class="km" lang="km">អចលនទ្រព្យ និងកសិ-ឧស្សាហកម្ម</span></h3>
+        <p><span class="en">Agriculture is <b>~16.7% of GDP, but agro-processing only ~3.4%</b> — the value sits uncaptured.<sup class="fn">9</sup> AI to value property, match capital, and move farming up the value chain.</span><span class="zh" lang="zh">農業約 <b>佔 GDP 16.7%，但農產加工僅約 3.4%</b>——價值尚未被擷取。<sup class="fn">9</sup>AI 估價不動產、媒合資金，把農業推上價值鏈。</span><span class="km" lang="km">កសិកម្ម <b>ប្រហែល 16.7% នៃ GDP ប៉ុន្តែកែច្នៃកសិផលត្រឹម ~3.4%</b> — តម្លៃមិនទាន់ត្រូវបានចាប់យក។<sup class="fn">9</sup> AI វាយតម្លៃអចលនទ្រព្យ ភ្ជាប់ដើមទុន និងលើកកសិកម្មឡើងខ្ពស់។</span></p>
+      </div></div>
+      <div class="scard" style="grid-column:1 / -1"><span class="n">5</span><div>
+        <h3><span class="en">Tourism</span><span class="zh" lang="zh">觀光</span><span class="km" lang="km">ទេសចរណ៍</span></h3>
+        <p><span class="en"><b>A record 6.7M international visitors in 2024.</b><sup class="fn">12</sup> AI concierge, multilingual promotion and trip-planning agents to position Cambodia as a regional hub.</span><span class="zh" lang="zh"><b>2024 年創紀錄 670 萬國際旅客。</b><sup class="fn">12</sup>AI 導覽、多語行銷與行程規劃 agent，把柬埔寨打造為區域樞紐。</span><span class="km" lang="km"><b>ភ្ញៀវអន្តរជាតិកំណត់ត្រា 6.7 លាននាក់ ឆ្នាំ 2024។</b><sup class="fn">12</sup> ភ្នាក់ងារ AI ណែនាំ ផ្សព្វផ្សាយពហុភាសា និងរៀបចំដំណើរ ដើម្បីដាក់កម្ពុជាជាមជ្ឈមណ្ឌលក្នុងតំបន់។</span></p>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 04 WHAT AI CAN DO NOW -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span>
+      <h2><span class="en">What AI Can Do For You — Now</span><span class="zh" lang="zh">AI 馬上能為您做到的</span><span class="km" lang="km">អ្វីដែល AI អាចធ្វើជូនលោកបណ្ឌិត — ឥឡូវនេះ</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">Not someday — now. Here is what we can put in your hands within days, working entirely in service of your world.</span>
+      <span class="zh" lang="zh">不是有朝一日——是現在。以下是我們能在數日內交到您手中的東西，完全為服務您的世界而運作。</span>
+      <span class="km" lang="km">មិនមែននៅថ្ងៃណាមួយទេ — គឺឥឡូវនេះ។ នេះជាអ្វីដែលយើងអាចដាក់ក្នុងដៃលោកបណ្ឌិត ក្នុងរយៈពេលប៉ុន្មានថ្ងៃ ដើម្បីបម្រើពិភពលោករបស់លោកបណ្ឌិត។</span>
+    </p>
+    <div class="sectors">
+      <div class="scard"><span class="n">✦</span><div>
+        <h3><span class="en">A proposal in minutes</span><span class="zh" lang="zh">幾分鐘內的提案</span><span class="km" lang="km">សំណើក្នុងរយៈពេលប៉ុន្មាននាទី</span></h3>
+        <p><span class="en">A tailored, persuasive client proposal — ready in minutes instead of days.</span><span class="zh" lang="zh">為客戶量身打造、具說服力的提案——幾分鐘完成，而非數天。</span><span class="km" lang="km">សំណើសម្រាប់អតិថិជន រៀបចំតាមតម្រូវការ និងមានភាពទាក់ទាញ — រួចរាល់ក្នុងរយៈពេលប៉ុន្មាននាទី។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">✦</span><div>
+        <h3><span class="en">A briefing on any sector</span><span class="zh" lang="zh">任一產業的即時簡報</span><span class="km" lang="km">ការសង្ខេបវិស័យណាមួយ</span></h3>
+        <p><span class="en">An instant briefing on any of your 14 sectors — in Khmer and English, the moment you need it.</span><span class="zh" lang="zh">針對您 14 個產業中任一個的即時簡報——高棉文與英文，您一需要就到位。</span><span class="km" lang="km">ការសង្ខេបភ្លាមៗអំពីវិស័យណាមួយ ក្នុងចំណោម 14 របស់លោកបណ្ឌិត — ជាខ្មែរ និងអង់គ្លេស នៅពេលត្រូវការ។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">✦</span><div>
+        <h3><span class="en">A meeting into strategy</span><span class="zh" lang="zh">會議化為策略</span><span class="km" lang="km">កិច្ចប្រជុំទៅជាយុទ្ធសាស្ត្រ</span></h3>
+        <p><span class="en">Any meeting — like ours — turned into a structured, multilingual strategy document, automatically. You are reading one right now.</span><span class="zh" lang="zh">任何一場會議——就像我們這場——自動變成結構化、多語言的策略文件。您正在讀的，就是。</span><span class="km" lang="km">កិច្ចប្រជុំណាមួយ — ដូចរបស់យើង — បំប្លែងជាឯកសារយុទ្ធសាស្ត្រ ពហុភាសា ដោយស្វ័យប្រវត្តិ។ លោកបណ្ឌិតកំពុងអានឯកសារនោះឥឡូវនេះ។</span></p>
+      </div></div>
+      <div class="scard"><span class="n">✦</span><div>
+        <h3><span class="en">An agent that never sleeps</span><span class="zh" lang="zh">不眠的 AI agent</span><span class="km" lang="km">ភ្នាក់ងារដែលមិនដែលគេង</span></h3>
+        <p><span class="en">An AI agent on Telegram that answers, qualifies and follows up with your contacts around the clock.</span><span class="zh" lang="zh">一個在 Telegram 上的 AI agent，全天候回覆、篩選並跟進您的人脈。</span><span class="km" lang="km">ភ្នាក់ងារ AI លើ Telegram ដែលឆ្លើយតប វាយតម្លៃ និងតាមដានទំនាក់ទំនងរបស់លោកបណ្ឌិត ពេញ 24 ម៉ោង។</span></p>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 05 SERVE YOU FIRST -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span>
+      <h2><span class="en">We Serve You First</span><span class="zh" lang="zh">我們，先服務您</span><span class="km" lang="km">យើងបម្រើលោកបណ្ឌិតជាមុនសិន</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">You are our first client — and the key person, always.</span>
+      <span class="zh" lang="zh">您是我們的第一位客戶——也永遠是那個關鍵的人。</span>
+      <span class="km" lang="km">លោកបណ្ឌិតគឺជាអតិថិជនដំបូងរបស់យើង — ហើយជាបុគ្គលសំខាន់ជានិច្ច។</span>
+    </p>
+    <p class="body-p">
+      <span class="en">Before any fees, our team in Taiwan builds AI tools for your consulting work — tools that help you win the clients you want. Clients never go around you. Then we grow together.</span>
+      <span class="zh" lang="zh">在收任何費用之前，我們的台灣團隊先為您的顧問工作打造 AI 工具——幫您拿下您想要的客戶。客戶永遠繞不過您。然後，我們一起成長。</span>
+      <span class="km" lang="km">មុននឹងគិតថ្លៃ ក្រុមការងាររបស់យើងនៅតៃវ៉ាន់ បង្កើតឧបករណ៍ AI សម្រាប់ការងារប្រឹក្សារបស់លោកបណ្ឌិត — ដែលជួយលោកបណ្ឌិតទទួលបានអតិថិជនដែលចង់បាន។ អតិថិជនមិនអាចរំលងលោកបណ្ឌិតបានទេ។ បន្ទាប់មក យើងរីកចម្រើនជាមួយគ្នា។</span>
+    </p>
+    <div class="steps">
+      <div class="step"><span class="sn">01</span><p><span class="en">Build trust — we deliver working tools first, free.</span><span class="zh" lang="zh">建立信任——我們先免費交付能用的工具。</span><span class="km" lang="km">បង្កើតទំនុកចិត្ត — យើងផ្តល់ឧបករណ៍ដែលដំណើរការជាមុន ដោយឥតគិតថ្លៃ។</span></p></div>
+      <div class="step"><span class="sn">02</span><p><span class="en">Win clients — tools and proposals that make you stand out.</span><span class="zh" lang="zh">拿下客戶——讓您脫穎而出的工具與提案。</span><span class="km" lang="km">ឈ្នះអតិថិជន — ឧបករណ៍ និងសំណើ ដែលធ្វើឱ្យលោកបណ្ឌិតលេចធ្លោ។</span></p></div>
+      <div class="step"><span class="sn">03</span><p><span class="en">Grow together — by commission on new clients, or a joint venture as partners.</span><span class="zh" lang="zh">一起成長——以新客戶的分潤，或共同成立合資公司。</span><span class="km" lang="km">រីកចម្រើនជាមួយគ្នា — តាមរយៈកម្រៃលើអតិថិជនថ្មី ឬសហគ្រាសរួមជាដៃគូ។</span></p></div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 06 THE ENGINE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span>
+      <h2><span class="en">The Engine: AI Where Cambodia Already Is</span><span class="zh" lang="zh">引擎：AI 就在柬埔寨已在之處</span><span class="km" lang="km">ម៉ាស៊ីនចលករ៖ AI នៅកន្លែងដែលកម្ពុជាមានស្រាប់</span></h2>
+    </div>
+    <p class="body-p">
+      <span class="en">Telegram is the default channel for business and government in Cambodia,<sup class="fn">10</sup> and iPhone now leads at 50%+.<sup class="fn">2</sup> We build lightweight AI “agents” that live exactly there — inside the apps you already use. Nothing new to learn to begin; no laptop required.</span>
+      <span class="zh" lang="zh">Telegram 是柬埔寨商業與政府的預設管道，<sup class="fn">10</sup>iPhone 已過半領先。<sup class="fn">2</sup>我們打造輕量 AI 「agent」，就活在那裡——在您已經用的 app 裡。一開始不必學新東西，也不需要筆電。</span>
+      <span class="km" lang="km">Telegram ជាបណ្ដាញលំនាំដើមសម្រាប់អាជីវកម្ម និងរដ្ឋាភិបាលនៅកម្ពុជា,<sup class="fn">10</sup> ហើយ iPhone នាំមុខលើស 50%។<sup class="fn">2</sup> យើងបង្កើតភ្នាក់ងារ AI ស្រាល ដែលរស់នៅទីនោះ — ក្នុងកម្មវិធីដែលលោកបណ្ឌិតប្រើស្រាប់។ មិនចាំបាច់រៀនអ្វីថ្មី ហើយមិនត្រូវការកុំព្យូទ័រយួរដៃ។</span>
+    </p>
+    <div class="highlight">
+      <span class="tag"><span class="en">The real asset</span><span class="zh" lang="zh">真正的資產</span><span class="km" lang="km">ទ្រព្យសម្បត្តិពិតប្រាកដ</span></span>
+      <p>
+        <span class="en">In the AI business, information — not technology — is the real asset. Every conversation your agents handle makes them sharper and harder to copy. The more your sectors use them, the stronger your advantage.</span>
+        <span class="zh" lang="zh">在 AI 生意裡，資訊——而非技術——才是真正的資產。您的 agent 處理的每一次對話，都讓它更鋒利、更難被複製。您的產業用得越多，您的優勢就越強。</span>
+        <span class="km" lang="km">ក្នុងអាជីវកម្ម AI ព័ត៌មាន — មិនមែនបច្ចេកវិទ្យាទេ — ជាទ្រព្យសម្បត្តិពិតប្រាកដ។ រាល់ការសន្ទនាដែលភ្នាក់ងាររបស់លោកបណ្ឌិតដោះស្រាយ ធ្វើឱ្យពួកវាមុតស្រួច និងពិបាកចម្លង។ វិស័យរបស់លោកបណ្ឌិតប្រើកាន់តែច្រើន អត្ថប្រយោជន៍កាន់តែខ្លាំង។</span>
+      </p>
+    </div>
+    <p class="note">
+      <span class="en">Built remotely by our Taiwan team, with simple local setup — and iPhone-first, to match Cambodia.</span>
+      <span class="zh" lang="zh">由台灣團隊遠端打造，搭配簡單的在地設定——並以 iPhone 優先，貼合柬埔寨。</span>
+      <span class="km" lang="km">បង្កើតពីចម្ងាយដោយក្រុមតៃវ៉ាន់ ជាមួយការដំឡើងក្នុងស្រុកសាមញ្ញ — និងផ្តោត iPhone ជាមុន ដើម្បីសមនឹងកម្ពុជា។</span>
+    </p>
+  </section>
+
+  <div class="divider"><span class="ln"></span><svg class="emblem" width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L46 32 L32 56 L18 32 Z" fill="currentColor"/></svg><span class="ln r"></span></div>
+
+  <!-- 07 NEXT STEPS -->
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span>
+      <h2><span class="en">Next Steps</span><span class="zh" lang="zh">下一步</span><span class="km" lang="km">ជំហានបន្ទាប់</span></h2>
+    </div>
+    <p class="lead">
+      <span class="en">This note is a first proof. The direction is yours to set.</span>
+      <span class="zh" lang="zh">這份備忘只是第一個證明。方向，由您來定。</span>
+      <span class="km" lang="km">កំណត់ចំណាំនេះ គ្រាន់តែជាភស្តុតាងដំបូង។ ទិសដៅ អាស្រ័យលើលោកបណ្ឌិត។</span>
+    </p>
+    <ol class="nlist">
+      <li><span class="en">You review this, and tell us what resonates.</span><span class="zh" lang="zh">您看過，告訴我們哪些打中您。</span><span class="km" lang="km">លោកបណ្ឌិតពិនិត្យមើល ហើយប្រាប់យើងពីអ្វីដែលត្រូវចិត្ត។</span></li>
+      <li><span class="en">You and Robert shape the plan — Robert stays our bridge.</span><span class="zh" lang="zh">您與 Robert 擬定計畫——Robert 是我們之間的橋樑。</span><span class="km" lang="km">លោកបណ្ឌិត និងលោក Robert រៀបចំផែនការ — Robert នៅជាស្ពានរបស់យើង។</span></li>
+      <li><span class="en">You choose 1–2 clients you want to win — we build the tools to win them.</span><span class="zh" lang="zh">您挑 1–2 家想拿下的客戶——我們打造拿下他們的工具。</span><span class="km" lang="km">លោកបណ្ឌិតជ្រើស អតិថិជន 1–2 ដែលចង់ឈ្នះ — យើងបង្កើតឧបករណ៍ដើម្បីឈ្នះ។</span></li>
+      <li><span class="en">We turn trust into a partnership built for Cambodia.</span><span class="zh" lang="zh">我們把信任，變成一個為柬埔寨而生的合作。</span><span class="km" lang="km">យើងបំប្លែងទំនុកចិត្ត ទៅជាភាពជាដៃគូសម្រាប់កម្ពុជា។</span></li>
+    </ol>
+
+    <div class="pnote">
+      <span class="tag"><span class="en">A personal note</span><span class="zh" lang="zh">給博士的話</span><span class="km" lang="km">សារផ្ទាល់ខ្លួន</span></span>
+      <p>
+        <span class="en">Dr. Phet Sereiwath — after speaking with you, we came away certain that you are someone we can truly trust. That is why we hope to move forward together in the very way set out here: we serve you first, you remain the key person throughout, and we build from there. It would be our honour to receive your guidance on how best to proceed.</span>
+        <span class="zh" lang="zh">Phet Sereiwath 博士——與您交談之後，我們深信，您是真正值得信賴的人。正因如此，我們希望以這份備忘所描繪的方式，與您一起向前：我們先服務您，讓您始終是那個關鍵的人，再由此一步步建立起來。如何推進最好，也懇請博士不吝給予我們指導。</span>
+        <span class="km" lang="km">បណ្ឌិត Phet Sereiwath — បន្ទាប់ពីបានសន្ទនាជាមួយលោកបណ្ឌិត យើងជឿជាក់យ៉ាងមុតមាំថា លោកបណ្ឌិតគឺជាបុគ្គលដែលយើងអាចទុកចិត្តបានពិតប្រាកដ។ ដោយសារហេតុនេះ យើងសង្ឃឹមថានឹងឆ្ពោះទៅមុខជាមួយគ្នា តាមរបៀបដែលបានបង្ហាញនៅទីនេះ៖ យើងបម្រើលោកបណ្ឌិតជាមុនសិន លោកបណ្ឌិតនៅជាបុគ្គលសំខាន់ពីដើមដល់ចប់ ហើយយើងកសាងបន្តពីនោះ។ វាជាកិត្តិយសរបស់យើង ប្រសិនបើទទួលបានការណែនាំពីលោកបណ្ឌិត អំពីរបៀបដ៏ល្អបំផុតដើម្បីបន្ត។</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="closing">
+    <svg class="emblem" width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M32 4 L48 32 L32 60 L16 32 Z"/><path d="M32 15 L41 32 L32 49 L23 32 Z" fill="currentColor" stroke="none" opacity=".9"/></g></svg>
+    <div class="cl en">We are ready when you are, Dr. Phet Sereiwath.</div>
+    <div class="cl zh" lang="zh">博士，您準備好，我們就開始。</div>
+    <div class="cl km" lang="km">លោកបណ្ឌិត Phet Sereiwath យើងរួចរាល់ហើយ នៅពេលលោកបណ្ឌិតរួចរាល់។</div>
+  </div>
+
+</div>
+
+<!-- REFERENCES -->
+<div class="refs">
+  <div class="refs-in">
+    <h3><span class="en">Sources &amp; References</span><span class="zh" lang="zh">資料來源與參考</span><span class="km" lang="km">ប្រភព និងឯកសារយោង</span></h3>
+    <ol>
+      <li>DataReportal — <em>Digital 2025: Cambodia</em> (internet, mobile &amp; social media penetration). <a href="https://datareportal.com/reports/digital-2025-cambodia">datareportal.com/reports/digital-2025-cambodia</a></li>
+      <li>StatCounter Global Stats — <em>Mobile Operating System Market Share, Cambodia</em> (Apr 2026): iOS 50.3%, Android 49.6%. <a href="https://gs.statcounter.com/os-market-share/mobile/cambodia">gs.statcounter.com/os-market-share/mobile/cambodia</a></li>
+      <li>National Bank of Cambodia, Bakong Annual Report 2024, via Khmer Times — US$104.8B / 608M transactions / ~330% of GDP. <a href="https://www.khmertimeskh.com/501661162/">khmertimeskh.com/501661162</a></li>
+      <li>Oxford Insights — <em>Government AI Readiness Index 2025</em>: Cambodia #118 (up 27 from #145). <a href="https://oxfordinsights.com/ai-readiness/government-ai-readiness-index-2025/">oxfordinsights.com</a></li>
+      <li>Royal Government of Cambodia — <em>Draft National AI Strategy 2025–2030</em> (6 priorities, 41 measures, 1,000 AI talents), via OECD.AI. <a href="https://oecd.ai/en/dashboards/policy-initiatives/">oecd.ai</a></li>
+      <li>Royal Government of Cambodia — <em>Pentagonal Strategy – Phase I</em> (upper-middle-income by 2030; high-income by 2050). <a href="https://www.mfaic.gov.kh/">mfaic.gov.kh</a></li>
+      <li>General Department of Customs &amp; Excise, via Khmer Times — Cambodia exports US$26.2B in 2024 (+15.7%). <a href="https://www.khmertimeskh.com/501622624/">khmertimeskh.com/501622624</a></li>
+      <li>World Bank — <em>Cambodia Economic Update, December 2025</em> (GDP +4.8% 2025e, +4.3% 2026f). <a href="https://openknowledge.worldbank.org/">openknowledge.worldbank.org</a></li>
+      <li>Cambodianess / Asian Development Bank — agriculture ~16.7% of GDP; agro-processing ~3.4%. <a href="https://cambodianess.com/article/agriculture-fuels-167-of-gdp-amid-cambodias-economic-shift">cambodianess.com</a></li>
+      <li>Kiripost / Open Development Cambodia — <em>The rise of messaging app Telegram in Cambodia</em>. <a href="https://kiripost.com/stories/rise-of-messaging-app-telegram-in-cambodia">kiripost.com</a></li>
+      <li>Ministry of Post &amp; Telecommunications — <em>Cambodia Digital Economy &amp; Society Policy Framework 2021–2035</em>. <a href="https://mptc.gov.kh/en/2023/06/cambodia-digital-economy-and-society-policy-framework-2021-2035/">mptc.gov.kh</a></li>
+      <li>Ministry of Tourism, via Travel &amp; Tour World — record 6.7M international tourists in 2024. <a href="https://www.travelandtourworld.com/news/article/cambodia-achieves-record-6-7-million-tourists-in-2024-with-innovative-strategies-and-unmatched-hospitality/">travelandtourworld.com</a></li>
+    </ol>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-strong"><span class="en">Private &amp; Confidential</span><span class="zh" lang="zh">機密文件</span><span class="km" lang="km">ឯកសារសម្ងាត់</span> — Prepared for <span class="ft-gold">Dr. Phet Sereiwath</span>&nbsp;·&nbsp;30 May 2026</div>
+  <div>Roy (Lee Hai-Shuo) &amp; team&nbsp;·&nbsp;in partnership with Robert (Chiu Yen-Lin)</div>
+  <div class="ft-small">Three languages, one click — researched &amp; generated by AI.</div>
+</footer>
+
+<script>
+  (function(){
+    var html = document.documentElement;
+    var btns = document.querySelectorAll('.switch button');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        html.setAttribute('data-lang', b.getAttribute('data-l'));
+        btns.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
