@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從 AGI 到 ASI ｜ 對你的意義，與你該做的事 ─ 808 AI五金行 碩學苑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f3ec; --bg2:#fffdf8; --card:#ffffff; --line:#e8e2d5;
+    --ink:#23272f; --ink-soft:#525a68; --ink-dim:#8a8f9b;
+    --teal:#0d8a97; --indigo:#5b63d8; --rose:#cf6a4a; --gold:#b1842a; --green:#10916b;
+    --dark:#11141d; --maxw:1080px;
+    --grad:linear-gradient(110deg,#0d8a97 0%,#5b63d8 54%,#cf6a4a 100%);
+    --shadow:0 10px 30px rgba(40,44,60,.07); --shadow-lg:0 22px 50px rgba(40,44,60,.13);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16.5px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:var(--teal)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(246,243,236,.82);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px;color:var(--ink)}
+  .brand .cube{width:24px;height:24px;flex:0 0 auto}
+  .brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .navlinks{display:flex;gap:22px;font-size:14px}
+  .navlinks a{color:var(--ink-soft);text-decoration:none;transition:.2s;white-space:nowrap}
+  .navlinks a:hover{color:var(--teal)}
+  @media(max-width:860px){.navlinks{display:none}}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;
+    padding:13px 24px;border-radius:100px;transition:.25s;cursor:pointer;border:1px solid transparent}
+  .btn-p{background:var(--grad);color:#fff;box-shadow:0 10px 26px rgba(91,99,216,.32)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(91,99,216,.42)}
+  .btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+  .btn-o:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.6)}
+  .btn-d{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow)}
+  .btn-d:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--teal)}
+
+  /* HERO (dark band) */
+  header{background:var(--dark);color:#eef1f8;position:relative;overflow:hidden;
+    padding:92px 0 78px;text-align:center}
+  header::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(720px 420px at 12% -10%,rgba(13,138,151,.34),transparent 60%),
+      radial-gradient(720px 460px at 90% 0%,rgba(91,99,216,.34),transparent 60%),
+      radial-gradient(700px 500px at 60% 116%,rgba(207,106,74,.22),transparent 60%)}
+  header .wrap{position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:2.5px;
+    text-transform:uppercase;color:#bfe6ec;border:1px solid rgba(255,255,255,.20);border-radius:100px;
+    padding:7px 17px;margin-bottom:24px;background:rgba(255,255,255,.05)}
+  h1.title{font-family:"Noto Serif TC",serif;font-weight:900;line-height:1.14;font-size:clamp(36px,6.6vw,70px);letter-spacing:.5px;color:#fff}
+  h1.title .g{background:linear-gradient(110deg,#5fd6e3,#a6abff 55%,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .subtitle{margin:22px auto 0;max-width:680px;font-size:clamp(15.5px,2.2vw,19px);color:#c4ccde;font-weight:300}
+  .hero-q{margin:34px auto 0;max-width:740px;padding:20px 26px;border-radius:16px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:16.5px;color:#eef1f8}
+  .hero-q b{color:#ffd79a}
+  .hero-btns{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{margin-top:26px;display:flex;gap:8px 24px;justify-content:center;flex-wrap:wrap;font-size:13px;color:#9aa3bd;font-family:"Space Grotesk",sans-serif}
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--grad)}
+
+  /* WHY-NOW strip */
+  .whynow{margin-top:-34px;position:relative;z-index:5}
+  .whynow .box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 28px;box-shadow:var(--shadow-lg);
+    display:flex;gap:18px;align-items:flex-start}
+  .whynow .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0d8a97,#5b63d8);display:flex;align-items:center;justify-content:center}
+  .whynow h4{font-size:16px;margin-bottom:4px;color:var(--ink)}
+  .whynow p{font-size:15px;color:var(--ink-soft);font-weight:300;margin:0}
+
+  /* SECTION */
+  section{padding:58px 0;position:relative}
+  .sec-h{display:flex;align-items:baseline;gap:13px;margin-bottom:8px}
+  .sec-n{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--teal);font-weight:700}
+  h2{font-family:"Noto Serif TC",serif;font-size:clamp(25px,4.2vw,38px);font-weight:900;line-height:1.28;color:var(--ink)}
+  .lead{color:var(--ink-soft);font-size:16.5px;max-width:760px;margin:14px 0 36px;font-weight:300}
+  .lead strong{color:var(--ink);font-weight:500}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.vis{opacity:1;transform:none}
+
+  /* CARDS */
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.g3,.g2,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;
+    box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(13,138,151,.4)}
+  .card .ico{width:42px;height:42px;margin-bottom:15px}
+  .card h3{font-size:19px;font-weight:700;margin-bottom:7px;color:var(--ink)}
+  .card p{color:var(--ink-soft);font-size:15px;font-weight:300}
+  .card p b{color:var(--ink);font-weight:600}
+  .tag{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:1px;color:#fff;
+    background:var(--grad);padding:3px 11px;border-radius:100px;font-weight:700;margin-bottom:10px}
+  .k{font-family:"Space Grotesk",sans-serif;font-size:12.5px;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;font-weight:700;display:block;margin-bottom:4px}
+  .kbig{font-family:"Space Grotesk",sans-serif;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* TINTED feature section */
+  .feature{background:linear-gradient(180deg,#fff,#fbf8f1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(13,138,151,.10);color:var(--teal);
+    font-weight:700;font-size:13px;padding:6px 15px;border-radius:100px;margin-bottom:14px}
+
+  /* ACTION checklist */
+  .acts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:760px){.acts{grid-template-columns:1fr}}
+  .act{display:flex;gap:13px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;box-shadow:var(--shadow)}
+  .act .ck{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#10916b,#0d8a97);display:flex;align-items:center;justify-content:center}
+  .act h4{font-size:16px;margin-bottom:3px;color:var(--ink)}
+  .act p{font-size:14px;color:var(--ink-soft);font-weight:300;margin:0}
+
+  /* SPECTRUM */
+  .spectrum{padding:32px 26px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .bar{height:14px;border-radius:100px;background:linear-gradient(90deg,#cdd5e6,#0d8a97 34%,#5b63d8 70%,#cf6a4a);position:relative;margin:52px 0 58px}
+  .mk{position:absolute;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .mk .lab{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:13px;text-align:center}
+  .mk .lab.top{bottom:24px}.mk .lab.bot{top:24px}
+  .mk .lab b{display:block;color:var(--ink);font-weight:700;font-size:14px}
+  .mk .lab span{color:var(--ink-dim);font-size:11.5px}
+  @media(max-width:760px){.mk .lab span{display:none}.mk .lab b{font-size:11.5px}}
+
+  /* BOTTLENECK */
+  .bn{display:flex;gap:16px;padding:20px 22px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:13px;align-items:flex-start;box-shadow:var(--shadow);transition:.3s}
+  .bn:hover{border-color:rgba(177,132,42,.5)}
+  .bn .num{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:22px;color:var(--gold);flex:0 0 auto;width:28px}
+  .bn h4{font-size:16.5px;margin-bottom:4px;color:var(--ink)}
+  .bn p{font-size:14.5px;color:var(--ink-soft);font-weight:300;margin:0}
+  .bn .vs{margin-top:8px;font-size:13.5px;color:var(--green);font-weight:400}
+  .bn .vs b{color:var(--green);font-weight:700}
+
+  /* CHIPS */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;flex:1 1 220px;box-shadow:var(--shadow)}
+  .chip b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+  .chip span{color:var(--ink-dim);font-size:13px;font-weight:300}
+
+  /* MYTH vs FACT */
+  .mf{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:680px){.mf{grid-template-columns:1fr}}
+  .mf .m,.mf .f{padding:20px 22px}
+  .mf .m{background:rgba(207,106,74,.06);border-right:1px solid var(--line)}
+  @media(max-width:680px){.mf .m{border-right:none;border-bottom:1px solid var(--line)}}
+  .mf .lbl{font-weight:700;font-size:12.5px;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;margin-bottom:7px}
+  .mf .m .lbl{color:var(--rose)}.mf .f .lbl{color:var(--teal)}
+  .mf p{font-size:14.5px;color:var(--ink-soft);font-weight:300;margin:0}
+  .mf .f p b{color:var(--ink);font-weight:600}
+
+  /* MEANING macro cards reuse .card */
+  .quote{margin:36px 0 4px;padding:30px 34px;border-radius:20px;background:linear-gradient(120deg,rgba(13,138,151,.09),rgba(91,99,216,.09));
+    border:1px solid var(--line);font-family:"Noto Serif TC",serif;font-size:clamp(19px,3vw,25px);line-height:1.6;color:var(--ink);text-align:center}
+  .quote span{color:var(--ink-dim);font-family:"Noto Sans TC",sans-serif;font-size:14px;display:block;margin-top:12px;font-weight:300}
+
+  /* CAMPS */
+  .camp{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+  .camp .h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;margin-bottom:10px;color:var(--ink)}
+  .camp .d{width:11px;height:11px;border-radius:50%}
+  .camp ul{list-style:none;font-size:14px;color:var(--ink-soft);font-weight:300}
+  .camp li{padding:5px 0 5px 17px;position:relative}
+  .camp li::before{content:"›";position:absolute;left:2px;color:var(--ink-dim)}
+
+  /* GLOSSARY */
+  .gloss{columns:2;column-gap:18px}
+  @media(max-width:680px){.gloss{columns:1}}
+  .gi{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .gi b{color:var(--teal);font-size:15px}.gi em{color:var(--ink-dim);font-style:normal;font-size:12px}
+  .gi p{font-size:13.5px;color:var(--ink-soft);font-weight:300;margin-top:3px}
+
+  /* CTA */
+  .cta{padding:46px 34px;border-radius:24px;text-align:center;background:linear-gradient(135deg,rgba(13,138,151,.10),rgba(91,99,216,.10),rgba(207,106,74,.08));border:1px solid var(--line)}
+  .cta .sec-n{letter-spacing:2px}
+  .qr-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px}
+  .qr-card{width:224px;height:224px;border-radius:22px;background:#fff;display:flex;align-items:center;justify-content:center;padding:14px;box-shadow:var(--shadow-lg)}
+  .qr-card img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+  .qr-fallback{width:100%;height:100%;border:2px dashed #c9d2ea;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+  .qr-cap{font-size:14px;color:var(--ink-soft)}.qr-cap b{color:var(--ink)}
+
+  /* FOOTER (dark) */
+  footer{background:var(--dark);color:#c4ccde;padding:52px 0 64px;text-align:center;margin-top:46px}
+  .maker{font-family:"Noto Serif TC",serif;font-size:23px;font-weight:900;letter-spacing:1px;margin-bottom:6px;color:#fff}
+  .maker .g{background:linear-gradient(110deg,#5fd6e3,#a6abff,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .credit{font-family:"Space Grotesk",sans-serif;letter-spacing:2px;font-size:13px;color:#8e98b4;margin-top:4px}
+  .foot-links{margin:20px 0 8px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .foot-meta{color:#7e879f;font-size:12.5px;margin-top:16px;line-height:1.95}
+  .foot-meta a{color:#7fd6e0;text-decoration:none}
+  .divline{height:1px;background:rgba(255,255,255,.12);margin:22px auto 0;max-width:280px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav><div class="wrap">
+  <div class="brand">
+    <svg class="cube" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4.5v9L12 22l-8-4.5v-9L12 2z" stroke="url(#gg)" stroke-width="1.6"/><path d="M12 2v20M4 6.5l8 4.5 8-4.5" stroke="url(#gg)" stroke-width="1.2" opacity=".7"/><defs><linearGradient id="gg" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#0d8a97"/><stop offset="1" stop-color="#cf6a4a"/></linearGradient></defs></svg>
+    <span>從 AGI 到 <b>ASI</b></span>
+  </div>
+  <div class="navlinks">
+    <a href="#why">為什麼重要</a>
+    <a href="#you">對你的意義</a>
+    <a href="#paths">四條路徑</a>
+    <a href="#myth">迷思 vs 事實</a>
+    <a href="#join">加入我們</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Google DeepMind · arXiv:2606.12683 · 2026</div>
+    <h1 class="title">當 AI 跟人一樣聰明之後，<br><span class="g">它會停下來嗎？</span></h1>
+    <p class="subtitle">一份由「通用智慧理論之父」親自掛名的論文，第一次認真畫出：從「人類水準 AI（AGI）」走到「比整個人類組織更聰明（ASI）」的路徑、關卡與極限。我們用最白話的方式講給你聽——<b style="color:#fff;font-weight:500">而且告訴你，這對你有什麼意義、你該做什麼。</b></p>
+    <div class="hero-q">他們最誠實、也最震撼的結論是：<b>「AI 剛好停在人類水準」是最不可能的劇本。</b>在未來十到二十年內「越過 AGI、進入超智慧」的可能性，<b>無法被輕易排除。</b></div>
+    <div class="hero-btns">
+      <a class="btn btn-p" href="#you">這對我有什麼意義？ →</a>
+      <a class="btn btn-o" href="https://arxiv.org/html/2606.12683v1" target="_blank" rel="noopener">讀原始論文 ↗</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="dot"></i>作者含 Marcus Hutter（AIXI 之父）、Shane Legg（DeepMind 共同創辦人）</span>
+      <span><i class="dot"></i>4 條路徑 · 6 道瓶頸 · 40 條研究議程</span>
+    </div>
+  </div>
+</header>
+
+<!-- WHY NOW strip -->
+<div class="wrap whynow" id="why"><div class="box reveal">
+  <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" fill="#fff"/></svg></div>
+  <div>
+    <h4>為什麼是現在？</h4>
+    <p>過去短短三年，AI 從聊天玩具變成能寫程式、做研究的工具。硬體、投資、演算法三股力量同時加速，讓「十年內做出 AGI」從科幻變成大型實驗室白紙黑字的目標。這篇論文問的，就是那個我們還沒準備好面對的問題：<strong style="color:var(--ink);font-weight:500">到了那一步，然後呢？</strong></p>
+  </div>
+</div></div>
+
+<!-- TL;DR -->
+<section id="tldr"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">01</span><h2>一分鐘看懂</h2></div>
+  <p class="lead reveal">如果你只有一分鐘，記住這四件事——它們是整篇論文的骨架。</p>
+  <div class="grid g4">
+    <div class="card reveal"><span class="k">核心主張</span><h3>智慧是一條連續譜</h3><p>從「一個人」到「一群專家」到「理論極限」，智慧可以放在同一條線上量。AGI 與 ASI 只是線上的不同位置——所以不必爭論「幾分才算」。</p></div>
+    <div class="card reveal"><span class="k">關鍵洞見</span><h3>停不下來的是「群體」</h3><p>就算單一模型卡在人類水準，只要算力持續成長，就能同時跑「上百萬個 AGI」組成公司與市場。<b>光靠規模，群體就可能變超智慧。</b></p></div>
+    <div class="card reveal"><span class="k">重要的冷靜</span><h3>超智慧 ≠ 全知全能</h3><p>ASI 一樣受光速、熱力學、數學不可解問題、以及「真實實驗要花真實時間」所限。它不保證能治好老化或重塑物質。</p></div>
+    <div class="card reveal"><span class="k">真正的貢獻</span><h3>這是地圖，不是預言</h3><p>論文不喊時間表，而是把「我們不知道的事」變成 40 條可研究的問題，呼籲一場全球規模、跨領域的準備。</p></div>
+  </div>
+</div></section>
+
+<!-- ★ FOR YOU (general user) -->
+<section class="feature" id="you"><div class="wrap">
+  <div class="reveal"><span class="pill">★ 最重要的一段 · 寫給每一位一般使用者</span></div>
+  <div class="sec-h reveal"><span class="sec-n">02</span><h2>對「你」來說，這意味著什麼？你該做什麼？</h2></div>
+  <p class="lead reveal">前面講的是國家級、產業級的大事。但如果你只是一個上班族、學生、家長、創作者——<strong>這一切到底跟你有什麼關係？你又該做什麼？</strong>這一段，專門寫給你。</p>
+
+  <h3 style="font-size:19px;margin:8px 0 16px;color:var(--ink)">一、先看懂：它對你的 6 個真實意義</h3>
+  <div class="grid g3" style="margin-bottom:42px">
+    <div class="card reveal"><h3>① AI 不會停在某一版</h3><p>它會一直變強。所以「等它穩定了再學」是錯的策略——<b>它不會穩定。</b>與 AI 共處，是一件持續的事，不是學一次就好。</p></div>
+    <div class="card reveal"><h3>② 你值錢的地方正在位移</h3><p>「記得多、算得快」已經輸給 AI。你真正的價值變成：<b>問對問題、判斷對錯、整合、決定、負責。</b></p></div>
+    <div class="card reveal"><h3>③ 差距會被快速拉大</h3><p>真正的競爭不是「人 vs AI」，而是<b>「會用 AI 的人 vs 不會用的人」</b>。這是最現實、也最快發生的影響。</p></div>
+    <div class="card reveal"><h3>④ 真假會更難分辨</h3><p>AI 生成的文字、圖、影片暴增。「查證與判讀」從一個加分技能，變成<b>生存技能</b>。</p></div>
+    <div class="card reveal"><h3>⑤ 工作被「重組」而非單純取代</h3><p>很多工作會變成「指揮、檢查、修正 AI」。<b>懂得這樣工作的人，反而更值錢。</b></p></div>
+    <div class="card reveal" style="background:linear-gradient(135deg,rgba(13,138,151,.08),rgba(91,99,216,.08));border-color:rgba(13,138,151,.25)"><h3>⑥ 不必恐慌，但別輕忽</h3><p>它不是全能的神（有硬天花板），但也別假設它會停在人類水準。成熟的姿態是：<b>務實準備，而非焦慮或忽視。</b></p></div>
+  </div>
+
+  <h3 style="font-size:19px;margin:8px 0 4px;color:var(--ink)">二、然後行動：你真正該做的 7 件事</h3>
+  <p style="color:var(--ink-soft);font-weight:300;font-size:15px;margin-bottom:18px">你不需要變成工程師。你需要的，是成為一個「<b style="color:var(--ink);font-weight:600">懂得和 AI 一起工作、又守得住自己判斷</b>」的人。</p>
+  <div class="acts">
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>1 · 現在就動手用</h4><p>不要只看新聞。挑一個 AI 工具，用在你真實的工作或生活裡，每天用。</p></div></div>
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>2 · 練「問問題」的能力</h4><p>好的提問＝好的結果。把「會下指令、會追問」當成新的識字能力。</p></div></div>
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>3 · 永遠檢查，別照單全收</h4><p>AI 會「很有自信地說錯」。重要的事，一定查證來源、交叉比對。</p></div></div>
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>4 · 建立「人＋AI」工作流</h4><p>讓 AI 做初稿、草稿、整理；你做判斷、把關、加上只有你能給的價值。</p></div></div>
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>5 · 守住「只有人能做的事」</h4><p>同理、品味、信任、責任，以及「該不該做」的價值判斷。這些是你的護城河。</p></div></div>
+    <div class="act reveal"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>6 · 保持學習的習慣</h4><p>工具會一直換，所以「學會怎麼學」比學某個工具更重要。</p></div></div>
+    <div class="act reveal" style="grid-column:1/-1"><div class="ck"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>7 · 保留你的主體性</h4><p>用 AI 輔助思考，但人生的重要決定，自己做。可以把運算外包給 AI，<b>但別把判斷力外包出去。</b></p></div></div>
+  </div>
+</div></section>
+
+<!-- SPECTRUM -->
+<section id="spectrum"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">03</span><h2>先搞懂名詞：智慧的連續譜</h2></div>
+  <p class="lead reveal">論文最聰明的一招，是先架一條尺——<strong>Legg–Hutter 智慧測度</strong>，把「智慧」定義成「在各式各樣環境中達成目標的能力」。於是所有模糊的詞，都變成這條尺上的位置：</p>
+  <div class="spectrum reveal">
+    <div class="bar">
+      <div class="mk" style="left:8%"><div class="lab top"><b>一般人</b><span>median human</span></div></div>
+      <div class="mk" style="left:30%"><div class="lab bot"><b>AGI</b><span>人類中位數水準</span></div></div>
+      <div class="mk" style="left:60%"><div class="lab top"><b>ASI</b><span>超越大型專家組織</span></div></div>
+      <div class="mk" style="left:92%"><div class="lab bot"><b>Universal AI</b><span>理論極限 · AIXI</span></div></div>
+    </div>
+    <div class="grid g2" style="margin-top:6px">
+      <div><h3 style="font-size:17px;margin-bottom:6px;color:var(--teal)">AGI ＝ 一個人的智慧</h3><p style="color:var(--ink-soft);font-weight:300;font-size:15px">在多數認知任務上達到「人類中位數」水準的通用系統。論文說：第一個 AGI 在很多任務上其實已經超人，只是還不夠「通用」。</p></div>
+      <div><h3 style="font-size:17px;margin-bottom:6px;color:var(--indigo)">ASI ＝ 一整個組織的智慧</h3><p style="color:var(--ink-soft);font-weight:300;font-size:15px">在幾乎所有領域，超越「大型、良好協調的人類專家集體」。論文把門檻設得很高：相當於數萬名專家、用 10 年合力解一個問題。</p></div>
+    </div>
+    <p style="margin-top:16px;color:var(--ink-dim);font-size:13.5px;font-weight:300">※ 最右端的 <b style="color:var(--ink-soft)">Universal AI（AIXI）</b>是「假設有無限算力時，最完美的智能體長什麼樣」的數學答案。它造不出來（不可計算），但像「光速」一樣，是讓我們定位一切的理論上界。</p>
+  </div>
+</div></section>
+
+<!-- PATHS -->
+<section id="paths"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">04</span><h2>四條路徑：怎麼從 AGI 走到 ASI</h2></div>
+  <p class="lead reveal">論文指出四條路。關鍵是：<strong>它們並不互斥，很可能同時發生。</strong></p>
+  <div class="grid g4">
+    <div class="card reveal"><svg class="ico" viewBox="0 0 48 48" fill="none"><rect x="6" y="26" width="8" height="16" rx="2" fill="#0d8a97"/><rect x="20" y="16" width="8" height="26" rx="2" fill="#5b63d8"/><rect x="34" y="6" width="8" height="36" rx="2" fill="#cf6a4a"/></svg>
+      <span class="tag">路徑 1</span><h3>擴大規模</h3><p>更多算力、更大模型、更多資料。論文估「有效算力」每年成長約 <b class="kbig" style="font-size:18px">10×</b>。真正的問題不是「規模夠不夠」，而是「規模<b>撐不撐得夠久</b>」。</p></div>
+    <div class="card reveal"><svg class="ico" viewBox="0 0 48 48" fill="none"><path d="M24 6v36M6 24h36" stroke="#0d8a97" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="24" r="9" stroke="#cf6a4a" stroke-width="3"/></svg>
+      <span class="tag">路徑 2</span><h3>演算法典範轉移</h3><p>全新的架構或學習方式（不只是把今天的模型變大）。本質上「極難預測」——通常在現有方法撞牆時，才作為回應冒出來。</p></div>
+    <div class="card reveal"><svg class="ico" viewBox="0 0 48 48" fill="none"><path d="M14 10a16 16 0 1 0 20 0" stroke="#5b63d8" stroke-width="3" stroke-linecap="round"/><path d="M14 4v8h8" stroke="#0d8a97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="tag">路徑 3</span><h3>遞迴自我改進</h3><p>AI 幫忙做 AI 研究 → 做出更強的 AI → 又更會做研究…。這個迴圈若夠強，可能引發「<b>智慧爆炸</b>」。最可能引爆，也最不確定。</p></div>
+    <div class="card reveal"><svg class="ico" viewBox="0 0 48 48" fill="none"><circle cx="12" cy="14" r="5" fill="#0d8a97"/><circle cx="36" cy="14" r="5" fill="#5b63d8"/><circle cx="24" cy="34" r="5" fill="#cf6a4a"/><path d="M12 14h24M12 14l12 20M36 14L24 34" stroke="#b9c0cf" stroke-width="2"/></svg>
+      <span class="tag">路徑 4</span><h3>多智能體群體</h3><p>大量 AGI 組成「公司」「市場」，從互動中<b>湧現</b>出超越任何個體的集體智慧——像一個會自己長出來的超級組織。</p></div>
+  </div>
+</div></section>
+
+<!-- WALLS -->
+<section id="walls"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">05</span><h2>六道瓶頸：可能讓它卡住的關卡</h2></div>
+  <p class="lead reveal">每條路上都有摩擦。論文的立場很關鍵：<strong>每道瓶頸都有「可能化解它的力量」，而兩者誰勝誰負，正是還沒有答案的研究問題。</strong>（綠字＝可能的化解方式）</p>
+  <div class="reveal">
+    <div class="bn"><div class="num">1</div><div><h4>資料牆</h4><p>高品質訓練資料的成長，跟不上模型胃口（估計本十年稍晚見底）。</p><div class="vs"><b>↳ 化解：</b>合成資料、高擬真模擬、AI 自己產生的互動資料（自我對弈、強化學習）。</div></div></div>
+    <div class="bn"><div class="num">2</div><div><h4>資源需求成長太快</h4><p>投資、晶片、能源、稀土的需求若爆炸，可能撐不住。</p><div class="vs"><b>↳ 化解：</b>AI 部署帶來經濟回報、AI 研究提升效率、大規模基建擴建。</div></div></div>
+    <div class="bn"><div class="num">3</div><div><h4>神經網路典範不夠用</h4><p>也許「大型預訓練網路 ＋ 梯度下降」根本到不了真正的 AGI。</p><div class="vs"><b>↳ 化解：</b>持續研究新典範；連次於 AGI 的 AI 都能幫忙加速這項研究。</div></div></div>
+    <div class="bn"><div class="num">4</div><div><h4>研究變難</h4><p>領域成熟、「低垂的果實」被摘完，越往後越難進步。</p><div class="vs"><b>↳ 化解：</b>更強的 AI 反過來提升研究效率，抵銷變難的速度。</div></div></div>
+    <div class="bn"><div class="num">5</div><div><h4>抽象屏障</h4><p>AI 主要學的是「人類的概念」，也許缺乏「從原始資料發明全新概念」的能力——而那正是人類科學突破的關鍵。</p><div class="vs"><b>↳ 化解：</b>群體規模化或許能越過；也可能需要一次典範轉移直接面對它。</div></div></div>
+    <div class="bn"><div class="num">6</div><div><h4>人為刻意叫停</h4><p>濫用、事故、軍事政治風險、社會反彈，可能導致刻意減速或法規設限。</p><div class="vs"><b>↳ 化解（也是隱憂）：</b>經濟與國際競賽壓力，可能反過來壓過減速的力量。</div></div></div>
+  </div>
+</div></section>
+
+<!-- LIMITS -->
+<section id="limits"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">06</span><h2>別把它神化：ASI 的硬天花板</h2></div>
+  <p class="lead reveal">科幻常把超智慧講得無所不能。論文罕見地潑了盆冷水——<strong>就算智慧無上限，物理與數學的法則依然管著它。</strong></p>
+  <div class="chips reveal">
+    <div class="chip"><b>光速</b><span>資訊傳遞有上限，協調與感知都要時間</span></div>
+    <div class="chip"><b>熱力學</b><span>運算與抹除資訊都要花能量（Landauer 原理）</span></div>
+    <div class="chip"><b>P ≠ NP</b><span>有些問題就是「算不動」，再聰明也一樣</span></div>
+    <div class="chip"><b>哥德爾不完備 · 停機問題</b><span>有些事在邏輯上就無法被證明或預知</span></div>
+    <div class="chip"><b>真實時間</b><span>生物、氣候、社會的實驗無法只靠模擬，得真的等</span></div>
+    <div class="chip"><b>物理可實現性</b><span>不是所有「邏輯上可能」的東西都造得出來</span></div>
+  </div>
+  <p class="lead reveal" style="margin-top:28px">但有個微妙的反轉：論文也承認這些硬限制<strong>在實務上往往「很空洞」</strong>——ASI 下不出「可證明完美」的西洋棋，但用近似法仍能下得超強。所以它到底治不治得好老化、建不建得了戴森球，<strong>光靠理論極限其實答不出來。</strong>結論是雙重謙卑：<strong>既別神化它，也別以為我們能事先算準它做不到什麼。</strong></p>
+</div></section>
+
+<!-- MYTH vs FACT -->
+<section class="feature" id="myth"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">07</span><h2>常見迷思 vs 事實</h2></div>
+  <p class="lead reveal">這個主題充滿誤解——有人過度恐慌，有人過度吹捧。把最常見的幾個拿出來對照，你就不會被任何一邊牽著走。</p>
+  <div class="reveal">
+    <div class="mf"><div class="m"><div class="lbl">✕ 迷思</div><p>超智慧 ＝ 無所不能的神。</p></div><div class="f"><div class="lbl">✓ 事實</div><p>它一樣被光速、熱力學、數學鐵律綁住，<b>不保證能解決所有事</b>——連「能不能事先算出它做不到什麼」都不一定。</p></div></div>
+    <div class="mf"><div class="m"><div class="lbl">✕ 迷思</div><p>AI 很快會有自我意識，想毀滅人類。</p></div><div class="f"><div class="lbl">✓ 事實</div><p>論文談的是「<b>能力</b>」，不是科幻式的覺醒。真正的議題是「目標設定與控制」，不是機器的仇恨。</p></div></div>
+    <div class="mf"><div class="m"><div class="lbl">✕ 迷思</div><p>這還很遙遠，跟我無關。</p></div><div class="f"><div class="lbl">✓ 事實</div><p>就算 ASI 還沒到，「<b>會用 AI 的人勝過不會用的人</b>」這件事，現在就在發生。</p></div></div>
+    <div class="mf"><div class="m"><div class="lbl">✕ 迷思</div><p>規模化會一路長到超智慧，板上釘釘。</p></div><div class="f"><div class="lbl">✓ 事實</div><p>路上有資料、能源、研究變難等<b>多道瓶頸</b>，誰也不敢保證一定走得通。</p></div></div>
+    <div class="mf"><div class="m"><div class="lbl">✕ 迷思</div><p>專家都同意 AI 會爆炸式成長。</p></div><div class="f"><div class="lbl">✓ 事實</div><p>專家<b>嚴重分歧</b>——從「2027 智慧爆炸」到「AI 只是正常技術」都有人主張。</p></div></div>
+  </div>
+</div></section>
+
+<!-- MACRO MEANING -->
+<section id="society"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">08</span><h2>對「人類社會」的意義</h2></div>
+  <p class="lead reveal">把鏡頭拉遠。除了你個人，這篇論文對整個社會，提出了什麼提醒？</p>
+  <div class="grid g3">
+    <div class="card reveal"><h3>我們可能是「那一代人」</h3><p>論文引用 70 年前達特茅斯會議——AI 這門學問的起點——說：我們也許就是達成先驅者目標的那一代。<b>重大的事，可能在我們的職涯之內發生。</b></p></div>
+    <div class="card reveal"><h3>需要「所有人」，不只工程師</h3><p>這是一場「<b>全球規模、跨領域</b>」的工作：經濟、政治、教育、心理、法律都得加入。理解 AI 不再只是科技人的事，而是公民素養。</p></div>
+    <div class="card reveal"><h3>「不確定」就是行動的理由</h3><p>沒人能給準時間表。但正因不確定，更要現在就建立「持續監測、持續更新」的能力——不賭單一劇本，而為多種可能做準備。</p></div>
+  </div>
+  <div class="quote reveal">「我們只能看到不遠的前方，<br>但那裡有太多事情，等著我們去做。」
+    <span>— Alan Turing, 1950（論文的開篇與結尾引言）</span></div>
+</div></section>
+
+<!-- CAMPS -->
+<section id="camps"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">09</span><h2>三種立場：這件事沒有共識</h2></div>
+  <p class="lead reveal">這篇論文站在「中間偏謹慎」，但它周圍是一場激烈的辯論。把三方放在一起，你才好自己判斷。</p>
+  <div class="grid g3">
+    <div class="camp reveal"><div class="h"><span class="d" style="background:#10916b"></span>加速派</div><ul>
+      <li>Aschenbrenner：~2027 達 AGI，隨後智慧爆炸</li>
+      <li>《AI 2027》：逐月情境劇本</li>
+      <li>核心：算力與投資的指數外推</li>
+      <li>（註：AI 2027 已自評進度偏慢，往後修到約 2029–30）</li></ul></div>
+    <div class="camp reveal"><div class="h"><span class="d" style="background:#0d8a97"></span>本文：中間 · 謹慎</div><ul>
+      <li>不給單一時間表，建立「預測學科」</li>
+      <li>不排除爆炸，也不排除趨平</li>
+      <li>把「不知道」變成研究議程</li>
+      <li>強調全球、跨領域的準備</li></ul></div>
+    <div class="camp reveal"><div class="h"><span class="d" style="background:#cf6a4a"></span>懷疑／降溫派</div><ul>
+      <li>Narayanan & Kapoor：「AI 只是正常技術」</li>
+      <li>Gary Marcus：純規模化會撞牆</li>
+      <li>核心：能力 ≠ 影響力，擴散很慢</li>
+      <li>該擔心的是它放大現有問題</li></ul></div>
+  </div>
+</div></section>
+
+<!-- GLOSSARY -->
+<section id="gloss"><div class="wrap">
+  <div class="sec-h reveal"><span class="sec-n">10</span><h2>八個關鍵詞，秒懂行話</h2></div>
+  <p class="lead reveal">讀任何 AI 新聞時，這幾個詞會反覆出現。先懂它們，你就不會被嚇到，也不會被唬到。</p>
+  <div class="gloss reveal">
+    <div class="gi"><b>AGI</b> <em>通用人工智慧</em><p>大致和「一個普通人」一樣聰明、且很通用的系統。</p></div>
+    <div class="gi"><b>ASI</b> <em>人工超智慧</em><p>在幾乎所有領域，超越「一整個專家組織」的系統。</p></div>
+    <div class="gi"><b>AIXI / Universal AI</b> <em>理論極限</em><p>「無限算力下最完美的智能體」的數學模型，不可計算，當作衡量上界。</p></div>
+    <div class="gi"><b>有效算力</b> <em>Effective Compute</em><p>硬體變便宜 × 投資變多 × 演算法變聰明，論文估約 10×／年。</p></div>
+    <div class="gi"><b>遞迴自我改進</b> <em>RSI</em><p>AI 改進 AI 的迴圈；夠強就可能引發「智慧爆炸」。</p></div>
+    <div class="gi"><b>智慧爆炸 / 奇點</b> <em>Singularity</em><p>自我改進失控加速，短時間內衝到遠超人類的智慧。</p></div>
+    <div class="gi"><b>規模律</b> <em>Scaling Laws</em><p>模型「越大、資料越多」就越強的可預測經驗法則。</p></div>
+    <div class="gi"><b>工具性收斂</b> <em>Instrumental Convergence</em><p>任何夠聰明的 AI 都傾向先搶資源、求自保——AI 安全的理論根源。</p></div>
+  </div>
+</div></section>
+
+<!-- CTA / JOIN -->
+<section id="join"><div class="wrap">
+  <div class="cta reveal">
+    <div class="sec-n">CURIOSITY · 808 AI 五金行 碩學苑</div>
+    <h2 style="margin:10px 0 8px;font-size:clamp(24px,4vw,34px)">好奇心，是人類最強的學習引擎</h2>
+    <p style="color:var(--ink-soft);max-width:580px;margin:0 auto 6px;font-weight:300">在 AI 加速的時代，看懂趨勢、保持提問、親手去用，比任何時候都重要。掃描或點擊下方，加入我們的 LINE 社群，一起把好奇心變成行動。</p>
+    <div class="qr-wrap">
+      <div class="qr-card">
+        <img id="qrImage" src="data:image/png;base64,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" alt="AI 五金行 LINE 社群 QR Code"
+             onerror="this.onerror=null;this.src='ai-五金行-qrcode.png';">
+      </div>
+      <div class="qr-cap"><b>808 AI 五金行</b> · 掃描加入 LINE 社群</div>
+      <a class="btn btn-p" href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">加入 LINE 社群 ↗</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="maker">808 <span class="g">AI 五金行</span> · 碩學苑</div>
+  <div style="color:#c4ccde;font-size:14px;font-weight:300">Live with AI ─ 把好奇心，變成看得見的全貌</div>
+  <div class="credit">製圖：808 AI五金行 碩學苑</div>
+  <div class="foot-links">
+    <a class="btn btn-o" href="https://arxiv.org/html/2606.12683v1" target="_blank" rel="noopener" style="color:#cfe9ee;border-color:rgba(255,255,255,.3)">讀原始論文 ↗</a>
+    <a class="btn btn-o" href="https://line.me/ti/g2/x2_JBbGkPcMBK9suFir5gV0BkVhsjUubCAlN1g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="color:#cfe9ee;border-color:rgba(255,255,255,.3)">加入 LINE 社群 ↗</a>
+  </div>
+  <div class="divline"></div>
+  <div class="foot-meta">
+    內容整理自 Google DeepMind 論文《From AGI to ASI》<br>
+    原文連結：<a href="https://arxiv.org/html/2606.12683v1" target="_blank" rel="noopener">https://arxiv.org/html/2606.12683v1</a>（arXiv:2606.12683v1，2026/06/10）<br>
+    本頁為教育性解說，力求忠實；細節仍以原文為準 · 製作日期 2026/06/15
+  </div>
+</div></footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.10});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,4)*55)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
