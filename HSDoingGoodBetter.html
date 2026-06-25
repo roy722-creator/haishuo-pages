@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《Doing Good Better 行善的藝術》— 偷書賊 × 書醒 終極整合版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#100e0b; --bg2:#17140f; --bg3:#1f1a13;
+    --ink:#ece4d6; --ink-soft:#bcb09c; --ink-faint:#8b8273;
+    --gold:#e3b65c; --gold-deep:#c2913a;
+    --jade:#74b8a1; --jade-deep:#4f9079;
+    --rust:#d2805a;
+    --line:rgba(227,182,92,0.16);
+    --serif:"Noto Serif TC",serif;
+    --sans:"Noto Sans TC",sans-serif;
+    --display:"Cormorant Garamond",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--serif); line-height:1.95;
+    font-size:18px; -webkit-font-smoothing:antialiased;
+    letter-spacing:.01em;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 26px}
+  p{margin:0 0 1.15em; color:#ddd3c2}
+  strong{color:var(--ink); font-weight:700}
+  em{color:var(--gold); font-style:italic}
+  a{color:var(--jade)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding:80px 26px 60px; position:relative;
+    background:
+      radial-gradient(1200px 600px at 70% -10%, rgba(227,182,92,.10), transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, rgba(116,184,161,.08), transparent 60%),
+      var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{max-width:920px; margin:0 auto; width:100%}
+  .kicker{
+    font-family:var(--sans); font-size:13px; letter-spacing:.42em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:30px; font-weight:500;
+  }
+  .hero h1{
+    font-family:var(--display); font-weight:600; line-height:1.02;
+    font-size:clamp(52px,10vw,108px); color:#f4ecdd; letter-spacing:.01em;
+  }
+  .hero h1 .zh{
+    display:block; font-family:var(--serif); font-weight:900;
+    font-size:clamp(26px,5vw,46px); color:var(--ink); margin-top:14px; letter-spacing:.04em;
+  }
+  .hero .sub{
+    font-family:var(--display); font-style:italic; font-size:clamp(20px,3vw,28px);
+    color:var(--ink-soft); margin-top:26px; max-width:640px;
+  }
+  .hero .meta{
+    font-family:var(--sans); font-size:14px; color:var(--ink-faint);
+    margin-top:40px; display:flex; flex-wrap:wrap; gap:8px 26px; letter-spacing:.04em;
+  }
+  .hero .meta span{display:inline-flex; align-items:center; gap:8px}
+  .hero .meta b{color:var(--jade); font-weight:500}
+  .essence{
+    margin-top:42px; padding:22px 26px; border-left:3px solid var(--gold);
+    background:linear-gradient(90deg,rgba(227,182,92,.07),transparent);
+    font-size:19px; color:#e6dcc9; max-width:680px; border-radius:0 8px 8px 0;
+  }
+  .scrollcue{
+    font-family:var(--sans); font-size:12px; letter-spacing:.3em; color:var(--ink-faint);
+    margin-top:54px; text-transform:uppercase; animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0; border-bottom:1px solid rgba(227,182,92,.07)}
+  .sec-tag{
+    font-family:var(--sans); font-size:12px; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--gold-deep); font-weight:700; margin-bottom:14px; display:block;
+  }
+  h2{
+    font-family:var(--serif); font-weight:900; color:#f2e9d8;
+    font-size:clamp(28px,4.4vw,40px); line-height:1.22; margin-bottom:8px; letter-spacing:.02em;
+  }
+  h2 .en{display:block; font-family:var(--display); font-weight:400; font-style:italic;
+    font-size:clamp(17px,2.2vw,22px); color:var(--ink-faint); margin-top:6px; letter-spacing:.02em}
+  h3{
+    font-family:var(--serif); font-weight:700; color:var(--gold);
+    font-size:clamp(21px,3vw,26px); margin:38px 0 14px; letter-spacing:.02em;
+  }
+  h4{font-family:var(--serif); font-weight:700; color:var(--ink); font-size:19px; margin:26px 0 10px}
+  .lead{font-size:20px; color:#e6dcc9; margin-bottom:22px}
+
+  /* TOC */
+  .toc{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:30px 32px; margin-top:8px}
+  .toc h2{font-size:22px; margin-bottom:18px}
+  .toc ol{list-style:none; counter-reset:t; columns:2; column-gap:40px}
+  .toc li{counter-increment:t; margin:0 0 11px; font-family:var(--sans); font-size:15px; break-inside:avoid}
+  .toc li a{color:var(--ink-soft); text-decoration:none; display:flex; gap:11px; transition:color .2s}
+  .toc li a:hover{color:var(--gold)}
+  .toc li a::before{content:counter(t,decimal-leading-zero); color:var(--gold-deep); font-weight:700; flex:none}
+  @media(max-width:600px){.toc ol{columns:1}}
+
+  /* cards & callouts */
+  .card{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:26px 30px; margin:22px 0}
+  .grid{display:grid; gap:18px}
+  .grid.two{grid-template-columns:1fr 1fr}
+  @media(max-width:680px){.grid.two{grid-template-columns:1fr}}
+
+  .q-card{background:linear-gradient(180deg,rgba(227,182,92,.06),rgba(227,182,92,.02));
+    border:1px solid var(--line); border-radius:14px; padding:24px 28px; margin:16px 0}
+  .q-card .qn{font-family:var(--display); font-style:italic; font-size:40px; color:var(--gold-deep); line-height:1; float:left; margin:0 16px 0 0}
+  .q-card h4{margin:0 0 6px; color:#f2e9d8}
+
+  .action{background:rgba(116,184,161,.07); border-left:3px solid var(--jade); border-radius:0 10px 10px 0; padding:16px 22px; margin:16px 0}
+  .action .lbl{font-family:var(--sans); font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--jade); font-weight:700; display:block; margin-bottom:6px}
+  .check{background:rgba(210,128,90,.06); border-left:3px solid var(--rust); border-radius:0 10px 10px 0; padding:16px 22px; margin:16px 0}
+  .check .lbl{font-family:var(--sans); font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--rust); font-weight:700; display:block; margin-bottom:6px}
+  .quote{font-family:var(--display); font-style:italic; font-size:23px; color:#ecdfc4; border:none; padding:8px 0 8px 26px; border-left:3px solid var(--gold); margin:20px 0}
+  .quote cite{display:block; font-family:var(--sans); font-style:normal; font-size:13px; color:var(--ink-faint); margin-top:8px; letter-spacing:.04em}
+
+  /* AI insight markers */
+  .L2{background:rgba(116,184,161,.07); border-left:2px solid var(--jade-deep); padding:14px 20px; border-radius:0 8px 8px 0; margin:16px 0; font-style:italic; color:#cfd8cf}
+  .L2 .tag,.L3 .tag{font-family:var(--sans); font-style:normal; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; display:inline-block; margin-bottom:6px}
+  .L2 .tag{color:var(--jade)}
+  .L3{background:linear-gradient(180deg,rgba(227,182,92,.10),rgba(227,182,92,.03)); border:1px solid var(--gold-deep); border-left:4px solid var(--gold); padding:18px 22px; border-radius:0 10px 10px 0; margin:18px 0}
+  .L3 .tag{color:var(--gold)}
+  .L3 .nm{font-family:var(--serif); font-weight:700; color:var(--gold); font-size:18px}
+
+  /* tables */
+  table{width:100%; border-collapse:collapse; margin:20px 0; font-size:15.5px; font-family:var(--sans)}
+  th,td{text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{color:var(--gold); font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase}
+  td{color:#d8cdba}
+  tr:last-child td{border-bottom:none}
+  .num{color:var(--jade); font-weight:700; font-variant-numeric:tabular-nums}
+
+  ul.clean,ol.clean{margin:0 0 1.1em 1.2em}
+  ul.clean li,ol.clean li{margin:0 0 9px; color:#d8cdba}
+  ul.clean li::marker{color:var(--gold-deep)}
+  ol.clean li::marker{color:var(--gold-deep); font-weight:700}
+
+  .chapnum{font-family:var(--display); font-style:italic; font-size:18px; color:var(--gold-deep); letter-spacing:.06em; display:block; margin-bottom:4px}
+  .pill{display:inline-block; font-family:var(--sans); font-size:12px; letter-spacing:.08em; color:var(--bg); background:var(--gold); padding:3px 11px; border-radius:20px; font-weight:700; margin:0 6px 6px 0}
+  .pill.jade{background:var(--jade)}
+  .pill.ghost{background:transparent; color:var(--ink-faint); border:1px solid var(--line)}
+
+  .part-head{text-align:center; padding:30px 0 6px}
+  .part-head .pk{font-family:var(--sans); font-size:13px; letter-spacing:.4em; text-transform:uppercase; color:var(--jade)}
+  .part-head .pt{font-family:var(--display); font-size:clamp(30px,5vw,46px); color:#f2e9d8; font-style:italic; margin-top:6px}
+
+  .totop{position:fixed; right:22px; bottom:22px; width:46px; height:46px; border-radius:50%;
+    background:var(--gold); color:var(--bg); border:none; cursor:pointer; font-size:20px;
+    display:none; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(0,0,0,.4); z-index:50}
+  .totop.show{display:flex}
+
+  footer{padding:60px 0 90px; text-align:center}
+  footer .fnote{font-family:var(--sans); font-size:13px; color:var(--ink-faint); line-height:1.9}
+  .divider{height:1px; background:linear-gradient(90deg,transparent,var(--line),transparent); margin:8px 0}
+
+  @media(max-width:600px){
+    body{font-size:17px}
+    .wrap{padding:0 18px}
+    section{padding:46px 0}
+    .card,.q-card{padding:20px}
+    .hero{padding:60px 18px 40px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">偷書賊 × 書醒 ｜ 終極整合版</div>
+    <h1>Doing Good Better
+      <span class="zh">行善的藝術：用對方法，把善意變成最大的改變</span>
+    </h1>
+    <div class="sub">如果你真心想讓世界更好，光有熱情還不夠——你需要一套像科學家一樣冷靜、像醫生一樣會分流的方法。</div>
+    <div class="meta">
+      <span>作者 <b>William MacAskill 威廉・麥克阿斯基爾</b></span>
+      <span>出版 <b>2015</b></span>
+      <span>骨架 <b>混合敘事論證型 ＋ 學術密度高</b></span>
+      <span>領域 <b>有效利他主義 Effective Altruism</b></span>
+    </div>
+    <div class="essence">
+      這本書的核心不是「要不要行善」，而是「同樣一份善意，怎麼用才能多救一百倍的人」。它把「好心」升級成「好方法」。
+    </div>
+    <div class="scrollcue">向下捲動 ↓</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ TOC ============ -->
+<section style="border-bottom:none">
+  <nav class="toc">
+    <h2>這份檔案裡有什麼</h2>
+    <ol>
+      <li><a href="#data">書籍資料與作者</a></li>
+      <li><a href="#core">核心命題：問題・論點・方法</a></li>
+      <li><a href="#mindset">閱讀心態：你帶著什麼來</a></li>
+      <li><a href="#arc">敘事弧線：一場認知旅程</a></li>
+      <li><a href="#engine">引擎：有效利他的五大提問</a></li>
+      <li><a href="#ch-intro">導論：被遺棄的抽水幫浦</a></li>
+      <li><a href="#ch1">第1章：你就是那 1%</a></li>
+      <li><a href="#ch2">第2章：艱難的取捨</a></li>
+      <li><a href="#ch3">第3章：如何拯救上百條生命</a></li>
+      <li><a href="#ch4">第4章：為何別捐給災難救助</a></li>
+      <li><a href="#ch5">第5章：史上最偉大的烏克蘭人</a></li>
+      <li><a href="#ch6">第6章：投票就像捐款</a></li>
+      <li><a href="#ch7">第7章：行政費用的迷思</a></li>
+      <li><a href="#ch8">第8章：血汗工廠的道德辯護</a></li>
+      <li><a href="#ch9">第9章：別「追隨熱情」</a></li>
+      <li><a href="#ch10">第10章：貧窮 vs. 其他</a></li>
+      <li><a href="#ch-end">結論：現在就能做的事</a></li>
+      <li><a href="#cross">交叉比對：跨章 × 跨書</a></li>
+      <li><a href="#now">此刻讀它：2026 的重讀</a></li>
+      <li><a href="#absence">缺席分析與批判邊界</a></li>
+      <li><a href="#playbook">實戰執行方案</a></li>
+      <li><a href="#teach">教學與讀書會模組</a></li>
+      <li><a href="#ai">AI 視角・迴聲・延伸</a></li>
+    </ol>
+  </nav>
+</section>
+
+<!-- ============ BOOK DATA ============ -->
+<section id="data">
+  <span class="sec-tag">01 ｜ 書籍資料</span>
+  <h2>誰寫的，為什麼值得聽<span class="en">The book &amp; the man behind it</span></h2>
+  <table>
+    <tr><th>項目</th><th>內容</th></tr>
+    <tr><td>原文書名</td><td>Doing Good Better: How Effective Altruism Can Help You Make a Difference</td></tr>
+    <tr><td>作者</td><td>William MacAskill ——牛津大學道德哲學家，二十多歲就成為牛津最年輕的哲學副教授之一；有效利他主義運動的共同發起人</td></tr>
+    <tr><td>出版</td><td>Random House / Avery，2015 年（英國版 Guardian Faber）</td></tr>
+    <tr><td>ISBN</td><td>978-1592409105</td></tr>
+    <tr><td>他創辦的組織</td><td>Giving What We Can（捐款承諾）、80,000 Hours（高影響職涯）、Centre for Effective Altruism</td></tr>
+    <tr><td>同主題姊妹作</td><td>Peter Singer《The Most Good You Can Do》（同年）、MacAskill 後來的《What We Owe the Future》（2022，轉向長期主義）</td></tr>
+  </table>
+  <p>MacAskill 不是一個坐在書房裡談道德的學者。他把自己收入超過某個門檻以上的部分全部捐出，並且建立了一整套組織，把「如何行善最有效」這個問題變成一門可以研究、可以實作的學問。這就是為什麼他寫這本書時，語氣是「我們一起來算算看」，而不是「你應該要更善良」。</p>
+  <div class="L3">
+    <span class="tag">★ AI 原創洞見</span>
+    <p><span class="nm">「會分流的善意」</span>——這本書真正的突破，是把醫院急診室的「檢傷分類（triage）」搬進了慈善。急診不會因為每個病人都值得救，就平均分配資源；它會冷靜判斷「先救誰能救最多」。MacAskill 主張：面對一個資源永遠不夠的世界，不分流的善意，本身就是一種奢侈。這個比喻貫穿全書，也是理解它最快的鑰匙。</p>
+  </div>
+</section>
+
+<!-- ============ CORE PROPOSITION ============ -->
+<section id="core">
+  <span class="sec-tag">02 ｜ 核心命題</span>
+  <h2>問題、論點、方法<span class="en">The problem, the claim, the method</span></h2>
+  <div class="grid two">
+    <div class="card">
+      <h4>🩹 問題</h4>
+      <p>我們想做好事，卻常常把善意浪費掉。我們憑感覺捐款、被悲慘的新聞畫面牽著走、用「我有沒有付出」來衡量自己，卻很少問「我這份付出，真的讓多少人變好了？」結果是：大量的善意，換來很小的改變——有時甚至幫了倒忙。</p>
+    </div>
+    <div class="card">
+      <h4>🎯 論點</h4>
+      <p>行善的「效果」差距大得驚人——最好的做法可能比一般的做法有效上百倍。所以我們有道德義務，不只是「做好事」，而是用證據和理性，去找出並優先做「最好的那件事」。善意要配上方法，才算數。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h4>🔬 方法</h4>
+    <p>MacAskill 的論證是「敘事 + 數據」雙引擎：他先用一個讓你不舒服的真實故事打破你的直覺（例如一個募了上億、卻讓非洲村莊更糟的明星公益計畫），再用經濟學與流行病學的硬數據把新框架立起來（QALY、邊際效益、反事實、期望值）。他不訴諸罪惡感，而是訴諸「你其實可以做到的，比你以為的多太多」這種興奮感。</p>
+  </div>
+  <div class="L2">
+    <span class="tag">AI 延伸</span>
+    <p>注意他刻意的順序：<strong>先拆掉你的安全感，再給你一個更大的能力感</strong>。如果只拆不給，讀者會內疚癱瘓；如果只給不拆，讀者會繼續用老方法。這本書之所以讀起來「冷靜卻振奮」，正是因為這個情緒設計。</p>
+  </div>
+</section>
+
+<!-- ============ READING MINDSET ============ -->
+<section id="mindset">
+  <span class="sec-tag">03 ｜ 閱讀心態</span>
+  <h2>你帶著什麼狀態翻開它<span class="en">How to read this, depending on where you are</span></h2>
+  <p class="lead">同一本書，在不同的人生時刻，會給你完全不同的東西。對號入座，你會讀得更深。</p>
+  <div class="card">
+    <p><strong>如果你正在「想做點好事，但不知道從哪開始」：</strong>這本書是你的起跑線。重點放在五大提問與最後的結論章——它會把模糊的善意變成一張可以執行的清單。</p>
+  </div>
+  <div class="card">
+    <p><strong>如果你正在「選科系、選工作、選人生方向」：</strong>直接重讀第 9 章與第 10 章。它會挑戰「追隨你的熱情」這句雞湯，給你一個更可靠的決策框架：個人契合度、影響力、職涯資本。</p>
+  </div>
+  <div class="card">
+    <p><strong>如果你已經在捐款、或在公益／NPO 工作：</strong>第 7 章會讓你不太舒服——它直接拆穿「行政費用越低＝越好」這個整個產業都在用的迷思。帶著防衛，但也帶著開放讀它。</p>
+  </div>
+  <div class="card">
+    <p><strong>如果你對「有效利他」抱持懷疑、甚至反感：</strong>很好，這是最有價值的讀法。一邊讀一邊把你的反駁寫在旁邊，再翻到本檔的「缺席分析與批判」一節——你會發現很多你的質疑，是有道理的。</p>
+  </div>
+</section>
+
+<!-- ============ NARRATIVE ARC ============ -->
+<section id="arc">
+  <span class="sec-tag">04 ｜ 敘事弧線</span>
+  <h2>一場從「好心」到「好方法」的旅程<span class="en">The cognitive journey</span></h2>
+  <table>
+    <tr><th>階段</th><th>發生什麼</th></tr>
+    <tr><td><b>起點</b></td><td>讀者相信：只要出於善意、有去付出，就是在做好事；付出越多＝越好。</td></tr>
+    <tr><td><b>破壞</b></td><td>作者用真實案例證明：充滿善意的計畫可能毫無效果、甚至有害；而「有效」與「無效」之間差了上百倍。你的直覺，靠不住。</td></tr>
+    <tr><td><b>重建</b></td><td>他遞給你五個提問與一套工具（QALY、邊際、反事實、期望值、規模—忽視—可解度），讓你能自己算出哪件事最值得做。</td></tr>
+    <tr><td><b>推力</b></td><td>他把工具套用到真實決策上：捐哪個慈善、怎麼消費、選什麼職涯、關注哪個議題——把理解變成行動。</td></tr>
+    <tr><td><b>著陸</b></td><td>讀完後，你會變成一個「會問問題的給予者」：不再問「我有沒有付出」，而是問「這是不是我能做的最好的事」。</td></tr>
+  </table>
+  <p style="margin-top:18px"><strong>情緒曲線：</strong>從「原來我一直做錯了」的不安，走到「原來我能做到的這麼多」的踏實興奮。</p>
+</section>
+
+<!-- ============ THE ENGINE: 5 QUESTIONS ============ -->
+<section id="engine">
+  <span class="sec-tag">05 ｜ 核心引擎</span>
+  <h2>有效利他的五大提問<span class="en">The five questions that run the whole book</span></h2>
+  <p class="lead">這五問是全書的心臟。第 2 到第 6 章，其實就是一章拆解一問。先把這張地圖記住，後面每一章你都知道自己站在哪。</p>
+
+  <div class="q-card"><span class="qn">1</span><h4>有多少人受益？受益多少？</h4><p>把「好事」翻譯成可比較的單位：影響多少人 × 改善多少。對應工具：<strong>QALY（品質調整生命年）</strong>。→ 第 2 章</p></div>
+  <div class="q-card"><span class="qn">2</span><h4>這是你能做的「最有效」的事嗎？</h4><p>不要只做「不錯」的事，要做「最好」的事。因為效益是「肥尾分布」——最好的選項好得不成比例。→ 第 3 章</p></div>
+  <div class="q-card"><span class="qn">3</span><h4>這個領域被忽視嗎？</h4><p>在邊際上思考。已經被大量資源灌注的領域（如熱門災難），你多投入的那一塊效益很低；乏人問津的領域才有低垂的果實。→ 第 4 章</p></div>
+  <div class="q-card"><span class="qn">4</span><h4>如果你不做，會怎樣？</h4><p>反事實思考。你真正的貢獻，是「有你」和「沒有你、換別人」之間的差距——不是事情的全部功勞。→ 第 5 章</p></div>
+  <div class="q-card"><span class="qn">5</span><h4>成功的機率多大？成功有多好？</h4><p>期望值思考。一件成功率低但一旦成功影響極大的事，可能比一件穩穩的小好事更值得做。→ 第 6 章</p></div>
+
+  <div class="L3">
+    <span class="tag">★ AI 原創洞見</span>
+    <p><span class="nm">「五問其實是一台過濾器，不是五個獨立問題」</span>——把它們串起來看：問題 1 衡量「一份的大小」，問題 2 確認「這是不是最大份的」，問題 3 找「還沒被別人拿走的份」，問題 4 扣掉「沒有你也會發生的份」，問題 5 則為「不確定的份」加權。一份善意依序通過這五道閘門後，剩下的才是你「真正多做出來的好」。這也是為什麼順序不能亂——它是一條收斂的漏斗。</p>
+  </div>
+</section>
+
+<!-- ============ INTRO CHAPTER ============ -->
+<section id="ch-intro">
+  <span class="chapnum">導論 ｜ Introduction</span>
+  <h2>被遺棄的抽水幫浦<span class="en">When good intentions go to waste</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>一個讓全世界感動、募到上億、贏得無數獎項的公益計畫，可能正在傷害它想幫助的人——因為「感覺良好」和「真的有效」是兩件事。</p>
+
+  <h3>再敘述：一個太美的故事</h3>
+  <p>想像一座旋轉遊樂設施，孩子們一邊玩、一邊就把乾淨的地下水抽上來，解決非洲村莊缺水的問題。多完美的畫面——玩耍即是公益，貧窮被童趣解決。這個叫 PlayPump 的點子打動了名人、企業與政府，募到數千萬美元，被當成援助創新的典範到處表揚。</p>
+  <p>然後現實登場。要達到宣稱的供水量，孩子得近乎全天無休地「玩」那個轉盤；當孩子散去，是村裡的婦女彎著腰，吃力地推著一個本來給小孩玩的設施，毫無尊嚴可言。它比傳統手壓幫浦更貴、更容易壞、壞了沒人會修。許多村莊其實寧可要回他們原本那台又舊又可靠的幫浦。一個感人的故事，換來一個更糟的結果。</p>
+  <p>MacAskill 用這個故事開場，不是為了嘲笑誰的善意，而是要逼我們面對一個不舒服的事實：<strong>我們判斷一件好事的方式——它聽起來多動人、我們投入多少感情——和它實際造成多少改善，幾乎沒有關係。</strong>於是他提出全書的主角：有效利他主義（Effective Altruism）——用證據與審慎的推理，去找出「如何用既有的資源，做出最多的好」。</p>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>PlayPump 的致命傷不是技術，是「回饋迴路斷裂」：出錢的人（西方捐款者）感受到的是溫暖的故事，承受後果的人（非洲婦女）卻無法把真相回傳給出錢的人。有效利他主義整本書，其實都在修補這條斷掉的回饋線。</p></div>
+
+  <div class="action"><span class="lbl">立即可用</span>下次你被一個公益故事打動、想掏錢時，先暫停 30 秒問一句：「我現在感動的是這個『故事』，還是它真實的『效果』？」光是把這兩者分開，你就已經領先大多數捐款者。</div>
+  <div class="check"><span class="lbl">自我檢核</span>回想你上一次捐款或當志工。你當時憑的是數據，還是憑一個畫面或一段話？如果重來，你會想知道哪一個你當時沒問的問題？</div>
+</section>
+
+<div class="part-head">
+  <div class="pk">Part One</div>
+  <div class="pt">有效利他的五大提問</div>
+</div>
+
+<!-- ============ CH 1 ============ -->
+<section id="ch1">
+  <span class="chapnum">第 1 章 ｜ You Are the 1%</span>
+  <h2>你，就是那 1%<span class="en">Just how much you can achieve</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>如果你看得懂這份檔案，你幾乎肯定是全球收入金字塔的頂端——這不是要你內疚，而是要你看見：你手上握有一個近乎超能力的槓桿。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>你比你以為的有錢太多。</strong>年收入若超過約 5.2 萬美元，你就站在全球前 1%；超過約 2.8 萬美元，前 5%。而這已經是把「錢在窮國更耐用」算進去之後的數字。不知道這件事，你會持續低估自己能造成的改變。</li>
+    <li><strong>金錢有「邊際遞減」。</strong>研究顯示：收入每翻一倍，主觀幸福感增加的幅度差不多——不管你原本賺多少。所以把一個人從 1,000 美元變成 2,000，跟把另一個人從 5 萬變成 10 萬，帶來的快樂量級相近。</li>
+    <li><strong>於是出現「100 倍乘數」。</strong>同樣一塊錢，給極度貧窮的人，能產生的福祉大約是給一般富國居民的 100 倍。你不需要變成聖人，只需要把錢放到它能發揮 100 倍效果的地方。</li>
+  </ul>
+
+  <h3>再敘述：把「杯水車薪」這句話丟掉</h3>
+  <p>我們常被世界問題的規模嚇退：貧窮這麼龐大，我捐這一點算什麼？MacAskill 的回應很鋒利——重點從來不是水桶有多大，而是你能濺起多大的水花。一個普通的富國工作者，光是把每年收入的一小部分（書中估算當時約 3,400 美元可救一條命）持續捐給最有效的計畫，就可能每年實質拯救一條人命，而自己的生活品質幾乎不受影響。這不是誇飾，是算術。</p>
+  <p>他也順手拆掉「援助根本沒用」這個流行的犬儒論調：相對於問題的規模，世界花在援助上的錢其實少得可憐；而光是 1977 年根除天花這一項成就——拯救的生命量級以千萬計、每條命的成本約 4 萬美元（相比之下美國政府評估安全措施時，一條命的價值常以數百萬美元計）——就已經讓所有援助支出物超所值。關鍵不是「援助平均有沒有用」，而是「我們可以只挑最好的那幾項來做」。</p>
+
+  <blockquote class="quote">It's the size of the drop that matters, not the size of the bucket.<cite>— William MacAskill, Doing Good Better（重點是水滴的大小，不是水桶的大小）</cite></blockquote>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>這一章建立「你有巨大的潛在槓桿」；但槓桿要放對支點才有用。第 3 章（最有效）會告訴你支點在哪，第 5 章（反事實）會提醒你別把整桶水的功勞都算成自己的。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>上 Giving What We Can 的「How Rich Am I」收入計算機，輸入你的年收入，看看自己在全球的百分位。這個數字會重新校準你對「我能做多少」的整個想像。</div>
+  <div class="check"><span class="lbl">自我檢核</span>誠實問自己：如果你的收入明天翻倍，你的幸福會增加多少？如果答案是「沒有想像中多」，那這多出來的部分，對另一個人可能是 100 倍的意義。</div>
+</section>
+
+<!-- ============ CH 2 ============ -->
+<section id="ch2">
+  <span class="chapnum">第 2 章 ｜ Hard Trade-offs　〈提問 1〉</span>
+  <h2>艱難的取捨<span class="en">How many benefit, and by how much?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>拒絕在「都是好事」之間做取捨，不是高尚，而是讓更多人受苦——因為資源有限，不分流，等於讓運氣決定誰被救。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>分流（triage）是道德，不是冷血。</strong>盧安達大屠殺期間，醫護在病人額頭貼上 1、2、3 的編號決定救治順序。殘酷嗎？但若堅持「先來先看」，死的人會更多。我們的世界就是那間人滿為患的急診室。</li>
+    <li><strong>用 QALY 把「好」變成可比較的單位。</strong>品質調整生命年（QALY）同時衡量「活多久」與「活得多好」，讓原本無法比較的不同介入，能放上同一把尺。它不完美，但通常夠用——因為不同方案的效果差距，往往大到不需要精確也分得出高下。</li>
+    <li><strong>「無法比較」常常只是「不願比較」。</strong>有人說不同人的利益無法衡量。但我們其實都同意：救一百萬人勝過救一人、救命勝過多送一份甜點。困難的是情感，不是邏輯。</li>
+  </ul>
+
+  <h3>再敘述：先學會把善意「秤重」</h3>
+  <p>這一章是五問的第一問，也是整套方法的地基：在你決定把資源投到哪之前，先學會問「這會幫到多少人、每個人被幫多少」。MacAskill 借用醫療經濟學發展出的 QALY，把抽象的「改善生活」變成可加總、可比較的數字。一個介入若能讓很多人多活很多年、活得更有品質，它的 QALY 就高。</p>
+  <p>重點不在於數字精準到小數點，而在於養成「秤重」的習慣。當一個慈善機構連「你的捐款大概能換到什麼結果」都說不清楚時，那本身就是一個警訊——你不會在商店付了錢，卻讓店員隨機塞給你一袋東西，那為什麼幫別人花錢時，我們卻容許這種模糊？</p>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「比較的勇氣」</span>——這一章真正在訓練的，不是計算能力，而是一種情感上的勇氣：願意承認「A 比 B 更值得」並承擔這個判斷。逃避比較感覺上比較善良（好像每件好事都被平等尊重了），但那份「溫柔」的代價，是由那些本來可以被你的資源救到、卻沒被救到的人默默承擔。不比較，不是沒有做選擇——而是把選擇權交給了慣性與運氣。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>本章的 QALY 是「衡量一份的大小」。它直接餵給第 3 章——當你會秤重之後，才會震驚於不同選項之間「重量差到上百倍」。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>挑一個你支持的公益組織，上官網找「每一塊錢換到什麼具體結果」。找得到，是好跡象；遍尋不著，把這個疑問寄信問他們——你會立刻分辨出誰在認真衡量成效。</div>
+  <div class="check"><span class="lbl">自我檢核</span>有沒有一個你一直逃避的比較（兩個議題、兩個對象），因為「比較好像很殘忍」？那個逃避，真的是出於善良，還是出於不想承擔判斷的責任？</div>
+</section>
+
+<!-- ============ CH 3 ============ -->
+<section id="ch3">
+  <span class="chapnum">第 3 章 ｜ How You Can Save Hundreds of Lives　〈提問 2〉</span>
+  <h2>如何拯救上百條生命<span class="en">Is this the most effective thing you can do?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>「不錯的好事」是「最好的好事」最大的敵人——因為在行善的世界裡，最好的選項往往不是好一點點，而是好上幾十、上百倍。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>效益是「肥尾分布」，不是常態分布。</strong>身高是常態分布（大家差不多）；但行善效果像收入一樣肥尾——少數選項貢獻了絕大多數的價值。直覺會騙你，因為我們習慣「差不多」的世界。</li>
+    <li><strong>差距大到荒謬。</strong>同樣花 1,000 美元提升開發中國家的教育：發現金獎勵就學約增加 0.2 學年、發免費制服約 7 學年、而替學童驅蟲（deworming）竟換來約 <span class="num">139</span> 學年。同一個目標，最好的做法強過普通做法數百倍。</li>
+    <li><strong>同樣的錢，天差地別的結果。</strong>5 萬美元能訓練一隻導盲犬幫助一位盲人；同樣 5 萬，拿去做沙眼手術，可以讓開發中國家約 500 人免於失明。沒有人是壞人，但選擇的後果天差地別。</li>
+  </ul>
+
+  <h3>再敘述：別只做好事，要做最好的事</h3>
+  <p>如果第 2 章教你秤重，第 3 章就是把秤拿出來、把選項一字排開——然後你會倒抽一口氣。我們的道德直覺有個盲點：只要一件事「是好的」，我們就覺得做了它很滿足，很少追問「在所有好事裡，這是不是最好的那個」。但既然效果是肥尾的，停在「不錯」就等於放棄了絕大部分你本可以創造的好。</p>
+  <p>這不是要你冷酷，而是要你認真。一個真正在乎結果的人，會像投資人比較報酬率那樣，去比較「每一塊錢、每一小時，換到多少實際的改善」。當你發現驅蟲的成本效益是發現金的數百倍，你就再也無法假裝「反正都是做好事」了。</p>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>肥尾分布有個殘酷的推論：如果你「隨機」挑一件好事來做，期望上你會落在尾巴的細小部分，而不是肥厚的頭部。換句話說，<strong>不做功課的善意，統計上注定平庸。</strong>多花一小時研究「哪個最有效」，它的槓桿可能勝過你接下來捐的所有錢。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>本章說「要挑最有效的」；但「最有效」會隨資源湧入而改變——這就接到第 4 章的邊際思考：今天最有效的領域，被灌爆之後可能就不再是了。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>把「能不能贏過直接發現金？」當成你的捐款門檻。GiveDirectly 直接把錢發給赤貧者，是一個誠實的基準線。任何你考慮的選項，先問：它有證據顯示比『直接給錢』更有效嗎？</div>
+  <div class="check"><span class="lbl">自我檢核</span>你目前投入最多時間或金錢的那件「好事」，是你「比較過後選的」，還是「剛好先找上你、你就做了」的？</div>
+</section>
+
+<!-- ============ CH 4 ============ -->
+<section id="ch4">
+  <span class="chapnum">第 4 章 ｜ Why You Shouldn't Donate to Disaster Relief　〈提問 3〉</span>
+  <h2>為什麼不該（直覺地）捐給災難救助<span class="en">Is this area neglected?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>該不該投入一個領域，不看它「總共」有多重要，而看「多投入你這一份」還能改變多少——而鎂光燈聚集的地方，那一份往往已經很小了。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>在邊際上思考，不在平均上思考。</strong>水與鑽石的悖論：水對生存遠比鑽石重要，但因為水很多，「多一單位水」的價值很低；鑽石稀少，「多一顆」反而值錢。你的捐款是「多一單位」，所以要問的是邊際價值。</li>
+    <li><strong>災難救助的資金，跟著戲劇性走，不跟著嚴重性走。</strong>2010 海地地震（約 15 萬人死、極貧國）與 2011 日本地震（約 1.5 萬人死、全球第四富國，紅十字會甚至婉拒外援）都各募得約 50 億美元；而 2008 中國汶川地震（約 8.7 萬人死）因曝光較少，國際援助僅約 5 億。資源錯置一目了然。</li>
+    <li><strong>沉默的日常緊急狀態。</strong>每天有超過一萬八千名兒童死於可預防的疾病——沒有頭條、沒有鏡頭。我們對天天上演的災難麻木了，卻為突發的戲劇性事件慷慨解囊。</li>
+  </ul>
+
+  <h3>再敘述：去沒有人在看的地方</h3>
+  <p>邊際遞減是這一章的引擎。一個領域如果已經湧入大量關注與資金，低垂的果實多半已被摘光，你再投入的效益就低。反過來，乏人問津的領域才藏著高報酬。這也解釋了一個反直覺的結論：行善通常應該往更窮的國家去——在富國，划算的健康介入早就被做完了；在窮國，同樣的錢還能摘到滿樹的果實。</p>
+  <p>最戳人的是醫生的例子。一位醫學生想知道當醫生一生能救多少人，算出「平均」約 70 條命；但他立刻意識到該問的是「邊際」——在已經有近 88 萬名醫生的美國，多他一個，估算只多救約 4 條命；而同一個人若到醫生稀缺的衣索比亞，可能多救約 300 條。你救多少人，很大程度取決於你站在多缺你的地方。</p>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「鎂光燈稅」</span>——可以把「被高度關注」想成一種隱形的稅：越多人盯著看的善舉，你多投入的每一塊錢，邊際效益就被前面的人課走越多。有效利他者其實是在做一種「注意力套利」——刻意走向沒有鏡頭、沒有掌聲的角落，因為那裡的善意還沒被稀釋。這也解釋了為什麼這套方法在情感上這麼難：它要求你放棄掌聲。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>「忽視度」是第 10 章「規模—忽視—可解度」框架的中間支柱。本章是它的單獨特寫；第 10 章會把它和另兩根柱子組裝起來。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>當下一個大災難洗版、你衝動想捐時，改成這樣做：捐給一個「長期、被忽視、有實證」的計畫（例如瘧疾防治），或捐給能跨災難靈活調度的應急基金。把衝動導向邊際效益更高的地方。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你關心的議題，是因為「它最需要你」，還是因為「它最近最常出現在你眼前」？</div>
+</section>
+
+<!-- ============ CH 5 ============ -->
+<section id="ch5">
+  <span class="chapnum">第 5 章 ｜ The Best Person Who Ever Lived…　〈提問 4〉</span>
+  <h2>史上做了最多好事的人，是個沒人知道的烏克蘭人<span class="en">What would have happened otherwise?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>你真正的貢獻，不是「事情的全部功勞」，而是「有你」和「沒有你、換成下一個人」之間的差距——這條反事實的差距，常常比你以為的小很多，偶爾又大得驚人。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>反事實是衡量影響力的真正尺規。</strong>維克托・日丹諾夫（Viktor Zhdanov），一位烏克蘭裔的蘇聯副衛生部長，當年極力遊說世衛組織啟動根除天花。天花或許終究會被根除，但他可能讓這件事提早了約十年發生——這十年，意味著約 <span class="num">1,000–2,000 萬</span>條本來會消逝的生命。他幾乎沒人記得，卻可能是史上拯救最多生命的人之一。</li>
+    <li><strong>「可替代性」會稀釋你的直接貢獻。</strong>你去當醫生，通常不是憑空多一個醫生——醫學院名額固定，你佔了位子，等於擠掉了下一個本來會來的人。你真正的影響，只是「你」和「那個被你取代的人」之間的差。</li>
+    <li><strong>沒有反事實，你會把「有害」誤認成「有益」。</strong></li>
+  </ul>
+
+  <h3>再敘述：扣掉「沒有你也會發生」的部分</h3>
+  <p>這一章是五問裡最容易被忽略、卻最能避免自我感動的一問。我們習慣把一件好事的全部結果都算成自己的功勞，但真正誠實的算法是減法：扣掉「就算我不出手，也會發生」的部分，剩下的才是你多做出來的好。日丹諾夫的偉大，正在於那「提早的十年」——那是只有他補上的差距。</p>
+  <p>反過來，可替代性會給你當頭棒喝。前面那位醫學生算出：把反事實算進去後，他當醫生一生「多」救的，可能只有 1 到 2 條命（因為若他不當，補上的那個人也會救差不多的人）。於是他改走「賺錢捐錢」——雖然不直接救人，卻能透過捐款救下數百人，因為若他不捐，接替他職位的人平均只會捐約 2%。</p>
+  <p>最駭人的案例是「嚇阻計畫」（Scared Straight）：帶問題少年去監獄體驗恐怖，看起來有效——參加者再犯率下降了。但嚴謹的對照研究發現，<strong>沒參加的孩子再犯率下降得更多</strong>；這個計畫其實讓青少年更容易犯罪，估算每投入 1 美元，造成社會約 203 美元的損失。少了反事實這把尺，一個害人的計畫，會被你當成善舉熱情贊助。</p>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>反事實思考有個解放性的副作用：它把「功勞」這件事去個人化。日丹諾夫不在乎名留青史，他在乎的是「那十年有沒有被補上」。當你開始用差距而非功勞來衡量自己，你會更願意去做那些「沒人知道是你做的、但確實少了你就不會發生」的事——這恰恰是影響力最大的那種事。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>可替代性直接預告第 9 章的職涯選擇——「賺錢捐錢」之所以成立，整個建立在本章的反事實邏輯上。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>對任何你引以為傲的好事，做一次「反事實扣除」：問「如果我沒做，這件事有多少會照樣發生？誰會補上？」把答案誠實寫下來。你會更清楚自己該把力氣放哪。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你目前的工作或投入，有多少是「非你不可」，有多少是「換別人也差不多」？哪裡是你能補上、別人補不上的那道差距？</div>
+</section>
+
+<!-- ============ CH 6 ============ -->
+<section id="ch6">
+  <span class="chapnum">第 6 章 ｜ Why Voting Is Like Donating　〈提問 5〉</span>
+  <h2>為什麼投票就像捐款<span class="en">Chances of success × how good success would be</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>一件成功機率很低、但一旦成功影響極大的事，期望值可能勝過一件穩穩的小好事——別讓「不太可能」這三個字，騙你放棄高價值的選項。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>期望值 = 機率 × 影響。</strong>個人理財可以風險趨避（因為錢對你邊際遞減快）；但行善應該接近風險中立——世界的問題太大，報酬遞減得很慢，所以「高風險高影響」的賭注值得下。</li>
+    <li><strong>投票的數學。</strong>你一票決定大選結果的機率極低（2008 年估約六千萬分之一），但若較好的政黨能讓每位國民多獲得一定的好處，把總值除回去，一票的期望價值可能高達數千美元。投票，划算。</li>
+    <li><strong>從政的期望值。</strong>一位牛津 PPE 學生估算：成為國會議員約 1/30、成為首相約 1/3000；即使用非常保守的假設，每位投入政壇的牛津 PPE 畢業生，其「期望影響力」仍高於她去賺錢捐錢——所以儘管更可能失敗，這個賭注依然值得下。</li>
+  </ul>
+
+  <h3>再敘述：學會為「不確定」加權，而不是把它歸零</h3>
+  <p>我們對「低機率、高影響」的事件特別不在行：不是過度高估（買樂透），就是直接當成零（懶得投票、覺得個人行為無意義）。期望值思考就是用來修正這個系統性偏誤的工具。它讓你能理直氣壯地支持一件「很可能不會成功」的事——只要它一旦成功的好，大到足以補償那個低機率。</p>
+  <p>這也是 MacAskill 為「系統性改變」與「個人微小行動」同時辯護的方式。系統性改變（如改變政策）難量化、成功率低，但期望值可能極高，因此值得一部分人去賭。而你日常的微小選擇也一樣有意義：少買一磅牛肉，平均會讓牛肉產量減少約 0.68 磅；少買一顆蛋，蛋產量減少約 0.91 顆——你的選擇不是零，只是以機率的形式分散地生效。</p>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「把人生當成一個投資組合」</span>——這一章其實偷偷改寫了「值得做的事」的定義。一般人用「會不會成功」篩選行動；期望值思考改用「成功的話有多大 × 機率」來篩選。聰明的做法不是每件事都求穩，而是像基金經理一樣配置：大部分資源放在高確定性的有效介入（穩healthy的底倉），保留一部分押注在低機率但可能改寫全局的長線賭注（系統改變、研究、創業）。一個只有穩當好事、沒有任何長線賭注的人生，期望值其實是被低估的。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>期望值是第 9、10 章的隱形骨架：第 9 章的「高潛力長線賭注」（創業、研究、政治）和第 10 章對「全球災難風險」這類低機率高衝擊議題的重視，全都靠本章的邏輯撐住。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>下次你準備用「這不太可能成功」或「我一個人能改變什麼」否決一件事時，強迫自己估一個粗略的期望值：成功機率（哪怕拍腦袋）× 成功的影響。常常你會發現，那個被你秒殺的選項，其實值得認真考慮。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你有沒有因為「成功率太低」而從沒認真評估過的志向？如果它真的成了，影響會有多大？你算過那道乘法嗎？</div>
+</section>
+
+<div class="part-head">
+  <div class="pk">Part Two</div>
+  <div class="pt">把五問用到真實決策上</div>
+</div>
+
+<!-- ============ CH 7 ============ -->
+<section id="ch7">
+  <span class="chapnum">第 7 章 ｜ Overhead Costs, CEO Pay, and Other Confusions</span>
+  <h2>行政費用的迷思<span class="en">Which charities make the most difference?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>用「行政費用比例」和「執行長薪水」來評斷一個慈善機構，就像用「公司花多少間接成本」來決定要不要買它的產品——你問錯了問題，還以為自己很精明。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>行政費用與高層薪資，幾乎與成效無關。</strong>你買 Mac 還是 PC，不會去查蘋果或微軟的間接成本、執行長領多少——你只在乎產品好不好。幫別人花錢時，這個原則一樣成立：你該在乎的是「成果」，不是「成本結構長怎樣」。</li>
+    <li><strong>低行政費用可能掩蓋低成效。</strong>有個把美國捐書運到非洲的組織，行政費用只佔 0.8%、執行長薪水也不高——帳面上完美。但「運二手書到非洲」對提升教育的實際效果存疑。低管銷不等於高影響；有時反而是「不敢花錢把事做對」的訊號。</li>
+    <li><strong>真正該問的是五個問題（見下）。</strong>把焦點從「它怎麼花錢」轉到「它創造什麼結果、證據多硬、還缺不缺錢」。</li>
+  </ul>
+
+  <h3>再敘述：學會像 GiveWell 那樣提問</h3>
+  <p>這一章把前面五大提問，落地成「評估一個慈善機構」的實用清單。MacAskill 痛批「管銷迷思」——整個捐款文化痴迷於「越少錢花在行政上越好」，逼得優秀組織不敢付合理薪水請好人才、不敢投資能放大成效的系統。這是一場集體的自我傷害：我們用一個和成效無關的指標，懲罰了那些最認真把事做好的機構。</p>
+  <p>取而代之，他提出評估任何慈善機構的五個問題：①它到底做什麼？②它的計畫成本效益如何？③背後的證據有多紮實？④它執行得好不好？⑤它還有沒有「吸收更多資金」的空間（你的錢進去，是真的多做事，還是只是躺在帳上）？這正是 GiveWell 這類嚴謹評鑑機構的工作方式——它們挖出的頂尖慈善（如抗瘧疾基金會、驅蟲計畫、直接發現金）往往不是最會說故事的，而是最經得起這五問檢驗的。</p>
+
+  <table>
+    <tr><th>評估慈善機構的五問</th><th>你在找什麼</th></tr>
+    <tr><td>① 它做什麼？</td><td>說得出具體的介入，而非一堆模糊的美好願景</td></tr>
+    <tr><td>② 成本效益如何？</td><td>每一塊錢換到什麼可量化的結果</td></tr>
+    <tr><td>③ 證據多硬？</td><td>有對照實驗／獨立評估，而非自我宣稱</td></tr>
+    <tr><td>④ 執行力如何？</td><td>把好計畫真的落實的組織能力</td></tr>
+    <tr><td>⑤ 還缺錢嗎？</td><td>邊際的捐款還能不能轉成邊際的行動（資金吸納空間）</td></tr>
+  </table>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>第五問「還缺不缺錢」是最容易被忽略、卻最有效利他精神的一問——它其實就是把第 4 章的「邊際思考」用到捐款上。一個再好的機構，如果已經錢多到花不完，你的下一塊錢邊際效益也會驟降。成效評估不是一次性的標籤，而是隨資金流動的動態判斷。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>本章是第 2 章（QALY 衡量）+ 第 3 章（最有效）+ 第 4 章（邊際）三者的合體落地。看不懂這章，回去補那三章。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>把那五個問題存成手機備忘錄。下次有人請你捐款，照著問一輪。同時，直接參考 GiveWell（givewell.org）每年更新的頂尖慈善清單，省下你自己評估的大量功夫。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你有沒有曾經因為「這家行政費用太高」就否決一個慈善，卻從來沒查過它到底救了多少人？</div>
+</section>
+
+<!-- ============ CH 8 ============ -->
+<section id="ch8">
+  <span class="chapnum">第 8 章 ｜ The Moral Case for Sweatshop Goods</span>
+  <h2>血汗工廠商品的道德辯護<span class="en">How to consume ethically</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>大多數「道德消費」其實效果很差且難以瞄準——通常你買便宜一點、把省下的錢捐給有效慈善，能做的好遠多於買貴鬆鬆的「良心商品」。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>抵制血汗工廠，可能傷害你想救的人。</strong>對許多開發中國家的工人，工廠工作是他們現有選項裡「最好」的那個；發展的歷史也大多是經由製造業起步的。一刀切的抵制，常常奪走的是他們往上爬的第一階。</li>
+    <li><strong>公平貿易（Fairtrade）效果被高估。</strong>溢價中真正流到最貧窮生產者手上的比例有限；而最窮的國家往往連認證的門檻都跨不過。買一般商品、把價差捐出去，常常更有效。</li>
+    <li><strong>「在地食物」與碳足跡的迷思。</strong>運輸只佔食物碳足跡的一小部分——你「吃什麼」比「從多遠運來」影響大得多。與其執著食物里程，不如透過有效的計畫做碳補償，成本低、效果實。</li>
+  </ul>
+
+  <h3>再敘述：別讓「道德消費」變成自我感覺良好</h3>
+  <p>這一章最容易讓人不舒服，因為它戳破了一整套讓中產階級安心的儀式。MacAskill 的論點不是「血汗工廠很好」，而是「抵制它的那個動作，往往幫不到、甚至傷害到工人，同時讓你誤以為自己已經盡了力」。道德消費最大的問題是「瞄準度太差」——你多付的錢，經過層層通路，最後真正轉化成幫助的比例很低。</p>
+  <p>但他並非否定一切。有一個誠實的例外：<strong>為了動物福利而少吃肉</strong>，尤其是減少工廠化養殖的雞肉與蛋。這裡的因果鏈相對直接、可量化，個人選擇透過市場機制真的會減少動物受的苦。換句話說，問題從來不是「個人選擇沒用」，而是「哪些個人選擇真的有效、哪些只是儀式」。</p>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「買便宜，捐差價」原則</span>——這章可以濃縮成一條可操作的鐵律：在消費端做善事的效率，幾乎總是低於「省下來、捐給最有效的地方」。因為消費是被產品、通路、認證層層稀釋的善意，而捐款可以直接命中肥尾的頭部。例外只有當「消費本身就是最直接的干預」時（如減少肉食直接減少動物受苦）。把這條原則記住，你就能瞬間分辨哪些「良心商品」值得買、哪些只是賣你一份安心。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>本章是第 3 章（瞄準最有效）與第 5 章（反事實：你抵制了，產業真的會變嗎）在日常消費上的應用。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>挑一項你習慣多花錢買的「良心商品」，估算溢價。把這筆錢改成每月定額捐給一個有實證的有效慈善。同時，若想用消費減害，優先從「減少工廠化肉蛋」這個有效的槓桿下手。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你的「道德消費」，是真的在改善別人的處境，還是主要在表達「我是個有良心的人」這個身分？兩者可以並存，但你分得出比例嗎？</div>
+</section>
+
+<!-- ============ CH 9 ============ -->
+<section id="ch9">
+  <span class="chapnum">第 9 章 ｜ Don't "Follow Your Passion"</span>
+  <h2>別「追隨你的熱情」<span class="en">Which careers make the most difference?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>「追隨你的熱情」是個糟糕的職涯建議——熱情多半是「做得好、做出貢獻」之後才長出來的果實，不是事先就藏在某處等你去尋找的種子。你一生最大的一筆「捐贈」，是你的職涯本身。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>熱情會跟隨精通，而非相反。</strong>多數人的「熱情」不穩定、且與可維生的職業無關。投入、變強、看見自己的貢獻被需要——熱情通常在這之後才出現。先押注「熱情」，等於把人生賭在一個會變的感覺上。</li>
+    <li><strong>用三把尺取代一個口號：</strong>①<strong>個人契合度</strong>（你會不會做得好、撐得久）；②<strong>影響力</strong>（這份工作反事實上創造多少好）；③<strong>職涯資本</strong>（累積能放大未來選項與影響力的技能、人脈、信譽）。</li>
+    <li><strong>「賺錢捐錢」（earning to give）是真選項，但只是選項之一。</strong>去做高薪工作、把大部分捐出去，可以供養好幾位公益工作者；而且反事實穩健——你不去做那份金融工作，別人也會去做，而那個人多半幾乎不捐。但這只是諸多有效路徑之一，不是有效利他的唯一解（這是最常見的誤解）。</li>
+  </ul>
+
+  <h3>再敘述：把職涯當成你最大的槓桿</h3>
+  <p>一個人職業生涯大約有八萬小時（這正是 MacAskill 共同創辦的組織名字 80,000 Hours 的由來）。比起你會捐出的任何一筆錢，你「怎麼用這八萬小時」才是你影響世界的最大變數。所以選職涯不該靠雞湯，而該用框架。</p>
+  <p>他把選項分成兩類：<strong>穩健的賭注</strong>——在有效組織做直接工作、賺錢捐錢、或先累積可遷移的技能；以及<strong>高潛力的長線賭注</strong>——創業、研究、從政與倡議。後者成功率低，但一旦成功，影響可能是天文數字（這就是第 6 章期望值的應用）。對還在摸索的人，他的建議很務實：早期多探索、優先累積職涯資本、保留選項，不要太早把自己鎖死。至於純勞力的志工服務，若沒用上你的專長，影響其實有限——你的專業能力，往往比你的空閒時間值錢得多。</p>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>「賺錢捐錢」常被誤讀成「有效利他＝叫大家去華爾街」。但本章真正的主張更謙遜也更聰明：<strong>不同的人，最大槓桿在不同地方。</strong>會賺錢的人去賺錢捐錢，有研究天賦的人去做研究，有群眾魅力的人去倡議。框架（契合×影響×資本）是通用的，答案是個人化的。</p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>本章是第 5 章（反事實／可替代性）與第 6 章（期望值）在「人生最大決策」上的合體。「賺錢捐錢」沒有第 5 章撐不起來；「長線賭注」沒有第 6 章站不住腳。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>用三欄表評估你眼前的職涯選項：個人契合度／影響力／職涯資本，各給 1–5 分。別只看哪個最讓你「心動」，看哪個的三項總分最高、且你撐得久。深入工具可參考 80000hours.org（免費）。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你現在的方向，是因為「我會做得好、而且它真的有用」，還是因為某句「追隨熱情」的口號叫你去追一種感覺？</div>
+</section>
+
+<!-- ============ CH 10 ============ -->
+<section id="ch10">
+  <span class="chapnum">第 10 章 ｜ Poverty vs. …</span>
+  <h2>貧窮 vs. 其他：哪個議題最該優先？<span class="en">Which causes are most important?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>選擇要投入哪個「議題」，不該靠哪個離你情感最近，而該用三把尺一起量：規模、忽視度、可解度——而真正高分的議題，常常是反直覺的。</p>
+
+  <h3>關鍵洞見</h3>
+  <ul class="clean">
+    <li><strong>規模—忽視—可解度（Scale–Neglectedness–Tractability）框架。</strong>規模：問題有多大多重要；忽視度：已經有多少資源投入（越少越好）；可解度：每多投入一分資源，能解決多少。職涯決策再加第四把尺：個人契合度。</li>
+    <li><strong>很少有議題三項全高，理性的人也會有不同權重。</strong>這不是要給出唯一正解，而是給你一個能誠實比較的共同語言。</li>
+    <li><strong>它悄悄打開了「長期主義」的門。</strong>書中除了全球貧窮與健康（證據最硬），也認真盤點了工廠化養殖（被嚴重忽視的龐大苦難）、國際勞動力流動、刑事司法改革、氣候變遷，以及「全球災難風險」（如流行病、失控科技）——後者機率低、但賭注是整個人類的未來，期望值極高。</li>
+  </ul>
+
+  <h3>再敘述：把選議題變成一門可比較的功課</h3>
+  <p>到了最後一章，MacAskill 把前面所有工具收束成一個選擇「主戰場」的框架。為什麼需要它？因為議題之間的情感拉力，和它們的實際重要性常常脫鉤——最揪心的不一定最該優先，最該優先的常常乏人問津。三把尺逼你把直覺攤開檢驗：這個問題夠大嗎？是不是已經一堆人在做了？我多投入真的解得動嗎？</p>
+  <p>耐人尋味的是，當他把這套尺套到「全球災難風險」上時，書的視野突然從「今天的窮人」延伸到「未來的所有世代」。一件發生機率也許只有百分之幾、但一旦發生會抹去整個文明的事，在期望值的計算下，重要性會大到壓過許多眼前的議題。這顆種子，後來長成了他 2022 年那本《What We Owe the Future》——有效利他主義從「救現在」走向「也要顧未來」的轉向，起點就在這一章。</p>
+
+  <table>
+    <tr><th>三把尺</th><th>要問的問題</th><th>高分長相</th></tr>
+    <tr><td>規模 Scale</td><td>這問題影響多少生命、影響多深？</td><td>又大又深、跨越時間</td></tr>
+    <tr><td>忽視度 Neglectedness</td><td>已經有多少資源投入了？</td><td>乏人問津、低垂果實還在</td></tr>
+    <tr><td>可解度 Tractability</td><td>多一分投入，能解決多少？</td><td>有可行的介入、進展看得見</td></tr>
+  </table>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「框架的兩面刃」</span>——SNT 框架的力量在於它讓「冷門但重要」的議題終於能被看見（這是它的功德）；但它的盲點也正在這裡：凡是「規模難量化、可解度說不清」的議題——例如尊嚴、正義、文化存續、政治壓迫——會在這把尺下系統性地被低估。框架照亮了一片它能測量的區域，卻也讓區域外的黑暗顯得不存在。用這個框架時，最該記得的一句話是：<em>測不到，不等於不重要。</em></p></div>
+
+  <div class="card"><strong>🔗 跨章連結：</strong>SNT 是把第 2–6 章的五問「打包」成一個選議題的工具：規模≈提問 1，忽視度≈提問 3，可解度≈提問 2＋5，而選定後落到行動則回到第 7–9 章。</div>
+
+  <div class="action"><span class="lbl">立即可用</span>列出你目前關心的 3 個議題，各用規模／忽視度／可解度打 1–5 分。把分數加起來，跟你「情感上最在乎」的排序對照——落差最大的地方，就是你最值得重新思考的地方。</div>
+  <div class="check"><span class="lbl">自我檢核</span>你的「人生志業議題」，是你選的，還是因為它離你最近、最常被你看見，就默默選了你？</div>
+</section>
+
+<!-- ============ CONCLUSION ============ -->
+<section id="ch-end">
+  <span class="chapnum">結論 ｜ Conclusion</span>
+  <h2>那麼，現在就能做的事<span class="en">What should you do now?</span></h2>
+
+  <p class="lead">🎯 <strong>一句話核心：</strong>你不需要成為聖人。一個願意「定期、理性地」給予的普通人，他造成的改變，已經足以稱得上非凡。</p>
+
+  <h3>再敘述：把整本書收束成幾個動作</h3>
+  <p>MacAskill 不想讓你讀完只是「覺得很有道理」，所以他把全書收斂成幾件你現在就能啟動的事。它們刻意設計得門檻很低——因為有效利他的精神，不是要求英雄式的犧牲，而是把「持續的小理性」變成習慣。</p>
+
+  <div class="grid two">
+    <div class="card"><h4>① 建立固定給予的習慣</h4><p>與其偶爾大筆衝動捐款，不如設定一個固定比例的定期捐款（例如 Giving What We Can 提倡的「收入的 10%」承諾）。固定，比一時的慷慨更有力量。</p></div>
+    <div class="card"><h4>② 讓你的給予更有效</h4><p>把錢導向經得起證據檢驗的最有效慈善（善用 GiveWell 等評鑑）。同樣的善意，效果可以差上百倍——別讓你的那一份落在尾巴。</p></div>
+    <div class="card"><h4>③ 重新思考你的職涯</h4><p>你的八萬小時是你最大的槓桿。用契合度×影響力×職涯資本去選路，必要時參考 80,000 Hours。這可能是你一生影響力最大的單一決定。</p></div>
+    <div class="card"><h4>④ 把這些想法說出去</h4><p>說服一個人也開始有效地給予，等於讓你的影響力翻倍。談論、分享、倡議——觀念的傳播，本身就是高槓桿的善行。</p></div>
+  </div>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>注意第 ④ 點的隱藏威力：它是唯一一個「會自我複製」的行動。捐一筆錢，影響是線性的；但讓另一個人也開始用這套方法，影響是指數的。這也是為什麼「把它分享給你的學員」這件事本身——就是這本書最忠實的實踐。</p></div>
+
+  <blockquote class="quote">你不必拯救全世界，你只需要，在你能及之處，做出最大的那一個改變。<cite>— 全書精神的再敘述（書醒 AI，非原文引述）</cite></blockquote>
+</section>
+
+<!-- ============ CROSS COMPARISON ============ -->
+<section id="cross">
+  <span class="sec-tag">交叉比對 ｜ Cross-Analysis</span>
+  <h2>交叉比對：把整本書攤平來看<span class="en">Hidden connections, within and beyond the book</span></h2>
+  <p class="lead">線性地一章一章讀，你會錯過章節之間的暗線。這一節把全書攤平，做三層交叉：①五問如何互鎖成一台漏斗；②章與章之間的隱藏因果與張力；③這本書與它的「家族」之間的對話。</p>
+
+  <h3>一、五問 × SNT：同一套邏輯的兩種包裝</h3>
+  <p>第 2–6 章的「五問」和第 10 章的「規模—忽視—可解度」看似兩套工具，其實是同一套邏輯的兩種剖面。對照如下：</p>
+  <table>
+    <tr><th>SNT 框架</th><th>對應的提問</th><th>共同的底層邏輯</th></tr>
+    <tr><td>規模 Scale</td><td>提問 1：多少人受益、受益多少</td><td>衡量「一份的大小」</td></tr>
+    <tr><td>可解度 Tractability</td><td>提問 2＋5：最有效？成功機率與影響</td><td>這份拿不拿得到、值不值得賭</td></tr>
+    <tr><td>忽視度 Neglectedness</td><td>提問 3：被忽視嗎（邊際）</td><td>這份還沒被別人拿走嗎</td></tr>
+    <tr><td>（貫穿）</td><td>提問 4：反事實</td><td>扣掉沒有你也會發生的部分</td></tr>
+  </table>
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「一個公式，兩個尺度」</span>——五問是「微觀尺度」（我這一筆捐款／這個行動該怎麼選），SNT 是「宏觀尺度」（我這一生該投入哪個議題）。MacAskill 從沒明說，但兩者其實是同一條漏斗在不同放大倍率下的樣子：規模×可解度×（1−已被處理的比例）×（我的反事實貢獻）。看懂這點，你就不會把它們當成兩堆要分別背的清單，而是一個能上下縮放的單一思考引擎。</p></div>
+
+  <h3>二、章與章的隱藏因果鏈</h3>
+  <div class="card">
+    <p><strong>主因果鏈（全書的骨幹）：</strong></p>
+    <p style="font-family:var(--sans); font-size:15px; color:var(--jade); line-height:2.2">
+    第1章〔你有巨大槓桿〕→ 第3章〔把槓桿對準最有效處〕→ 第4章〔且要對準被忽視處〕→ 第5章〔再扣掉反事實〕→ 第6章〔為不確定性加權〕→ <strong style="color:var(--gold)">＝你真正多做出來的好</strong></p>
+    <p>如果跳過任何一環直接行動，會發生什麼：跳過第 3 章 → 善意平庸；跳過第 4 章 → 把錢倒進已飽和的桶；跳過第 5 章 → 把別人也會做的事算成自己的功勞，甚至誤贊助有害計畫；跳過第 6 章 → 錯殺所有高價值的長線機會。</p>
+  </div>
+
+  <h3>三、表面矛盾，深層互補</h3>
+  <table>
+    <tr><th>看似衝突</th><th>深層統一</th></tr>
+    <tr><td><b>第 6 章</b>叫你勇敢下注低機率、高影響的長線賭注；<b>第 3、7 章</b>又叫你只信硬證據、要求可量化成效。</td><td>這是「投資組合」而非矛盾：用有實證的有效介入當穩健底倉，再撥一部分押注高期望值的長線。要求證據是為了配置比例，不是為了拒絕所有風險。</td></tr>
+    <tr><td><b>第 4 章</b>叫你別捐災難救助（聽起來冷血）；但人對眼前苦難的同情是真實的。</td><td>第 4 章反對的不是「同情」，而是「同情被戲劇性綁架」。它要你把同情的能量，導向邊際效益更高、卻沒有鏡頭的日常災難。</td></tr>
+    <tr><td><b>第 8 章</b>替血汗工廠辯護（聽起來不道德）；<b>全書</b>又以減少苦難為念。</td><td>兩者都服從同一個主人：實際結果。抵制讓你感覺道德，卻可能讓工人更慘——真正的道德是看後果，不是看姿態。</td></tr>
+  </table>
+
+  <h3>四、跨書交叉：這本書的「家族圖譜」</h3>
+  <p>《Doing Good Better》不是孤峰，它站在一整片思想地景中。把它和鄰居放在一起，你會更看清它的位置與侷限。</p>
+  <table>
+    <tr><th>關係</th><th>書 / 作者</th><th>與本書的對話</th></tr>
+    <tr><td>雙生作</td><td>Peter Singer《The Most Good You Can Do》(2015)</td><td>同年、同主題。Singer 從哲學（「溺水孩童」思想實驗）建立「你有義務救」的道德地基；MacAskill 則更務實、更工程化地回答「那要怎麼救最有效」。兩本互補：一本給你「為什麼」，一本給你「怎麼做」。</td></tr>
+    <tr><td>地基</td><td>Banerjee & Duflo《貧窮的本質 Poor Economics》</td><td>有效利他賴以為生的 RCT（隨機對照實驗）證據文化，正來自這類發展經濟學。想更細地知道「什麼真的有效」，從這本補。</td></tr>
+    <tr><td>對手</td><td>Easterly《白人的負擔》、Moyo《Dead Aid》</td><td>援助懷疑論的代表。MacAskill 在第 1 章正面回應他們：別看援助的「平均」，要看我們可以「只選最好的」。讀對手，才知道本書在跟誰辯論。</td></tr>
+    <tr><td>下游</td><td>MacAskill《What We Owe the Future》(2022)、Ord《The Precipice》</td><td>本書第 10 章對「全球災難風險」的重視，是這條長期主義路線的種子。想知道作者後來走去哪，讀這兩本。</td></tr>
+    <tr><td>批判性對話</td><td>Amia Srinivasan（LRB 書評）、各家「系統性改變」批評</td><td>有力的反方：量化會排擠無法量化的正義與權力問題。讀它，是為了讓你形成自己的判斷，而不是照單全收。</td></tr>
+  </table>
+  <div class="L2"><span class="tag">AI 延伸</span><p>把家族圖譜串起來看，會浮現一條清楚的演化弧線：Singer 點火（道德義務）→ MacAskill 工程化（如何最有效）→ 長期主義擴張尺度（也顧未來世代）→ 批評者拉回（別忘了權力與正義）。這本書正好站在「從哲學主張變成可操作方法」的那個轉捩點上——這是它最大的歷史貢獻，也預埋了它後來最大的爭議。</p></div>
+</section>
+
+<!-- ============ TIME LAYER 2026 ============ -->
+<section id="now">
+  <span class="sec-tag">時間層 ｜ Reading it in 2026</span>
+  <h2>此刻讀這本書<span class="en">What 2015 couldn't see</span></h2>
+  <p class="lead">這本書寫於 2015 年。十一年後的今天重讀，有些觀點變得比作者寫時更迫切，有些則因為後來發生的事，意義整個位移了。一本書真正的考驗，是時間。</p>
+
+  <h3>📈 變得更重要的</h3>
+  <div class="card"><p><strong>「期望值 × 低機率高衝擊」這套邏輯，預言了整個 AI 時代。</strong>第 6 章與第 10 章對「成功率低、但一旦發生會改寫全局」的事件的重視，在 2015 年讀像是哲學練習；在 AI 能力爆發的今天讀，卻像是預言。耐人尋味的是，作者本人正是循著這條線走——MacAskill 如今的重心已從「全球貧窮」移到「AGI 準備」（AI 安全、AI 的價值與『品格』、後超智能社會的樣貌）。這本書其實是他思想轉向的起點。</p></div>
+
+  <h3>🔄 意義已經位移的</h3>
+  <div class="card"><p><strong>「賺錢捐錢」（earning to give）蒙上了一層書中無法預見的陰影。</strong>2022 年，加密貨幣交易所 FTX 崩盤，創辦人 Sam Bankman-Fried 因詐欺定罪——而他正是高舉「賺錢捐錢」大旗、號稱要為有效利他賺進巨款的明星。這場災難讓有效利他運動陷入信任危機，MacAskill 公開譴責並為自己可能扮演的「背書」角色表達羞愧。今天再讀第 9 章對 earning to give 的樂觀，你會多一層警覺：當「為了行善」可以合理化手段，這套邏輯本身就可能被武器化。</p></div>
+
+  <h3>⚠️ 需要重新評估的</h3>
+  <div class="card"><p><strong>本書最著名的範例——驅蟲（deworming）——其實坐在一片有爭議的證據上。</strong>「每 1,000 美元換 139 學年」這個驚人數字，源自一項肯亞研究；但後續的「蠕蟲戰爭（worm wars）」中，Cochrane 系統性回顧（2012、2015）對驅蟲在營養、血紅素、學業表現上的效益，找不到強力證據，經濟學家與流行病學家至今爭論不休（GiveWell 的立場是「大致相信，但不確定」）。這不會推翻全書的「方法論」，但它humbling地提醒我們：連旗艦案例都可能站不穩——所以這套方法真正的精神，不是「相信這些數字」，而是「永遠願意更新這些數字」。</p></div>
+
+  <div class="L3"><span class="tag">★ AI 原創洞見</span><p><span class="nm">「方法活下來了，光環碎掉了」</span>——2026 年的有效利他主義處在一個弔詭的狀態：一方面，FTX 重創了它的道德光環，圈內人爭論它作為「道德與智識計畫」是否正在死去；另一方面，有效捐款規模仍在成長、十萬人級的捐款承諾持續累積、運動仍以每年雙位數擴張。這恰恰驗證了這本書最深的一課：<em>把「行善」和「感覺良好」分開。</em>當光環（感覺）碎掉、方法（效果）卻活下來時，正好證明了方法從來不需要靠光環撐著。對你的學員，這是最好的活教材——理念的價值，不該綁在某個代言人的成敗上。</p></div>
+</section>
+
+<!-- ============ ABSENCE & CRITICISM ============ -->
+<section id="absence">
+  <span class="sec-tag">缺席分析 × 批判邊界 ｜ Blind spots</span>
+  <h2>它沒說的，和它可能錯的<span class="en">What the book avoids, and where it's vulnerable</span></h2>
+  <p class="lead">讀一本書最高的敬意，是認真找它的破綻。以下不是要否定它，而是給你的學員一副「平衡的眼鏡」——能用它的力量，也能看見它的邊界。</p>
+
+  <h3>三種缺席</h3>
+  <table>
+    <tr><th>類型</th><th>缺席了什麼</th><th>為什麼重要</th></tr>
+    <tr><td><b>刻意迴避</b></td><td>權力與系統性結構——國際貿易、債務、殖民遺緒、政治壓迫如何製造貧窮。書傾向「在現有體制內最佳化」，而非質問體制本身。</td><td>若只在體制內最佳化，可能無意間鞏固了製造問題的結構。批評者（如 LRB 的 Amia Srinivasan）說：有效利他學會了與權力對齊，卻沒學會理解權力。</td></tr>
+    <tr><td><b>盲點缺席</b></td><td>對「這套邏輯本身會被濫用」幾乎沒有免疫機制。全書對理性量化高度自信，卻很少談「為了好結果合理化壞手段」的道德風險。</td><td>這正是 FTX 事件的伏筆。一個沒有內建煞車的最佳化引擎，威力越大越危險。</td></tr>
+    <tr><td><b>時代缺席</b></td><td>AI 與生存風險在第 10 章只是驚鴻一瞥；本書寫於 EA 重心轉向 AI 之前、FTX 之前、蠕蟲戰爭定論之前。</td><td>它捕捉的是運動「天真而充滿希望」的早期切片。讀它要記得：作者本人後來都大幅移動了。</td></tr>
+  </table>
+
+  <h3>四個值得認真對待的批評</h3>
+  <ul class="clean">
+    <li><strong>量化的霸權。</strong>把「行善」化約成可測量的結果，會讓無法測量的東西——尊嚴、正義、關係、文化存續——系統性地被低估甚至消失。批評者說：這不只是侷限，若被當成全貌，會是有害的誤導。</li>
+    <li><strong>資料品質問題。</strong>書中被當成正面案例的廔管基金會，其執行長公開指出書中對該組織的描述過時且誤導，並暗示這可能反映研究品質的更深問題；也有評論者（如 Alexey Guzey）主張書中對若干關鍵證據有誇大或誤引。方法再好，輸入的資料錯了，結論就會錯。</li>
+    <li><strong>對在地與關係性善行的低估。</strong>Reid Hoffman 指出，本書對「在地慈善」的輕視忽略了它的工具價值——在地的領導與榜樣會帶動整個社群。不是所有價值都能被「每元 QALY」捕捉。</li>
+    <li><strong>道德外包的風險。</strong>當行善變成「付錢讓問題消失」，可能稀釋了「為自己的行為負責」這件事。把善行金錢化、效率化，有時會讓人逃避更難、更切身的責任。</li>
+  </ul>
+
+  <div class="check"><span class="lbl">這套方法什麼時候會失效</span>當價值無法量化（正義、尊嚴）、當問題的根源在權力結構、當「最有效」的計算本身被用來合理化傷害、當在地的關係與責任比遠方的效率更重要時——這把尺會量不準，甚至誤導。好的使用者，知道何時把尺收起來。</div>
+
+  <div class="L2"><span class="tag">AI 延伸</span><p>最公允的評價或許是：這本書是一把極其鋒利的刀。鋒利的刀能救命（讓善意效率提升百倍），也能傷人（把無法量化的價值切掉、被野心家拿來合理化手段）。問題從來不在刀，而在用刀的人有沒有同時保有「謙遜」與「對自身邏輯的警覺」。把這個提醒交給學員，比把方法交給他們更重要。</p></div>
+</section>
+
+<!-- ============ PLAYBOOK ============ -->
+<section id="playbook">
+  <span class="sec-tag">實戰執行方案 ｜ The Playbook</span>
+  <h2>從「懂了」到「做到」<span class="en">Tools you can actually use</span></h2>
+  <p class="lead">下面這些工具刻意設計成「任何人、明天就能用」。把它們交給你的學員，他們不需要先變成哲學家，就能開始把善意用得更聰明。</p>
+
+  <h3>工具一：五問決策卡（可截圖隨身帶）</h3>
+  <div class="card">
+    <p style="font-family:var(--sans); font-size:15.5px; line-height:2.1">
+    在你準備捐款、當志工、選議題、做任何「好事」之前，依序問自己：<br>
+    <span class="num">1.</span> 這會幫到多少人？每個人被幫多少？<br>
+    <span class="num">2.</span> 這是我能做的「最有效」的選項嗎？（還是只是先找上我的？）<br>
+    <span class="num">3.</span> 這個領域被忽視嗎？還是已經一堆人在做？<br>
+    <span class="num">4.</span> 如果我不做，會怎樣？有多少會照樣發生？<br>
+    <span class="num">5.</span> 成功機率多大？成功的話有多好？（別讓「不太可能」嚇退高價值選項）</p>
+  </div>
+
+  <h3>工具二：評估一個慈善機構（5 步＋去哪查）</h3>
+  <table>
+    <tr><th>步驟</th><th>做什麼</th></tr>
+    <tr><td>① 它做什麼</td><td>找出具體的介入方式，不接受模糊願景</td></tr>
+    <tr><td>② 成本效益</td><td>問：每一塊錢換到什麼可量化的結果？</td></tr>
+    <tr><td>③ 證據強度</td><td>有沒有對照實驗／獨立評估？還是只有自我宣稱與感人故事？</td></tr>
+    <tr><td>④ 執行力</td><td>它過去把計畫落實得好不好？</td></tr>
+    <tr><td>⑤ 資金空間</td><td>它還缺不缺錢？你的錢進去是多做事，還是躺帳上？</td></tr>
+    <tr><td>捷徑</td><td>直接參考 <b>GiveWell</b>（頂尖慈善清單）、<b>Giving What We Can</b>（捐款承諾與計算機）、<b>GiveDirectly</b>（「能不能贏過直接發現金」的基準線）</td></tr>
+  </table>
+
+  <h3>工具三：高影響職涯評分表</h3>
+  <div class="card"><p>把你眼前的每個職涯選項，用三欄各打 1–5 分，加總比較。別只憑「哪個最讓我心動」。</p>
+  <table>
+    <tr><th>選項</th><th>個人契合度<br><span style="font-weight:400;text-transform:none;color:var(--ink-faint)">會做得好、撐得久嗎</span></th><th>影響力<br><span style="font-weight:400;text-transform:none;color:var(--ink-faint)">反事實上創造多少好</span></th><th>職涯資本<br><span style="font-weight:400;text-transform:none;color:var(--ink-faint)">放大未來選項的程度</span></th></tr>
+    <tr><td>選項 A</td><td>＿/5</td><td>＿/5</td><td>＿/5</td></tr>
+    <tr><td>選項 B</td><td>＿/5</td><td>＿/5</td><td>＿/5</td></tr>
+    <tr><td>選項 C</td><td>＿/5</td><td>＿/5</td><td>＿/5</td></tr>
+  </table>
+  <p style="font-size:15px;color:var(--ink-soft)">深入工具（免費）：80,000 Hours。記得：早期多探索、先累積職涯資本、別太早把自己鎖死。</p>
+  </div>
+
+  <h3>工具四：四週實戰計畫</h3>
+  <div class="grid two">
+    <div class="card"><h4>Week 1 ｜ 最小可行</h4><ul class="clean"><li>上「How Rich Am I」算出你的全球收入百分位</li><li>把「五問決策卡」截圖存進手機</li><li>到 GiveWell 看一個頂尖慈善在做什麼</li></ul></div>
+    <div class="card"><h4>Week 2 ｜ 建立節奏</h4><ul class="clean"><li>設定一筆「小到不會痛」的定期捐款給有效慈善</li><li>用「能贏過直接發現金嗎？」檢視一個你原本支持的公益</li></ul></div>
+    <div class="card"><h4>Week 3 ｜ 處理阻力</h4><ul class="clean"><li>當災難新聞洗版時，練習問「邊際」與「反事實」</li><li>記錄一次你抵抗「鎂光燈稅」、把資源導向被忽視處的決定</li></ul></div>
+    <div class="card"><h4>Week 4 ｜ 固化迭代</h4><ul class="clean"><li>用三欄評分表評估一個你的人生／職涯選項</li><li>把有效利他的「一個」觀念，分享給一個人（第④動作）</li></ul></div>
+  </div>
+
+  <h3>工具五：72 小時復原協議</h3>
+  <div class="action"><span class="lbl">當你「破功」時（不是如果，是當）</span>停止定期捐款、又退回憑感覺給予——這不是失敗，是系統需要除錯。<b>24 小時內：</b>不自責，只記錄是什麼讓你中斷（忙？情緒？某個感人故事？）。<b>48 小時內：</b>從「最小版本」重啟（哪怕只捐一杯咖啡的錢），不是從原進度。<b>72 小時內：</b>修掉造成中斷的那個環節。連續中斷一次不算失敗，連續三天才需要復原。</div>
+
+  <h3>工具六：追蹤系統 & 常見失敗模式</h3>
+  <div class="grid two">
+    <div class="card"><h4>📊 領先指標（過程）</h4><ul class="clean"><li>本月有沒有用「五問」篩過至少一個決定？</li><li>定期捐款有沒有照常執行？</li><li>有沒有把一個觀念分享給一個人？</li></ul><h4 style="margin-top:18px">📉 落後指標（結果）</h4><ul class="clean"><li>年度捐款中，導向「有實證有效慈善」的比例</li><li>你的職涯／時間，有多少對準了高影響處</li></ul></div>
+    <div class="card"><h4>⚠️ 五個最常見的坑</h4><ul class="clean"><li><b>分析癱瘓：</b>算到完美才行動 → 永遠不行動。先做最小版本。</li><li><b>罪惡感漩渦：</b>用內疚鞭策自己 → 倦怠放棄。這是能力，不是贖罪。</li><li><b>道德許可：</b>做一件有效的事，就放縱其他 → 抵銷掉成果。</li><li><b>把方法當宗教：</b>失去謙遜與對自身邏輯的警覺（見 FTX 之鑑）。</li><li><b>賺錢捐錢的自我欺騙：</b>只記得「賺錢」，忘了「捐錢」。</li></ul></div>
+  </div>
+</section>
+
+<!-- ============ TEACHING MODULE ============ -->
+<section id="teach">
+  <span class="sec-tag">教學與讀書會模組 ｜ For your students</span>
+  <h2>帶學員共讀這本書<span class="en">A ready-to-run session</span></h2>
+  <p class="lead">這一節是給帶領者的。你可以直接拿去帶一場 90–120 分鐘的讀書會或課堂——問題已分層，活動已設計，帶走的行動已備好。</p>
+
+  <div class="grid two">
+    <div class="card"><h4>📋 場次資訊</h4><ul class="clean"><li>建議時長：90–120 分鐘</li><li>建議人數：6–12 人（線上可用分組房）</li><li>事前準備：讀完五大提問（第 2–6 章）＋結論</li></ul></div>
+    <div class="card"><h4>🎯 本場目標</h4><ul class="clean"><li>能用「五問」拆解一個真實的行善決定</li><li>能說出本書方法的一個力量與一個邊界</li><li>每人帶走一個本週會做的具體行動</li></ul></div>
+  </div>
+
+  <h3>⏱️ 流程設計</h3>
+  <table>
+    <tr><th>段落</th><th>內容</th></tr>
+    <tr><td>開場暖身（10 分）</td><td>破冰問題：「你做過最自豪的一件好事是什麼？你當時怎麼判斷它是好的？」（先不評論，只收集）</td></tr>
+    <tr><td>理解層（20 分）</td><td>用 PlayPump 的故事帶出全書命題：感覺良好 ≠ 真的有效。請大家複述「五問」。</td></tr>
+    <tr><td>連結層（25 分）</td><td>把開場每個人的「自豪好事」拿出來，用五問重新檢視一次。哪些經得起？哪些其實沒想過？</td></tr>
+    <tr><td>應用層（25 分）</td><td>分組用「評估慈善五步」評一個真實組織，或用「職涯三欄表」評一個真實選項，回報。</td></tr>
+    <tr><td>批判層（15 分）</td><td>選邊站辯論（見下），逼出方法的邊界與風險。</td></tr>
+    <tr><td>收尾行動（10 分）</td><td>每人說一個帶走的洞見 ＋ 承諾一個本週的小行動。</td></tr>
+  </table>
+
+  <h3>📝 分層討論問題</h3>
+  <div class="card">
+    <p><strong>理解型：</strong>「五問」分別在問什麼？QALY、邊際思考、反事實、期望值各解決了哪個直覺盲點？</p>
+    <p><strong>分析型：</strong>為什麼「低行政費用」不能拿來判斷一個慈善好不好？為什麼「不錯的好事」是「最好的好事」的敵人？</p>
+    <p><strong>連結型：</strong>你人生中有沒有一個決定，如果當時用過「反事實」或「邊際」思考，會做得不一樣？</p>
+    <p><strong>應用型：</strong>如果你明天要捐一筆錢，你會怎麼用這五問把選項篩到剩一個？</p>
+    <p><strong>批判型：</strong>有哪些「好」是這套方法量不到、卻很重要的？FTX 事件揭露了這套邏輯的什麼風險？</p>
+  </div>
+
+  <h3>🔥 選邊站辯論題（最能炒熱討論）</h3>
+  <ul class="clean">
+    <li><b>血汗工廠：</b>「抵制血汗工廠商品，是在幫工人，還是在害工人？」</li>
+    <li><b>賺錢捐錢：</b>「去高薪行業賺錢捐錢，比直接投入公益更有道德嗎？FTX 之後你還這麼想嗎？」</li>
+    <li><b>量化的極限：</b>「如果一種善行救的人比較少、但保住了尊嚴或正義，它就比較差嗎？」</li>
+    <li><b>災難捐款：</b>「明知邊際效益較低，為大地震捐款是不是仍然值得做？」</li>
+  </ul>
+
+  <div class="L3"><span class="tag">★ 帶領者提醒</span><p><span class="nm">「先讓學員自己撞牆，再給工具」</span>——這本書最好的教法，不是先教五問、再套案例，而是<em>反過來</em>：先讓學員憑直覺判斷一個行善案例（例如 PlayPump 或某個災難募款），讓他們講得理直氣壯，<strong>然後</strong>才丟出五問，讓他們親手發現自己漏了什麼。那個「啊，我剛剛根本沒問反事實」的瞬間，比你直接講十遍都有用。先製造認知失調，工具才會被珍惜。</p></div>
+</section>
+
+<!-- ============ AI VIEWPOINT ============ -->
+<section id="ai">
+  <span class="sec-tag">AI 視角 ｜ AI Perspective</span>
+  <h2>三個書裡沒有的角度<span class="en">What an AI reader sees</span></h2>
+
+  <h3>🎨 一個比喻說完整本書</h3>
+  <div class="card"><p>這本書其實是在教你當一位<strong>「善意的投資組合經理人」</strong>。一般人捐款像買彩券——憑感覺、憑故事、憑當下的衝動；MacAskill 要你像管一檔基金：先看每筆投資的「報酬率」（QALY），把資金集中在報酬最高的標的（最有效），避開已經過熱的市場（被忽視），扣掉大盤本來就會漲的部分（反事實），再用一小部分押注高賠率的長線（期望值）。善意不變多，但「配置」改變一切。</p></div>
+
+  <h3>📕 作者應該寫、但沒寫的「第 11 章」</h3>
+  <div class="card"><p>如果 MacAskill 在 2026 年補寫一章，它幾乎一定是——<strong>《如何防止這套方法被自己的力量反噬》</strong>。原書是一台威力強大的最佳化引擎，卻沒有裝煞車與免疫系統。FTX 事件殘酷地證明：當「為了最大的善」可以合理化手段時，這台引擎會把最聰明的人開進懸崖。缺的這一章，內容會是：何時該停止計算、如何為「不可量化的價值」保留席位、以及怎麼讓謙遜成為方法的一部分而非例外。</p></div>
+
+  <h3>🌐 跨領域連結</h3>
+  <div class="card"><p>這本書的三個核心工具，其實是從別的學科「偷」來的：<strong>分流</strong>來自戰場與急診醫學、<strong>邊際思考</strong>來自經濟學、<strong>期望值與投資組合</strong>來自金融。有效利他主義的原創性，不在發明新工具，而在<em>把這些冷酷精準的決策工具，套用到我們一向只准用感情的領域——慈善</em>。它真正挑戰的，是「行善必須純粹出於情感」這個古老假設。</p></div>
+
+  <!-- ECHO -->
+  <h3 style="margin-top:48px">🔔 迴聲預言</h3>
+  <p class="lead">讀完這本書，它不會馬上改變你。但在某些時刻，它會突然回來找你。</p>
+  <div class="card"><p><strong>迴聲一：</strong>某天你滑到一則催淚的募款影片，手指正要點下去——你會突然停住，聽見一個聲音問：「這是最有效的嗎？還是只是最催淚的？」那個 0.5 秒的停頓，就是這本書在你身上生效了。</p></div>
+  <div class="card"><p><strong>迴聲二：</strong>幾年後你面臨一個重大的人生選擇，旁人都叫你「追隨熱情」。你會想起這本書，改問自己：我在哪裡能做得好、影響大、又能累積資本？光是會問這個問題，你的人生軌跡就已經不同。</p></div>
+  <div class="card"><p><strong>迴聲三：</strong>當有一天有人用「為了更大的善」說服你睜一隻眼閉一隻眼，你會想起 FTX，想起這本書沒寫的那一章——然後你會踩煞車。那一刻，你不只學會了它的方法，也學會了它的教訓。</p></div>
+
+  <!-- BACK TO BOOK -->
+  <h3 style="margin-top:48px">📖 帶著這份分析回去讀原書</h3>
+  <div class="card">
+    <p><strong>帶著這些問題回去：</strong>讀第 5 章時，特別留意「反事實」如何顛覆你對「功勞」的理解；讀第 9 章時，問自己「賺錢捐錢」在 FTX 之後該如何重新評價。</p>
+    <p><strong>重點翻閱：</strong>導論的 PlayPump（全書的情緒起點）、第 3 章的教育介入比較（肥尾分布最震撼的證據）、結論的四個行動（把一切收束成可做的事）。</p>
+    <p><strong>讀後回來：</strong>讀完原書再回看這份分析，你會發現新的層次。<em>這份分析的洞見 ＋ 你的親身閱讀＝真正的覺醒。</em>這份檔案是入口與夥伴，不是原書的替代品。</p>
+  </div>
+
+  <!-- RESOURCES -->
+  <h3 style="margin-top:48px">🎬 延伸資源</h3>
+  <h4>影片 / 音頻（依名稱於 YouTube 或官網搜尋即可）</h4>
+  <ul class="clean">
+    <li><b>MacAskill TED 演講</b>「What are the most important moral problems of our time?」（TED, 2018）——五問框架的精華濃縮版，適合課堂開場。</li>
+    <li><b>80,000 Hours Podcast</b>（80000hours.org/podcast）——職涯選擇與最新的 AI 轉向，作者本人的延伸思考。</li>
+    <li><b>GiveWell</b>（givewell.org）——把第 7 章「如何評估慈善」變成可直接查用的真實清單。</li>
+  </ul>
+  <h4>延伸閱讀（六種方向）</h4>
+  <table>
+    <tr><th>方向</th><th>書</th></tr>
+    <tr><td>上游經典（為什麼該做）</td><td>Peter Singer《The Life You Can Save》《The Most Good You Can Do》</td></tr>
+    <tr><td>地基（證據怎麼來）</td><td>Banerjee & Duflo《貧窮的本質 Poor Economics》</td></tr>
+    <tr><td>下游延伸（作者後來的轉向）</td><td>MacAskill《What We Owe the Future》、Toby Ord《The Precipice》</td></tr>
+    <tr><td>對立觀點（援助懷疑論）</td><td>Easterly《白人的負擔》</td></tr>
+    <tr><td>批判性對話（方法的邊界）</td><td>Amia Srinivasan 等對有效利他的系統性批評</td></tr>
+    <tr><td>實踐配套（如何把改變變成習慣）</td><td>James Clear《原子習慣》（補本書最弱的「執行」環節）</td></tr>
+  </table>
+
+  <!-- LIBRARY CARD -->
+  <h3 style="margin-top:48px">📚 書庫卡片</h3>
+  <table>
+    <tr><th>欄位</th><th>內容</th></tr>
+    <tr><td>書名</td><td>《Doing Good Better 行善的藝術》</td></tr>
+    <tr><td>分析模式</td><td>偷書賊 × 書醒｜終極整合版（逐章深度＋交叉比對＋實戰方案＋教學模組）</td></tr>
+    <tr><td>骨架類型</td><td>混合敘事論證型 ＋ 學術密度高</td></tr>
+    <tr><td>核心論點</td><td>善意要配上證據與方法才算數；最好的做法可能比一般做法有效上百倍</td></tr>
+    <tr><td>關鍵概念</td><td>五大提問、QALY、邊際思考、反事實、期望值、規模—忽視—可解度、賺錢捐錢、管銷迷思</td></tr>
+    <tr><td>AI 原創洞見</td><td>會分流的善意、五問漏斗、比較的勇氣、鎂光燈稅、買便宜捐差價、框架的兩面刃、方法活下來光環碎掉、第 11 章（防反噬）</td></tr>
+    <tr><td>迴聲預言</td><td>下次掏錢前的 0.5 秒停頓</td></tr>
+    <tr><td>潛在交叉</td><td>《What We Owe the Future》《The Precipice》《貧窮的本質》《原子習慣》</td></tr>
+    <tr><td>產出日期</td><td>2026-06-25</td></tr>
+  </table>
+</section>
+
+</div><!-- /main wrap -->
+
+<footer>
+  <div class="wrap">
+    <div class="divider"></div>
+    <p class="fnote">
+      偷書賊 × 書醒 終極整合版 ｜ 808 AI 五金行<br>
+      本檔為「轉化性教學分析」：全程以分析者自己的話重述，僅含極少量標註出處的短引述，並非原書摘要或替代品。<br>
+      所有 <span style="color:var(--gold)">★ AI 原創洞見</span> 與 <span style="color:var(--jade)">AI 延伸</span> 為分析延伸觀點，已明確標記，請勿誤認為原作者主張。<br>
+      想得到全部，請支持並閱讀原書：William MacAskill,《Doing Good Better》(2015)。
+    </p>
+  </div>
+</footer>
+
+
+<button class="totop" id="totop" aria-label="回到頂部">↑</button>
+<script>
+  var t=document.getElementById('totop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>700){t.classList.add('show')}else{t.classList.remove('show')}
+  });
+  t.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+</script>
+</body>
+</html>
