@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Room That Learned to Travel · 旅を覚えた部屋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14222e;
+    --ink-soft:#31424f;
+    --paper:#f7f2e8;
+    --paper-deep:#efe7d6;
+    --gold:#b08d3f;
+    --gold-soft:#c9ab6b;
+    --vermilion:#ad3a26;
+    --indigo:#1e3a52;
+    --indigo-deep:#122636;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    line-height:1.75;
+  }
+  /* ── washi texture ── */
+  body::before{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(176,141,63,0.05), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(30,58,82,0.05), transparent 55%);
+  }
+
+  /* ══════════ HERO — Minerva editorial ══════════ */
+  .hero{
+    position:relative;
+    background:#fdfbf6;
+    color:var(--ink);
+    padding:6.5rem 1.5rem 7rem;
+    text-align:center;
+    overflow:hidden;
+    border-top:3px solid var(--gold);
+    border-bottom:1px solid rgba(30,58,82,.14);
+  }
+  .seigaiha{
+    position:absolute;left:0;right:0;bottom:-2px;height:110px;opacity:.35;
+  }
+  .hero .program{
+    font-family:'Montserrat',sans-serif;
+    font-weight:500;font-size:.68rem;letter-spacing:.48em;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:2.6rem;
+  }
+  .hero h1{
+    font-weight:500;font-size:clamp(2.1rem, 5.6vw, 3.6rem);
+    letter-spacing:.01em;line-height:1.22;color:var(--ink);
+  }
+  .hero .jp-title{
+    font-family:'Noto Serif JP',serif;font-weight:400;
+    font-size:clamp(1rem, 2.4vw, 1.4rem);
+    letter-spacing:.5em;text-indent:.5em;
+    color:var(--indigo);margin-top:1.4rem;
+  }
+  .hero .dedication{
+    margin-top:2.6rem;font-style:italic;
+    font-size:1.05rem;color:var(--ink-soft);
+  }
+  .hero .dedication .jp{
+    font-family:'Noto Serif JP',serif;font-style:normal;
+    font-size:.88rem;letter-spacing:.16em;display:block;margin-top:.4rem;
+    color:var(--ink-soft);
+  }
+  .gold-rule{
+    width:64px;height:1px;background:var(--gold);
+    margin:2.2rem auto 0;position:relative;
+  }
+  .gold-rule::after{
+    content:"";position:absolute;left:50%;top:50%;
+    width:7px;height:7px;background:var(--gold);
+    transform:translate(-50%,-50%) rotate(45deg);
+  }
+
+  /* ══════════ POEM ══════════ */
+  .poem{
+    position:relative;z-index:1;
+    max-width:1060px;margin:0 auto;
+    padding:4.5rem 1.5rem 2rem;
+  }
+  .stanza{
+    display:grid;
+    grid-template-columns:1fr 56px 1fr;
+    gap:0;
+    margin-bottom:3.4rem;
+    align-items:start;
+  }
+  .stanza .en{
+    font-size:1.22rem;font-weight:500;
+    text-align:right;padding-right:1.6rem;
+    color:var(--ink);
+  }
+  .stanza .jp{
+    font-family:'Noto Serif JP',serif;font-weight:400;
+    font-size:1rem;line-height:2.05;
+    text-align:left;padding-left:1.6rem;
+    color:var(--ink-soft);letter-spacing:.03em;
+  }
+  .stanza .spine{
+    display:flex;flex-direction:column;align-items:center;gap:0;
+    height:100%;
+  }
+  .spine .dot{
+    width:6px;height:6px;border:1px solid var(--gold);
+    transform:rotate(45deg);flex:none;margin:4px 0;
+  }
+  .spine .line{width:1px;flex:1;background:linear-gradient(var(--gold-soft), rgba(176,141,63,.15));}
+  .stanza .en em, .stanza .jp em{font-style:italic;}
+  .stanza .aside{color:var(--ink-soft);font-style:italic;}
+
+  /* special stanzas */
+  .stanza.sonia .en, .stanza.sonia .jp{color:#5a4632;}
+  .stanza.sonia{
+    background:linear-gradient(90deg, transparent, rgba(176,141,63,.08), transparent);
+    padding:1.6rem 0;border-radius:2px;
+  }
+  .lantern-row{
+    display:flex;justify-content:center;gap:1.1rem;
+    margin:0 0 3.4rem;opacity:.85;
+  }
+
+  /* ══════════ GRATITUDE ══════════ */
+  .gratitude{
+    position:relative;
+    background:var(--paper-deep);
+    border-top:1px solid rgba(176,141,63,.35);
+    border-bottom:1px solid rgba(176,141,63,.35);
+    padding:4.2rem 1.5rem 4.6rem;
+    text-align:center;
+  }
+  .gratitude .label{
+    font-family:'Montserrat',sans-serif;font-size:.7rem;
+    letter-spacing:.4em;text-transform:uppercase;color:var(--vermilion);
+  }
+  .gratitude .label-jp{
+    font-family:'Noto Serif JP',serif;font-size:1.35rem;letter-spacing:.6em;text-indent:.6em;
+    color:var(--ink);margin-top:.6rem;font-weight:500;
+  }
+  .gratitude p.note{
+    max-width:560px;margin:1.6rem auto 0;font-style:italic;
+    font-size:1.05rem;color:var(--ink-soft);
+  }
+  .credit-group{max-width:760px;margin:2.8rem auto 0;}
+  .credit-group h3{
+    font-family:'Montserrat',sans-serif;font-weight:500;
+    font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--indigo);margin-bottom:1.1rem;
+  }
+  .credit{
+    margin-bottom:1.15rem;
+  }
+  .credit .name{
+    font-size:1.28rem;font-weight:600;letter-spacing:.02em;
+  }
+  .credit .name .kanji{
+    font-family:'Noto Serif JP',serif;font-weight:500;margin-left:.45em;
+  }
+  .credit .role{
+    font-family:'Montserrat',sans-serif;font-size:.66rem;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
+    margin-top:.15rem;
+  }
+  .credit .line{
+    font-style:italic;font-size:1rem;color:var(--ink-soft);margin-top:.2rem;
+  }
+  .credit.daisuke{
+    margin:0 auto 1.6rem;max-width:560px;
+    padding:1.5rem 1.4rem 1.4rem;
+    border:1px solid rgba(173,58,38,.4);
+    background:rgba(173,58,38,.045);
+    border-radius:3px;position:relative;
+  }
+  .credit.daisuke::before{
+    content:"― 灯を守る人 ―";
+    font-family:'Noto Serif JP',serif;
+    font-size:.72rem;letter-spacing:.3em;color:var(--vermilion);
+    display:block;margin-bottom:.7rem;
+  }
+  .credit.daisuke .name{font-size:1.5rem;color:var(--vermilion);}
+  .credit-divider{
+    width:40px;height:1px;background:rgba(176,141,63,.5);margin:2.4rem auto;
+  }
+
+  /* ══════════ SIGNATURE & PS ══════════ */
+  .signature{
+    text-align:center;padding:4.2rem 1.5rem 1.5rem;position:relative;z-index:1;
+  }
+  .signature .sig-en{
+    font-size:1.5rem;font-style:italic;letter-spacing:.06em;
+  }
+  .hanko{
+    width:64px;height:64px;margin:1.4rem auto 0;
+    background:var(--vermilion);color:#f7f2e8;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Noto Serif JP',serif;font-weight:600;font-size:1.35rem;
+    letter-spacing:.1em;
+    writing-mode:vertical-rl;
+    box-shadow:0 1px 6px rgba(173,58,38,.35);
+  }
+  .ps{
+    max-width:520px;margin:3rem auto 0;
+    border:1px dashed rgba(176,141,63,.6);
+    padding:1.6rem 1.8rem;border-radius:3px;
+    background:rgba(247,242,232,.7);
+    text-align:center;
+  }
+  .ps .en{font-size:1.08rem;font-style:italic;}
+  .ps .jp{
+    font-family:'Noto Serif JP',serif;font-size:.9rem;line-height:2;
+    color:var(--ink-soft);margin-top:1rem;
+  }
+
+  /* ══════════ FOOTER ══════════ */
+  footer{
+    margin-top:4rem;
+    background:var(--indigo-deep);color:rgba(247,242,232,.75);
+    text-align:center;padding:2.6rem 1.5rem 3rem;position:relative;overflow:hidden;
+  }
+  footer .foot-line{
+    font-family:'Montserrat',sans-serif;font-size:.66rem;
+    letter-spacing:.34em;text-transform:uppercase;
+  }
+  footer .foot-jp{
+    font-family:'Noto Serif JP',serif;font-size:.8rem;letter-spacing:.4em;
+    margin-top:.9rem;color:var(--gold-soft);
+  }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width:760px){
+    .stanza{grid-template-columns:1fr;gap:1.1rem;}
+    .stanza .en{text-align:left;padding-right:0;border-left:2px solid var(--gold-soft);padding-left:1rem;}
+    .stanza .jp{padding-left:1rem;border-left:2px solid rgba(30,58,82,.25);}
+    .stanza .spine{display:none;}
+  }
+  @media print{
+    .hero{background:var(--indigo-deep) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    body::before{display:none;}
+    .stanza{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="program">Executive Education · World Wise</div>
+  <h1>The Room That<br>Learned to Travel</h1>
+  <div class="jp-title">旅を覚えた部屋</div>
+  <div class="dedication">
+    for my World Wise cohort · Tokyo, July 2026
+    <span class="jp">World Wise の仲間たちへ　東京　二〇二六年七月</span>
+  </div>
+  <div class="gold-rule"></div>
+
+  <!-- seigaiha wave band -->
+  <svg class="seigaiha" viewBox="0 0 800 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#1e3a52" stroke-opacity=".25" stroke-width="1.2">
+      <g transform="translate(0,60)">
+        <circle cx="0" cy="60" r="58"/><circle cx="0" cy="60" r="44"/><circle cx="0" cy="60" r="30"/><circle cx="0" cy="60" r="16"/>
+        <circle cx="100" cy="60" r="58"/><circle cx="100" cy="60" r="44"/><circle cx="100" cy="60" r="30"/><circle cx="100" cy="60" r="16"/>
+        <circle cx="200" cy="60" r="58"/><circle cx="200" cy="60" r="44"/><circle cx="200" cy="60" r="30"/><circle cx="200" cy="60" r="16"/>
+        <circle cx="300" cy="60" r="58"/><circle cx="300" cy="60" r="44"/><circle cx="300" cy="60" r="30"/><circle cx="300" cy="60" r="16"/>
+        <circle cx="400" cy="60" r="58"/><circle cx="400" cy="60" r="44"/><circle cx="400" cy="60" r="30"/><circle cx="400" cy="60" r="16"/>
+        <circle cx="500" cy="60" r="58"/><circle cx="500" cy="60" r="44"/><circle cx="500" cy="60" r="30"/><circle cx="500" cy="60" r="16"/>
+        <circle cx="600" cy="60" r="58"/><circle cx="600" cy="60" r="44"/><circle cx="600" cy="60" r="30"/><circle cx="600" cy="60" r="16"/>
+        <circle cx="700" cy="60" r="58"/><circle cx="700" cy="60" r="44"/><circle cx="700" cy="60" r="30"/><circle cx="700" cy="60" r="16"/>
+        <circle cx="800" cy="60" r="58"/><circle cx="800" cy="60" r="44"/><circle cx="800" cy="60" r="30"/><circle cx="800" cy="60" r="16"/>
+      </g>
+      <g transform="translate(-50,90)">
+        <circle cx="0" cy="60" r="58"/><circle cx="0" cy="60" r="44"/><circle cx="0" cy="60" r="30"/>
+        <circle cx="100" cy="60" r="58"/><circle cx="100" cy="60" r="44"/><circle cx="100" cy="60" r="30"/>
+        <circle cx="200" cy="60" r="58"/><circle cx="200" cy="60" r="44"/><circle cx="200" cy="60" r="30"/>
+        <circle cx="300" cy="60" r="58"/><circle cx="300" cy="60" r="44"/><circle cx="300" cy="60" r="30"/>
+        <circle cx="400" cy="60" r="58"/><circle cx="400" cy="60" r="44"/><circle cx="400" cy="60" r="30"/>
+        <circle cx="500" cy="60" r="58"/><circle cx="500" cy="60" r="44"/><circle cx="500" cy="60" r="30"/>
+        <circle cx="600" cy="60" r="58"/><circle cx="600" cy="60" r="44"/><circle cx="600" cy="60" r="30"/>
+        <circle cx="700" cy="60" r="58"/><circle cx="700" cy="60" r="44"/><circle cx="700" cy="60" r="30"/>
+        <circle cx="800" cy="60" r="58"/><circle cx="800" cy="60" r="44"/><circle cx="800" cy="60" r="30"/>
+        <circle cx="850" cy="60" r="58"/><circle cx="850" cy="60" r="44"/><circle cx="850" cy="60" r="30"/>
+      </g>
+    </g>
+  </svg>
+</header>
+
+<!-- ═══════════════ POEM ═══════════════ -->
+<main class="poem">
+
+  <section class="stanza">
+    <div class="en">We walked into an old grove<br>and found what the woodcutter found:<br>truth was never missing.<br>It was plural,<br>and heavier than any one mouth could carry,<br>so it was handed to all of us.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">私たちは古い藪の中へ歩いて入り、<br>木こりが見つけたものを見つけた。<br>真実は消えてなどいなかった。<br>それはひとつではなく、<br>ひとつの口では運べないほど重かった。<br>だから、私たち全員に手渡されたのだ。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">Nineteen witnesses in the room. No judge.<br>Only people learning to listen,<br>and listening, it turns out,<br>is how strangers become a village.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">部屋には十九人の証人。裁く者はいない。<br>いたのは、聴くことを学びはじめた人々だけ。<br>そして分かった。<br>聴くことこそ、見知らぬ者同士が<br>ひとつの村になる方法なのだと。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">Between the stories, we crossed borders<br>without showing a single passport.<br>We learned that konnichiwa can carry<br>a whole philosophy of respect,<br>that in some rooms "I don't know" is a gentle no,<br>that silence can be full, not empty,<br>and that harmony, left unwatched,<br>can quietly cost someone too much.<br>So we made each other a promise:<br>to read one another slowly,<br>like a language we love<br>but were not born into.<br>Nineteen accents,<br>one grammar of respect.<br>And for the road ahead, one shared Culture Map in every bag,<br>a map not of countries<br>but of the distances between us,<br>and every way across.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">物語と物語のあいだで、<br>私たちはパスポートを一度も見せずに<br>国境を越えた。<br>「こんにちは」というひと言に、<br>敬意の哲学がまるごと宿ること。<br>部屋によっては「分かりません」が、<br>やさしい「いいえ」であること。<br>沈黙は空っぽではなく、満ちていられること。<br>そして和は、見守る人がいなければ、<br>誰かに静かに払わせすぎてしまうこと。<br>だから私たちは約束を交わした。<br>互いをゆっくり読んでいこうと。<br>愛しているのに、<br>母語ではない言葉を読むように。<br>十九の訛り、<br>敬意というひとつの文法。<br>そしてこれからの道のために、<br>どの鞄にも同じ一冊の『カルチャー・マップ』が入っている。<br>国々の地図ではなく、<br>私たちのあいだの距離と、<br>それを渡るすべての方法の地図が。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">A fact put on a context and became a story.<br>We watched, gently, who was counting the arrows.<br>And when the stories grew past holding,<br>we did not choose among them.<br>We built a new one with our own hands,<br>the way bridges are built:<br>from both shores at once.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">事実は文脈をまとって、物語になった。<br>矢を数えているのは誰なのか、<br>私たちはそっと見ていた。<br>物語が抱えきれないほど増えたとき、<br>私たちはそのどれかを選ばなかった。<br>自分たちの手で、新しいひとつを作った。<br>橋を架ける人のやり方で。<br>両方の岸から、同時に。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">Then Professor Stein asked us why<br>before she told us what,<br>and we remembered what dojos and children teach:<br>nothing worth keeping enters without sweat.<br>Too easy, and the mind quietly leaves the room.<br>Too hard, and it hides.<br>Learning waits on the edge between them,<br>right where our hands begin to shake.<br>So bless the difficulty.<br>It is the door, not the wall.<br>Open it, and the view is called learning.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">それから、スタイン教授は「何を」より先に<br>「なぜ」を私たちに尋ねた。<br>道場と子どもたちが教えてくれたことを思い出す。<br>残す価値のあるものは、汗をかかずには入ってこない。<br>易しすぎれば、心は静かに部屋を出ていく。<br>難しすぎれば、心は隠れてしまう。<br>学びはその境目で待っている。<br>手が少し震えはじめる、ちょうどあの場所で。<br>だから、困難を祝福しよう。<br>それは壁ではなく、扉なのだ。<br>開ければ、その眺めの名を「学び」という。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">Last of all, we folded the room itself<br>small enough to fit in our luggage:<br>one screen, twenty windows.<br>Do not be fooled by the size.<br>We have stood in the rooms behind those windows.<br>We have bowed in them.<br>When they light up at nightfall in your city,<br>that is not a meeting.<br>That is twenty lanterns<br>agreeing not to go out.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">最後に私たちは、部屋そのものを折りたたんで、<br>それぞれの旅行鞄に収めた。<br>ひとつの画面、二十の窓。<br>大きさにだまされてはいけない。<br>私たちはあの窓の向こうの部屋に立ったことがある。<br>あの部屋で、頭を下げたことがある。<br>あなたの街に夜が降りて、その窓が灯るとき、<br>それは会議ではない。<br>それは「消えないでいよう」と約束し合った<br>二十の灯籠なのだ。</div>
+  </section>
+
+  <!-- lantern divider -->
+  <div class="lantern-row" aria-hidden="true">
+    <svg width="18" height="26" viewBox="0 0 18 26"><rect x="6" y="0" width="6" height="3" fill="#b08d3f"/><ellipse cx="9" cy="13" rx="8" ry="10" fill="none" stroke="#ad3a26" stroke-width="1.3"/><line x1="9" y1="3" x2="9" y2="23" stroke="#ad3a26" stroke-width=".7" opacity=".5"/><rect x="6" y="23" width="6" height="3" fill="#b08d3f"/></svg>
+    <svg width="18" height="26" viewBox="0 0 18 26"><rect x="6" y="0" width="6" height="3" fill="#b08d3f"/><ellipse cx="9" cy="13" rx="8" ry="10" fill="none" stroke="#ad3a26" stroke-width="1.3"/><line x1="9" y1="3" x2="9" y2="23" stroke="#ad3a26" stroke-width=".7" opacity=".5"/><rect x="6" y="23" width="6" height="3" fill="#b08d3f"/></svg>
+    <svg width="18" height="26" viewBox="0 0 18 26"><rect x="6" y="0" width="6" height="3" fill="#b08d3f"/><ellipse cx="9" cy="13" rx="8" ry="10" fill="none" stroke="#ad3a26" stroke-width="1.3"/><line x1="9" y1="3" x2="9" y2="23" stroke="#ad3a26" stroke-width=".7" opacity=".5"/><rect x="6" y="23" width="6" height="3" fill="#b08d3f"/></svg>
+  </div>
+
+  <section class="stanza">
+    <div class="en">Inside that room, the readings are a forest,<br>and we will walk in as hunters,<br>each of us chasing a rabbit called knowledge.<br><span class="aside">(Catch lions if you like. I like rabbits.)</span><br>And to speak there, you must hold down<br>a key named Control,<br>which may be the wisest design of all:<br>a small pause before every word,<br>a breath built into the machine,<br>so that no one speaks<br>before they have chosen to.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">あの部屋では、読むものはすべて森で、<br>私たちは狩人としてそこへ入っていく。<br>それぞれが、知識という名の兎を追いながら。<br><span class="aside">（獅子がいい人は獅子でもいい。私は兎が好きだ。）</span><br>そして、あの部屋で話すには、<br>コントロールというキーを<br>押さえていなければならない。<br>それは案外、いちばん賢い設計かもしれない。<br>どの言葉の前にも、小さな間があるということ。<br>機械に組み込まれた、ひと呼吸。<br>誰も、選ぶより先に<br>話しはじめることのないように。</div>
+  </section>
+
+  <section class="stanza sonia">
+    <div class="en">And Sonia, who could not be with us this week:<br>nineteen of us signed our names<br>across your Culture Map,<br>and the book is flying to you now,<br>turned into a letter.<br>For we learned that a room<br>is not only the people standing in it.<br>It is also the places it keeps.<br>Your window is already lit.<br>Your lantern is counted with ours.<br>The story is holding your seat.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">そして、今週ここに来られなかったソニアへ。<br>私たち十九人は、あなたの『カルチャー・マップ』に<br>名前を書き込みました。<br>その本はいま、一通の手紙になって、<br>あなたのもとへ飛んでいきます。<br>私たちは学んだのです。<br>部屋とは、そこに立つ人たちだけのものではなく、<br>誰かのために取ってある席のことでもあると。<br>あなたの窓には、もう灯りがともっています。<br>あなたの灯籠も、私たちの数に入っています。<br>物語は、あなたの席を空けて待っています。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">And we bow, the way one bows in a dojo,<br>to the three who walked ahead<br>and kept turning back for us:<br>to Dr. Davis, who opened the very first door<br>and walked with us across the bridges between cultures;<br>to Professor Powers, who showed us<br>that facts are made, and so are we;<br>to Professor Stein, who taught us<br>to call the sweat by its true name, learning.<br>And the keys of the traveling room<br>were placed in ours by Powers and Stein,<br>four hands together.<br>And to Tomoko,<br>who carried a hundred invisible things<br>so that we could carry stories.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">そして私たちは、道場で礼をするように、<br>頭を下げる。<br>先を歩きながら、何度も<br>振り返ってくれた三人の先生に。<br>いちばん最初の扉を開き、<br>文化と文化のあいだの橋を<br>共に渡ってくれたデイヴィス博士に。<br>事実は作られるものだと、そして私たちもまた<br>作られていくのだと見せてくれたパワーズ教授に。<br>汗の本当の名前は「学び」であると<br>教えてくれたスタイン教授に。<br>そして旅する部屋の鍵は、<br>パワーズ教授とスタイン教授が、<br>四つの手をそろえて、<br>私たちの手に渡してくれた。<br>そして、トモコに。<br>私たちが物語を運べるように、<br>数えきれない見えないものを<br>運んでくれた人に。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">And this room did not build itself.<br>Before any of us had met,<br>the Nippon Foundation laid the floor,<br>lit the first lamp,<br>and trusted twenty strangers<br>to be worth believing in.<br>There is only one true thank-you:<br>what we go and do from here.<br>May the story we are beginning<br>repay the hands that made room for it.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">そして、この部屋はひとりでに建ったのではありません。<br>私たちがまだ出会う前に、<br>日本財団が床を据え、最初の灯りをともし、<br>聴くことを学ぶ二十人の見知らぬ者たちを、<br>信じるに値すると先に信じてくれたのです。<br>ほんとうのお礼は、ただひとつ。<br>ここから私たちが何をするか。<br>私たちが書きはじめた物語が、いつの日か、<br>この部屋を用意してくれた手に報いますように。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">I came here with an empty basket.<br>Tonight it is heavy with your stories,<br>the only way I know<br>to keep my own from getting lost.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">私は空の籠を提げてここに来た。<br>今夜、その籠はあなたたちの物語で重い。<br>自分の物語を見失わないために、<br>私が知っている唯一の方法がこれだから。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">The old books say the owl of Minerva<br>flies only at dusk,<br>that wisdom always arrives late, after the living.<br>Let it be late.<br>We will give it so much life to follow<br>that it will need the whole year to catch us.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">古い書物は言う。ミネルヴァの梟は<br>黄昏にしか飛ばないと。<br>知恵はいつも遅れて、生きたあとにやって来ると。<br>遅れて来ればいい。<br>私たちはこれから、追う甲斐のある生を<br>山ほど生きよう。<br>梟が私たちに追いつくのに、<br>まる一年かかるほどに。</div>
+  </section>
+
+  <section class="stanza">
+    <div class="en">See you in the little windows.<br>Bring the difficult things. Bring the true ones.<br>That is where the learning lives,<br>and the friendship,<br>and the new story we have already begun.</div>
+    <div class="spine"><div class="dot"></div><div class="line"></div></div>
+    <div class="jp">小さな窓で会いましょう。<br>難しいものを持って来てください。本当のものを。<br>学びはそこに住んでいます。<br>友情も、<br>そして私たちがもう書きはじめた、<br>新しい物語も。</div>
+  </section>
+
+</main>
+
+<!-- ═══════════════ SIGNATURE ═══════════════ -->
+<div class="signature">
+  <div class="sig-en">Haishuo</div>
+  <div class="hanko">海碩</div>
+  <div class="ps">
+    <div class="en">P.S. Please finish the egg-yolk pastries before July 22.<br>They contain no preservatives.<br>Neither does anything I have written here.</div>
+    <div class="jp">追伸。7月22日までに、あの卵黄酥を食べきってください。<br>保存料は入っていません。<br>この詩に書いたことにも、何ひとつ入っていません。</div>
+  </div>
+</div>
+
+<!-- ═══════════════ GRATITUDE ═══════════════ -->
+<section class="gratitude">
+  <div class="label">With Gratitude</div>
+  <div class="label-jp">感謝</div>
+  <p class="note">To those who walked ahead, and those who held the lamp.<br><span style="font-family:'Noto Serif JP',serif;font-style:normal;font-size:.9rem;">先を歩いてくれた人へ、灯りを掲げてくれた人へ。</span></p>
+
+  <div class="credit-group">
+    <h3>Our Faculty · 先生方</h3>
+    <div class="credit">
+      <div class="name">Dr. Dollie Davis</div>
+      <div class="role">Executive Vice President, Minerva University</div>
+      <div class="line">who opened the very first door, and the bridges between cultures</div>
+    </div>
+    <div class="credit">
+      <div class="name">Professor Jonathan Powers</div>
+      <div class="role">Aspen Seminar · The Stories We Tell</div>
+      <div class="line">who showed us that facts are made, and so are we</div>
+    </div>
+    <div class="credit">
+      <div class="name">Professor Geneva Stein</div>
+      <div class="role">Science of Learning</div>
+      <div class="line">who taught us to call the sweat by its true name</div>
+    </div>
+    <div class="credit">
+      <div class="name">Tomoko</div>
+      <div class="role">Minerva · World Wise Program</div>
+      <div class="line">who carried a hundred invisible things so that we could carry stories</div>
+    </div>
+  </div>
+
+  <div class="credit-divider"></div>
+
+  <div class="credit-group">
+    <h3>The Nippon Foundation · 日本財団</h3>
+    <div class="credit daisuke">
+      <div class="name">Daisuke Takashina<span class="kanji">高階大輔</span></div>
+      <div class="role">Senior Program Officer</div>
+      <div class="line">who will walk the whole road with us, keeping the lanterns lit<br><span style="font-family:'Noto Serif JP',serif;font-style:normal;font-size:.88rem;">この一年の道を、私たちとともに歩いてくださる方。</span></div>
+    </div>
+    <div class="credit">
+      <div class="name">Ichiro Kawase</div>
+      <div class="role">Executive Director</div>
+    </div>
+    <div class="credit">
+      <div class="name">Takahiro Omomura</div>
+      <div class="role">Senior Program Director</div>
+    </div>
+    <div class="credit">
+      <div class="name">Yuriko Aoyanagi</div>
+      <div class="role">Program Director</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="foot-line">World Wise Executive Leadership Program</div>
+  <div class="foot-line" style="margin-top:.5rem;">Minerva University × The Nippon Foundation · Tokyo Kick-Off · July 2026</div>
+  <div class="foot-jp">二十の灯籠は、消えない。</div>
+</footer>
+
+</body>
+</html>
