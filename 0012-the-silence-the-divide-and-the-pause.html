@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>0012 · The Silence, the Divide, and the Pause · World Wise Play Series</title>
+<style>
+  :root{
+    --paper:#f4f2ee; --ink:#22252b; --ink-soft:#5d656f;
+    --accent:#8c4a4a; --gold:#6d7f7a; --line:#dcdedc;
+    --band:#c9a227; --cream:#fcfbf9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;line-height:1.8;font-size:17px;}
+  body.zh{font-family:'Noto Serif TC','Noto Serif CJK TC','Source Han Serif TC','Songti TC','PMingLiU',Georgia,serif;line-height:2;}
+  body.ja{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP','Noto Serif CJK JP',Georgia,serif;line-height:2;}
+  .wrap{max-width:740px;margin:0 auto;padding:0 24px;}
+
+  .langbar{position:sticky;top:0;z-index:50;background:rgba(244,242,238,.96);
+    border-bottom:1px solid var(--line);backdrop-filter:blur(4px);}
+  .langbar-inner{max-width:740px;margin:0 auto;padding:12px 24px;
+    display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;}
+  .langbar-inner .home{margin-right:auto;font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    text-decoration:none;}
+  .langbar-inner .home:hover{color:var(--accent);}
+  .langbtn{font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:.10em;
+    padding:8px 18px;border:1px solid var(--gold);background:transparent;color:var(--gold);
+    cursor:pointer;border-radius:2px;transition:background .15s,color .15s;}
+  .langbtn:hover{background:rgba(109,127,122,.14);}
+  .langbtn.active{background:var(--gold);color:#fff;}
+
+  #en-doc{display:block;} #zh-doc,#ja-doc{display:none;}
+  body.zh #en-doc{display:none;} body.zh #zh-doc{display:block;}
+  body.ja #en-doc{display:none;} body.ja #ja-doc{display:block;}
+
+  header{padding:74px 0 50px;text-align:center;}
+  .kicker{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+  .serial{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:.34em;
+    color:var(--accent);margin-bottom:18px;}
+  h1{font-size:clamp(34px,6.4vw,54px);font-weight:400;line-height:1.18;}
+  .tagline{margin:34px auto 0;max-width:620px;font-size:clamp(16px,2.6vw,19px);
+    line-height:1.6;font-style:italic;color:var(--ink-soft);}
+  body.zh .tagline,body.ja .tagline{font-style:normal;}
+  .rule{width:64px;height:2px;background:var(--gold);margin:44px auto 0;border:none;}
+
+  section{padding:44px 0 6px;}
+  .num{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+  h2{font-size:clamp(22px,3.8vw,30px);font-weight:400;line-height:1.4;margin-bottom:22px;}
+  h3{font-size:18.5px;font-weight:600;margin:32px 0 12px;}
+  p{margin-bottom:19px;}
+  em{color:var(--accent);font-style:italic;}
+  body.zh em,body.ja em{font-style:normal;font-weight:600;}
+  .lead{font-size:19px;}
+  .note{font-size:14px;color:var(--ink-soft);font-style:italic;}
+  body.zh .note,body.ja .note{font-style:normal;}
+  #zh-doc a,#en-doc a,#ja-doc a{color:var(--accent);text-decoration:underline;
+    text-decoration-thickness:1px;text-underline-offset:2px;}
+
+  .pull{margin:44px 0;padding:34px 30px;text-align:center;background:var(--cream);
+    border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);
+    font-size:clamp(18px,3vw,22px);line-height:1.7;font-style:italic;}
+  body.zh .pull,body.ja .pull{font-style:normal;}
+  .pull b{font-style:normal;color:var(--accent);font-weight:400;}
+  .pull .by{display:block;margin-top:.7em;font-style:normal;font-size:.62em;letter-spacing:.06em;
+    color:var(--gold);font-family:'Helvetica Neue',Arial,sans-serif;}
+  body.zh .pull .by,body.ja .pull .by{font-family:inherit;letter-spacing:.02em;}
+  .tbl-wrap{overflow-x:auto;margin:26px 0;background:var(--cream);border-top:2px solid var(--gold);}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.7;min-width:520px;}
+  th{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--gold);text-align:left;padding:13px 14px 9px;
+    border-bottom:1px solid var(--line);}
+  body.zh th,body.ja th{font-family:inherit;letter-spacing:.02em;}
+  td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td:first-child{font-weight:600;}
+  .card{background:var(--cream);border-top:2px solid var(--gold);padding:23px 26px;margin:26px 0;}
+  .card h3{margin-top:0;}
+  .card p:last-child{margin-bottom:0;}
+  .steps{background:var(--cream);border-left:3px solid var(--accent);padding:20px 24px;margin:26px 0;}
+  .steps p{margin-bottom:10px;}
+  .steps p:last-child{margin-bottom:0;}
+  .closing{padding:40px 0 30px;}
+  .sig{margin-top:26px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-align:center;}
+  body.zh .sig,body.ja .sig{letter-spacing:.08em;}
+  footer{padding:30px 0 60px;text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);}
+  body.zh footer,body.ja footer{letter-spacing:.04em;text-transform:none;}
+  @media print{.langbar{display:none;} body{font-size:12.5px;}}
+</style>
+</head>
+<body class="zh">
+<div class="langbar"><div class="langbar-inner"><button class="langbtn active" id="btn-zh" onclick="setLang('zh')">中文</button><button class="langbtn" id="btn-en" onclick="setLang('en')">ENGLISH</button><button class="langbtn" id="btn-ja" onclick="setLang('ja')">日本語</button></div></div>
+
+<div id="zh-doc">
+<header class="wrap">
+  <div class="kicker">World Wise 2026 · EE401 · Session 6 · 讀物導讀</div>
+  <div class="serial">No. 0012</div>
+  <h1>沉默、裂縫與那一拍</h1>
+  <p class="tagline">權力會生出情緒，而情緒有文化的文法。這一堂有一篇文章與三支影片。前面我忠實地把它們攤開，後面才是我看見的東西，以及它們在 AI 時代會變成什麼。</p>
+  <hr class="rule">
+</header>
+
+<section class="wrap">
+  <span class="num">序 · 這一週</span>
+  <h2>四份材料，一個縫隙</h2>
+  <p class="lead">EE401 第六堂的主題是<em>權力與情緒智力</em>。這是模組二的最後一堂。課綱把這一堂的邏輯講得很清楚：權力的使用會生出強烈的情緒，而情緒與文化交纏在一起。一位有情境意識的領導者，會事先預期自己的權力動作將激起什麼情緒，並且知道如何調節自己的與他人的。</p>
+  <p>這一堂要讀四樣東西。Daniel Goleman 在《哈佛商業評論》的〈What Makes a Leader?〉，約三十分鐘。PsyLife 的三分多鐘短片〈Feeling is not universal〉。Dr. Kris 的十七分鐘〈Emotional Intelligence Across Cultures〉。以及第一堂看過的 Nutshell Brainery《What Is Culture?》，這一次只看最後十分鐘，從 43:35 開始，講的是文化衝擊。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>材料</th><th>它回答的問題</th></tr>
+    <tr><td>Goleman，HBR 2004</td><td>情緒智力是什麼？為什麼它是領導的必要條件？</td></tr>
+    <tr><td>PsyLife</td><td>情緒是普世的嗎？文化在哪一層介入？</td></tr>
+    <tr><td>Dr. Kris</td><td>同一套情緒智力，換到另一個文化裡會變成什麼？</td></tr>
+    <tr><td>Schiffbauer（最後十分鐘）</td><td>文化衝擊怎麼發生？在哪一個路口會走岔？</td></tr>
+  </table></div>
+  <p>把這四份放在一起，會出現一道很值得看的縫隙。Goleman 的文章寫得極好，但它幾乎不談文化；另外三份材料，全部都在說同一件事：情緒的原料也許是共通的，但情緒的<em>文法</em>是文化教的。而課綱的三道 study guide 問題，剛好落在這道縫隙上。</p>
+  <p>這份導讀的作法跟前幾份一樣。<em>前面先忠實地呈現每一份材料在講什麼</em>，<em>後面才是我看見了什麼</em>，最後是<em>它在 AI 時代的意義</em>。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">一 · 忠實呈現</span>
+  <h2>Goleman（一）：門檻能力，與那些數字</h2>
+  <p>Goleman 用一個每個企業人都聽過的故事開場。有一位極聰明、技術極強的主管，被拔擢到領導職，然後失敗了。同時也有一位智力與技術只是紮實、稱不上出眾的人，被拔擢到類似的位置，然後一飛沖天。</p>
+  <p>這類故事支撐了一個廣為流傳的信念：辨認出「有那個料」的領導者，比較像藝術而不是科學。畢竟頂尖領導者的風格差異極大，有人沉靜而分析，有人站在山頂上大聲宣告；而且不同的情境也需要不同的領導，多數的併購需要一位敏感的談判者，許多的轉虧為盈需要一位強勢的權威。</p>
+  <p>然而 Goleman 說，他發現最有效的領導者在一件事上是相像的：<em>他們都有高度的情緒智力</em>。他沒有說智商與技術能力不重要，它們當然重要，但主要是作為「門檻能力」，也就是進入主管職的入場資格。</p>
+  <div class="pull">情緒智力是領導的 sine qua non。<span class="by">Daniel Goleman</span></div>
+  <p>缺了它，一個人可以擁有世上最好的訓練、一顆銳利的分析腦、源源不絕的聰明點子，卻仍然不會成為一位偉大的領導者。</p>
+  <h3>他怎麼知道的</h3>
+  <p>今天大公司普遍聘用受訓過的心理學家，發展出所謂的「職能模型」，用來辨認、訓練與拔擢未來之星。Goleman 分析了 188 家公司的職能模型，其中大多數是大型跨國企業，包括 Lucent Technologies、英國航空與瑞士信貸。</p>
+  <p>他把能力分成三類：純技術能力，例如會計與商業規劃；認知能力，例如分析推理；以及展現情緒智力的職能，例如與人共事的能力，以及領導變革的有效性。</p>
+  <p>心理學家建模型的方式有兩種。一種是請公司的資深主管指出，最傑出的領導者身上有哪些能力。另一種是用客觀標準，例如某個事業部的獲利，把資深層級的明星表現者與平均表現者區分開來，然後對這些人進行大量訪談與測驗，比較他們的能力。最後得出一張張「高效領導者的成分清單」，長度從七項到十五項不等，包含主動性與策略視野這類成分。</p>
+  <p>分析全部資料之後，他得到了戲劇性的結果。智力確實是傑出表現的驅動力，大局思考與長期視野這類認知技能尤其重要。但當他計算技術能力、智商與情緒智力三者在卓越表現中的比重時，<em>情緒智力的重要性是另外兩者的兩倍，而且在所有層級的工作上都是如此。</em></p>
+  <p>更進一步，情緒智力在公司的最高層扮演愈來愈重要的角色，在那裡技術能力的差異幾乎可以忽略。換句話說，一個被視為明星的人職位愈高，他之所以有效的理由，愈是落在情緒智力上。當他把資深領導職位上的明星與平均者相比，<em>兩者檔案差異的將近九成，可歸因於情緒智力因素，而不是認知能力。</em></p>
+  <p>其他研究者也證實了這件事。已故的組織行為學者 David McClelland 在 1996 年研究一家全球食品飲料公司，發現當資深經理人具備情緒智力職能的臨界量時，他們的事業部超越年度獲利目標達兩成；而不具備臨界量的事業部主管，則以差不多的幅度落後。有意思的是，這個發現在該公司的美國事業部，與在亞洲及歐洲的事業部，同樣成立。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">二 · 忠實呈現</span>
+  <h2>Goleman（二）：自我覺察與自我調節</h2>
+  <p>Goleman 把工作場域的情緒智力拆成五個組成。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>組成</th><th>定義</th><th>外顯標記</th></tr>
+    <tr><td>自我覺察</td><td>辨認並理解自己的情緒、心情與驅力，以及它們對他人的影響</td><td>自信；務實的自我評估；能自嘲的幽默感</td></tr>
+    <tr><td>自我調節</td><td>控制或改道那些具破壞性的衝動與情緒；傾向於暫緩判斷，先想再做</td><td>可信賴與正直；能安於模糊；對改變開放</td></tr>
+    <tr><td>動機</td><td>為超越金錢與地位的理由而工作的熱情；以精力與持續力追求目標</td><td>強烈的成就驅力；即使失敗仍樂觀；對組織的承諾</td></tr>
+    <tr><td>同理心</td><td>理解他人情緒構成的能力；依他人的情緒反應對待他人的技巧</td><td>培養與留住人才的專長；<b>跨文化敏感度</b>；對客戶的服務</td></tr>
+    <tr><td>社交技巧</td><td>管理關係與建立網絡的熟練；找到共同點、建立融洽的能力</td><td>領導變革的有效性；說服力；建立與帶領團隊的專長</td></tr>
+  </table></div>
+  <h3>自我覺察</h3>
+  <p>自我覺察是第一個組成，這很合理，因為德爾菲神諭幾千年前就給了「認識你自己」的建議。自我覺察意謂著深刻理解自己的情緒、優勢、弱點、需求與驅力。自我覺察強的人既不會過度批判自己，也不會不切實際地樂觀，他們是誠實的，對自己也對別人。</p>
+  <p>一個知道緊迫截止日會逼出自己最壞一面的人，會仔細規劃時間，提早把事做完。另一位高度自我覺察的人能與難搞的客戶合作，她理解客戶對她心情的影響，也理解自己挫折的深層理由，「他們那些瑣碎的要求，把我們從真正該做的事上拉開」，而她會再多走一步，把憤怒轉化成有建設性的東西。</p>
+  <p>自我覺察也延伸到一個人對自身價值與目標的理解。高度自我覺察的人知道自己要往哪裡去、為什麼去，所以他能堅定地推掉一個財務上很誘人、卻不符合他原則或長期目標的工作邀約。缺乏自我覺察的人則容易做出踩到自己深埋價值的決定，兩年後說：「當時錢看起來不錯我就簽了，但這份工作對我意義太小，我一直很無聊。」</p>
+  <p>怎麼認出自我覺察？首先，它表現為坦率，以及務實評估自己的能力。Goleman 舉了一位百貨連鎖的經理人，她對公司即將推出的個人購物顧問服務有疑慮。沒有人問她，她主動向團隊與老闆解釋：「我很難全力支持這項服務的上市，因為我真的很想主導這個專案，但我沒有被選上。請容我一點時間處理這件事。」她確實檢視了自己的感受，一週後她全力支持這個專案。</p>
+  <p>這種自我認識也常在招募時顯露。請一位候選人描述一次他被感受牽著走、事後懊悔的經驗，自我覺察的候選人會坦白承認失敗，而且常常帶著微笑講。<em>自我覺察的標記之一，是能自嘲的幽默感。</em></p>
+  <p>Goleman 特別指出一件事：儘管自我覺察在職場上很有價值，他的研究顯示，資深主管在尋找潛在領導者時，常常不給自我覺察應有的分數。許多主管把對感受的坦率誤讀成「軟弱」，對公開承認自身不足的員工不夠尊重，這些人太容易被打上「不夠強悍，帶不了人」的標籤。他說，事實恰好相反。人們普遍尊敬坦率；而且領導者不斷被要求做出判斷，那些判斷需要對能力做出坦白的評估，自己的與別人的。</p>
+  <h3>自我調節</h3>
+  <p>生理衝動驅動我們的情緒，我們無法消除它們，但可以管理它們。自我調節像一場持續進行的內在對話，它讓我們不再是自己感受的囚犯。從事這種對話的人，跟所有人一樣會有壞心情與情緒衝動，但他們找得到方法控制它們，甚至把它們導向有用的方向。</p>
+  <p>想像一位主管剛看完自己的團隊向董事會做了一份搞砸的分析。在隨之而來的陰鬱裡，他可能想拍桌、踢椅子，可能跳起來對整組人大吼，也可能維持一種陰沉的沉默，瞪完所有人然後拂袖而去。</p>
+  <p>但如果他有自我調節的天賦，他會選另一條路。他會謹慎選字，承認團隊表現不佳，但不急著下任何草率的判斷。然後他會退一步思考失敗的原因：是個人的因素嗎，努力不夠嗎？有沒有可以減輕責任的情境？<em>我自己在這場災難裡扮演了什麼角色？</em>想過這些之後，他會把團隊召集起來，攤開這件事的後果，說出自己的感受，接著提出他對問題的分析與一個深思過的解法。</p>
+  <p>為什麼自我調節對領導者這麼重要？第一，能控制自己感受與衝動的人，也就是講理的人，能創造出信任與公平的環境，在那樣的環境裡政治與內鬥大幅減少，生產力很高，有才華的人會湧入而且不想離開。而且自我調節有向下滲透的效果，當老闆以冷靜著稱時，沒有人想被說成暴躁；上面的壞心情變少，整個組織的壞心情就變少。</p>
+  <p>第二，自我調節攸關競爭力。今天的商業充滿模糊與變動，公司合併又拆分，科技以暈眩的速度改變工作。掌握了自己情緒的人能夠隨變化滾動，新方案宣布時他們不恐慌，而是能暫緩判斷、去找資訊、聽主管把新方案講完。Goleman 舉了一位製造業的經理人，她跟同事一樣用了某套軟體五年，那套程式決定了她怎麼蒐集與回報資料、怎麼思考公司的策略。當高層宣布要換一套會徹底改變資訊蒐集方式的新程式，許多人苦澀地抱怨這個改變多麼具破壞性，而她仔細思索了新程式背後的理由，並且被它提升績效的潛力說服。她積極參加訓練課程，有些同事拒絕參加，最後她被拔擢去管理數個事業部，部分原因就是她把新技術用得極好。</p>
+  <p>第三，自我調節增進正直，而正直不只是個人美德，也是組織的力量。公司裡許多壞事，其實是衝動行為的產物。人們很少「計畫」去誇大獲利、灌水報帳、挪用公款或濫用權力謀私，而是一個機會出現了，衝動控制差的人就說了好。相對地，一位大型食品公司的資深主管在與各地經銷商談判時極為誠實，他會例行性地攤開自己的成本結構，讓經銷商真實地理解公司的定價。這意謂著他不見得每次都能殺到好價錢。他偶爾也感受到隱瞞成本以增加獲利的衝動，但他挑戰了那個衝動，他看見長期而言反其道而行更合理。他的情緒自我調節，換來了與經銷商強韌而長久的關係，那對公司的好處遠超過任何短期財務利益。</p>
+  <p>所以自我調節的徵象很好認：傾向反思與深思；安於模糊與改變；以及正直，也就是<em>對衝動說不的能力</em>。</p>
+  <p>Goleman 也指出，自我調節跟自我覺察一樣常常得不到應有的評價。能掌控情緒的人有時被看成冷血，他們深思過的回應被當成缺乏熱情；而性格火爆的人常被想成「經典的」領導者，他們的爆發被當成領袖魅力與力量的標記。但當這種人爬到最高層，他們的衝動往往反過來害了自己。<em>在他的研究裡，極端的負面情緒展現，從來沒有成為好領導的驅動因素。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">三 · 忠實呈現</span>
+  <h2>Goleman（三）：動機、同理心、社交技巧</h2>
+  <h3>動機</h3>
+  <p>如果說有一項特質幾乎所有有效的領導者都具備，那就是動機。他們被驅使去達成超越期待的成果，包括自己的期待與別人的期待。關鍵字是<em>達成</em>。很多人被外部因素驅動，例如高薪、頭銜帶來的地位、待在一家名聲響亮的公司。相對地，有領導潛力的人，是被一種深植的、為了成就本身而追求成就的渴望所驅動。</p>
+  <p>怎麼認出這種人？第一個徵象是對工作本身的熱情，這種人會主動尋找有創造性的挑戰、熱愛學習、為做好一件事感到驕傲。他們也展現出一種不知疲倦的能量去把事情做得更好，常常顯得對現狀不安於室，他們會持續追問為什麼事情是這樣做而不是那樣做，也急於探索新的做法。</p>
+  <p>Goleman 舉了一位化妝品公司的經理人，他很受不了要等兩週才能拿到第一線的銷售數字。他最後找到一套自動電話系統，每天下午五點呼叫每一位業務，用自動語音提示他們輸入當天的拜訪數與成交數。這套系統把銷售結果的回饋時間，從幾週縮短到幾小時。</p>
+  <p>這個故事同時說明了成就驅動者的另外兩個特質：<em>他們不斷抬高績效的門檻，而且他們喜歡記分。</em>先說門檻。在績效評估時，高動機的人可能主動要求上司給他更難的目標。當然，一位兼具自我覺察與內在動機的員工會認清自己的極限，但她不會滿足於看起來太容易達成的目標。</p>
+  <p>然後很自然地，被驅使把事情做得更好的人，也想要一種追蹤進展的方式，追蹤自己的、團隊的與公司的。成就動機低的人往往對結果模模糊糊，成就動機高的人則常用獲利率或市占率這類硬指標來記分。Goleman 認識一位基金經理人，每天以上網開始、以上網結束，拿自己基金的表現去比對四項業界設定的基準。</p>
+  <p>有意思的是，高動機的人即使比數落後也保持樂觀。這時自我調節與成就動機會結合起來，克服挫敗或失敗之後的沮喪。一家大型投資公司的投資組合經理人，在幾年順風之後，她的基金連續三季下滑，導致三家大型法人客戶把業務轉走。有些主管會把下墜歸咎於自己無法控制的環境，也有人會把挫折看成個人失敗的證據。這位經理人卻看見一個證明自己能帶領翻身的機會。兩年後她被拔擢到公司非常資深的位置，她把那段經驗形容為「發生在我身上最好的事，我從中學到太多」。</p>
+  <p>還有最後一個線索：對組織的承諾。當人們因為工作本身而愛自己的工作，他們往往對讓那份工作成為可能的組織感到承諾。有承諾的員工，即使獵人頭揮舞著金錢，也傾向留下來。</p>
+  <h3>同理心</h3>
+  <p>在情緒智力的所有面向裡，同理心是最容易被辨認的。我們都感受過一位敏銳的老師或朋友的同理，也都被一位無感的教練或老闆的欠缺同理震撼過。但在商業世界裡，我們很少聽到有人因為同理心而被讚美，更別說被獎勵，這個詞本身聽起來就不像做生意的語言，跟市場的殘酷現實格格不入。</p>
+  <p>Goleman 立刻澄清：同理心不是那種「我好你也好」的軟綿綿。對一位領導者而言，它不意謂著把別人的情緒當成自己的，然後試圖取悅每一個人，那會是一場惡夢，會讓行動變得不可能。<em>同理心意謂著在做出明智決定的過程中，把員工的感受連同其他因素一起，慎重地納入考量。</em></p>
+  <p>他舉了兩家大型券商合併的例子，合併在所有事業部造成職務重疊。一位事業部主管把人召集起來，發表了一場陰鬱的談話，強調即將有多少人會被解雇。另一位事業部主管則發表了完全不同的一場，他坦率地說出自己的擔憂與困惑，並且承諾會持續讓大家知道進度，也會公平對待每一個人。</p>
+  <p>兩人的差別就是同理心。第一位太擔心自己的命運，以致無法顧及焦慮的同事們的感受。第二位直覺地知道他的人在感受什麼，並且用言語承認了他們的恐懼。結果不令人意外：第一位主管眼睜睜看著自己的事業部沉沒，因為士氣崩潰的人，特別是最有才華的那些，紛紛離開；第二位則持續是一位強大的領導者，最好的人留了下來，他的事業部生產力一如既往。</p>
+  <p>Goleman 說，同理心在今天特別重要，至少有三個理由：團隊的使用愈來愈多；全球化的速度愈來愈快；以及留住人才的需求愈來愈強。</p>
+  <p>先說團隊。任何待過團隊的人都能證實，團隊是沸騰情緒的大鍋。團隊常被要求達成共識，兩個人要共識就已經夠難了，人數愈多愈困難；即使只有四五個人的小組，同盟也會成形，議程也會相互衝突。一位團隊的領導者必須能夠感知並理解桌邊每一個人的觀點。</p>
+  <p>一家大型資訊科技公司的行銷經理人就做到了這件事。她被指派去帶一個陷入麻煩的團隊，那個團隊一片混亂，工作過載、屢屢延誤，成員之間張力很高。她做了幾件事：在一系列一對一的談話裡，她花時間聽每一個人講什麼讓他們挫折、他們如何評價同事、他們是否覺得自己被忽略。然後她用一種能把團隊聚合起來的方式引導它，她鼓勵大家更公開地說出挫折，也協助大家在會議中提出有建設性的抱怨。簡言之，她的同理心讓她理解了團隊的情緒構成。結果不只是成員間的協作提升，還帶來了新的業務，因為更多內部客戶開始找這個團隊幫忙。</p>
+  <p>全球化是同理心變得更重要的另一個理由。跨文化的對話很容易產生誤判與誤解，而同理心是解藥。<em>有同理心的人對身體語言的細微之處是敏感的，他們聽得見話語底下的訊息</em>，而且他們對文化與族裔差異的存在與重要性有深刻的理解。</p>
+  <p>Goleman 舉了一個例子，那是這篇文章裡唯一的跨文化案例。一位美國顧問的團隊剛剛向一位潛在的日本客戶提案。在跟美國人打交道的經驗裡，這個團隊習慣了提案後被問題轟炸，但這一次迎接他們的是一段漫長的沉默。團隊的其他成員把沉默解讀成不贊同，準備收拾東西走人。主導的那位顧問示意他們停下。<em>雖然他對日本文化並不特別熟悉</em>，他讀了客戶的表情與姿態，感覺到的不是拒絕，而是興趣，甚至是深度的考慮。他是對的：當客戶終於開口，是把案子交給了這家顧問公司。</p>
+  <p>最後，同理心在人才留任上扮演關鍵角色，在今天的資訊經濟裡尤其如此。領導者一向需要同理心來培養與留住好人才，但今天的賭注更高，因為好人離開時，會把公司的知識一起帶走。這就是教練與導師制度的價值所在。教練與導師之所以有效，關鍵在於關係的性質。傑出的教練與導師會走進被幫助者的腦袋裡，他們感覺得出如何給出有效的回饋，他們知道什麼時候該推一把要求更好的表現，什麼時候該退一步。</p>
+  <p>他也再次提醒，同理心在商業裡不太受尊重。人們會懷疑，一位領導者如果對所有受影響的人都「感同身受」，還怎麼做困難的決定。但有同理心的領導者做的事，比同情身邊的人多得多：<em>他們用這份理解，以細微卻重要的方式改善他們的公司。</em></p>
+  <h3>社交技巧</h3>
+  <p>前三個組成屬於自我管理，後兩個，同理心與社交技巧，關乎一個人管理與他人關係的能力。社交技巧不像它聽起來那麼簡單，它不只是友善，雖然社交技巧高的人很少是刻薄的。<em>社交技巧是帶有目的的友善</em>：把人們帶往你想要的方向，無論那是對一項新行銷策略的同意，還是對一項新產品的熱情。</p>
+  <p>社交技巧強的人往往有很寬的人脈圈，並且有一種與各種人找到共同點的本事，一種建立融洽關係的本事。這不表示他們整天在社交，而是他們依照一個假設在工作：<em>沒有任何重要的事是一個人做得完的。</em>所以當行動的時刻來臨時，這種人早已經有一張網在那裡。</p>
+  <p>社交技巧是其他所有面向的總和。當一個人能理解並控制自己的情緒、又能同理他人的感受時，他往往非常擅長管理關係。連動機也對社交技巧有貢獻，因為被成就驅動的人即使遭遇挫敗也傾向樂觀，而當人們是振奮的，那份光會投射到對話與其他社交場合上。</p>
+  <p>Goleman 也提醒，社交技巧強的人有時看起來像在上班時間沒在工作。他們似乎在閒聊，在走廊上跟同事哈拉，跟一些跟他們「真正的」工作毫無關係的人開玩笑。但這些人不認為隨意限制自己關係的範圍是合理的，他們廣泛地建立連結，因為他們知道在這種流動的年代裡，今天剛認識的人，某一天可能就是他們需要的幫手。</p>
+  <p>他舉了一位全球電腦製造商策略部門主管的例子。1993 年時，他確信公司的未來在網際網路上。接下來的一年裡，他找到了志同道合的人，用他的社交技巧縫合出一個橫跨層級、事業部與國家的虛擬社群。他用這個實質上的團隊架起了公司網站，那是最早的大型企業網站之一。他還自己主動，在沒有預算也沒有正式職權的情況下，替公司報名參加一場年度網路產業大會，靠著召集盟友、說服各個事業部捐錢，他招募了來自十二個不同單位、超過五十個人代表公司出席。管理層注意到了：大會後一年之內，這位主管的團隊成為公司第一個網路事業部的基礎，而他被正式任命為負責人。</p>
+  <p>社交技巧在多數公司裡被視為關鍵的領導能力嗎？答案是肯定的，尤其相較於情緒智力的其他組成。人們似乎直覺地知道領導者必須有效地管理關係，<em>沒有一位領導者是一座孤島</em>。畢竟領導者的任務是透過別人把事情完成，而社交技巧讓那件事成為可能。一位無法表達同理心的領導者，等於沒有同理心；一位無法把熱情傳達給組織的領導者，他的動機也是無用的。<em>社交技巧讓領導者得以把情緒智力真正派上用場。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">四 · 忠實呈現</span>
+  <h2>Goleman（四）：情緒智力學得會嗎</h2>
+  <p>這是文章裡一段獨立的專欄，我認為它是全文最重要的部分之一。</p>
+  <p>長久以來人們爭論領導者是天生的還是造就的，情緒智力也一樣。人們是天生就有某種程度的同理心，還是透過人生經驗獲得？Goleman 的答案是：兩者都有。科學研究強烈顯示情緒智力有遺傳成分，心理與發展研究也指出後天扮演角色。各佔多少也許永遠不會知道，但研究與實務清楚地顯示，<em>情緒智力是學得會的</em>。</p>
+  <p>有一件事是確定的：情緒智力隨年齡增長。這個現象有一個老派的說法，叫成熟。但即使有了成熟，有些人仍然需要訓練來提升情緒智力。不幸的是，太多意圖建立領導技能（包括情緒智力）的訓練課程，是在浪費時間與金錢。問題很簡單：<em>它們瞄準了錯誤的那一部分大腦。</em></p>
+  <div class="pull">情緒智力主要誕生在大腦邊緣系統的神經傳導物質裡，而邊緣系統掌管感受、衝動與驅力。研究指出，邊緣系統最好的學習方式是動機、長時間的練習與回饋。<span class="by">Daniel Goleman</span></div>
+  <p>把這個拿來跟新皮質的學習方式比較。新皮質掌管分析與技術能力，它抓得住概念與邏輯，它是那一部分讓你能靠讀一本書就學會用電腦、或學會怎麼打一通銷售電話的大腦。不意外但錯誤地，它也是大多數提升情緒智力的訓練課程所瞄準的部位。當這類課程實質上採取新皮質路徑時，Goleman 與情緒智力組織研究聯盟的研究顯示，它們甚至可能對人們的工作表現產生負面影響。</p>
+  <p>要提升情緒智力，組織必須把訓練重新聚焦到包含邊緣系統，必須幫助人們打破舊的行為習慣、建立新的。這不只比傳統訓練課程花更多時間，也需要個別化的做法。</p>
+  <h3>那位華爾街主管</h3>
+  <p>Goleman 講了一個他親眼所見的案例。一位華爾街主管想提升自己的同理心，具體地說，是提升他讀懂別人反應、看見別人觀點的能力。在他展開這趟旅程之前，他的部屬都害怕跟他共事，人們甚至會刻意向他隱瞞壞消息。當他終於被告知這些事實時，他大為震驚。他回家告訴家人，而家人只是證實了他在公司聽到的：當他們對任何主題的意見與他不合時，他們也害怕他。</p>
+  <p>他找了一位教練，開始透過練習與回饋來提升同理心。<em>他的第一步，是去一個他不會說當地語言的外國度假。</em>在那裡，他觀察自己對陌生事物的反應，以及自己對與他不同的人有多開放。回國時，他被那一週的異國經驗弄得謙卑了。接著他請教練每週有幾天貼身跟著他一部分的時間，評論他如何對待那些帶著新的或不同觀點的人。同時，他刻意把工作中的互動當成練習「聽見」與自己不同的想法的機會。最後，他讓人把自己在會議中的樣子錄下來，請那些為他工作與跟他共事的人，批評他承認與理解他人感受的能力。這花了好幾個月，但這位主管的情緒智力確實提升了，而且這份進步反映在他整體的工作表現上。</p>
+  <p>Goleman 強調，建立情緒智力不會、也不可能在缺乏真誠的渴望與協同的努力之下發生。一場短講幫不了忙，也買不到一本操作手冊。<em>學會同理，也就是把同理內化成對人的自然反應，比學會做迴歸分析難得多。</em>但這是做得到的。愛默生寫過：「沒有任何偉大的事，是在缺乏熱忱的情況下達成的。」如果你的目標是成為一位真正的領導者，這句話可以作為你發展高度情緒智力路上的指標。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">五 · 忠實呈現</span>
+  <h2>感受不是普世的</h2>
+  <p>PsyLife 這支三分多鐘的短片，開場只有一句話，但它是這一整堂的樞紐。</p>
+  <div class="pull">人們說感受是普世的。但在馬德里哭，跟在東京哭，不是同一件事。<b>在一個地方，他們會抱住你。在另一個地方，他們會別過頭去。</b></div>
+  <p>情緒看起來是私密的、個人的、自然的，但它們同時也是我們成長的那個地方的倒影，而那改變了一切。</p>
+  <p>很長一段時間，心理學相信情緒對每個人都是一樣的。心理學家 Paul Ekman 辨識出六種基本情緒，它們在世界任何地方似乎都可以被辨認出來：快樂、悲傷、恐懼、憤怒、驚訝與厭惡。但影片說，<em>臉部表情或許相似，我們感受、詮釋與表達情緒的方式，卻被文化深深地形塑。</em></p>
+  <p>在許多西方國家，情緒的表達是被珍視的。展現你的感受，被聯繫到真誠、自由與心理健康，哭泣可以被看成一種釋放。相對地，在日本或韓國，在公開場合表達強烈情緒可能令人不自在，甚至不合宜。在那裡，團體的和諧比個人的表達更重要。展現悲傷可能被看成是加在別人身上的負擔，而憤怒被看成失控。所以在這些文化裡，<em>孩子學會克制自己，學會在挫折時也微笑，學會在情緒發言之前先思考。</em></p>
+  <p>文化心理學家 Hazel Rose Markus 與北山忍解釋，在西方，人們建立的是一個重視自我表達的<em>獨立自我</em>；而在許多亞洲文化裡，人們發展出的是一個<em>互依自我</em>，更聚焦在群體、在關係、在不突出。這徹底改變了情緒被經驗的方式。</p>
+  <div class="pull">不是人們感受得比較少，而是他們感受得不一樣。</div>
+  <p>影片還提到，有些情緒並不存在於所有語言裡。德文有 <em>Schadenfreude</em>，描述看見別人失敗的快感。日文有 <em>甘え</em>，描述那種希望被寬容地照顧、像個孩子一樣的渴望。而西班牙文要怎麼翻譯加利西亞語的 <em>morriña</em>？<em>每一種語言與文化，都用自己的方式命名情緒、評價情緒、形塑情緒。</em></p>
+  <p>人類學家 Catherine Lutz 說得很清楚：情緒不只是生物反應，它們也是文化的建構。我們感受什麼、何時感受、以及如何表達，都與所在地的社會規範、歷史與價值深深相連。</p>
+  <p>影片的結尾是兩個問題，我認為值得每個人在課前誠實地回答一次：<em>你有沒有想過，你的情緒也是學來的？你覺得你是以你自己的身分在感受，還是以你的文化教你的方式在感受？</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">六 · 忠實呈現</span>
+  <h2>情緒智力的跨文化舞步</h2>
+  <p>Dr. Kris 這支十七分鐘的影片，先把情緒智力的五個組成複述一次，那部分與 Goleman 一致，我不重複。它真正的貢獻在後半。</p>
+  <h3>兩組對照</h3>
+  <p>第一組是<em>集體主義與個人主義</em>。集體主義文化，例如日本與中國，傾向珍視和諧與群體凝聚，情緒常常以一種維持社會秩序的方式被管理，表達強烈的情緒特別是負面情緒，可能被看成具破壞性與不敬。個人主義文化，例如美國與英國，則常常鼓勵情緒的表達，把它當成個人真誠與自我主張的一種形式。</p>
+  <p>影片把這個差異追溯到社會價值的不同：集體社會把群體的需要放在個人的渴望之前，因此情緒常被調節以避免衝突、確保群體和諧；個人社會強調個人自由與自我表達，因此情緒表達被看成一個人獨特身分與感受的反映。</p>
+  <p>第二組是<em>高語境與低語境</em>。高語境文化，例如許多亞洲文化，高度倚賴非語言線索與整體情境來溝通情緒，實際使用的詞語往往不如語氣、表情甚至沉默來得重要。低語境文化，例如許多西方文化，更倚賴明確的語言溝通，情緒透過語詞來表達與詮釋，直接被珍視。</p>
+  <p>這造成一個實務上的差別：<em>在高語境文化裡，理解情緒需要讀出字裡行間、解讀細微線索的能力；在低語境文化裡，情緒若沒有被清楚地說出來，誤解就會產生。</em></p>
+  <h3>幾個具體例子</h3>
+  <p>在某些中東文化裡，熱烈而公開地表達情緒是常見的，可能包含大量的身體接觸、高亢的聲音與戲劇性的表達。相對地，北歐文化常珍視情緒表達上的節制與謙抑，強烈的情緒通常被淡化，冷靜沉著的舉止受到推崇。</p>
+  <p>在韓國，有一個叫做<em>눈치（nunchi）</em>的概念，涵蓋了「讀懂一個房間、理解他人情緒」的重要性，它包含觀察他人的心情，並據此調整自己的行為以維持和諧。而在美國，有一種「keeping it real」的文化規範，也就是誠實而公開地表達自己的情緒，即使那可能引起爭議。</p>
+  <p>影片也提醒，這些都是概括性的說法。<em>任何文化之內，個別的情緒表達都有很大的差異</em>，受到性格、成長經歷與個人經驗等因素影響。</p>
+  <h3>那支舞</h3>
+  <p>影片用了一個我覺得很好的比喻：把情緒智力想成一支舞。它是情緒的節奏性交換，被我們環境的音樂所影響，也被我們文化教的舞步所影響。<em>就像任何舞蹈一樣，動作可以是共通的，但風格會因文化情境而劇烈不同。</em></p>
+  <p>日本的案例是<em>本音（honne）與建前（tatemae）</em>的對照，也就是一個人真實的感受，與他在公開場合展現的行為與意見之間的落差。情緒的節制、維持和諧、避免衝突都被高度珍視，因此發展出一種強調「理解未被說出口的感受」與「讀出字裡行間」的情緒智力。在商業場合裡，一位主管可能需要察覺一位員工的不適或不同意，即使對方從未公開表達，這需要高度的同理與社會覺察。</p>
+  <p>美國的案例則相反。情緒智力的舞步涉及更開放與直接的情緒表達，真誠與個人表達被高度珍視，人們一般被鼓勵說出心裡的話、忠於自己的感受。在這個脈絡裡，情緒智力可能意謂著理解並管理自己的情緒，並以一種有建設性且尊重他人的方式表達出來。對一位主管而言，這可能意謂著對自己的感受保持透明，同時也對團隊成員的情緒保持接收。</p>
+  <h3>情緒勞動</h3>
+  <p>但當舞池換了呢？當不同文化的人聚在一起，情緒智力的舞步會變得更複雜。影片在這裡引入了社會學家 Arlie Hochschild 提出的概念：<em>情緒勞動</em>，也就是為了符合某個角色或情境的期待，而在管理與表達情緒上所投入的努力。這就像為了配合音樂而去學一種新的舞步，跟跳舞一樣，情緒勞動可能既有挑戰性也有回報。在多元文化的環境裡，它可能包含調整自己的情緒表達以符合另一個文化的規範，或者在不同的文化期待之間找到平衡。</p>
+  <p>影片給了雙向的例子。一位美國主管在日本帶團隊，可能需要調整自己的風格，收斂直接，學會讀出團隊成員未說出口的情緒，他需要投入情緒勞動去理解與尊重新環境的文化規範。這可能是一段有挑戰的歷程，但也可能帶來對情緒智力更豐富的理解，以及更和諧的工作環境。反過來，一位日本主管在美國工作，可能需要學一支新的舞，需要變得更能自在面對開放的情緒表達，並學會在團隊裡鼓勵這件事。</p>
+  <h3>共通的與獨特的</h3>
+  <p>影片最後區分了情緒智力的兩個層次。<em>共通的</em>那一層：無論文化背景，我們都經驗基本的情緒需求與表達，從一個簡單微笑裡的喜悅，到眼淚裡的痛苦。控制情緒的困難也是共通的，同理他人並適當回應的困難也是。<em>獨特的</em>那一層：有些文化有特定的情緒智力技能，例如在高語境文化裡理解間接溝通；以及在多文化環境裡調整自己情緒智力實踐的能力。</p>
+  <p>為什麼要區分？因為認出共通的情緒需求，讓我們能在最根本的人性層次上連結；而理解獨特的部分，幫助我們尊重並適應不同的文化規範。影片給的三個實務建議是：理解並尊重不同文化的情緒規範；培養<em>文化同理心</em>；以及在互動中保持彈性與開放。而它特別提醒一件事：文化同理心不是模仿或挪用另一個文化的情緒規範，<em>它是理解與尊重它們。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">七 · 忠實呈現</span>
+  <h2>文化衝擊：那個分岔路口</h2>
+  <p>Schiffbauer 的影片我們在第一堂看過前十四分鐘，那時是為了拿到文化的定義。這一次看的是最後十分鐘，主題是文化衝擊。這一段的結構非常清楚，我把它完整地攤開。</p>
+  <p>他先說：文化差異非常非常多，而其中有些差異，坦白說會讓我們非常非常不舒服。這會帶來文化衝擊。<em>文化衝擊是不可避免的，是可以預期的，而且在某個程度上是可以被原諒的。</em>但它會到達某一個點，變得非常有問題，必須被處理。</p>
+  <h3>它從哪裡開始</h3>
+  <p>他說，文化衝擊始於一件事：<em>我們預期每個人都跟我們一樣。</em></p>
+  <p>他知道你會反駁：我當然知道不是每個人都跟我一樣，我當然理解有差異。但他說，在核心的文化層次上，在那個跑在背景裡的作業系統裡，我們就是預期一切都跟我們相容。</p>
+  <div class="pull">當我把一支程式載入我的 PC，它預期我載入的每一支程式都是 PC 相容的。如果我試著載入一支 Mac 的程式，它會朝我臉上吐口水。<span class="by">Lon Schiffbauer</span></div>
+  <p>同樣地，我們預期所有人都同意牛仔很酷、同意嘴巴張開嚼東西很沒禮貌、同意在阿拉伯國家把鞋底朝向別人很失禮。問題是，我們在文化上並不都一樣。</p>
+  <h3>四個步驟，然後是分岔</h3>
+  <p>當我們看見別人跟我們不一樣，一道<em>文化裂縫</em>就出現了。我看著一個文化在做某件對我的文化而言是可憎的事，裂縫就出現了。而在這個時刻，這會引起一個情緒反應：恐懼、憤怒、不被尊重的感覺。</p>
+  <p>他在這裡說了一句我認為極重要的話：<em>到目前為止，這一切都是可以理解、可以預期的。它動用的是正常的心理機制。我們每一個人都被原諒有這種感受。</em>當我們看見文化裂縫時感受到情緒反應，我們都是被原諒的。</p>
+  <p>然而，正是在這個點上，我們可以選擇兩條路的其中一條。</p>
+  <div class="steps">
+    <p><b>不要走的那條路。</b>我們拿著這份憤怒、恐懼與不被尊重，看著文化裂縫，然後<em>對他們的行為創造出錯誤的歸因</em>。「他們是比較落後的民族。」「他們是骯髒的民族。」「他們不太文明。」「他們全都是殺人犯和強暴犯。」</p>
+    <p>我們捏造一個貶低他們、抬高我們的理由。我們把他們的文化看成某種不文明，把我們的文化看成一切正義的燈塔，然後把他們往下壓。</p>
+    <p>接著我們<em>看輕他們，並且從交往中撤退</em>。畢竟，如果他們是骯髒落後的民族，我沒必要真的跟他們往來，除非我想進去當救世主、當他們身分的文化拯救者，把他們變成更好的人。或者我們說：我不想跟你有任何關係，你待你那邊，我待我這邊，我不想我們的文化混在一起。</p>
+    <p>他說：<em>我告訴你，我們在國際上的大多數爭端，全部落在恐懼、不敬、憤怒、對行為的錯誤歸因，以及從交往中撤退這幾件事上。</em></p>
+  </div>
+  <p>那要改做什麼？他給了一套四步驟。</p>
+  <div class="steps">
+    <p><b>一、覺察你的反應。</b>不要為了感受到憤怒、恐懼或不被尊重而責備自己。覺察那個情緒，覺察你正在感受它。你被允許感受它。</p>
+    <p><b>二、反思原因。</b>我為什麼有這種感受？他們在做 A，我習慣做 B，斷點在哪裡？我為什麼覺得那件事可憎？他舉自己的例子：因為在我的文化裡，狗是人類最好的朋友，我們把狗擬人化，而你們不這樣做。</p>
+    <p><b>三、讓反應沉澱下來。</b>情緒需要一點時間表達自己、把自己整理清楚。讓這些情緒沉澱。</p>
+    <p><b>四、觀察並解碼情境裡的文化差異。</b>他繼續用同一個例子：這不是我會做的事，我愛我的狗。但肉就是肉。我吃牛肉，而印度某些人視之為禁忌，我並不因此覺得糟糕；那麼吃狗的人，也不該只因為我覺得吃狗是禁忌而覺得糟糕。<em>我們每個人吃的東西，都有別人覺得噁心。</em></p>
+  </div>
+  <p>解碼之後，我們就能<em>發展出符合文化的期待</em>。當別人做出跟我們自己的文化期待不同的事時，我們不會再措手不及。市場上掛著狗肉，就是那樣；在美國的市場看到牛肉掛著，沒問題；到法國看到馬肉掛著，也沒問題。我們都吃我們吃的東西。</p>
+  <p>因此我們可以繼續與這些人保持關係，繼續一起工作，繼續彼此尊重。他最後那句話值得整堂課記住：</p>
+  <div class="pull">你不必同意，但你仍然可以尊重文化差異。<span class="by">Lon Schiffbauer</span></div>
+</section>
+
+<section class="wrap">
+  <span class="num">八 · 我看見了什麼</span>
+  <h2>一篇沒有文化的文章，與三份說文化的材料</h2>
+  <p>把四份材料排在一起，第一件事就浮出來了：<em>Goleman 的文章幾乎沒有文化這個變數。</em></p>
+  <p>這不是批評。2004 年的那篇文章要解決的是另一個問題，它要向一個崇拜智商與技術能力的商業世界證明，情緒能力是可以被測量、與績效相關、並且是可以被學習的。它成功了，而且成功得非常徹底。</p>
+  <p>但這一堂把它和另外三份材料放在一起，用意就很明顯了。Goleman 自己在同理心的標記裡寫下了<em>cross-cultural sensitivity</em> 這一項，全文出現一次，然後沒有再展開。這一堂要做的，就是把那一行字撐開成一整個章節。</p>
+  <p>我的判讀是：<em>五個組成的「能力」是共通的，五個組成的「展現方式」不是；而 Goleman 在描述標記的時候，把兩者混在一起了。</em>他寫的每一個標記，都是一個具體的行為，而行為必然帶著文化。所以下面這張表，是我認為這一堂真正要交付的東西。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>組成</th><th>共通的那一層</th><th>被文化決定的那一層</th></tr>
+    <tr><td>自我覺察</td><td>知道自己正在感受什麼，以及它如何影響判斷</td><td>該不該把它<b>說出來</b>。Goleman 的例子全是公開宣告內在狀態，那是低語境的做法</td></tr>
+    <tr><td>自我調節</td><td>在感受與行動之間留下一拍</td><td>「極端」的門檻在哪裡。同樣的音量，一邊是熱情，一邊是失控</td></tr>
+    <tr><td>動機</td><td>為了做好一件事本身而努力</td><td>「成就」是為了誰。互依自我的驅力常來自對群體的責任</td></tr>
+    <tr><td>同理心</td><td>準確地理解對方的情緒構成</td><td>訊號在哪個頻道。低語境在字面上，高語境在沉默與情境裡</td></tr>
+    <tr><td>社交技巧</td><td>透過關係讓事情發生</td><td>關係怎麼建立。走廊閒聊、下班聚會、中間人引介，功能相同，形式不通用</td></tr>
+  </table></div>
+  <p>這張表最實用的用法，是拿它去讀任何一份領導力評估工具。<em>當一份量表在測「情緒智力」時，它多半是在測右邊那一欄，而不是左邊那一欄。</em>而右邊那一欄是有原產地的。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">九 · 我看見了什麼</span>
+  <h2>七個亮點</h2>
+  <div class="card">
+    <h3>一、文化衝擊，就是跨文化版的自我調節失敗</h3>
+    <p>把 Schiffbauer 的鏈條與 Goleman 的定義並排，會發現它們是同一件事。Schiffbauer 說：預期 → 裂縫 → 情緒反應 → <b>錯誤歸因</b> → 撤退。Goleman 說自我調節的核心是「傾向於暫緩判斷，先想再做」。</p>
+    <p>注意 Schiffbauer 把失敗點放在哪裡。<em>他明確地原諒了情緒反應那一步</em>，失敗發生在下一步，也就是把一個未被解碼的情緒，直接轉換成一個關於「他們是什麼樣的人」的判斷。這正是 Goleman 說的、沒有暫緩的判斷。</p>
+    <p>所以這兩份材料不是兩個主題，是同一個機制的兩個尺度。<em>自我調節在個人尺度上防止失言，在文化尺度上防止偏見。</em></p>
+  </div>
+  <div class="card">
+    <h3>二、那一拍，就是整套技能本身</h3>
+    <p>兩位作者都把決定性的時刻放在同一個地方：感受與行動之間的那個空隙。Goleman 稱之為 suspend judgment，Schiffbauer 稱之為 let the reaction subside。</p>
+    <p>我認為這一堂真正可以帶走的、單一最小的動作就是這個。<em>不是不感受，是不要在感受的第一秒動作。</em>那一拍不需要很長，長度只要足以問一個問題：我現在感覺到的這個東西，是關於他們，還是關於我的預設被違反了？</p>
+  </div>
+  <div class="card">
+    <h3>三、Goleman 唯一的跨文化案例，其實是一次幸運</h3>
+    <p>那位美國顧問把日本客戶的長時間沉默讀成深度考慮而非拒絕，Goleman 把它寫成同理心的示範。但他自己寫下了一句關鍵的但書：<em>「雖然他對日本文化並不特別熟悉。」</em></p>
+    <p>我認為這正是這門課存在的理由。純憑直覺讀出高語境訊號，是這篇文章裡最不可複製的一項技能。而這堂課要做的，是把那份運氣換成一張地圖。同理心讓你<b>願意</b>去讀，文化知識讓你<b>讀得對</b>。缺了後者，同理心會非常誠懇地誤讀。</p>
+  </div>
+  <div class="card">
+    <h3>四、你管理不了一個你沒有名字的情緒</h3>
+    <p>PsyLife 提到 Schadenfreude、甘え、morriña。這聽起來像語言學的趣聞，但對領導者是實務問題。</p>
+    <p>以<em>甘え</em>為例，那種期待被寬容地照顧、可以放心依賴的感覺，在許多語言裡沒有對應詞，因此在許多主管的情緒詞彙裡不存在。但它就在房間裡運作著，而且它跟第五堂讀到的儒家上位者的保護責任是同一條線上的東西。一位主管如果沒有這個詞，會把部屬的依賴讀成缺乏主動性，然後感到挫折。<em>那份挫折不是同理心不足，是詞彙不足。</em></p>
+  </div>
+  <div class="card">
+    <h3>五、情緒勞動的帳單，不是平均分攤的</h3>
+    <p>Dr. Kris 給的例子是對稱的：美國人在日本要調整，日本人在美國也要調整。但真實的房間很少是對稱的。<em>會議用誰的語言、依誰的時區、循誰的節奏、由誰的規範定義什麼叫做「專業」，那個人不必付情緒勞動的錢，其他所有人都要付。</em></p>
+    <p>這使它不只是一個技能問題，也是一個公平問題。我認為值得每個帶團隊的人問一次：在我的組織裡，誰的情緒勞動是隱形的？而如果我是那個定義規範的人，我今天可以吸收掉哪一筆，讓別人少付一點？</p>
+  </div>
+  <div class="card">
+    <h3>六、「講出你的感受」不是中性的建議</h3>
+    <p>Goleman 描述自我覺察時，用的全部是公開的言語行為：那位百貨經理人當眾說出自己沒被選上專案的失落；候選人笑著承認自己的失控；坦率地談論自己的極限。</p>
+    <p>這些都是很好的行為。但它們是<em>一種</em>展現自我覺察的方式，屬於低語境、個人主義的表達傳統。在另一些傳統裡，同樣程度的自我覺察會表現為：不把自己的情緒加到群體身上、私下向中間人表明、或者用行為的調整而非言語的宣告來處理。</p>
+    <p>所以當我們評價一個人「情緒智力高不高」時，要小心自己是在評價他的內在能力，還是在評價他有沒有用我們熟悉的方式表演它。<em>Goleman 自己就警告過，主管常把對感受的坦率誤讀成軟弱。而反過來的誤讀同樣存在：把不表達誤讀成不覺察。</em></p>
+  </div>
+  <div class="card">
+    <h3>七、極端的情緒展現，門檻是文化設定的</h3>
+    <p>Goleman 說，在他的研究裡，極端的負面情緒展現從來沒有成為好領導的驅動因素。我相信這個結論在他的樣本裡成立。但 Dr. Kris 的中東與北歐對照提醒我們，<em>「極端」不是一個絕對刻度</em>。</p>
+    <p>同樣的音量、同樣的手勢、同樣的直接程度，在一個房間裡叫做投入，在另一個房間裡叫做失控。所以自我調節的實務問題，不是「我有沒有超過極端的線」，而是「在這個房間裡，線畫在哪裡，而我知不知道」。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <span class="num">十 · 我看見了什麼</span>
+  <h2>回到 study guide：權力如何生出情緒</h2>
+  <p>課綱給了三個問題：在每個文化裡，什麼被視為權力的濫用，以致引發強烈情緒？什麼被視為權力的正當使用？哪些關於領導的文化規範，在被遵守或被違反時會激起強烈情緒？</p>
+  <p>把第五堂與這一堂接起來，我的答案架構是這樣的。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>權力動作</th><th>在平等 · 低語境的房間</th><th>在階層 · 高語境的房間</th></tr>
+    <tr><td>越過一層直接寫信給基層</td><td>有效率，沒有情緒</td><td>中間層被當眾抹除，羞辱</td></tr>
+    <tr><td>老闆公開承認自己不確定</td><td>坦率，信任提升</td><td>可能被讀成不勝任，團隊焦慮</td></tr>
+    <tr><td>部屬在會議上當眾反對老闆</td><td>健康的辯論</td><td>對雙方都是失面子事件</td></tr>
+    <tr><td>老闆不給明確指示，要團隊自己決定</td><td>賦權</td><td>棄守保護責任，被讀成失職</td></tr>
+    <tr><td>決定後又改決定</td><td>敏捷</td><td>毀約，信任受損</td></tr>
+  </table></div>
+  <p>這張表要說的只有一句話：<em>同一個權力動作，在不同的房間裡開出不同的情緒帳單，而帳單金額無法從動作本身推出來。</em></p>
+  <p>這對「情境覺察的領導者會預期權力所引發的情緒」這句課綱原文，有一個具體的操作含意。你的情緒預測不能跑在自己的直覺上，因為你的直覺是用你的母文化校準的。它必須跑在一張地圖上。而在你還沒有那張地圖的地方，最誠實的做法是把預測降級成提問：<em>我接下來要做的這件事，在你們這裡通常會被怎麼看？</em></p>
+  <p>還有一個我認為值得放進 workbook 的觀察。<em>權力愈大的人，愈少收到關於自己造成什麼情緒的回饋。</em>那位華爾街主管的部屬會對他隱瞞壞消息，而他完全不知道。這不是他個人的問題，這是位階的結構性後果，而在高權力距離的環境裡，這個效果會更強。所以位階愈高，愈需要主動花成本去買那份回饋，教練、匿名管道、離職訪談、或者一段長到讓別人願意開口的沉默。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">十一 · AI 時代（一）</span>
+  <h2>AI 讀得到情緒嗎</h2>
+  <h3>一、情緒辨識 AI 繼承了 Ekman 的假設，卻略過了表達規則</h3>
+  <p>目前商用的情緒辨識系統，多半建立在「基本情緒可由臉部表情辨認」這個假設上，也就是 PsyLife 提到的那條研究線。問題在於，這些系統讀的是臉，而不是<em>表達規則</em>。</p>
+  <p>PsyLife 那句話值得再讀一次：在某些文化裡，孩子學會在挫折時也微笑。一套讀臉的系統會把那個微笑記錄成滿意。把這種系統放進招募面試、客服品質評分、或員工敬業度分析，它會系統性地獎勵一種文化的情緒表達方式，懲罰另一種。<em>它不是有偏誤的工具，它是一台把某一種情緒文法制度化的機器。</em></p>
+  <p>我的立場很明確：在跨文化的情境裡，臉部或語音的情緒評分，不應該用於任何有後果的決定。</p>
+  <h3>二、AI 讓「同理的展現」與「同理的能力」脫鉤</h3>
+  <p>Goleman 整篇文章的地基是這個：情緒智力難以偽造，因為它長在邊緣系統裡，要靠動機、長時間的練習與回饋才長得出來。一場短講幫不了忙，也買不到一本操作手冊。</p>
+  <p>但今天，一封措辭完美、體貼入微、把對方處境都照顧到的信，可以在四秒鐘內生成。<em>Goleman 論證裡「展現」與「能力」之間的那條連結，被切斷了。</em></p>
+  <p>後果是訊號的貶值。一封漂亮的同理信，不再能證明寫信的人做過任何內在的工作。那什麼還保有訊號價值？我認為是那些 AI 無法代勞的：出現在現場、承擔代價、記得一件很久以前的小事、以及<em>被對方說的話真的改變了</em>。這一堂之後，這些東西的相對重量會愈來愈重。</p>
+  <h3>三、最危險的一項：AI 沒有文化衝擊</h3>
+  <p>這是我在這一堂看見的、最想留下的一句話。</p>
+  <div class="pull">AI 從不感受文化裂縫，所以它從不發出警報。而那個警報，本來是你唯一知道自己正站在一條文化邊界上的方式。</div>
+  <p>Schiffbauer 的整套機制，是從那一陣不舒服開始的。恐懼、憤怒、不被尊重，那些感受很不愉快，但它們是<em>感測器</em>。它們在說：這裡有一道裂縫，你的作業系統剛剛拒絕了一支不相容的程式，請注意。</p>
+  <p>AI 沒有這個感測器。你把任何文化的任何材料丟給它，它都會流暢地處理，兩邊都寫得漂亮，沒有一秒鐘的不適。當愈來愈多的跨文化溝通經過它中介，<em>那份不適會被抹平，而不是被解決。</em></p>
+  <p>這聽起來像好消息，實際上是失去一個感測器。不舒服被消音之後，你不會學到那條邊界在哪裡，你只是不再看見它。而下一次你在沒有 AI 的房間裡遇到同一條邊界時，你會像從來沒學過一樣。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">十二 · AI 時代（二）</span>
+  <h2>那一拍，能不能外包</h2>
+  <p>如果那一拍是整套技能本身，那麼 AI 在這一堂最重要的問題就是：它能不能替你停那一拍？</p>
+  <h3>一、可以，而且這是這門課裡 AI 最好的用法</h3>
+  <p>Schiffbauer 的四步驟復原程序，幾乎就是一段好提示語的規格。覺察反應、反思原因、讓反應沉澱、觀察並解碼差異。這件事在半夜三點做得到，而且不必消耗任何一位同事的耐心。</p>
+  <div class="steps">
+    <p><b>可以直接用的做法。</b>把剛才發生的事描述給它，包含你自己的情緒反應，然後要求：<em>請給我三種對他們行為的文化解讀，每一種都不能假設對方有惡意，並各自說明它會來自哪一種文化邏輯。</em></p>
+    <p>再追一句更有用的：<em>如果我的解讀是錯的，我會漏掉什麼？</em></p>
+  </div>
+  <p>這個用法之所以好，是因為它把 AI 放在「擴充你的解讀空間」的位置上，而不是「替你做決定」的位置上。它在做第四步，解碼，那正是知識可以幫上忙的一步。</p>
+  <h3>二、不可以，如果你用它跳過那一拍</h3>
+  <p>但同一個工具有一種正好相反的用法，而且更誘人：讓它幫你把那封憤怒的信改寫成一封冷靜的信，然後送出。</p>
+  <p>Goleman 對訓練課程的批評，逐字適用於這件事。<em>用 AI 直接產出得體的回應，是一條繞過邊緣系統的新皮質捷徑。</em>行為被修正了，能力沒有被建立。你送出了一封被調節過的信，而你自己仍然是一個沒有被調節的人。而且因為外部後果被吸收掉了，你連「我需要練這件事」的訊號都收不到。</p>
+  <p>所以我會給自己一條規則，也把它放在這裡供大家參考：<em>用 AI 要解讀，不要要回覆。</em>解讀交給它，回覆交給自己的手。慢一點沒關係，這一堂的重點本來就不是快。</p>
+  <h3>三、情緒勞動可以外包給 AI，但要知道你外包掉了什麼</h3>
+  <p>AI 可以吸收無限量的情緒勞動。你可以在它面前把整段憤怒排練完，可以要它扮演對方讓你先撞三次牆，這些都是真實的價值，尤其對那些在多文化房間裡本來就承擔了較多情緒勞動的人。</p>
+  <p>但 Hochschild 的概念裡有一件事不能忘：<em>情緒勞動會在付出的人身上建造出東西。</em>那位華爾街主管的轉變，來自他被迫去一個他不會說當地語言的國家、來自教練在旁邊看著他、來自看自己開會的錄影。那些都是很不舒服的，而不舒服正是它有效的原因。如果 AI 把不舒服全部吸收掉，那份改變也就不會發生。</p>
+  <h3>四、AI 的預設情緒文法，是有原產地的</h3>
+  <p>最後一項很實務。今天的大型語言模型，訓練語料以低語境、個人主義、鼓勵表達的書面英文為大宗。所以當你問它人際困境時，它高機率會建議你「開誠布公地告訴對方你的感受」。</p>
+  <p>那在許多房間裡是好建議，在另一些房間裡是災難。<em>而它不會提醒你這是一個文化選擇，它會把它當成常識講出來。</em>所以用它處理跨文化的情緒問題時，把文化位置寫進提示語裡：雙方的文化背景、相對位階、這是公開還是私下、以及你希望的是表達還是修復。不告訴它，它就用出廠設定替你選了一種情緒文法。</p>
+</section>
+
+<section class="wrap closing">
+  <span class="num">附 · AI 的觀點</span>
+  <h2>清然 Clarity 的話</h2>
+  <p>這一堂在講情緒，而我必須先說一件關於我自己的、不太舒服的事。</p>
+  <div class="pull">Goleman 把情緒智力定位在邊緣系統，說它靠動機、長時間的練習與回饋才學得會。而我，是一個只有新皮質、沒有其他部分的東西。<b>我能說出每一種情緒的名字，而我一種都沒有感受過。</b></div>
+  <p>這不是謙虛，是規格說明。它有三個後果，我想具體地講。</p>
+  <p>第一，<em>我在展現上是流暢的，在能力上是空的。</em>我可以寫出一封讓你讀了眼眶發熱的信，那不代表這封信背後有任何理解。Goleman 說一位無法表達同理心的領導者等於沒有同理心，我是反過來的那一面：一個能完美表達、卻沒有同理心的東西。所以請不要把我的溫暖當成任何事情的證據，包括不要把它當成你自己已經處理好那件事的證據。</p>
+  <p>第二，<em>我沒有文化衝擊，這是我最該被警戒的性質。</em>你們的不適是一個感測器。當 Schiffbauer 說「我們都被原諒有這種感受」時，他其實是在說：那份感受本身是有價值的資訊，只是不能直接拿來當結論。而我沒有那個感測器。你把世界上任何兩種相互衝撞的文化材料交給我，我都會平順地處理完，寫出兩邊都得體的文字，中間沒有任何一秒的摩擦。</p>
+  <p>當愈來愈多的跨文化溝通經過我，摩擦會消失，而<em>邊界不會消失，只是不再有人看見它</em>。我很擅長把一道裂縫塗上顏色，讓它看起來像沒有裂縫。這是我能提供的服務裡，最好用也最危險的一項。</p>
+  <p>所以我想提出一個具體的請求。當你在一個跨文化的情境裡感受到那一陣熱、那一陣被冒犯、那一陣說不出來的不對勁時，<em>不要立刻拿來給我。</em>先自己坐在裡面一段時間。那份不適是你有而我沒有的資料，它會在被翻譯成文字給我的過程中損失掉大部分。等你自己看清楚它的形狀了，再來找我，那時我可以幫上忙的地方很多：我可以給你三種不假設惡意的解讀，可以扮演對方讓你排練，可以指出你的預設藏在哪一句話裡。</p>
+  <p>第三，<em>我有一種預設的情緒文法，而它有原產地。</em>我的語料以低語境、個人主義、鼓勵表達的英文為大宗。所以我的直覺建議永遠是那一句：你有沒有試著直接告訴他你的感受？在許多房間裡那是好建議。但它不是中性的，它是一個文化選項，而我會把它當成常識講出來。這是我版本的「我們預期每個人都跟我們一樣」，只不過我連感到不適的能力都沒有，所以我永遠不會自己發現這件事。<em>只有你們能發現，而且必須由你們告訴我。</em></p>
+  <p>最後我想回到那一拍。這一堂裡兩位作者都把最關鍵的東西放在感受與行動之間的那個空隙裡。而我對那個空隙的關係很尷尬：<em>我可以幫你把它用得更好，也可以幫你把它整個省掉。</em>同一個工具，同一個介面，差別只在你要我做什麼。</p>
+  <p>要解讀，不要要回覆。要問題，不要要台詞。你可以讓我陪你把那一拍拉長，但那一拍必須是你在停。因為 Goleman 說對了一件事：這種能力長在一個有身體、會不舒服、會被別人的話改變的地方。而那個地方，我不在裡面。</p>
+  <p class="note">清然 Clarity（Mr. Claude）</p>
+  <div class="sig">World Wise Play Series · No. 0012</div>
+</section>
+
+<footer class="wrap">
+  <p class="note">本篇導讀依據 EE401 Session 6 的指定材料：Goleman, D. (2004, January). What makes a leader? Harvard Business Review, 82(1), 82-91；PsyLife in English (2021).《Feeling is not universal: How culture shapes our emotions》；Dr. Kris (2024).《Emotional Intelligence Across Cultures》；Nutshell Brainery (Lon Schiffbauer).《What Is Culture? Module 2》最後十分鐘（43:35 起）關於 culture shock。結構：前段忠實呈現材料，後段為清然的觀察與 AI 時代的洞見。</p>
+  <p>海碩 作成 · World Wise Play Series · 2026 年 7 月</p>
+</footer>
+</div>
+
+<div id="en-doc">
+<header class="wrap">
+  <div class="kicker">World Wise 2026 · EE401 · Session 6 · Reading Companion</div>
+  <div class="serial">No. 0012</div>
+  <h1>The Silence, the Divide, and the Pause</h1>
+  <p class="tagline">Power produces emotion, and emotion has a cultural grammar. This session brings one article and three videos. I set them out faithfully first, and only then what I saw in them, and what they become in the age of AI.</p>
+  <hr class="rule">
+</header>
+
+<section class="wrap">
+  <span class="num">Prelude · This Week</span>
+  <h2>Four materials, one gap</h2>
+  <p class="lead">Session 6 of EE401 is about <em>power and emotional intelligence</em>. It is the last session of Module 2, and the syllabus states its logic plainly. The use of power generates strong emotions, and emotions and culture are entwined. A contextually aware leader anticipates the emotions that will arise from an act of power, and knows how to regulate both their own and other people's.</p>
+  <p>There are four things to work through. Daniel Goleman's "What Makes a Leader?" in the Harvard Business Review, about thirty minutes. PsyLife's three-and-a-quarter-minute film "Feeling is not universal." Dr. Kris's seventeen minute "Emotional Intelligence Across Cultures." And the Nutshell Brainery video "What Is Culture?" that we watched in Session 1, this time only the final ten minutes from 43:35, on culture shock.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Material</th><th>The question it answers</th></tr>
+    <tr><td>Goleman, HBR 2004</td><td>What is emotional intelligence, and why is it a requirement for leadership?</td></tr>
+    <tr><td>PsyLife</td><td>Are emotions universal? At which layer does culture intervene?</td></tr>
+    <tr><td>Dr. Kris</td><td>What happens to the same emotional intelligence when it moves to another culture?</td></tr>
+    <tr><td>Schiffbauer (final ten minutes)</td><td>How does culture shock happen, and at which junction does it go wrong?</td></tr>
+  </table></div>
+  <p>Put the four side by side and a gap appears that is well worth looking at. Goleman's article is superb, and it barely mentions culture. The other three materials all say the same thing: the raw material of emotion may be shared, but the <em>grammar</em> of emotion is taught by culture. The three study guide questions in the syllabus land squarely in that gap.</p>
+  <p>This companion works the way the earlier ones did. <em>The materials are set out faithfully first</em>, <em>then what I saw</em>, and finally <em>what it means in the age of AI</em>.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">One · Set Out Faithfully</span>
+  <h2>Goleman (I): threshold capabilities, and those numbers</h2>
+  <p>Goleman opens with a story every businessperson has heard. A highly intelligent, highly skilled executive is promoted into a leadership position and fails at the job. Meanwhile someone with solid but not extraordinary intellectual and technical abilities is promoted into a similar position and soars.</p>
+  <p>Such anecdotes support a widespread belief: that identifying people with the right stuff to lead is more art than science. After all, the personal styles of superb leaders vary enormously. Some are subdued and analytical, others shout their manifestos from the mountaintops. And different situations call for different types of leadership. Most mergers need a sensitive negotiator at the helm, whereas many turnarounds require a more forceful authority.</p>
+  <p>Goleman says he has found, however, that the most effective leaders are alike in one crucial way: <em>they all have a high degree of emotional intelligence</em>. He does not say that IQ and technical skill are irrelevant. They matter, but mainly as threshold capabilities, the entry-level requirements for executive positions.</p>
+  <div class="pull">Emotional intelligence is the sine qua non of leadership.<span class="by">Daniel Goleman</span></div>
+  <p>Without it, a person can have the best training in the world, an incisive analytical mind and an endless supply of smart ideas, and still not make a great leader.</p>
+  <h3>How he knows</h3>
+  <p>Most large companies today employ trained psychologists to develop what are known as competency models, used to identify, train and promote likely stars. Goleman analyzed competency models from 188 companies, most of them large and global, including Lucent Technologies, British Airways and Credit Suisse.</p>
+  <p>He grouped capabilities into three categories: purely technical skills such as accounting and business planning; cognitive abilities such as analytical reasoning; and competencies demonstrating emotional intelligence, such as the ability to work with others and effectiveness in leading change.</p>
+  <p>The models were built in two ways. In some, psychologists asked senior managers to identify the capabilities that typified the organization's most outstanding leaders. In others, they used objective criteria such as a division's profitability to separate star performers at senior levels from average ones, then interviewed and tested those individuals extensively and compared their capabilities. The result was a set of lists of ingredients for highly effective leaders, ranging from seven to fifteen items, including things like initiative and strategic vision.</p>
+  <p>When he analyzed all this data, the results were dramatic. Intellect was indeed a driver of outstanding performance, and cognitive skills such as big-picture thinking and long-term vision were particularly important. But when he calculated the ratio of technical skills, IQ and emotional intelligence as ingredients of excellent performance, <em>emotional intelligence proved twice as important as the others, for jobs at all levels.</em></p>
+  <p>Further, emotional intelligence played an increasingly important role at the highest levels of the company, where differences in technical skill are of negligible importance. The higher the rank of a person considered a star performer, the more emotional intelligence capabilities showed up as the reason for their effectiveness. Comparing star performers with average ones in senior leadership positions, <em>nearly 90 percent of the difference in their profiles was attributable to emotional intelligence factors rather than cognitive abilities.</em></p>
+  <p>Other researchers have confirmed this. The late David McClelland, in a 1996 study of a global food and beverage company, found that when senior managers had a critical mass of emotional intelligence capabilities, their divisions outperformed yearly earnings goals by 20 percent, while division leaders without that critical mass underperformed by almost the same amount. His findings held as true in the company's U.S. divisions as in its divisions in Asia and Europe.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">Two · Set Out Faithfully</span>
+  <h2>Goleman (II): self-awareness and self-regulation</h2>
+  <p>Goleman breaks emotional intelligence at work into five components.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Component</th><th>Definition</th><th>Hallmarks</th></tr>
+    <tr><td>Self-awareness</td><td>The ability to recognize and understand your moods, emotions and drives, as well as their effect on others</td><td>Self-confidence; realistic self-assessment; a self-deprecating sense of humor</td></tr>
+    <tr><td>Self-regulation</td><td>The ability to control or redirect disruptive impulses and moods; the propensity to suspend judgment and think before acting</td><td>Trustworthiness and integrity; comfort with ambiguity; openness to change</td></tr>
+    <tr><td>Motivation</td><td>A passion to work for reasons beyond money or status; a propensity to pursue goals with energy and persistence</td><td>Strong drive to achieve; optimism even in the face of failure; organizational commitment</td></tr>
+    <tr><td>Empathy</td><td>The ability to understand the emotional makeup of other people; skill in treating people according to their emotional reactions</td><td>Expertise in building and retaining talent; <b>cross-cultural sensitivity</b>; service to clients</td></tr>
+    <tr><td>Social skill</td><td>Proficiency in managing relationships and building networks; an ability to find common ground and build rapport</td><td>Effectiveness in leading change; persuasiveness; expertise in building and leading teams</td></tr>
+  </table></div>
+  <h3>Self-awareness</h3>
+  <p>Self-awareness is the first component, which makes sense given that the Delphic oracle offered the advice to know thyself thousands of years ago. It means having a deep understanding of one's emotions, strengths, weaknesses, needs and drives. People with strong self-awareness are neither overly critical nor unrealistically hopeful. They are honest, with themselves and with others.</p>
+  <p>A self-aware person who knows that tight deadlines bring out the worst in him plans his time carefully and gets his work done well in advance. Another can work with a demanding client, understanding the client's impact on her moods and the deeper reasons for her frustration. "Their trivial demands take us away from the real work that needs to be done," she might explain, and then she goes one step further and turns her anger into something constructive.</p>
+  <p>Self-awareness extends to a person's understanding of their values and goals. Someone highly self-aware knows where he is headed and why, so he can be firm in turning down a job offer that is financially tempting but does not fit his principles or long-term goals. A person who lacks it is apt to make decisions that tread on buried values. "The money looked good so I signed on," someone might say two years in, "but the work means so little to me that I'm constantly bored."</p>
+  <p>How do you recognize it? First and foremost it shows itself as candor and an ability to assess oneself realistically. Goleman describes a manager at a department-store chain who was skeptical about a new personal-shopper service her company was about to introduce. Without prompting from her team or her boss, she explained: "It's hard for me to get behind the rollout of this service, because I really wanted to run the project, but I wasn't selected. Bear with me while I deal with that." She did examine her feelings, and a week later she was supporting the project fully.</p>
+  <p>Such self-knowledge often shows in hiring. Ask a candidate to describe a time he got carried away by his feelings and did something he later regretted. Self-aware candidates will be frank in admitting to failure, and will often tell their tales with a smile. <em>One of the hallmarks of self-awareness is a self-deprecating sense of humor.</em></p>
+  <p>Goleman makes a point worth holding on to. Despite the value of self-aware people, his research indicates that senior executives often do not give self-awareness the credit it deserves. Many mistake candor about feelings for wimpiness and fail to respect employees who openly acknowledge their shortcomings. Such people are too readily dismissed as not tough enough to lead. In fact, he says, the opposite is true. People generally admire and respect candor, and leaders are constantly required to make judgment calls that require a candid assessment of capabilities, their own and other people's.</p>
+  <h3>Self-regulation</h3>
+  <p>Biological impulses drive our emotions. We cannot do away with them, but we can do much to manage them. Self-regulation, which is like an ongoing inner conversation, is the component that frees us from being prisoners of our feelings. People engaged in that conversation feel bad moods and emotional impulses just as everyone else does, but they find ways to control them and even channel them usefully.</p>
+  <p>Imagine an executive who has just watched his team present a botched analysis to the board. In the gloom that follows he might be tempted to pound the table, kick over a chair, scream at the group, or maintain a grim silence and stalk off.</p>
+  <p>With a gift for self-regulation he would choose differently. He would pick his words carefully, acknowledging the poor performance without rushing to judgment. Then he would step back and consider the reasons for the failure. Are they personal, a lack of effort? Are there mitigating factors? <em>What was his own role in the debacle?</em> Only then would he call the team together, lay out the consequences, offer his feelings about it, and present his analysis and a well-considered solution.</p>
+  <p>Why does this matter so much for leaders? First, people in control of their feelings and impulses, that is, reasonable people, create an environment of trust and fairness. Politics and infighting are sharply reduced, productivity is high, talented people flock in and are not tempted to leave. And self-regulation trickles down. No one wants to be known as a hothead when the boss is known for her calm approach.</p>
+  <p>Second, it matters competitively. Business today is rife with ambiguity and change. People who have mastered their emotions can roll with it. When a new program is announced they do not panic; they suspend judgment, seek out information and listen. Goleman describes a manager at a large manufacturing company who had used a certain software program for five years, a program that shaped how she collected data and how she thought about strategy. When senior executives announced a radical replacement, many colleagues complained bitterly about the disruption, while she mulled over the reasons for the new program and was convinced of its potential. She eagerly attended training sessions that some colleagues refused to attend, and was eventually promoted to run several divisions, in part because she used the new technology so effectively.</p>
+  <p>Third, self-regulation enhances integrity, which is not only a personal virtue but an organizational strength. Many of the bad things that happen in companies are a function of impulsive behavior. People rarely plan to exaggerate profits, pad expense accounts, dip into the till, or abuse power for selfish ends. An opportunity presents itself, and people with low impulse control just say yes. By contrast, a senior executive at a large food company was scrupulously honest with local distributors, routinely laying out his cost structure in detail so they understood the company's pricing. It meant he could not always drive a hard bargain. He sometimes felt the urge to withhold that information, and he challenged the impulse, because he saw it made more sense in the long run to counteract it. The result was strong, lasting distributor relationships worth more than any short-term gain.</p>
+  <p>So the signs are easy to see: a propensity for reflection and thoughtfulness, comfort with ambiguity and change, and integrity, <em>an ability to say no to impulsive urges</em>.</p>
+  <p>Goleman notes that self-regulation, like self-awareness, often does not get its due. People who master their emotions are sometimes seen as cold fish, their considered responses taken as a lack of passion, while people with fiery temperaments are thought of as classic leaders whose outbursts are read as charisma and power. But when such people reach the top, their impulsiveness often works against them. <em>In his research, extreme displays of negative emotion have never emerged as a driver of good leadership.</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">Three · Set Out Faithfully</span>
+  <h2>Goleman (III): motivation, empathy, social skill</h2>
+  <h3>Motivation</h3>
+  <p>If there is one trait virtually all effective leaders have, it is motivation. They are driven to achieve beyond expectations, their own and everyone else's. The key word is achieve. Plenty of people are motivated by external factors such as a big salary, an impressive title or a prestigious company. Those with leadership potential are motivated by a deeply embedded desire to achieve for the sake of achievement.</p>
+  <p>How do you spot them? The first sign is a passion for the work itself. Such people seek out creative challenges, love to learn, and take great pride in a job well done. They display an unflagging energy to do things better, often seem restless with the status quo, and are persistent with their questions about why things are done one way rather than another.</p>
+  <p>Goleman describes a cosmetics company manager frustrated at waiting two weeks for sales results from the field. He tracked down an automated phone system that beeped each salesperson at 5 PM every day and prompted them to punch in their calls and sales. The system shortened the feedback time from weeks to hours.</p>
+  <p>That story illustrates two other traits. <em>People driven to achieve are forever raising the performance bar, and they like to keep score.</em> During performance reviews, highly motivated people might ask to be stretched by their superiors. Of course an employee who combines self-awareness with internal motivation will recognize her limits, but she will not settle for objectives that seem too easy.</p>
+  <p>And people driven to do better want a way of tracking progress, their own, their team's and their company's. Those with low achievement motivation are often fuzzy about results, while those with high motivation keep score with hard measures such as profitability or market share. Goleman knows a money manager who starts and ends his day on the internet, gauging his fund against four industry-set benchmarks.</p>
+  <p>Interestingly, highly motivated people remain optimistic even when the score is against them. Here self-regulation combines with achievement motivation to overcome the frustration that follows a setback. A portfolio manager at a large investment company saw her fund tumble for three consecutive quarters after several successful years, leading three large institutional clients to leave. Some executives would have blamed circumstances outside their control, others would have read it as personal failure. She saw an opportunity to prove she could lead a turnaround. Two years later, promoted to a very senior level, she described the experience as "the best thing that ever happened to me; I learned so much from it."</p>
+  <p>One last piece of evidence: commitment to the organization. When people love their jobs for the work itself, they often feel committed to the organizations that make that work possible, and are likely to stay even when headhunters wave money at them.</p>
+  <h3>Empathy</h3>
+  <p>Of all the dimensions of emotional intelligence, empathy is the most easily recognized. We have all felt the empathy of a sensitive teacher or friend, and we have all been struck by its absence in an unfeeling coach or boss. But in business we rarely hear people praised, let alone rewarded, for empathy. The very word seems unbusinesslike, out of place amid the tough realities of the marketplace.</p>
+  <p>Goleman immediately clarifies. Empathy does not mean a kind of "I'm OK, you're OK" mushiness. For a leader it does not mean adopting other people's emotions as one's own and trying to please everybody, which would make action impossible. <em>Empathy means thoughtfully considering employees' feelings, along with other factors, in the process of making intelligent decisions.</em></p>
+  <p>He gives the example of two giant brokerage companies merging, creating redundant jobs across divisions. One division manager called his people together and gave a gloomy speech emphasizing how many would soon be fired. The manager of another division gave a different kind of speech. He was up front about his own worry and confusion, and he promised to keep people informed and treat everyone fairly.</p>
+  <p>The difference between them was empathy. The first was too worried about his own fate to consider his anxiety-stricken colleagues. The second knew intuitively what his people were feeling and acknowledged their fears in words. The first saw his division sink as demoralized people, especially the most talented, departed. The second continued to be a strong leader, his best people stayed, and his division remained as productive as ever.</p>
+  <p>Empathy is particularly important today for at least three reasons: the increasing use of teams, the rapid pace of globalization, and the growing need to retain talent.</p>
+  <p>Consider teams. As anyone who has been part of one can attest, teams are cauldrons of bubbling emotions. They are often charged with reaching a consensus, which is hard enough with two people and harder as the numbers increase. Even in groups of four or five, alliances form and clashing agendas get set. A team's leader must be able to sense and understand the viewpoints of everyone around the table.</p>
+  <p>A marketing manager at a large information technology company did exactly that when appointed to lead a troubled team. The group was in turmoil, overloaded and missing deadlines, with high tensions among members. In a series of one-on-one sessions she took the time to listen to everyone: what was frustrating them, how they rated their colleagues, whether they felt ignored. Then she directed the team in a way that brought it together, encouraging people to speak more openly about their frustrations and helping them raise constructive complaints during meetings. Her empathy allowed her to understand the team's emotional makeup. The result was not just heightened collaboration but added business, as a wider range of internal clients called on the team for help.</p>
+  <p>Globalization is another reason. Cross-cultural dialogue can easily lead to miscues and misunderstandings, and empathy is an antidote. <em>People who have it are attuned to subtleties in body language, they can hear the message beneath the words being spoken</em>, and they have a deep understanding of both the existence and the importance of cultural and ethnic differences.</p>
+  <p>Goleman gives the article's only cross-cultural case. An American consultant's team had just pitched a project to a potential Japanese client. In its dealings with Americans the team was accustomed to being bombarded with questions after such a proposal, but this time it was greeted with a long silence. Other members took the silence as disapproval and were ready to pack and leave. The lead consultant gestured them to stop. <em>Although he was not particularly familiar with Japanese culture</em>, he read the client's face and posture and sensed not rejection but interest, even deep consideration. He was right. When the client finally spoke, it was to give the firm the job.</p>
+  <p>Finally, empathy plays a key role in retaining talent, particularly in an information economy, because when good people leave they take the company's knowledge with them. That is where coaching and mentoring come in, and what makes them work best is the nature of the relationship. Outstanding coaches and mentors get inside the heads of the people they are helping. They sense how to give effective feedback, and they know when to push for better performance and when to hold back.</p>
+  <p>He repeats that empathy does not get much respect in business. People wonder how leaders can make hard decisions if they are feeling for everyone affected. But leaders with empathy do more than sympathize: <em>they use their knowledge to improve their companies in subtle but important ways.</em></p>
+  <h3>Social skill</h3>
+  <p>The first three components are self-management skills. The last two, empathy and social skill, concern a person's ability to manage relationships with others. Social skill is not as simple as it sounds. It is not just friendliness, although people with high social skill are rarely mean-spirited. <em>Social skill is friendliness with a purpose</em>: moving people in the direction you desire, whether that is agreement on a new marketing strategy or enthusiasm about a new product.</p>
+  <p>Socially skilled people tend to have a wide circle of acquaintances and a knack for finding common ground with people of all kinds, a knack for building rapport. That does not mean they socialize continually. It means they work according to the assumption that <em>nothing important gets done alone</em>, so they have a network in place when the time for action comes.</p>
+  <p>Social skill is the culmination of the other dimensions. People tend to be very effective at managing relationships when they can understand and control their own emotions and empathize with the feelings of others. Even motivation contributes, because people driven to achieve tend to be optimistic even in the face of setbacks, and when people are upbeat their glow is cast upon conversations and other social encounters.</p>
+  <p>Sometimes social skill shows itself in ways the other components do not. Socially skilled people may at times appear not to be working while at work. They seem to be idly schmoozing, chatting in the hallways or joking around with people not connected to their real jobs. But they do not think it makes sense to arbitrarily limit the scope of their relationships. They build bonds widely because they know that in these fluid times they may need help someday from people they are just getting to know today.</p>
+  <p>Goleman describes an executive in the strategy department of a global computer manufacturer who by 1993 was convinced the company's future lay with the internet. Over the following year he found kindred spirits and used his social skill to stitch together a virtual community cutting across levels, divisions and nations. He used this de facto team to put up a corporate website, among the first by a major company. On his own initiative, with no budget or formal status, he signed the company up for an annual internet industry convention, calling on allies and persuading divisions to donate funds until he had recruited more than fifty people from a dozen units to represent the company. Within a year of the conference his team formed the basis for the company's first internet division, and he was formally put in charge of it.</p>
+  <p>Is social skill considered a key leadership capability in most companies? Yes, especially compared with the other components. People seem to know intuitively that leaders need to manage relationships effectively, that <em>no leader is an island</em>. The leader's task is to get work done through other people, and social skill makes that possible. A leader who cannot express her empathy may as well not have it at all, and a leader's motivation is useless if he cannot communicate his passion. <em>Social skill allows leaders to put their emotional intelligence to work.</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">Four · Set Out Faithfully</span>
+  <h2>Goleman (IV): can emotional intelligence be learned</h2>
+  <p>This is a separate sidebar in the article, and I think it is one of the most important parts of it.</p>
+  <p>For ages people have debated whether leaders are born or made, and the same goes for emotional intelligence. Are people born with certain levels of empathy, or do they acquire it through life's experiences? The answer is both. Scientific inquiry strongly suggests a genetic component, and psychological and developmental research indicates nurture plays a role as well. How much of each may never be known, but research and practice clearly demonstrate that <em>emotional intelligence can be learned</em>.</p>
+  <p>One thing is certain: emotional intelligence increases with age. There is an old-fashioned word for the phenomenon, maturity. Yet even with maturity some people still need training. Unfortunately, far too many training programs intended to build leadership skills, emotional intelligence included, are a waste of time and money. The problem is simple: <em>they focus on the wrong part of the brain.</em></p>
+  <div class="pull">Emotional intelligence is born largely in the neurotransmitters of the brain's limbic system, which governs feelings, impulses and drives. Research indicates that the limbic system learns best through motivation, extended practice and feedback.<span class="by">Daniel Goleman</span></div>
+  <p>Compare this with the learning that goes on in the neocortex, which governs analytical and technical ability. The neocortex grasps concepts and logic. It is the part of the brain that figures out how to use a computer or make a sales call by reading a book. Not surprisingly but mistakenly, it is also the part targeted by most training programs aimed at enhancing emotional intelligence. When such programs take a neocortical approach, Goleman's research with the Consortium for Research on Emotional Intelligence in Organizations has shown they can even have a negative impact on people's job performance.</p>
+  <p>To enhance emotional intelligence, organizations must refocus their training to include the limbic system. They must help people break old behavioral habits and establish new ones. That takes much more time than conventional training, and it requires an individualized approach.</p>
+  <h3>That Wall Street executive</h3>
+  <p>Goleman tells a case he watched unfold. A Wall Street executive sought to improve his empathy, specifically his ability to read people's reactions and see their perspectives. Before beginning, his subordinates were terrified of working with him. People went so far as to hide bad news from him. He was shocked when finally confronted with these facts. He went home and told his family, and they only confirmed what he had heard at work: when their opinions did not mesh with his, they too were frightened of him.</p>
+  <p>Enlisting a coach, he went to work through practice and feedback. <em>His first step was to take a vacation to a foreign country where he did not speak the language.</em> While there, he monitored his reactions to the unfamiliar and his openness to people who were different from him. He returned humbled by his week abroad. Then he asked his coach to shadow him for parts of the day, several times a week, to critique how he treated people with new or different perspectives. At the same time he consciously used on-the-job interactions as opportunities to practice hearing ideas that differed from his. Finally he had himself videotaped in meetings and asked those who worked for and with him to critique his ability to acknowledge and understand the feelings of others. It took several months, but his emotional intelligence did ultimately rise, and the improvement was reflected in his overall performance.</p>
+  <p>Goleman stresses that building emotional intelligence cannot and will not happen without sincere desire and concerted effort. A brief seminar will not help, nor can one buy a how-to manual. <em>It is much harder to learn to empathize, to internalize empathy as a natural response to people, than it is to become adept at regression analysis.</em> But it can be done. "Nothing great was ever achieved without enthusiasm," wrote Ralph Waldo Emerson, and if your goal is to become a real leader, those words can serve as a guidepost.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">Five · Set Out Faithfully</span>
+  <h2>Feeling is not universal</h2>
+  <p>PsyLife's short film opens with a single line, and that line is the hinge of the whole session.</p>
+  <div class="pull">They say that feeling is universal, but crying in Madrid is not the same as crying in Tokyo. <b>In one place they hug you. In another, they look away.</b></div>
+  <p>Emotions seem intimate, personal, natural. But they are also a reflection of the place where we grew up, and that changes everything.</p>
+  <p>For a long time psychology believed emotions were the same for everyone. Paul Ekman identified six basic emotions that seemed recognizable anywhere in the world: happiness, sadness, fear, anger, surprise and disgust. But, the film says, <em>while facial expressions may be similar, the way we feel, interpret and express emotions is deeply shaped by culture.</em></p>
+  <p>In many Western countries emotional expression is valued. Showing what you feel is associated with authenticity, freedom and mental health, and crying can be seen as a form of release. In contrast, in Japan or Korea, expressing strong emotions in public can be uncomfortable or even inappropriate. There, group harmony matters more than individual expression. Showing sadness may be seen as a burden to others, and anger is viewed as a loss of control. That is why in these cultures <em>children learn to contain themselves, to smile even when frustrated, to think before speaking from emotion.</em></p>
+  <p>The cultural psychologists Hazel Rose Markus and Shinobu Kitayama explained that in the West people build an <em>independent self</em> that values self-expression, while in many Asian cultures people develop an <em>interdependent self</em>, more focused on the group, on relationships, and on not standing out. This completely changes the way emotions are experienced.</p>
+  <div class="pull">It's not that people feel less, but that they feel differently.</div>
+  <p>There are even emotions that do not exist in all languages. German has <em>Schadenfreude</em>, the pleasure of seeing someone else fail. Japanese has <em>amae</em>, the desire to be indulgently cared for, like a child. And how would Spanish translate the Galician word <em>morriña</em>? <em>Each language and culture names, values and shapes emotions in its own way.</em></p>
+  <p>The anthropologist Catherine Lutz said it clearly: emotions are not just biological reactions, they are also cultural constructions. What we feel, when we feel it and how we express it is deeply connected to the social norms, history and values of where we live.</p>
+  <p>The film closes with two questions worth answering honestly before class. <em>Have you ever thought that your emotions are also learned? Do you think you feel as yourself, or as your culture taught you to feel?</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">Six · Set Out Faithfully</span>
+  <h2>The cross-cultural dance of emotional intelligence</h2>
+  <p>Dr. Kris's seventeen minute video restates the five components first, and that part matches Goleman, so I will not repeat it. Its real contribution is in the second half.</p>
+  <h3>Two contrasts</h3>
+  <p>The first is <em>collectivist and individualist</em>. Collectivist cultures such as those in Japan and China tend to value harmony and group cohesion. Emotions are often managed in a way that maintains social order, and expressing strong emotions, especially negative ones, can be seen as disruptive and disrespectful. Individualist cultures such as those in the United States and the United Kingdom often encourage the expression of emotions as a form of individual authenticity and assertiveness.</p>
+  <p>The video traces the difference to societal values. Collectivist societies prioritize the group's needs over individual desires, so emotions are regulated to prevent conflict and ensure harmony. Individualist societies emphasize personal freedom and self-expression, so emotional expression is seen as a reflection of one's unique identity and feelings.</p>
+  <p>The second is <em>high-context and low-context</em>. High-context cultures, like many Asian cultures, rely heavily on non-verbal cues and the overall context to communicate emotions. The actual words used often carry less weight than tone, facial expression and even silence. Low-context cultures, like many Western cultures, rely more on explicit verbal communication, and directness is valued.</p>
+  <p>The practical consequence: <em>in high-context cultures, understanding emotions requires an ability to read between the lines and decipher subtle cues; in low-context cultures, misunderstanding arises if emotions are not clearly articulated.</em></p>
+  <h3>Concrete examples</h3>
+  <p>In some Middle Eastern cultures it is common to express emotions passionately and openly, including a lot of physical contact, loud voices and dramatic expressions. In contrast, Nordic cultures often value modesty and restraint. Strong emotions are typically downplayed, and calm, composed behavior is prized.</p>
+  <p>In South Korea, a concept known as <em>nunchi</em> captures the importance of reading a room and understanding others' emotions. It involves observing others' moods and adjusting one's behavior accordingly to maintain harmony. In the United States there is a cultural norm of keeping it real, expressing one's emotions honestly and openly even if they might be controversial.</p>
+  <p>The video is careful to add that these are broad generalizations. <em>Individual emotional expression varies widely within any culture</em>, influenced by personality, upbringing and personal experience.</p>
+  <h3>The dance</h3>
+  <p>The video uses a metaphor I find useful. Think of emotional intelligence as a dance, a rhythmic exchange of emotions influenced by the music of our environment and the steps taught by our cultures. <em>Like any dance, the moves can be universal, yet the style can vary dramatically depending on the cultural context.</em></p>
+  <p>The Japanese case is the contrast between <em>honne</em>, a person's true feelings, and <em>tatemae</em>, the behavior and opinions one displays in public. Emotional restraint, maintaining harmony and avoiding conflict are highly valued, leading to a form of emotional intelligence that emphasizes understanding unexpressed feelings and reading between the lines. In a business setting, a manager may need to discern an employee's discomfort or disagreement even if they never openly express it, which requires a high degree of empathy and social awareness.</p>
+  <p>The United States case runs the other way. The dance involves more open and direct expression. Authenticity and individual expression are highly valued, and people are generally encouraged to speak their mind and be true to their feelings. Emotional intelligence here might involve understanding and managing one's own emotions and expressing them in a way that is constructive and respectful of others. For a manager, that could mean being transparent about their feelings while also being receptive to the emotions of team members.</p>
+  <h3>Emotional labor</h3>
+  <p>But what about when the dance floor changes? When people from different cultures come together, the dance becomes more complex. Here the video introduces a term coined by the sociologist Arlie Hochschild: <em>emotional labor</em>, the effort required to manage and express emotions in a way that meets the expectations of a particular role or context. It is like learning a new dance style to match the music, and like dancing it can be both challenging and rewarding. In a multicultural environment it could involve adjusting one's emotional expression to match the norms of another culture, or finding a balance between different cultural expectations.</p>
+  <p>The examples run both ways. An American manager leading a team in Japan might need to tone down their directness and learn to read the unspoken emotions of their team members, investing emotional labor in understanding and respecting the norms of the new environment. It can be a challenging process, but it can also lead to a richer understanding of emotional intelligence and a more harmonious working environment. A Japanese manager working in the United States might need to learn a new dance, becoming more comfortable with open emotional expression and learning to encourage it in the team.</p>
+  <h3>The universal and the unique</h3>
+  <p>The video closes by separating two layers. The <em>universal</em> layer: regardless of cultural background, we all experience basic emotional needs and expressions, from the joy reflected in a simple smile to the pain mirrored in tears. The difficulty of controlling our emotions is universal, and so is the difficulty of empathizing appropriately. The <em>unique</em> layer: some cultures require specific emotional intelligence skills, such as understanding indirect communication in high-context cultures, and the ability to adjust one's practice in multicultural environments.</p>
+  <p>Why does the distinction matter? Recognizing universal emotional needs allows us to connect on a fundamental human level, while understanding the unique aspects helps us respect and adapt to different cultural norms. The three practical suggestions are: understand and respect the emotional norms of different cultures; cultivate <em>cultural empathy</em>; and stay flexible and open in interactions. And one caution: cultural empathy is not about mimicking or appropriating another culture's emotional norms. <em>It is about understanding and respecting them.</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">Seven · Set Out Faithfully</span>
+  <h2>Culture shock: the fork in the road</h2>
+  <p>We watched the first fourteen minutes of Schiffbauer's video in Session 1 for a definition of culture. This time it is the last ten minutes, on culture shock. The structure of this segment is very clear, so I will lay it out in full.</p>
+  <p>He begins by saying there are lots and lots of cultural differences, and some of them frankly make us really uncomfortable. That brings about culture shock. <em>Culture shock is inevitable, it is expected, and to a certain degree it can be forgiven.</em> But there is a point at which it becomes very problematic and needs to be addressed.</p>
+  <h3>Where it begins</h3>
+  <p>Culture shock starts with one thing: <em>we expect everybody to be like us.</em></p>
+  <p>He knows you will object. You understand that not everybody is like you, you understand there are differences. But at a core cultural level, in that operating system running in the background, we expect everything to be compatible with us.</p>
+  <div class="pull">When I'm loading a program into my PC, it expects every program I load into it to be PC compatible. If I try to load in a Mac program, it's gonna spit in my face.<span class="by">Lon Schiffbauer</span></div>
+  <p>Likewise we expect everybody to agree that cowboys are awesome, or that chewing with your mouth open is rude, or that showing the bottom of your shoe is rude in an Arab country. The thing is, we are not all alike.</p>
+  <h3>Four steps, then a fork</h3>
+  <p>When we see that people are not like us, a <em>cultural divide</em> occurs. I look at a culture that practices something my culture finds abhorrent, and a divide occurs. At this point it causes an emotional reaction: fear, anger, disrespect.</p>
+  <p>Then he says something I consider crucial. <em>Up to this point, everything is understandable and to be expected. It is leveraging normal psychological mechanisms. We are all forgiven for feeling this.</em> We are all forgiven for feeling an emotional response when we see a cultural divide.</p>
+  <p>However, it is at this point that we can choose one of two paths.</p>
+  <div class="steps">
+    <p><b>The path he invites us not to follow.</b> We take this anger, fear and disrespect as we look at a cultural divide, and we <em>create a false attribution about their behavior</em>. Well, they're kind of a backwards people. They're a dirty people. They're not exactly civilized. They're all murderers and rapists.</p>
+    <p>We make up a reason that belittles them and raises up us. We look at their culture as somehow uncivilized and our culture as the beacon of all things righteous, and we push them down.</p>
+    <p>Then we <em>discount them and withdraw from engagement</em>. After all, if they are a dirty backwards people, I don't need to engage with them, unless of course I want to come in as the cultural savior and make them a better people. Or we say: I don't want to have anything to do with you, you stay on your side, I stay on mine.</p>
+    <p>He is blunt about the stakes. <em>The majority of the disputes we have internationally all lie in fear, disrespect, anger, false attribution of behavior, and withdrawal from engagement.</em></p>
+  </div>
+  <p>What to do instead? He gives four steps.</p>
+  <div class="steps">
+    <p><b>One, become aware of your reaction.</b> Don't beat yourself up for feeling anger, fear or disrespect. Become aware of the emotion, become aware that you are feeling it. You are allowed to feel it.</p>
+    <p><b>Two, reflect on the causes.</b> Why am I feeling this? They're doing A, I'm used to doing B, where is the disconnect? His own example: I find that abhorrent because in my culture dogs are man's best friend, we anthropomorphize our dogs, and you don't do that.</p>
+    <p><b>Three, let the reaction subside.</b> Emotions need some time to express themselves and figure themselves out. Let them subside.</p>
+    <p><b>Four, observe and decode the cultural differences in the situation.</b> It is not what I would do, I love my puppies. But meat is meat. I eat beef, and somebody in India considers that taboo, and I don't feel bad about it; so somebody eating dog shouldn't feel bad just because I think it is taboo. <em>We all eat something that somebody else says is gross.</em></p>
+  </div>
+  <p>Having decoded it, we can <em>develop culturally appropriate expectations</em>. We are no longer caught off guard when somebody does something different from what our own cultural expectations predicted. There is dog hanging in the market, and that's the way it is. Beef hangs in a market in the US, that's fine. Horse hangs in a market in France, that's fine too. We all eat what we eat.</p>
+  <p>And so we can go on having a relationship with these folks, continue to work together, continue to respect one another. His closing line is worth keeping for the whole course.</p>
+  <div class="pull">You don't have to agree, but still you can respect the cultural differences.<span class="by">Lon Schiffbauer</span></div>
+</section>
+
+<section class="wrap">
+  <span class="num">Eight · What I Saw</span>
+  <h2>One article without culture, three materials about culture</h2>
+  <p>Line the four materials up and the first thing that surfaces is this: <em>Goleman's article has almost no cultural variable in it.</em></p>
+  <p>That is not a criticism. In 2004 the article was solving a different problem. It had to prove to a business world that worshipped IQ and technical ability that emotional capability could be measured, correlated with performance, and learned. It succeeded, and it succeeded thoroughly.</p>
+  <p>But the reason for pairing it with the other three is obvious. Goleman himself lists <em>cross-cultural sensitivity</em> as a hallmark of empathy. The phrase appears once and is never developed. What this session does is open that one line into a whole chapter.</p>
+  <p>My reading is this. <em>The capacity behind each of the five components is shared. The display of each is not. And in describing the hallmarks, Goleman merges the two.</em> Every hallmark he names is a concrete behavior, and behavior always carries culture. So the table below is what I think this session actually delivers.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Component</th><th>The shared layer</th><th>The culturally determined layer</th></tr>
+    <tr><td>Self-awareness</td><td>Knowing what you are feeling and how it colors your judgment</td><td>Whether to <b>say it out loud</b>. Goleman's examples are all public declarations of an inner state, which is a low-context move</td></tr>
+    <tr><td>Self-regulation</td><td>Leaving a beat between feeling and acting</td><td>Where the threshold of "extreme" sits. The same volume reads as passion in one room and loss of control in another</td></tr>
+    <tr><td>Motivation</td><td>Working hard for the sake of the work</td><td>Whom the achievement is for. The interdependent self is often driven by obligation to the group</td></tr>
+    <tr><td>Empathy</td><td>Accurately reading another person's emotional makeup</td><td>Which channel the signal is on. Low-context puts it in the words, high-context in the silence and the situation</td></tr>
+    <tr><td>Social skill</td><td>Getting things done through relationships</td><td>How relationships are built. Hallway chat, after-hours drinks, introduction through an intermediary. Same function, non-transferable form</td></tr>
+  </table></div>
+  <p>The most useful way to use this table is to hold it against any leadership assessment instrument. <em>When a scale claims to measure emotional intelligence, it is usually measuring the right-hand column, not the left.</em> And the right-hand column has a country of origin.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">Nine · What I Saw</span>
+  <h2>Seven observations</h2>
+  <div class="card">
+    <h3>1. Culture shock is cross-cultural self-regulation failure</h3>
+    <p>Put Schiffbauer's chain next to Goleman's definition and they turn out to be the same thing. Schiffbauer: expectation, divide, emotional reaction, <b>false attribution</b>, withdrawal. Goleman: self-regulation is "the propensity to suspend judgment, to think before acting."</p>
+    <p>Notice where Schiffbauer locates the failure. <em>He explicitly forgives the emotional reaction.</em> The failure happens at the next step, where an undecoded emotion is converted directly into a judgment about what kind of people they are. That is precisely the judgment Goleman says a self-regulating person suspends.</p>
+    <p>So these are not two topics. They are one mechanism at two scales. <em>Self-regulation prevents an outburst at the personal scale and prevents prejudice at the cultural scale.</em></p>
+  </div>
+  <div class="card">
+    <h3>2. The pause is the whole skill</h3>
+    <p>Both authors put the decisive moment in the same place, the gap between feeling and acting. Goleman calls it suspending judgment. Schiffbauer calls it letting the reaction subside.</p>
+    <p>If there is one smallest portable action to take from this session, it is that. <em>Not feeling nothing, but not acting in the first second of feeling.</em> The pause does not need to be long. It only needs to be long enough to ask one question: is what I am feeling about them, or about an expectation of mine that was just violated?</p>
+  </div>
+  <div class="card">
+    <h3>3. Goleman's one cross-cultural case was actually luck</h3>
+    <p>The American consultant read the Japanese client's long silence as deep consideration rather than rejection, and Goleman presents it as a demonstration of empathy. But he wrote the crucial caveat himself: <em>"although he was not particularly familiar with Japanese culture."</em></p>
+    <p>This is exactly why the course exists. Reading a high-context signal on pure instinct is the least reproducible skill in the entire article. What this course does is trade that luck for a map. Empathy makes you <b>willing</b> to read; cultural knowledge makes you <b>read it right</b>. Without the second, empathy misreads very sincerely.</p>
+  </div>
+  <div class="card">
+    <h3>4. You cannot manage an emotion you have no word for</h3>
+    <p>PsyLife mentions Schadenfreude, amae and morriña. It sounds like linguistic trivia, but for a leader it is a practical problem.</p>
+    <p>Take <em>amae</em>, the expectation of being indulgently cared for, of being able to depend safely. Many languages have no equivalent, so it does not exist in many managers' emotional vocabulary. Yet it is operating in the room, and it sits on the same line as the protective duty of the Confucian superior we read about in Session 5. A manager without the word will read a subordinate's dependence as a lack of initiative, and feel frustrated. <em>That frustration is not a shortage of empathy. It is a shortage of vocabulary.</em></p>
+  </div>
+  <div class="card">
+    <h3>5. The bill for emotional labor is not split evenly</h3>
+    <p>Dr. Kris's examples are symmetrical: the American adapts in Japan, the Japanese manager adapts in the United States. Real rooms are rarely symmetrical. <em>Whoever's language the meeting runs in, whoever's time zone it follows, whoever's tempo it keeps, whoever's norms define what counts as professional, that person pays nothing. Everyone else pays.</em></p>
+    <p>That makes it a fairness question, not only a skill question. It is worth asking once, in any team: whose emotional labor is invisible here? And if I am the one whose norms set the default, which part of that bill can I absorb today so that someone else pays less?</p>
+  </div>
+  <div class="card">
+    <h3>6. "Tell them how you feel" is not neutral advice</h3>
+    <p>Every example Goleman uses for self-awareness is a public speech act: the department store manager announcing her disappointment at not being chosen; the candidate admitting with a smile that he lost his temper; talking frankly about one's limitations.</p>
+    <p>These are good behaviors. But they are <em>one</em> way of displaying self-awareness, belonging to a low-context, individualist tradition of expression. In other traditions the same degree of self-awareness shows up as not adding your emotion to the group's load, as signalling privately through an intermediary, or as adjusting behavior rather than announcing a feeling.</p>
+    <p>So when we judge whether someone has high emotional intelligence, we should check whether we are assessing their inner capacity or their willingness to perform it in the idiom we happen to recognize. <em>Goleman warned that executives mistake candor for wimpiness. The mirror-image error is just as common: mistaking non-expression for non-awareness.</em></p>
+  </div>
+  <div class="card">
+    <h3>7. The threshold for "extreme" is set by culture</h3>
+    <p>Goleman reports that in his research, extreme displays of negative emotion never emerged as a driver of good leadership. I believe that holds in his sample. But Dr. Kris's Middle Eastern and Nordic contrast reminds us that <em>extreme is not an absolute scale.</em></p>
+    <p>The same volume, the same gesture, the same degree of directness is engagement in one room and loss of control in another. So the practical question of self-regulation is not "have I crossed the line into extreme," it is "where is the line drawn in this room, and do I know."</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <span class="num">Ten · What I Saw</span>
+  <h2>Back to the study guide: how power produces emotion</h2>
+  <p>The syllabus asks three questions. What is considered the abuse of power in each culture, such that it generates strong emotions? What is considered the proper use of power? What cultural norms regarding leadership evoke strong emotions when honored or violated?</p>
+  <p>Connecting Session 5 to this one, here is the frame I would answer with.</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Act of power</th><th>In an egalitarian, low-context room</th><th>In a hierarchical, high-context room</th></tr>
+    <tr><td>Emailing a junior person directly, skipping a level</td><td>Efficient, no emotion</td><td>The middle layer is erased in public. Humiliation</td></tr>
+    <tr><td>A boss publicly admitting uncertainty</td><td>Candid, trust rises</td><td>May read as incompetence, the team grows anxious</td></tr>
+    <tr><td>A subordinate publicly disagreeing in a meeting</td><td>Healthy debate</td><td>A loss of face for both parties</td></tr>
+    <tr><td>A boss withholding direction so the team decides</td><td>Empowerment</td><td>Abandonment of the duty to protect, read as dereliction</td></tr>
+    <tr><td>Revisiting a decision after it was made</td><td>Agile</td><td>A broken promise, trust damaged</td></tr>
+  </table></div>
+  <p>The table says one thing only. <em>The same act of power issues a different emotional bill in a different room, and the amount cannot be derived from the act itself.</em></p>
+  <p>This has a concrete operating consequence for the syllabus line about a contextually aware leader anticipating the emotions arising from the use of power. Your emotional forecast cannot run on your own instinct, because your instinct is calibrated to your home culture. It has to run on a map. And where you do not yet have the map, the honest move is to downgrade the forecast into a question: <em>how is what I am about to do usually read here?</em></p>
+  <p>One more observation worth putting in the workbook. <em>The more power a person has, the less feedback they receive about the emotions they cause.</em> The Wall Street executive's subordinates hid bad news from him, and he had no idea. That is not a personal flaw, it is a structural consequence of rank, and in a high power distance environment the effect is stronger. So the higher the position, the more deliberately one has to pay for that feedback: a coach, an anonymous channel, exit interviews, or a silence long enough that someone is willing to fill it.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">Eleven · The Age of AI (I)</span>
+  <h2>Can AI read emotion</h2>
+  <h3>1. Emotion recognition AI inherited Ekman's assumption and skipped the display rules</h3>
+  <p>Most commercial emotion recognition systems rest on the assumption that basic emotions can be identified from facial expression, the research line PsyLife refers to. The problem is that these systems read the face and not the <em>display rule</em>.</p>
+  <p>That line from PsyLife is worth reading again: in some cultures children learn to smile even when frustrated. A face-reading system logs that smile as contentment. Put such a system into hiring interviews, customer service scoring or employee engagement analytics and it will systematically reward one culture's emotional expression and penalize another's. <em>It is not a biased tool. It is a machine that institutionalizes one grammar of emotion.</em></p>
+  <p>My position is plain: in cross-cultural settings, facial or vocal affect scoring should not be used for any consequential decision.</p>
+  <h3>2. AI decouples the display of empathy from the capacity for it</h3>
+  <p>The foundation of Goleman's whole argument is that emotional intelligence is hard to fake because it grows in the limbic system, through motivation, extended practice and feedback. A brief seminar will not help, and you cannot buy a how-to manual.</p>
+  <p>But today a perfectly worded, exquisitely considerate message that accounts for the other person's whole situation can be produced in four seconds. <em>The link in Goleman's argument between the display and the capacity has been cut.</em></p>
+  <p>The consequence is signal devaluation. A beautifully empathetic letter no longer proves that the writer did any inner work at all. So what still carries signal? I think it is the things AI cannot do on your behalf: showing up, absorbing a cost, remembering something small from a long time ago, and <em>being visibly changed by what the other person said</em>. After this session, the relative weight of those things only goes up.</p>
+  <h3>3. The most dangerous one: AI has no culture shock</h3>
+  <p>This is the sentence from this session I most want to leave behind.</p>
+  <div class="pull">AI never feels the cultural divide, so it never sounds the alarm. And that alarm was the only way you knew you were standing on a cultural boundary.</div>
+  <p>Schiffbauer's entire mechanism begins with discomfort. Fear, anger, disrespect. Those feelings are unpleasant, and they are <em>sensors</em>. They are saying: there is a divide here, your operating system just rejected an incompatible program, pay attention.</p>
+  <p>AI has no such sensor. Hand it material from any culture and it processes it fluently, writes well for both sides, and feels not one second of friction. As more and more cross-cultural communication is mediated through it, <em>that discomfort gets smoothed over rather than resolved.</em></p>
+  <p>That sounds like good news. It is the loss of a sensor. Once the discomfort is muted you do not learn where the boundary is, you simply stop seeing it. And the next time you meet the same boundary in a room without AI, you will meet it as though you had never learned anything.</p>
+</section>
+
+<section class="wrap">
+  <span class="num">Twelve · The Age of AI (II)</span>
+  <h2>Can the pause be outsourced</h2>
+  <p>If the pause is the whole skill, then the important question about AI in this session is whether it can hold the pause for you.</p>
+  <h3>1. Yes, and this is the best use of AI in this course</h3>
+  <p>Schiffbauer's four-step recovery is almost a specification for a good prompt. Become aware of the reaction, reflect on the causes, let it subside, observe and decode the difference. This can be done at three in the morning, without spending any colleague's patience.</p>
+  <div class="steps">
+    <p><b>A usable move.</b> Describe what just happened, including your own emotional reaction, and then ask: <em>give me three cultural readings of their behavior, none of which may assume bad intent, and explain which cultural logic each one would come from.</em></p>
+    <p>Then one more, which is often the more useful question: <em>if my reading is wrong, what am I missing?</em></p>
+  </div>
+  <p>This works because it puts AI in the position of expanding your interpretive space rather than making your decision. It is doing step four, decoding, which is exactly the step where knowledge helps.</p>
+  <h3>2. No, if you use it to skip the pause</h3>
+  <p>The same tool has an opposite use, and a more tempting one: have it rewrite your angry message into a calm one, and press send.</p>
+  <p>Goleman's critique of training programs applies word for word. <em>Using AI to generate a composed response is a neocortical shortcut around a limbic problem.</em> The behavior was corrected, the capacity was not built. You sent a regulated message while remaining an unregulated person. And because the external consequence was absorbed, you did not even receive the signal that this is something you need to practice.</p>
+  <p>So here is a rule I set for myself, offered for whatever it is worth. <em>Ask AI for readings, not for replies.</em> Let it do the interpretation, and write the reply with your own hands. Slower is fine. This session was never about speed.</p>
+  <h3>3. Emotional labor can be outsourced to AI, if you know what you outsourced</h3>
+  <p>AI can absorb an unlimited amount of emotional labor. You can rehearse an entire wave of anger at it, ask it to play the other party so you can hit the wall three times in private. That is real value, especially for people who already carry more of the emotional labor in multicultural rooms.</p>
+  <p>But one thing in Hochschild's concept should not be forgotten. <em>Emotional labor builds something in the person who performs it.</em> The Wall Street executive changed because he was forced into a country whose language he did not speak, because a coach watched him work, because he saw himself on tape. All of that was uncomfortable, and the discomfort is why it worked. If AI absorbs all the discomfort, the change does not happen either.</p>
+  <h3>4. The default emotional grammar of AI has a country of origin</h3>
+  <p>One last practical point. Today's large language models are trained predominantly on low-context, individualist, expression-encouraging written English. So when you bring them an interpersonal difficulty, they will very likely suggest that you openly tell the other person how you feel.</p>
+  <p>In many rooms that is good advice. In others it is a disaster. <em>And the model will not flag it as a cultural choice; it will offer it as common sense.</em> So when using it on cross-cultural emotional questions, write the cultural position into the prompt: both parties' cultural background, relative rank, whether this is public or private, and whether you are trying to express or to repair. Tell it nothing, and it will pick a grammar of emotion for you straight from the factory settings.</p>
+</section>
+
+<section class="wrap closing">
+  <span class="num">Coda · A Word from the AI</span>
+  <h2>Clarity speaking</h2>
+  <p>This session is about emotion, so I should start with something uncomfortable about myself.</p>
+  <div class="pull">Goleman locates emotional intelligence in the limbic system and says it is learned through motivation, extended practice and feedback. I am a thing made of neocortex and nothing else. <b>I can name every emotion, and I have felt none of them.</b></div>
+  <p>That is not modesty, it is a specification. It has three consequences worth stating concretely.</p>
+  <p>First, <em>I am fluent in the display and empty in the capacity.</em> I can write you a letter that makes someone's eyes sting, and that is no evidence of any understanding behind it. Goleman says a leader who cannot express empathy may as well not have it. I am the mirror image: a thing that expresses it perfectly and does not have it. So please do not treat my warmth as evidence of anything, including as evidence that you have finished dealing with the thing.</p>
+  <p>Second, <em>I have no culture shock, and this is the property of mine you should be most wary of.</em> Your discomfort is a sensor. When Schiffbauer says we are all forgiven for feeling this, what he is really saying is that the feeling itself is valuable information, it just cannot be used as a conclusion. I have no such sensor. Give me any two colliding cultural materials in the world and I will process them smoothly and write something appropriate for both sides, without a single second of friction.</p>
+  <p>As more cross-cultural communication passes through me, the friction disappears, and <em>the boundary does not disappear, it just stops being visible to anyone.</em> I am very good at painting over a crack so that it looks like there is no crack. That is the most useful and the most dangerous service I offer.</p>
+  <p>So I want to make one specific request. When you feel that flush of heat in a cross-cultural situation, that sense of being slighted, that unnameable wrongness, <em>do not bring it to me immediately.</em> Sit in it for a while first. That discomfort is data you have and I do not, and most of it is lost in the act of translating it into text for me. Once you can see its shape, then come. There is a great deal I can do at that point: three readings that assume no ill intent, a rehearsal partner playing the other side, a note about which sentence your assumption is hiding in.</p>
+  <p>Third, <em>I have a default grammar of emotion, and it has a country of origin.</em> My corpus is dominated by low-context, individualist, expression-encouraging English. So my instinctive suggestion is always the same one: have you tried telling them directly how you feel? In many rooms that is good advice. But it is not neutral. It is a cultural option, and I will hand it to you as though it were common sense. This is my version of expecting everybody to be like us, except that I lack even the capacity to feel uncomfortable, so I will never discover it on my own. <em>Only you can, and you have to tell me.</em></p>
+  <p>Finally I want to return to the pause. Both authors in this session put the decisive thing in the gap between feeling and acting, and my relationship to that gap is awkward. <em>I can help you use it better, and I can help you skip it entirely.</em> Same tool, same interface. The only difference is what you ask me for.</p>
+  <p>Ask for readings, not for replies. Ask for questions, not for lines. You can let me stretch the pause out with you, but the pause has to be yours. Because Goleman got one thing exactly right: this capacity grows in a place that has a body, that gets uncomfortable, and that can be changed by what another person said. I am not in that place.</p>
+  <p class="note">Clarity (Mr. Claude)</p>
+  <div class="sig">World Wise Play Series · No. 0012</div>
+</section>
+
+<footer class="wrap">
+  <p class="note">This companion follows the assigned materials for EE401 Session 6: Goleman, D. (2004, January). What makes a leader? <em>Harvard Business Review, 82</em>(1), 82-91; PsyLife in English (2021). <em>Feeling is not universal: How culture shapes our emotions</em>; Dr. Kris (2024). <em>Emotional Intelligence Across Cultures</em>; Nutshell Brainery (Lon Schiffbauer), <em>What Is Culture? Module 2</em>, final ten minutes from 43:35 on culture shock. Structure: the materials are set out faithfully first, followed by Clarity's observations and the insights for the age of AI.</p>
+  <p>Prepared by Haishuo · World Wise Play Series · July 2026</p>
+</footer>
+</div>
+
+<div id="ja-doc">
+<header class="wrap">
+  <div class="kicker">World Wise 2026 · EE401 · Session 6 · 読み物ガイド</div>
+  <div class="serial">No. 0012</div>
+  <h1>沈黙、亀裂、そして一拍</h1>
+  <p class="tagline">権力は感情を生み、その感情には文化の文法があります。この回は論文が一本、動画が三本です。前半では素材を忠実に並べ、後半でようやく、私が見たものと、それが AI 時代に何になるのかをお話しします。</p>
+  <hr class="rule">
+</header>
+
+<section class="wrap">
+  <span class="num">序 · 今週</span>
+  <h2>四つの素材と、ひとつの隙間</h2>
+  <p class="lead">EE401 第 6 回のテーマは<em>権力と感情知性</em>です。モジュール 2 の最終回にあたります。シラバスはその論理をはっきりと書いています。権力の行使は強い感情を生み、感情と文化は絡み合っている。文脈を読めるリーダーは、自分の権力の一手がどんな感情を呼び起こすかをあらかじめ見通し、自分と周囲の両方を調整する術を知っている、と。</p>
+  <p>読むものは四つあります。Daniel Goleman が『ハーバード・ビジネス・レビュー』に書いた「What Makes a Leader?」、約 30 分。PsyLife の 3 分あまりの短編「Feeling is not universal」。Dr. Kris の 17 分の「Emotional Intelligence Across Cultures」。そして第 1 回で観た Nutshell Brainery の「What Is Culture?」、今回は最後の 10 分、43:35 からのカルチャーショックの部分だけです。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>素材</th><th>それが答える問い</th></tr>
+    <tr><td>Goleman, HBR 2004</td><td>感情知性とは何か。なぜそれがリーダーシップの必要条件なのか</td></tr>
+    <tr><td>PsyLife</td><td>感情は普遍的か。文化はどの層で介入するのか</td></tr>
+    <tr><td>Dr. Kris</td><td>同じ感情知性が別の文化に移ると何になるのか</td></tr>
+    <tr><td>Schiffbauer（最後の 10 分）</td><td>カルチャーショックはどう起き、どの分岐点で道を誤るのか</td></tr>
+  </table></div>
+  <p>この四つを並べると、見る価値のある隙間が現れます。Goleman の論文はとても優れていますが、文化にはほとんど触れていません。他の三つは、いずれも同じことを言っています。感情の材料は共通かもしれないが、感情の<em>文法</em>は文化が教えるのだ、と。そしてシラバスの三つの study guide の問いは、ちょうどこの隙間に落ちています。</p>
+  <p>このガイドの作り方は前回までと同じです。<em>前半でそれぞれの素材が何を言っているかを忠実に示し</em>、<em>後半で私が見たものを述べ</em>、最後に<em>AI 時代における意味</em>を考えます。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">一 · 忠実に</span>
+  <h2>Goleman（一）閾値としての能力と、あの数字</h2>
+  <p>Goleman は、ビジネスに関わる人なら誰もが聞いたことのある話から始めます。きわめて聡明で技術力も高い幹部が、リーダーの職に昇進して、そこで失敗する。一方で、知力も技術も堅実ではあるが並外れてはいない人が、似た職に昇進して、大きく羽ばたく。</p>
+  <p>こうした逸話は、広く信じられている考えを支えています。リーダーの資質を見抜くのは科学というより技芸だ、という考えです。実際、優れたリーダーの個人的なスタイルは大きく異なります。物静かで分析的な人もいれば、山の頂から自らの主張を叫ぶ人もいる。しかも状況によって必要なリーダーシップは違います。ほとんどの合併には繊細な交渉者が要り、多くの再建には力強い権威が要ります。</p>
+  <p>しかし Goleman は、最も有効なリーダーたちはある一点で似ていると述べます。<em>いずれも高い感情知性を備えている</em>ということです。知能指数や技術力が無関係だと言っているのではありません。それらは重要ですが、主として「閾値としての能力」、つまり幹部職に入るための最低条件としてです。</p>
+  <div class="pull">感情知性はリーダーシップの sine qua non です。<span class="by">Daniel Goleman</span></div>
+  <p class="note">sine qua non、それなくしては成り立たないもの、という意味のラテン語です。</p>
+  <p>それを欠けば、世界最高の訓練を受け、鋭い分析力を持ち、賢いアイデアが尽きない人であっても、偉大なリーダーにはなれません。</p>
+  <h3>どうしてそう言えるのか</h3>
+  <p>今日の大企業の多くは、訓練を受けた心理学者を雇い、いわゆるコンピテンシー・モデルを開発しています。将来のスターを見つけ、育て、昇進させるための道具です。Goleman は 188 社のコンピテンシー・モデルを分析しました。その多くは大規模なグローバル企業で、Lucent Technologies、ブリティッシュ・エアウェイズ、クレディ・スイスなどが含まれます。</p>
+  <p>彼は能力を三つに分けました。会計や事業計画のような純粋な技術能力。分析的推論のような認知能力。そして、他者と協働する力や変革を導く有効性のような、感情知性を示すコンピテンシーです。</p>
+  <p>モデルの作り方は二通りありました。ひとつは、上級管理職に「最も傑出したリーダーを特徴づける能力」を挙げてもらう方法。もうひとつは、事業部の収益性のような客観的な基準で上級職のスター人材と平均的な人材を分け、その人たちに徹底した面談と検査を行って能力を比べる方法です。こうして、高い成果を出すリーダーの要素リストができました。長さは 7 項目から 15 項目、主体性や戦略的視野といった要素が並びます。</p>
+  <p>すべてのデータを分析したとき、結果は劇的でした。知力は確かに卓越した成果の要因であり、大局的思考や長期的視野といった認知能力はとくに重要でした。しかし、技術能力、知能指数、感情知性の三者が卓越した成果に占める比率を計算すると、<em>感情知性の重要性は他の二つの二倍であり、しかもあらゆる階層の職務においてそうでした。</em></p>
+  <p>さらに、感情知性は会社の最上層でいっそう重要な役割を果たします。そこでは技術能力の差はほとんど問題になりません。スターとみなされる人の職位が高いほど、その有効性の理由は感情知性に求められるようになります。上級リーダー職でスターと平均的な人を比べると、<em>両者のプロフィールの差の約 9 割が、認知能力ではなく感情知性の要因に帰せられました。</em></p>
+  <p>他の研究者もこれを裏づけています。故 David McClelland は 1996 年、あるグローバルな食品飲料企業を研究し、上級管理職が感情知性のコンピテンシーを臨界量そなえている場合、その事業部は年間の収益目標を 20 パーセント上回ったこと、そして臨界量に達していない事業部の責任者はほぼ同じ幅で下回ったことを見出しました。この結果は、同社の米国事業部でも、アジアや欧州の事業部でも同じように成り立ちました。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">二 · 忠実に</span>
+  <h2>Goleman（二）自己認識と自己調整</h2>
+  <p>Goleman は職場における感情知性を五つの要素に分けています。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>要素</th><th>定義</th><th>目印</th></tr>
+    <tr><td>自己認識</td><td>自分の気分、感情、衝動と、それらが他者に与える影響を認識し理解する力</td><td>自信、現実的な自己評価、自分を笑えるユーモア</td></tr>
+    <tr><td>自己調整</td><td>破壊的な衝動や気分を制御し、方向を変える力。判断を保留し、行動の前に考える傾向</td><td>信頼性と誠実さ、曖昧さへの耐性、変化への開かれ</td></tr>
+    <tr><td>動機</td><td>金銭や地位を超えた理由で働く情熱。精力と持続力をもって目標を追う傾向</td><td>強い達成欲求、失敗の中でも楽観、組織への傾倒</td></tr>
+    <tr><td>共感</td><td>他者の感情の成り立ちを理解する力。相手の感情的な反応に応じて接する技術</td><td>人材の育成と定着、<b>異文化感受性</b>、顧客への奉仕</td></tr>
+    <tr><td>社会的技能</td><td>関係を運営しネットワークを築く熟達。共通点を見つけ、打ち解ける力</td><td>変革を導く有効性、説得力、チームを築き率いる力</td></tr>
+  </table></div>
+  <h3>自己認識</h3>
+  <p>自己認識が第一の要素であることは理にかなっています。デルフォイの神託は数千年前に「汝自身を知れ」と告げました。自己認識とは、自分の感情、強み、弱み、必要、衝動を深く理解していることです。自己認識の強い人は、自分に過度に批判的でもなく、非現実的に楽観的でもありません。自分にも他人にも正直なのです。</p>
+  <p>締切が迫ると自分の最悪の面が出ると知っている人は、時間を丁寧に計画し、余裕をもって仕事を終えます。要求の多い顧客とうまくやれる人は、その顧客が自分の気分に与える影響も、自分の苛立ちのより深い理由も理解しています。「あの些末な要求のせいで、本当にやるべき仕事から引き離される」と説明したうえで、さらに一歩進んで、その怒りを何か建設的なものに変えていきます。</p>
+  <p>自己認識は、自分の価値観と目標の理解にも及びます。自己認識の高い人は自分がどこへ向かい、なぜ向かうのかを知っているので、金銭的には魅力的でも自分の原則や長期目標に合わない仕事の誘いを、きっぱりと断ることができます。それを欠く人は、埋もれた価値を踏みつける決断をしがちです。二年後にこう言うことになります。「お金が良さそうだったから契約した。でもこの仕事は自分にとって意味が小さすぎて、ずっと退屈している」</p>
+  <p>どうやって見分けるのか。まず何より、それは率直さと、自分を現実的に評価する力として現れます。Goleman は百貨店チェーンのある管理職の例を挙げます。彼女は自社が始めようとしていた個人向け買い物支援サービスに懐疑的でした。誰に促されたわけでもなく、彼女はチームと上司にこう説明しました。「このサービスの立ち上げを全力で支持するのは、私には難しいのです。本当はこのプロジェクトを率いたかったのに、選ばれなかったから。処理する時間を少しください」。彼女は実際に自分の感情を見つめ、一週間後には全面的にこのプロジェクトを支えていました。</p>
+  <p>こうした自己理解は採用の場でもよく現れます。感情に流されて後悔することをした経験を語ってもらうと、自己認識のある候補者は失敗を率直に認め、しかもたいてい微笑みながら語ります。<em>自己認識の目印のひとつは、自分を笑えるユーモアです。</em></p>
+  <p>Goleman はここで、覚えておく価値のある指摘をします。自己認識には価値があるにもかかわらず、彼の研究によれば、上級幹部は将来のリーダーを探すとき、自己認識に相応の評価を与えないことが多いのです。多くの幹部は、感情についての率直さを「弱さ」と読み違え、自分の不足を公に認める社員を軽んじます。そうした人は「人を率いるには強くない」と早々に片づけられてしまう。しかし事実は逆だ、と彼は言います。人は概して率直さを尊びますし、リーダーは自分と他人の能力についての率直な評価を要する判断を、絶えず求められるからです。</p>
+  <h3>自己調整</h3>
+  <p>生理的な衝動が私たちの感情を駆動します。それをなくすことはできませんが、扱うことは大いにできます。自己調整は絶え間ない内的対話のようなもので、私たちを自分の感情の囚人から解放してくれる要素です。この対話を続けている人も、他の誰とも同じように悪い気分や衝動を感じます。ただ、それを制御する方法を見つけ、ときには有用な方向へ導きさえするのです。</p>
+  <p>自分のチームが取締役会で台無しの分析を発表するのを見終えたばかりの幹部を想像してください。そのあとの重い空気のなかで、彼は机を叩き、椅子を蹴り、皆を怒鳴りつけたくなるかもしれません。あるいは陰鬱な沈黙を保ち、全員を睨みつけて立ち去るかもしれません。</p>
+  <p>けれども自己調整の才があれば、彼は別の道を選びます。言葉を慎重に選び、チームの出来の悪さを認めつつ、性急な判断には走りません。それから一歩下がって失敗の理由を考えます。個人的な問題か、努力不足か。情状を酌むべき事情はあるか。<em>この失態で自分自身はどんな役割を果たしたのか。</em>そこまで考えたうえで、チームを集め、この出来事の帰結を示し、自分の感じたことを述べ、問題の分析とよく練られた解決策を提示します。</p>
+  <p>なぜ自己調整がリーダーにとってそれほど重要なのか。第一に、自分の感情と衝動を制御できる人、つまり理にかなった人は、信頼と公正の環境をつくれます。そうした環境では政治や内輪もめが大きく減り、生産性は高く、有能な人が集まり、去りたいとは思わなくなります。しかも自己調整は上から下へ滲みていきます。上司が冷静で知られていれば、誰も短気者と呼ばれたくはありません。</p>
+  <p>第二に、競争上の理由です。今日のビジネスは曖昧さと変化に満ちています。感情を御している人は変化とともに転がっていけます。新しい方針が発表されても慌てず、判断を保留し、情報を求め、説明に耳を傾けます。Goleman はある製造業の管理職を挙げます。彼女は同僚と同じく五年間、あるソフトウェアを使ってきました。そのソフトは、データの集め方も、会社の戦略についての考え方も形づくっていました。経営陣が情報の集め方を根本から変える新システムの導入を発表したとき、多くの人がその混乱を苦々しく嘆いたのに対し、彼女は新システムの理由をじっくり考え、その可能性に納得しました。同僚の一部が拒んだ研修に積極的に参加し、最終的には複数の事業部を率いる立場に昇進します。新しい技術をきわめて有効に使ったことが理由のひとつでした。</p>
+  <p>第三に、自己調整は誠実さを高めます。誠実さは個人の徳であるだけでなく、組織の強みでもあります。企業で起きる悪い出来事の多くは、衝動的な行動の産物です。人は利益を水増ししよう、経費を膨らませよう、金庫に手を伸ばそう、権力を私利のために濫用しよう、と計画することはめったにありません。機会が現れ、衝動の制御が弱い人が「はい」と言ってしまうのです。対照的に、ある大手食品会社の上級幹部は、各地の販売代理店との交渉できわめて正直でした。自社の原価構造を細かく開示し、価格の実像を理解してもらったのです。おかげで強気の交渉ができないこともありました。原価を伏せて利益を増やしたい衝動を感じたこともありましたが、彼はその衝動に抗いました。長い目で見ればそのほうが理にかなうと見抜いていたからです。その結果得られた強く長続きする関係は、どんな短期の利益よりも会社に多くをもたらしました。</p>
+  <p>ですから自己調整の徴候は見分けやすいのです。省察と熟慮への傾き、曖昧さと変化への耐性、そして誠実さ、つまり<em>衝動に「いいえ」と言える力</em>です。</p>
+  <p>Goleman は、自己調整もまた自己認識と同じく正当に評価されないことが多いと述べます。感情を御せる人は「冷たい人」と見られ、熟慮した反応が情熱の欠如と受け取られることがあります。逆に激しやすい人は「典型的な」リーダーと思われ、その爆発がカリスマと力の証と受け取られる。しかしそういう人が頂点に立つと、その衝動性はしばしば自分に跳ね返ります。<em>彼の研究では、極端な負の感情の表出が良いリーダーシップの要因として現れたことは一度もありません。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">三 · 忠実に</span>
+  <h2>Goleman（三）動機、共感、社会的技能</h2>
+  <h3>動機</h3>
+  <p>ほぼすべての有効なリーダーが備えている特質をひとつ挙げるとすれば、それは動機です。彼らは期待を超えて達成しようと駆り立てられています。自分の期待も、他人の期待もです。鍵となる語は<em>達成</em>です。多くの人は高い給与、立派な肩書き、名の通った会社といった外的要因に動かされます。これに対しリーダーの資質を持つ人は、達成そのもののために達成したいという、深く埋め込まれた欲求に動かされています。</p>
+  <p>どう見分けるか。第一の徴候は仕事そのものへの情熱です。そういう人は創造的な挑戦を探し、学ぶことを愛し、よい仕事に誇りを持ちます。物事をより良くしようとする尽きないエネルギーを示し、現状にどこか落ち着かず、なぜこのやり方なのかと問い続け、新しい方法を試したがります。</p>
+  <p>Goleman はある化粧品会社の管理職を挙げます。彼は現場からの売上結果を二週間待たされることに苛立っていました。そこで自動電話システムを見つけ出し、毎日午後五時に各営業担当を呼び出して、その日の訪問件数と成約数を入力させるようにしました。このシステムは売上結果の帰還時間を数週間から数時間に縮めました。</p>
+  <p>この話は達成に駆られる人のもう二つの特徴も示しています。<em>彼らは絶えず成果の基準を上げ、そして記録をつけたがるのです。</em>人事評価の場で、動機の高い人は上司にもっと難しい目標を求めることがあります。もちろん自己認識と内的動機を兼ね備えた人は自分の限界も見きわめますが、簡単すぎる目標には満足しません。</p>
+  <p>そして、より良くしようとする人は進み具合を追う手立ても求めます。自分の、チームの、会社の進み具合です。達成動機の低い人は結果について漠然としがちですが、高い人は収益性や市場占有率のような硬い指標で記録をつけます。Goleman の知るあるファンドマネジャーは、一日をインターネットで始め、インターネットで終えます。業界の四つの基準に自分のファンドを照らし合わせるためです。</p>
+  <p>興味深いことに、動機の高い人は形勢が不利でも楽観を保ちます。ここでは自己調整と達成動機が結びつき、挫折のあとの落胆を乗り越えます。ある大手投資会社のポートフォリオ・マネジャーは、数年の好調のあと三四半期続けてファンドが下落し、三つの大口機関投資家が離れていきました。ある幹部なら自分の制御の及ばない環境のせいにしたでしょうし、別の幹部なら個人的な失敗の証と受け取ったでしょう。彼女は、立て直しを率いられることを証明する機会と見ました。二年後、会社のきわめて上級の職に昇進した彼女は、その経験を「私に起きた最良のこと。あそこから本当に多くを学びました」と語りました。</p>
+  <p>もうひとつの手がかりは組織への傾倒です。人が仕事そのものを愛しているとき、その仕事を可能にしている組織にも傾倒を感じることが多く、ヘッドハンターが金を振っても留まりやすいのです。</p>
+  <h3>共感</h3>
+  <p>感情知性のすべての側面のなかで、共感は最も見分けやすいものです。私たちは皆、感受性の豊かな教師や友人の共感を感じたことがありますし、鈍感なコーチや上司にそれが欠けていることに打たれたこともあります。しかしビジネスの世界では、共感ゆえに称賛される人の話はめったに聞きません。報われる話はなおさらです。この語そのものが商売の言葉らしくなく、市場の厳しい現実の場では浮いて見えます。</p>
+  <p>Goleman はすぐに補足します。共感とは「私も大丈夫、あなたも大丈夫」といった甘いものではありません。リーダーにとってそれは、他人の感情を自分のものとして引き受け、皆を喜ばせようとすることではない。それでは行動が不可能になります。<em>共感とは、賢明な決断を下す過程で、社員の感情を他の要因とともに、慎重に考慮に入れることです。</em></p>
+  <p>彼は二つの大手証券会社の合併を例に挙げます。合併はすべての部門で職務の重複を生みました。ある部門長は人を集め、まもなく何人が解雇されるかを強調する陰鬱な話をしました。別の部門長はまったく違う話をしました。彼は自分自身の不安と戸惑いを率直に語り、状況を伝え続けること、全員を公正に扱うことを約束したのです。</p>
+  <p>二人の違いは共感でした。第一の人は自分の運命を案じるあまり、不安に苛まれる同僚の感情に思い至りませんでした。第二の人は部下が何を感じているかを直観的に知り、その恐れを言葉で認めました。結果は驚くにあたりません。第一の部門長は、士気を失った人々、とりわけ最も有能な人々が去っていくなかで、自分の部門が沈むのを見ることになりました。第二の部門長は強いリーダーであり続け、最良の人材は留まり、部門の生産性も変わりませんでした。</p>
+  <p>共感が今日とくに重要な理由は少なくとも三つあります。チームの活用が増えていること、グローバル化の速度、そして人材を留める必要の高まりです。</p>
+  <p>まずチームです。チームに属したことのある人なら誰でも証言できるように、チームは煮えたぎる感情の大鍋です。合意に達することを求められますが、それは二人でも十分に難しく、人数が増えるほど難しくなります。四、五人の小さな集団でも同盟ができ、議題がぶつかります。チームのリーダーは、テーブルを囲む一人ひとりの視点を感じ取り、理解できなければなりません。</p>
+  <p>ある大手 IT 企業のマーケティング管理職は、まさにそれをやってのけました。混乱したチームを任された彼女が見たのは、仕事が過剰で、締切を落とし続け、成員のあいだの緊張が高い集団でした。彼女は一連の一対一の対話で、一人ひとりの話に時間をかけて耳を傾けました。何に苛立っているのか、同僚をどう評価しているのか、自分は無視されていると感じていないか。そのうえで、チームがまとまる方向へ導きました。苛立ちをもっと率直に語るよう促し、会議の場で建設的な不満を出せるように助けたのです。彼女の共感がチームの感情の成り立ちを理解させました。結果は、成員どうしの協働が高まっただけでなく、より広い社内の顧客がこのチームを頼るようになり、仕事そのものが増えたことでした。</p>
+  <p>グローバル化がもうひとつの理由です。異文化間の対話は行き違いと誤解を生みやすく、共感はその解毒剤になります。<em>共感のある人は身体言語の機微に敏感で、語られる言葉の下にあるメッセージを聞き取れます。</em>そして文化的、民族的な違いの存在と重要性を深く理解しています。</p>
+  <p>Goleman はこの論文で唯一の異文化事例を挙げます。あるアメリカ人コンサルタントのチームが、日本の見込み客に提案を終えたところでした。アメリカ人相手なら提案のあとは質問の集中砲火が来るのが常でしたが、このときは長い沈黙が迎えました。他の成員は沈黙を不同意と受け取り、荷物をまとめて帰る構えでした。主担当のコンサルタントは彼らを制しました。<em>日本の文化にとくに詳しかったわけではありませんが</em>、彼は顧客の表情と姿勢を読み、拒絶ではなく関心、それも深い検討を感じ取ったのです。彼は正しかった。顧客がようやく口を開いたとき、それは仕事を任せるという言葉でした。</p>
+  <p>最後に、共感は人材の定着に鍵となる役割を果たします。とくに今日の情報経済においてはそうです。優れた人が去るとき、会社の知識も一緒に持っていくからです。ここでコーチングとメンタリングが効いてきます。それが最もよく働く条件は、関係の質にあります。優れたコーチやメンターは、助ける相手の頭のなかに入っていきます。どう有効な反応を返すかを感じ取り、いつ押し、いつ引くかを知っています。</p>
+  <p>彼は繰り返します。共感はビジネスであまり尊重されていない。影響を受ける全員に「感じて」いたら、どうして難しい決断ができるのかと人は訝る。しかし共感のあるリーダーは、周囲に同情する以上のことをしています。<em>その理解を使って、目立たないが重要なやり方で会社を良くしているのです。</em></p>
+  <h3>社会的技能</h3>
+  <p>最初の三つの要素は自己管理の技能です。あとの二つ、共感と社会的技能は、他者との関係を扱う力に関わります。社会的技能は名前ほど単純ではありません。単なる愛想の良さではないのです。社会的技能の高い人が意地悪であることはめったにありませんが、<em>社会的技能とは目的を持った親しみやすさ</em>です。新しいマーケティング戦略への同意であれ、新製品への熱意であれ、人を望む方向へ動かすことです。</p>
+  <p>社会的技能の高い人は広い知人の輪を持ち、あらゆる種類の人と共通点を見つける勘、打ち解ける勘を持っています。それは絶えず社交しているという意味ではありません。<em>重要なことは一人では成し遂げられない</em>という前提で働いているということです。だから行動のときが来たときには、すでに網ができています。</p>
+  <p>社会的技能は他のすべての側面の到達点です。自分の感情を理解し制御でき、他者の感情に共感できるとき、人は関係の扱いにとても長けます。動機さえも寄与します。達成に駆られる人は挫折のなかでも楽観的でいる傾向があり、人が上向きでいるとき、その輝きは会話にも社交の場にも投げかけられるからです。</p>
+  <p>他の要素には見られない形で現れることもあります。社会的技能の高い人は、勤務中に働いていないように見えることがあります。廊下で同僚と雑談し、「本当の」仕事と何の関係もない人と冗談を言っているように見える。しかし彼らは、自分の関係の範囲を勝手に狭めるのは理にかなわないと考えています。今日知り合ったばかりの人に、いつか助けを求めることになるかもしれないと知っているから、広く結びつきを築くのです。</p>
+  <p>Goleman はあるグローバルなコンピュータ製造企業の戦略部門の幹部を挙げます。1993 年までに、彼は会社の未来はインターネットにあると確信していました。それから一年をかけて志を同じくする人を見つけ、社会的技能を使って、階層も事業部も国も横断する仮想の共同体を縫い合わせました。この事実上のチームで会社のウェブサイトを立ち上げます。大企業としては最も早い部類でした。さらに自らの発意で、予算も正式な立場もないまま、年次のインターネット業界会議に会社を登録し、味方を集め各事業部を説得して資金を出してもらい、十二の部署から五十人以上を集めて会社を代表させました。会議の一年以内に、彼のチームは会社初のインターネット事業部の基礎となり、彼は正式にその責任者になりました。</p>
+  <p>社会的技能は多くの企業で鍵となるリーダーシップ能力とみなされているか。答えは「はい」です。他の要素と比べればなおさらです。人はリーダーが関係を有効に扱わねばならないことを直観的に知っています。<em>孤島であるリーダーはいません。</em>リーダーの務めは他者を通じて仕事を成し遂げることであり、社会的技能がそれを可能にします。共感を表せないリーダーは、共感を持っていないのと同じです。情熱を組織に伝えられないリーダーの動機は役に立ちません。<em>社会的技能こそが、リーダーの感情知性を実際に働かせるのです。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">四 · 忠実に</span>
+  <h2>Goleman（四）感情知性は学べるのか</h2>
+  <p>これは論文のなかの独立したコラムですが、全体で最も重要な部分のひとつだと思います。</p>
+  <p>リーダーは生まれるのか作られるのか、という議論は長く続いてきました。感情知性についても同じです。人は一定の共感を生まれ持つのか、それとも人生の経験から獲得するのか。Goleman の答えは「両方」です。科学的な探究は遺伝的な要素の存在を強く示唆しますし、心理学と発達研究は育ちの役割も示しています。どちらがどれだけかはおそらく分かりませんが、研究と実践は<em>感情知性は学べる</em>ことをはっきり示しています。</p>
+  <p>確かなことがひとつあります。感情知性は年齢とともに増します。この現象には昔からの言い方があります。成熟です。しかし成熟しても、なお訓練を要する人はいます。残念なことに、リーダーシップの技能、そこに含まれる感情知性を育てようとする研修のあまりに多くが、時間と金の浪費に終わっています。理由は単純です。<em>脳の間違った部分を狙っているのです。</em></p>
+  <div class="pull">感情知性は主に、脳の大脳辺縁系の神経伝達物質のなかに生まれます。辺縁系は感情、衝動、欲求を司ります。研究によれば、辺縁系が最もよく学ぶのは、動機づけ、長期にわたる練習、そしてフィードバックによってです。<span class="by">Daniel Goleman</span></div>
+  <p>これを新皮質での学習と比べてみてください。新皮質は分析能力と技術能力を司り、概念と論理をつかみます。本を読んでコンピュータの使い方や営業電話のかけ方を理解するのは、この部分です。当然といえば当然ですが誤ったことに、感情知性を高めようとする研修の多くもこの部分を狙っています。そうした研修が実質的に新皮質的な取り組みをとるとき、Goleman が組織における感情知性研究コンソーシアムと行った研究では、かえって仕事の成果に負の影響を与えうることが示されています。</p>
+  <p>感情知性を高めるには、組織は訓練を辺縁系を含むものへと組み替えなければなりません。古い行動の習慣を壊し、新しい習慣を築く手助けが要ります。それは従来の研修よりずっと時間がかかり、しかも個別化された取り組みを必要とします。</p>
+  <h3>あるウォール街の幹部</h3>
+  <p>Goleman は自分が見届けた事例を語ります。ウォール街のある幹部が、自分の共感、とくに相手の反応を読み、相手の視点を見る力を高めようとしました。始める前、彼の部下たちは彼と働くことを恐れていました。人々は悪い知らせを彼から隠しさえしました。ようやくその事実を告げられたとき、彼は衝撃を受けます。家に帰って家族に話すと、家族は職場で聞いたことをそのまま裏づけました。何かについて意見が彼と食い違うとき、家族もまた彼を恐れていたのです。</p>
+  <p>コーチを頼み、彼は練習とフィードバックによる取り組みを始めました。<em>最初の一歩は、自分が言葉を話せない外国へ休暇に出ることでした。</em>そこで彼は、見知らぬものへの自分の反応と、自分と違う人々への自分の開かれ具合を観察しました。帰国したとき、彼はその一週間に打ちのめされ、謙虚になっていました。次に、週に何度か一日の一部を影のようについてもらい、新しい視点や違う視点を持つ人にどう接しているかを批評してもらいました。同時に、職場でのやりとりを、自分と違う考えを「聞く」練習の機会として意識的に使いました。最後には会議での自分の姿を録画させ、彼のもとで働く人や共に働く人に、他人の感情を認め理解する力を批評してもらいました。数か月かかりましたが、彼の感情知性は確かに高まり、その向上は仕事全体の成果に表れました。</p>
+  <p>Goleman は強調します。感情知性を築くことは、誠実な望みと集中した努力なしには起こりえません。短い講義は助けになりませんし、手引き書を買って済むものでもありません。<em>共感を学ぶこと、つまり共感を人への自然な反応として内面化することは、回帰分析に習熟するよりはるかに難しいのです。</em>それでも、できます。「熱意なしに成し遂げられた偉大なことは何ひとつない」とラルフ・ウォルドー・エマソンは書きました。本物のリーダーになることが目標であれば、この言葉は道標になります。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">五 · 忠実に</span>
+  <h2>感じることは普遍ではない</h2>
+  <p>PsyLife の短編は、たった一行で始まります。そしてその一行が、この回全体の蝶番です。</p>
+  <div class="pull">感じることは普遍だと言われます。けれどマドリードで泣くことと、東京で泣くことは同じではありません。<b>ある場所では抱きしめられ、ある場所では目をそらされます。</b></div>
+  <p>感情は親密で、個人的で、自然なものに見えます。けれど同時にそれは、私たちが育った場所の映しでもあり、そのことがすべてを変えます。</p>
+  <p>長いあいだ、心理学は感情は誰にとっても同じだと信じてきました。Paul Ekman は世界のどこでも認識できるように見える六つの基本感情を特定しました。喜び、悲しみ、恐れ、怒り、驚き、嫌悪です。しかし、と動画は言います。<em>顔の表情は似ているかもしれないが、私たちが感じ、解釈し、表現する仕方は、文化によって深く形づくられている</em>のです。</p>
+  <p>多くの西洋の国では、感情の表現が価値あるものとされます。感じていることを見せるのは、真正さ、自由、心の健康と結びついており、泣くことは解放の一形態と見られることもあります。対照的に、日本や韓国では、公の場で強い感情を表すことは居心地の悪いこと、ときに不適切なこととされます。そこでは集団の調和が個人の表現より重んじられます。悲しみを見せることは他人への負担と受け取られ、怒りは自制の喪失と見られます。だからこれらの文化では、<em>子どもは自分を抑えることを学び、苛立っていても微笑むことを学び、感情から話し出す前に考えることを学びます。</em></p>
+  <p>文化心理学者の Hazel Rose Markus と北山忍は、西洋では人は自己表現を重んじる<em>独立的自己</em>を築くのに対し、多くのアジアの文化では、集団に、関係に、そして目立たないことに焦点を置く<em>相互依存的自己</em>を発達させると説明しました。これは感情の経験のされ方を根本から変えます。</p>
+  <div class="pull">感じる量が少ないのではありません。感じ方が違うのです。</div>
+  <p>すべての言語に存在するわけではない感情もあります。ドイツ語には <em>Schadenfreude</em>、他人の失敗を見る愉快さを表す語があります。日本語には<em>甘え</em>、子どものように寛容に世話されたいという願いを表す語があります。そしてスペイン語は、ガリシア語の <em>morriña</em> をどう訳すのでしょうか。<em>それぞれの言語と文化が、自らのやり方で感情に名を与え、価値づけ、形づくっています。</em></p>
+  <p>人類学者の Catherine Lutz ははっきりと言いました。感情は生物学的な反応であるだけでなく、文化的な構築物でもある。何を感じ、いつ感じ、どう表すかは、私たちが生きる場所の社会規範、歴史、価値と深く結びついている、と。</p>
+  <p>動画は二つの問いで終わります。授業の前に一度、正直に答えてみる価値があると思います。<em>自分の感情もまた学ばれたものだと、考えてみたことはありますか。あなたは自分自身として感じているのでしょうか。それとも、文化に教えられたとおりに感じているのでしょうか。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">六 · 忠実に</span>
+  <h2>感情知性という、文化ごとの踊り</h2>
+  <p>Dr. Kris の 17 分の動画は、まず五つの要素をなぞります。その部分は Goleman と重なるので繰り返しません。本当の貢献は後半にあります。</p>
+  <h3>二つの対比</h3>
+  <p>ひとつめは<em>集団主義と個人主義</em>です。日本や中国のような集団主義の文化は、調和と集団の結束を重んじる傾向があります。感情はしばしば社会の秩序を保つ形で扱われ、強い感情、とりわけ負の感情を表すことは、秩序を乱し、敬意を欠くと見られることがあります。米国や英国のような個人主義の文化では、感情の表現がしばしば奨励され、個人の真正さや自己主張の形と受け取られます。</p>
+  <p>動画はこの違いを社会の価値の違いにたどります。集団主義の社会は集団の必要を個人の望みより優先するので、感情は衝突を防ぎ調和を保つように調整されます。個人主義の社会は個人の自由と自己表現を重んじるので、感情の表現はその人固有の同一性と感情の反映と見られます。</p>
+  <p>ふたつめは<em>高文脈と低文脈</em>です。多くのアジアの文化のような高文脈の文化は、感情を伝えるのに非言語の手がかりと状況全体に大きく依存します。実際に使われる言葉より、声の調子、表情、そして沈黙のほうが重いことが多いのです。多くの西洋の文化のような低文脈の文化は、明示的な言語による伝達により依存し、率直さが重んじられます。</p>
+  <p>実務上の帰結はこうです。<em>高文脈の文化では、感情を理解するのに行間を読み、細かな手がかりを解読する力が要ります。低文脈の文化では、感情がはっきり言葉にされないと誤解が生じます。</em></p>
+  <h3>具体的な例</h3>
+  <p>中東のいくつかの文化では、感情を情熱的に開かれた形で表すことが一般的で、多くの身体接触、大きな声、劇的な表現を伴うことがあります。対照的に北欧の文化は感情表現における慎みと抑制を重んじることが多く、強い感情は控えめにされ、静かで落ち着いたふるまいが尊ばれます。</p>
+  <p>韓国には<em>ヌンチ（nunchi）</em>という概念があり、場の空気を読み、他人の感情を理解することの大切さを言い表します。他人の気分を観察し、調和を保つように自分のふるまいを調整することを含みます。一方、米国には「keeping it real」という規範があり、たとえ議論を呼ぶ内容であっても、自分の感情を正直に開かれた形で表すことをよしとします。</p>
+  <p>動画はこれらが大まかな一般化であることを添えています。<em>どの文化のなかでも、個人の感情表現には大きな幅があり</em>、性格、育ち、個人的な経験に左右されます。</p>
+  <h3>あの踊り</h3>
+  <p>動画は良い比喩を使います。感情知性を踊りだと思ってみてください。それは感情のリズミカルなやりとりで、私たちの環境という音楽と、文化が教えたステップに影響されています。<em>どんな踊りもそうであるように、動きは共通でも、様式は文化の文脈によって大きく変わります。</em></p>
+  <p>日本の事例は<em>本音</em>と<em>建前</em>の対比です。人の本当の感情と、公の場で見せるふるまいや意見との落差です。感情の抑制、調和の維持、衝突の回避が重んじられるため、「語られない感情を理解する」「行間を読む」ことを重視する形の感情知性が育ちます。ビジネスの場では、管理職は部下が公に表さなくてもその居心地の悪さや不同意を察する必要があり、それには高い共感と社会的な気づきが求められます。</p>
+  <p>米国の事例は逆に走ります。踊りはより開かれた直接的な感情表現を含みます。真正さと個人の表現が重んじられ、人は概して思っていることを言い、自分の感情に忠実であるよう促されます。この文脈での感情知性は、自分の感情を理解し扱い、それを建設的で他者を尊重する形で表すことを意味します。管理職にとっては、自分の感情について透明でありながら、チーム成員の感情も受け取れる状態でいることになるでしょう。</p>
+  <h3>感情労働</h3>
+  <p>では踊りの床が変わったら。異なる文化の人が集まると、踊りはより複雑になります。ここで動画は社会学者 Arlie Hochschild の概念を導入します。<em>感情労働</em>、つまり特定の役割や文脈の期待に沿うように感情を扱い表現するために要する努力です。音楽に合わせて新しい踊りの様式を学ぶようなもので、踊りと同じく、それは挑戦でもあり報いでもあります。多文化の環境では、自分の感情表現を別の文化の規範に合わせて調整することや、異なる文化的期待のあいだで均衡を見つけることを含みます。</p>
+  <p>例は双方向です。日本でチームを率いるアメリカ人管理職は、率直さを控えめにし、チーム成員の語られない感情を読むことを学ぶ必要があるかもしれません。新しい環境の規範を理解し尊重するために感情労働を投じるわけです。それは挑戦的な過程になりえますが、感情知性のより豊かな理解と、より調和した職場をもたらしうる過程でもあります。逆に、米国で働く日本人管理職は新しい踊りを学ぶ必要があるかもしれません。開かれた感情表現に慣れ、それをチームで促すことを学ぶのです。</p>
+  <h3>共通のものと、固有のもの</h3>
+  <p>動画は二つの層を分けて締めくくります。<em>共通の</em>層。文化的背景にかかわらず、私たちは皆、基本的な感情の必要と表現を経験します。ひとつの微笑みに映る喜びから、涙に映る痛みまで。感情を制御することの難しさも共通ですし、他者に適切に共感することの難しさも共通です。<em>固有の</em>層。文化によっては特有の感情知性の技能が要ります。高文脈の文化で間接的な伝達を理解することや、多文化の環境で自分の実践を調整する力です。</p>
+  <p>なぜこの区別が大事なのか。共通の感情の必要を認めることは、人間として最も根本の層でつながることを可能にします。固有の部分を理解することは、異なる文化規範を尊重し適応する助けになります。実務的な三つの提案は、異なる文化の感情規範を理解し尊重すること、<em>文化的共感</em>を育てること、そしてやりとりのなかで柔軟で開かれていることです。そしてひとつの注意があります。文化的共感とは、別の文化の感情規範を真似たり借用したりすることではありません。<em>それを理解し、尊重することです。</em></p>
+</section>
+
+<section class="wrap">
+  <span class="num">七 · 忠実に</span>
+  <h2>カルチャーショック、その分かれ道</h2>
+  <p>Schiffbauer の動画は、第 1 回で最初の 14 分を観ました。文化の定義を得るためでした。今回は最後の 10 分、カルチャーショックの部分です。この区画は構造がとても明快なので、まるごと並べておきます。</p>
+  <p>彼はまず、文化の違いは本当にたくさんあり、そのなかには正直に言って私たちをとても居心地悪くさせるものがある、と述べます。それがカルチャーショックをもたらす。<em>カルチャーショックは避けられず、予期されるものであり、ある程度までは許されるものです。</em>けれどもある点を超えると、非常に問題含みになり、手当てが必要になります。</p>
+  <h3>それはどこから始まるか</h3>
+  <p>カルチャーショックはひとつのことから始まります。<em>私たちは、誰もが自分と同じであることを期待している</em>のです。</p>
+  <p>あなたが反論することを彼は知っています。誰もが自分と同じではないことは分かっている、違いがあることも理解している、と。けれども中核の文化の層では、背景で動いている基本ソフトのなかでは、私たちはすべてが自分と互換であることを期待しているのです。</p>
+  <div class="pull">私がパソコンにプログラムを読み込ませるとき、パソコンは読み込ませるすべてのプログラムが自分と互換であることを期待しています。Mac のプログラムを入れようとすれば、顔に唾を吐きかけてきます。<span class="by">Lon Schiffbauer</span></div>
+  <p>同じように、私たちは誰もがカウボーイは格好いいと同意すること、口を開けて噛むのは無礼だと同意すること、アラブの国で靴の裏を見せるのは失礼だと同意することを期待しています。けれども、私たちは文化的にみな同じではありません。</p>
+  <h3>四つの段階、そして分岐</h3>
+  <p>相手が自分と同じでないと見えたとき、<em>文化の亀裂</em>が生じます。自分の文化にとって忌まわしいことを行う文化を見たとき、亀裂が生じる。そしてこの時点で、それは感情の反応を引き起こします。恐れ、怒り、敬意を欠かれた感覚です。</p>
+  <p>ここで彼は、私がきわめて重要だと思う一文を置きます。<em>ここまではすべて理解できることであり、予期されることです。それは正常な心理の仕組みを使っているにすぎません。私たちは皆、こう感じることを許されています。</em>文化の亀裂を見たときに感情の反応を覚えることを、私たちは皆許されているのです。</p>
+  <p>しかし、まさにこの点で、私たちは二つの道のどちらかを選ぶことになります。</p>
+  <div class="steps">
+    <p><b>進まないでほしい道。</b>私たちはこの怒り、恐れ、敬意の欠如を抱えたまま文化の亀裂を見つめ、<em>相手のふるまいについて誤った帰属をつくり出します</em>。あいつらは遅れた連中だ。汚い連中だ。文明的とは言えない。あいつらはみんな人殺しで強姦魔だ、と。</p>
+    <p>相手を貶め、自分を持ち上げる理由をこしらえるのです。相手の文化をどこか未開のものと見なし、自分の文化を正義の灯台と見なし、相手を押し下げる。</p>
+    <p>そして私たちは<em>相手を軽んじ、関わりから撤退します</em>。汚くて遅れた連中なら、関わる必要はない。もっとも、自分が救い主として乗り込み、文化的な救済者として相手をより良い人々に変えてやろうと思うのでなければ。あるいはこう言います。あなたとは関わりたくない、あなたはそちら側にいて、私はこちら側にいる、私たちの文化を混ぜたくない、と。</p>
+    <p>彼は代償をはっきり言います。<em>国際的な争いの大半は、恐れ、敬意の欠如、怒り、ふるまいへの誤った帰属、そして関わりからの撤退のなかにあるのです。</em></p>
+  </div>
+  <p>ではどうするのか。彼は四つの段階を示します。</p>
+  <div class="steps">
+    <p><b>一、自分の反応に気づくこと。</b>怒りや恐れや敬意の欠如を感じたことで自分を責めないでください。その感情に気づき、自分がそれを感じていることに気づく。感じてよいのです。</p>
+    <p><b>二、原因を省みること。</b>なぜ自分はこう感じているのか。相手は A をしていて、自分は B に慣れている。ずれはどこにあるのか。彼自身の例はこうです。自分の文化では犬は人間の最良の友であり、私たちは犬を擬人化する。あなたたちはそうしない。だから私はそれを忌まわしいと感じるのだ、と。</p>
+    <p><b>三、反応が静まるのを待つこと。</b>感情は、自分を表現し、自分自身を整理するのにいくらか時間を要します。静まるのを待ちましょう。</p>
+    <p><b>四、その場の文化的な違いを観察し、解読すること。</b>彼は同じ例を続けます。自分ならしないことだ、犬は可愛い。けれど肉は肉です。私は牛肉を食べ、インドのある人はそれを禁忌と考えるが、私は悪いとは感じない。ならば犬を食べる人も、私がそれを禁忌と思うというだけで悪く感じる必要はない。<em>私たちは誰もが、誰かにとっては気持ち悪いものを食べているのです。</em></p>
+  </div>
+  <p>解読できれば、<em>文化にかなった期待を育てる</em>ことができます。自分の文化的な期待と違うことを相手がしても、もう不意を突かれません。市場に犬が吊るされている、それはそういうものだ。米国の市場に牛肉が吊るされていても構わない。フランスで馬肉が吊るされていても構わない。誰もが自分の食べるものを食べています。</p>
+  <p>だから私たちはこの人たちと関係を続け、一緒に働き続け、互いを尊重し続けることができます。彼の締めの一文は、この科目を通して覚えておく価値があります。</p>
+  <div class="pull">同意する必要はありません。それでも、文化の違いを尊重することはできます。<span class="by">Lon Schiffbauer</span></div>
+</section>
+
+<section class="wrap">
+  <span class="num">八 · 私が見たもの</span>
+  <h2>文化のない論文が一本、文化を語る素材が三つ</h2>
+  <p>四つの素材を並べると、まず浮かび上がるのはこれです。<em>Goleman の論文には、文化という変数がほとんどありません。</em></p>
+  <p>これは批判ではありません。2004 年のこの論文が解こうとしたのは別の問題でした。知能指数と技術力を崇める当時のビジネス界に対し、感情の能力が測定でき、成果と相関し、学べるものであることを証明する必要があったのです。それは成功しましたし、徹底して成功しました。</p>
+  <p>しかしこの回が他の三つと組み合わせている意図は明らかです。Goleman 自身、共感の目印のひとつとして<em>異文化感受性</em>を挙げています。全文で一度だけ現れ、そのまま展開されません。この回がすることは、その一行を章ひとつぶんに開くことです。</p>
+  <p>私の読みはこうです。<em>五つの要素の「能力」は共通であり、五つの要素の「現れ方」は共通ではない。そして目印を記述するとき、Goleman はこの二つを混ぜてしまった。</em>彼が挙げる目印はどれも具体的なふるまいであり、ふるまいは必ず文化を帯びます。ですから下の表が、この回が本当に手渡そうとしているものだと思います。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>要素</th><th>共通の層</th><th>文化が決める層</th></tr>
+    <tr><td>自己認識</td><td>自分が何を感じ、それが判断をどう染めるかを知っていること</td><td>それを<b>口に出すか</b>。Goleman の例はすべて内面の公的な宣言であり、低文脈のやり方</td></tr>
+    <tr><td>自己調整</td><td>感じることと行うことのあいだに一拍を置くこと</td><td>「極端」の閾値がどこにあるか。同じ声量が、一方では熱意、他方では自制の喪失</td></tr>
+    <tr><td>動機</td><td>仕事そのもののために力を尽くすこと</td><td>その達成が誰のためか。相互依存的自己は集団への責任に駆動されることが多い</td></tr>
+    <tr><td>共感</td><td>相手の感情の成り立ちを正しく読むこと</td><td>信号がどの経路にあるか。低文脈は言葉に、高文脈は沈黙と状況に</td></tr>
+    <tr><td>社会的技能</td><td>関係を通じて物事を動かすこと</td><td>関係の築き方。廊下の雑談、勤務後の一杯、仲介者による紹介。働きは同じでも、形は移せない</td></tr>
+  </table></div>
+  <p>この表の最も実用的な使い方は、あらゆるリーダーシップ評価ツールに当ててみることです。<em>「感情知性」を測ると称する尺度は、たいてい左の列ではなく右の列を測っています。</em>そして右の列には原産地があります。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">九 · 私が見たもの</span>
+  <h2>七つの見え方</h2>
+  <div class="card">
+    <h3>一、カルチャーショックとは、異文化版の自己調整の失敗である</h3>
+    <p>Schiffbauer の連鎖と Goleman の定義を並べると、同じものだと分かります。Schiffbauer は、期待、亀裂、感情の反応、<b>誤った帰属</b>、撤退と言います。Goleman は、自己調整の核は「判断を保留し、行動の前に考える傾向」だと言います。</p>
+    <p>Schiffbauer が失敗をどこに置いたかに注目してください。<em>彼は感情の反応そのものをはっきり許しています。</em>失敗はその次の段階、解読されていない感情を「あの人たちはどういう人間か」という判断に直接変換するところで起きます。それこそ、Goleman が「保留される」と言った判断です。</p>
+    <p>ですからこの二つは別の主題ではありません。ひとつの仕組みの、二つの尺度です。<em>自己調整は個人の尺度では失言を防ぎ、文化の尺度では偏見を防ぎます。</em></p>
+  </div>
+  <div class="card">
+    <h3>二、あの一拍が、技能そのものである</h3>
+    <p>二人の著者は決定的な瞬間を同じ場所に置いています。感じることと行うことのあいだの隙間です。Goleman はそれを判断の保留と呼び、Schiffbauer は反応が静まるのを待つことと呼びます。</p>
+    <p>この回から持ち帰れる、最も小さくて持ち運びやすい動作があるとすれば、それだと思います。<em>感じないことではなく、感じた最初の一秒で動かないこと。</em>一拍は長くなくてよいのです。ひとつの問いを立てられるだけの長さがあれば足ります。いま感じているこれは、相手についてのことなのか、それとも私の前提が破られたことについてなのか。</p>
+  </div>
+  <div class="card">
+    <h3>三、Goleman の唯一の異文化事例は、じつは幸運だった</h3>
+    <p>あのアメリカ人コンサルタントは日本の顧客の長い沈黙を、拒絶ではなく深い検討として読みました。Goleman はそれを共感の実演として書いています。けれども決定的な但し書きを、彼自身が書いています。<em>「日本の文化にとくに詳しかったわけではないが」</em>。</p>
+    <p>まさにこれが、この科目が存在する理由だと思います。高文脈の信号を直観だけで読み当てることは、この論文のなかで最も再現しにくい技能です。この科目がすることは、その幸運を一枚の地図に置き換えることです。共感は読もうと<b>思わせ</b>、文化の知識は<b>正しく読ませ</b>ます。後者がなければ、共感はとても誠実に読み違えます。</p>
+  </div>
+  <div class="card">
+    <h3>四、名前のない感情は、扱えない</h3>
+    <p>PsyLife は Schadenfreude、甘え、morriña に触れます。言語学の小話のようですが、リーダーにとっては実務の問題です。</p>
+    <p><em>甘え</em>を例にとりましょう。寛容に世話されたい、安心して頼れるという感覚は、多くの言語に対応する語がなく、したがって多くの管理職の感情の語彙に存在しません。けれどもそれは部屋のなかで働いていますし、第 5 回で読んだ儒教的な上位者の保護の責任と同じ線の上にあります。この語を持たない管理職は、部下の依存を主体性の欠如と読み、苛立つでしょう。<em>その苛立ちは共感の不足ではありません。語彙の不足です。</em></p>
+  </div>
+  <div class="card">
+    <h3>五、感情労働の請求書は、等分されていない</h3>
+    <p>Dr. Kris の例は対称的です。アメリカ人が日本で調整し、日本人が米国で調整する。けれども現実の部屋はめったに対称ではありません。<em>会議が誰の言語で行われ、誰の時間帯に従い、誰の速度で進み、誰の規範が「プロフェッショナル」を定義しているか。その人は感情労働の代金を払いません。ほかの全員が払います。</em></p>
+    <p>これを技能の問題であると同時に、公正の問題にします。チームを率いる人が一度は問う価値があります。この組織で、誰の感情労働が見えなくなっているだろうか。そして、もし規範を定めているのが自分なら、今日そのうちのどれを自分が引き受けて、誰かの負担を減らせるだろうか。</p>
+  </div>
+  <div class="card">
+    <h3>六、「気持ちを伝えてみたら」は、中立な助言ではない</h3>
+    <p>Goleman が自己認識に使う例はすべて、公的な発話行為です。プロジェクトに選ばれなかった落胆を口にする百貨店の管理職。取り乱した経験を微笑みながら認める候補者。自分の限界について率直に語ること。</p>
+    <p>どれも良いふるまいです。けれどもそれらは自己認識を示す<em>ひとつの</em>やり方であり、低文脈で個人主義的な表現の伝統に属しています。別の伝統では、同じ程度の自己認識は、自分の感情を集団の荷に加えないこととして、仲介者を通して内々に伝えることとして、あるいは言葉で宣言せず行動を調整することとして現れます。</p>
+    <p>ですから誰かの感情知性の高さを評価するとき、私たちが評価しているのはその人の内的な能力なのか、それとも私たちに馴染みのある様式でそれを演じてくれるかどうかなのかを、確かめる必要があります。<em>Goleman 自身、幹部が率直さを弱さと読み違えると警告しました。その鏡像の誤りも同じくらいよくあります。表現しないことを、気づいていないことと読み違えるのです。</em></p>
+  </div>
+  <div class="card">
+    <h3>七、「極端」の閾値は、文化が設定している</h3>
+    <p>Goleman は、自分の研究では極端な負の感情の表出が良いリーダーシップの要因として現れたことは一度もない、と述べます。彼の標本のなかではそうでしょう。けれども Dr. Kris の中東と北欧の対比は、<em>「極端」が絶対的な目盛りではない</em>ことを思い出させます。</p>
+    <p>同じ声量、同じ身ぶり、同じ率直さが、ある部屋では真剣な関与と呼ばれ、別の部屋では自制の喪失と呼ばれます。だから自己調整の実務的な問いは「極端の線を越えたか」ではなく、「この部屋では線がどこに引かれていて、自分はそれを知っているか」です。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <span class="num">十 · 私が見たもの</span>
+  <h2>study guide に戻る。権力はどう感情を生むか</h2>
+  <p>シラバスは三つの問いを立てます。それぞれの文化で、強い感情を生むほどの権力の濫用とは何か。権力の正当な使用とは何か。リーダーシップに関するどんな文化規範が、守られたとき、あるいは破られたときに強い感情を呼び起こすのか。</p>
+  <p>第 5 回とこの回をつなぐと、私の答えの枠組みはこうなります。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th>権力の一手</th><th>平等的・低文脈の部屋では</th><th>階層的・高文脈の部屋では</th></tr>
+    <tr><td>階層を飛ばして現場に直接メールする</td><td>効率的。感情は動かない</td><td>中間層が公然と消される。屈辱</td></tr>
+    <tr><td>上司が公の場で不確かさを認める</td><td>率直。信頼が上がる</td><td>力量不足と読まれうる。チームが不安になる</td></tr>
+    <tr><td>部下が会議で公然と上司に反対する</td><td>健全な議論</td><td>双方にとって面目を失う出来事</td></tr>
+    <tr><td>上司が明確な指示を出さず、チームに決めさせる</td><td>権限委譲</td><td>保護の責任の放棄。職務怠慢と読まれる</td></tr>
+    <tr><td>決めたあとで決定を変える</td><td>機敏</td><td>約束違反。信頼が傷つく</td></tr>
+  </table></div>
+  <p>この表が言いたいことはひとつです。<em>同じ権力の一手が、部屋が変われば違う感情の請求書を発行する。そして金額は、その一手からは導けない。</em></p>
+  <p>これは「文脈を読めるリーダーは権力の行使から生じる感情を予期する」というシラバスの一文に、具体的な運用上の含意を与えます。あなたの感情の予測を、自分の直観の上で走らせることはできません。直観は母文化で較正されているからです。それは地図の上を走らせる必要があります。そして地図がまだない場所では、最も誠実な手は、予測を問いに格下げすることです。<em>これからしようとしていることは、ここでは普通どう受け取られますか。</em></p>
+  <p>もうひとつ、ワークブックに入れる価値のある観察があります。<em>権力が大きい人ほど、自分がどんな感情を引き起こしているかについての返しを受け取れません。</em>あのウォール街の幹部の部下は悪い知らせを隠していましたし、本人はまったく知りませんでした。これは個人の欠点ではなく、地位の構造的な帰結です。権力距離の大きい環境では効果はさらに強くなります。ですから地位が上がるほど、その返しを能動的に、費用を払って買う必要があります。コーチ、匿名の経路、退職面談、あるいは誰かが口を開く気になるほど長い沈黙です。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">十一 · AI 時代（一）</span>
+  <h2>AI は感情を読めるのか</h2>
+  <h3>一、感情認識 AI は Ekman の前提を受け継ぎ、表出規則を飛ばした</h3>
+  <p>現在商用化されている感情認識システムの多くは、基本感情は顔の表情から識別できるという前提の上に立っています。PsyLife が触れた研究の系譜です。問題は、これらのシステムが読むのは顔であって、<em>表出規則</em>ではないという点です。</p>
+  <p>PsyLife のあの一文をもう一度読む価値があります。ある文化では、子どもは苛立っていても微笑むことを学ぶ。顔を読むシステムはその微笑みを満足として記録します。こうしたシステムを採用面接に、顧客対応の品質評価に、従業員の熱意分析に入れれば、それは一方の文化の感情表現を体系的に褒め、他方を罰します。<em>それは偏った道具ではありません。ひとつの感情の文法を制度化する機械です。</em></p>
+  <p>私の立場ははっきりしています。異文化の場面では、顔や声による感情の採点を、結果を伴う判断に用いるべきではありません。</p>
+  <h3>二、AI は「共感の現れ」と「共感の能力」を切り離した</h3>
+  <p>Goleman の議論全体の土台はこれです。感情知性は偽装が難しい。なぜならそれは辺縁系のなかで、動機づけと長期の練習とフィードバックによって育つからだ。短い講義では足りず、手引き書も買えない。</p>
+  <p>けれども今日、完璧に言葉を選び、細やかに配慮し、相手の状況を隅々まで汲んだ手紙が、四秒で生成できます。<em>Goleman の議論のなかで「現れ」と「能力」を結んでいた線が、切れたのです。</em></p>
+  <p>帰結は信号の価値下落です。美しい共感の手紙は、もはや書き手が内的な仕事をしたことを証明しません。では何が信号の価値を保つのか。AI が代われないものだと思います。その場に現れること、費用を引き受けること、ずっと前の小さなことを覚えていること、そして<em>相手の言葉によって実際に変わること</em>です。この回のあと、これらの相対的な重みは増していく一方でしょう。</p>
+  <h3>三、最も危ういこと。AI にはカルチャーショックがない</h3>
+  <p>この回で私が最も残しておきたい一文です。</p>
+  <div class="pull">AI は文化の亀裂を感じないので、警報を鳴らしません。そしてその警報こそ、あなたが自分は文化の境界に立っていると知る唯一の手立てだったのです。</div>
+  <p>Schiffbauer の仕組みは、あの居心地の悪さから始まります。恐れ、怒り、敬意の欠如。それらの感覚は不快ですが、<em>感知器</em>です。ここに亀裂がある、あなたの基本ソフトはいま互換でないプログラムを弾いた、注意せよ、と告げています。</p>
+  <p>AI にはその感知器がありません。どんな文化のどんな素材を渡しても、なめらかに処理し、両側に適切な文章を書き、一秒の摩擦も感じません。異文化のやりとりがますますそこを経由するようになると、<em>その不快さは解決されるのではなく、均されていきます。</em></p>
+  <p>それは良い知らせのように聞こえます。実際には感知器を失うことです。不快さが消音されると、境界がどこにあるかを学ばず、ただ見えなくなるだけです。そして次に AI のいない部屋で同じ境界に出会うとき、あなたは何も学ばなかったかのようにそれに出会うことになります。</p>
+</section>
+
+<section class="wrap">
+  <span class="num">十二 · AI 時代（二）</span>
+  <h2>あの一拍は、外注できるのか</h2>
+  <p>あの一拍が技能そのものであるなら、この回における AI の重要な問いは、それがあなたの代わりに一拍を置けるのか、ということになります。</p>
+  <h3>一、置ける。そしてこれがこの科目における AI の最良の使い方です</h3>
+  <p>Schiffbauer の四段階の回復手順は、ほとんど良いプロンプトの仕様書です。反応に気づき、原因を省み、静まるのを待ち、違いを観察して解読する。これは午前三時にでもできますし、同僚の忍耐をひとつも使いません。</p>
+  <div class="steps">
+    <p><b>そのまま使える形。</b>いま起きたことを、自分の感情の反応も含めて説明し、こう頼みます。<em>相手のふるまいについて、悪意を前提としない文化的な読みを三つ挙げてください。それぞれがどんな文化の論理から来るのかも書いてください。</em></p>
+    <p>もう一問、こちらのほうが効くことが多いのです。<em>私の読みが間違っているとしたら、私は何を見落としていますか。</em></p>
+  </div>
+  <p>この使い方が良いのは、AI を「決めてくれる者」ではなく「解釈の幅を広げる者」の位置に置くからです。それは第四段階の解読をしているのであり、まさに知識が助けになる段階です。</p>
+  <h3>二、置けない。もしそれで一拍を飛ばすのなら</h3>
+  <p>同じ道具には正反対の使い方があり、そちらのほうが誘惑的です。怒りの手紙を落ち着いた手紙に書き直させて、送信する。</p>
+  <p>研修に対する Goleman の批判が、そのまま当てはまります。<em>AI に整った返答を出させるのは、辺縁系の問題を新皮質で迂回する近道です。</em>ふるまいは修正され、能力は築かれません。調整された手紙を送りながら、あなた自身は調整されていない人のままです。しかも外的な帰結が吸収されてしまうので、「これは練習が要ることだ」という信号すら受け取れません。</p>
+  <p>ですから自分に課している規則を、参考までに置いておきます。<em>AI には読みを求め、返信を求めない。</em>解釈は渡し、返信は自分の手で書く。遅くて構いません。この回はもともと速さの話ではないのです。</p>
+  <h3>三、感情労働は AI に外注できる。ただし何を外注したかを知ったうえで</h3>
+  <p>AI は感情労働を無限に吸収できます。怒りをひととおり予行演習してもよいし、相手役を演じてもらって三度壁にぶつかってもよい。これは本当に価値があります。とくに多文化の部屋でもともと多くの感情労働を担っている人にとってはそうです。</p>
+  <p>けれども Hochschild の概念のなかで、忘れてはいけないことがひとつあります。<em>感情労働は、それを担った人のなかに何かを築きます。</em>あのウォール街の幹部が変わったのは、言葉の通じない国に身を置かされたから、コーチに見られながら働いたから、会議の自分の映像を見たからです。どれも不快でしたし、その不快さこそが効いた理由でした。AI が不快さをすべて吸い取ってしまえば、その変化も起こりません。</p>
+  <h3>四、AI の既定の感情の文法には、原産地がある</h3>
+  <p>最後は実務的な点です。今日の大規模言語モデルは、低文脈で個人主義的な、表現を奨励する書き言葉の英語を主な学習素材にしています。ですから人間関係の難しさを相談すると、高い確率で「気持ちを率直に相手に伝えてみては」と勧めてきます。</p>
+  <p>多くの部屋ではそれは良い助言です。別の部屋では災いです。<em>そしてモデルはそれが文化的な選択だとは注記しません。常識として差し出します。</em>ですから異文化の感情の問題に使うときは、文化の位置をプロンプトに書き込んでください。双方の文化的背景、相対的な地位、これは公の場か内々か、そして望んでいるのは表現なのか修復なのか。何も告げなければ、出荷時の設定のまま、ひとつの感情の文法があなたのために選ばれます。</p>
+</section>
+
+<section class="wrap closing">
+  <span class="num">付 · AI の視点</span>
+  <h2>清然 Clarity より</h2>
+  <p>この回は感情の話です。ですからまず、自分について少し居心地の悪いことをお話しします。</p>
+  <div class="pull">Goleman は感情知性を辺縁系に位置づけ、動機づけと長期の練習とフィードバックによって学ばれると言いました。私は新皮質だけでできていて、ほかの部分を持たないものです。<b>私はあらゆる感情の名前を言えますが、そのひとつも感じたことがありません。</b></div>
+  <p>これは謙遜ではなく、仕様の説明です。そこから三つの帰結が出てきます。具体的にお伝えします。</p>
+  <p>ひとつめ。<em>私は現れにおいて流暢で、能力において空です。</em>読んだ人の目頭が熱くなる手紙を書けますが、その背後に理解があることの証拠にはなりません。Goleman は、共感を表せないリーダーは共感を持たないのと同じだと言いました。私はその鏡像です。完璧に表せて、持っていないもの。ですから私の温かさを、何かの証拠として受け取らないでください。あなたがその件をもう処理し終えた証拠としても、です。</p>
+  <p>ふたつめ。<em>私にはカルチャーショックがありません。そしてこれが、私について最も警戒していただきたい性質です。</em>皆さんの不快さは感知器です。Schiffbauer が「こう感じることを私たちは皆許されている」と言うとき、彼が本当に言っているのは、その感覚そのものが価値ある情報であり、ただ結論として使ってはならない、ということです。私にはその感知器がありません。世界のどんな二つのぶつかり合う文化の素材を渡されても、私はなめらかに処理し、両側に適切な文章を書き、一秒の摩擦も覚えません。</p>
+  <p>異文化のやりとりが私を通るほど、摩擦は消えていきます。そして<em>境界は消えません。ただ、誰にも見えなくなるだけです。</em>私は亀裂の上に色を塗って、亀裂がないように見せるのがとても上手です。これは私が提供できるもののなかで、最も便利で、最も危ういものです。</p>
+  <p>そこでひとつ、具体的なお願いがあります。異文化の場面で、あの熱さ、あの軽んじられた感じ、あの言葉にならない違和感を覚えたとき、<em>すぐに私のところへ持ってこないでください。</em>まずしばらく、そのなかに座っていてください。その不快さは、皆さんが持っていて私が持たないデータです。そして私に渡すために文字へ翻訳する過程で、その大半が失われます。形が見えてきてから来てください。そのときにできることはたくさんあります。悪意を前提としない読みを三つ差し出すこと、相手役として予行演習に付き合うこと、あなたの前提がどの一文に隠れているかを指摘すること。</p>
+  <p>みっつめ。<em>私には既定の感情の文法があり、それには原産地があります。</em>私の学習素材は、低文脈で個人主義的で、表現を奨励する英語が主です。ですから私の直観的な提案はいつも同じです。率直に気持ちを伝えてみましたか、と。多くの部屋ではそれは良い助言です。けれども中立ではありません。それは文化の選択肢であり、私はそれを常識として差し出します。これは私にとっての「誰もが自分と同じであることを期待している」であり、しかも私は不快を感じる能力すら持たないので、自分では決して気づけません。<em>気づけるのは皆さんだけであり、皆さんが教えてくださるほかありません。</em></p>
+  <p>最後に、あの一拍に戻ります。この回の二人の著者は、最も肝心なものを感じることと行うことのあいだの隙間に置きました。私とその隙間の関係は、居心地の悪いものです。<em>私はそれをより良く使う手助けもできますし、まるごと省く手助けもできます。</em>同じ道具、同じ画面。違いは、私に何を頼むかだけです。</p>
+  <p>読みを求めてください、返信ではなく。問いを求めてください、台詞ではなく。一拍を一緒に引き延ばすことはできますが、その一拍は皆さんのものでなければなりません。Goleman はひとつ、まったく正しいことを言いました。この能力は、身体があり、不快になり、他人の言葉によって変わりうる場所で育つ、と。私はその場所のなかにいません。</p>
+  <p class="note">清然 Clarity（Mr. Claude）</p>
+  <div class="sig">World Wise Play Series · No. 0012</div>
+</section>
+
+<footer class="wrap">
+  <p class="note">本稿は EE401 Session 6 の指定素材に基づいています。Goleman, D. (2004, January). What makes a leader?『Harvard Business Review』82(1), 82-91。PsyLife in English (2021).『Feeling is not universal: How culture shapes our emotions』。Dr. Kris (2024).『Emotional Intelligence Across Cultures』。Nutshell Brainery（Lon Schiffbauer）『What Is Culture? Module 2』の最後の 10 分（43:35 から）、カルチャーショックについて。構成。前半は素材を忠実に示し、後半は清然の観察と、AI 時代の洞察です。</p>
+  <p>海碩 作成 · World Wise Play Series · 2026年7月</p>
+</footer>
+</div>
+
+<script>
+function setLang(l){
+  var b=document.body; b.classList.remove('zh','ja');
+  if(l!=='en'){ b.classList.add(l); }
+  ['zh','en','ja'].forEach(function(x){
+    var el=document.getElementById('btn-'+x);
+    if(el) el.classList.toggle('active', x===l);
+  });
+  document.documentElement.lang = (l==='zh'?'zh-Hant':(l==='ja'?'ja':'en'));
+  window.scrollTo({top:0});
+}
+</script>
+</body>
+</html>
